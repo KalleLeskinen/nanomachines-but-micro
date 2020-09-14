@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2004372498338191431}
   - component: {fileID: -3646436869198918000}
+  - component: {fileID: 7500964952691732484}
   m_Layer: 0
   m_Name: temprallycar
   m_TagString: Untagged
@@ -67,6 +68,18 @@ MonoBehaviour:
   _entityBehaviourQueryOption: 0
   _entityPriorityCalculatorQueryOption: 1
   _entityReplicationFilterQueryOption: 1
+--- !u!114 &7500964952691732484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196592484905566973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2db1e5886dabb6f46905d6980dcbc45a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1584494672718385739
 GameObject:
   m_ObjectHideFlags: 0
