@@ -48,16 +48,13 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
         state.SetTransforms(state.VehicleTransform, transform);
     }
 
-
+    //Acts as FixedUpdate()
     public override void SimulateOwner()
     {
         GetCorners();
         CastRays(corners);
         Traction();
-    }
 
-    private void Update()
-    {
         if (Input.GetKey(KeyCode.W))
         {
             Accelerate();
@@ -67,6 +64,7 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
         {
             Brake();
         }
+
 
         if (Input.GetKey(KeyCode.A))
         {
@@ -86,7 +84,6 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
             transform.position = new Vector3(0, 10, 0);
         }
     }
-
 
     private void Turn(int dir)
     {
@@ -141,6 +138,7 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
         }
 
     }
+
 
     private void Traction()
     {
