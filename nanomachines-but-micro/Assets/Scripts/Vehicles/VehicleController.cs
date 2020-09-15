@@ -37,6 +37,11 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
             state.VehicleColor = new Color(Random.value, Random.value, Random.value);
         }
 
+        if(!entity.IsOwner)
+        {
+            rig.useGravity = false;
+        }
+
         state.AddCallback("VehicleColor", ColorChanged);
 
         //SetTransforms tells Bolt to replicate the transform over the network
@@ -49,9 +54,6 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
         GetCorners();
         CastRays(corners);
         Traction();
-
-       
-
     }
 
     private void Update()
