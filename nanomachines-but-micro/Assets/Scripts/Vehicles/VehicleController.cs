@@ -1,17 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Bolt;
-using System;
-using TMPro.EditorUtilities;
+using Bolt; 
+
 
 public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
 {
 
     //The wheels, 0 = FL, 1 = FR, 2 = BL, 3 = BR; 
     public Vector3[] corners = new Vector3[4];
+    //Points where ^^ hit the ground
+    public Vector3[] contactPoints = new Vector3[4];
+    private Vector3 frontWheels, backWheels;
 
-    public float SuspensionStrength, SuspensionDamping, SuspensionDistance;
+    
+    public float enginePower, brakingPower;
+    public float steeringMultiplier;
+    public float tractionMultiplier;
+    public float suspensionStrength, suspensionDamping, suspensionDistance;
+
+
 
     private Rigidbody rig;
 
@@ -21,8 +29,15 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
     public override void Attached()
     {
 
-        
+        rig = GetComponent<Rigidbody>();
+        body = gameObject.GetComponent<BoxCollider>();
 
+        if(entity.IsOwner)
+        {
+            state.VehicleColor = new Color(Random.value, Random.value, Random.value);
+        }
+
+        state.AddCallback("VehicleColor", ColorChanged);
 
         //SetTransforms tells Bolt to replicate the transform over the network
         state.SetTransforms(state.VehicleTransform, transform);
@@ -31,53 +46,119 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
 
     public override void SimulateOwner()
     {
+        GetCorners();
+        CastRays(corners);
+        Traction();
 
-        
+       
 
-    }
-
-    //CHANGE THIS vvv -> ^^^
-
-
-    public void Awake()
-    {
-        rig = GetComponent<Rigidbody>();
-        body = gameObject.GetComponent<BoxCollider>();
     }
 
     private void Update()
     {
-
-        
-        //CastRays(wheels);
-
-        var speed = 4f;
-        var movement = Vector3.zero;
-
-        if (Input.GetKey(KeyCode.W)) { movement.z += 1; }
-        if (Input.GetKey(KeyCode.S)) { movement.z -= 1; }
-        if (Input.GetKey(KeyCode.A)) { movement.x -= 1; }
-        if (Input.GetKey(KeyCode.D)) { movement.x += 1; }
-
-        if (movement != Vector3.zero)
+        if (Input.GetKey(KeyCode.W))
         {
-            transform.position = transform.position + (movement.normalized * speed * BoltNetwork.FrameDeltaTime);
+            Accelerate();
+        }
+
+        if (Input.GetKey(KeyCode.S))
+        {
+            Brake();
+        }
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            //Turn Left
+            Turn(1);
+        }
+
+        if (Input.GetKey(KeyCode.D))
+        {
+            //Turn Right
+            Turn(-1);
+        }
+
+        //Reset
+        if (Input.GetKey(KeyCode.R))
+        {
+            transform.position = new Vector3(0, 10, 0);
         }
     }
 
-    private void FixedUpdate()
+
+    private void Turn(int dir)
     {
-        GetCorners();
-        CastRays(corners);
+        if (contactPoints[0] != new Vector3(0, 0, 0) && contactPoints[1] != new Vector3(0, 0, 0))
+        {
+            frontWheels = contactPoints[0] + (contactPoints[1] - contactPoints[0]) / 2;
+
+            Vector3 fwd = rig.transform.up;
+
+            rig.AddTorque(fwd * (-dir * steeringMultiplier), ForceMode.Acceleration);
+        }
 
 
+    }
 
+    //Accelerate using only front wheels
+    private void Accelerate()
+    {
+
+        if (contactPoints[0] != new Vector3(0, 0, 0) && contactPoints[2] != new Vector3(0, 0, 0))
+        {
+            frontWheels = contactPoints[0] + (contactPoints[1] - contactPoints[0]) / 2;
+
+            Vector3 fwd = rig.transform.forward;
+
+            rig.AddForceAtPosition(fwd * enginePower, frontWheels);
+        }
+    }
+
+    //Brake using both axels
+    private void Brake()
+    {
+
+        //Front Wheels
+        if (contactPoints[0] != new Vector3(0, 0, 0) && contactPoints[1] != new Vector3(0, 0, 0))
+        {
+            frontWheels = contactPoints[0] + (contactPoints[1] - contactPoints[0]) / 2;
+
+            Vector3 fwd = rig.transform.forward;
+
+            rig.AddForceAtPosition(fwd * -brakingPower, frontWheels);
+        }
+
+        //Back Wheels
+        if (contactPoints[2] != new Vector3(0, 0, 0) && contactPoints[3] != new Vector3(0, 0, 0))
+        {
+            backWheels = contactPoints[2] + (contactPoints[3] - contactPoints[2]) / 2;
+
+            Vector3 fwd = rig.transform.forward;
+
+            rig.AddForceAtPosition(fwd * -brakingPower, backWheels);
+        }
+
+    }
+
+    private void Traction()
+    {
+
+        //Getting the sideways speed
+        float xV = transform.InverseTransformDirection(rig.velocity).x;
+
+        xV *= tractionMultiplier;
+
+        //Subtract it
+        rig.AddRelativeForce(Vector3.right * -xV);
         
     }
 
+
+
+
+    //Gets the corners of the vehicles hitbox
     private void GetCorners()
     {
-        Debug.Log("Gettign Corners");
 
         Vector3 size = body.size;
 
@@ -103,36 +184,56 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
 
 
 
-
+    //Cast rays from the corners of the vehilces (simulating suspension)
     private void CastRays(Vector3[] corners)
     {
-        
+
         Vector3 down = transform.TransformDirection(Vector3.down);
         RaycastHit hit;
 
-        foreach(Vector3 v3 in corners)
+        for (int i = 0; i < 4; i++)
         {
-            
-            if (Physics.Raycast(v3, down, out hit, 1))
+            if (Physics.Raycast(corners[i], down, out hit, 1))
             {
-                Debug.DrawRay(v3, down * hit.distance, Color.green, 0.01f);
+                Debug.DrawRay(corners[i], down * hit.distance, Color.red, 0.01f);
 
-                rig.AddForceAtPosition(CalculateSuspension(hit.distance, v3) * Vector3.up, v3);
+                rig.AddForceAtPosition(CalculateSuspension(hit.distance, corners[i]) * Vector3.up, corners[i], ForceMode.Acceleration);
+
+                contactPoints[i] = hit.point;
 
             }
+            else
+            {
+                contactPoints[i] = new Vector3(0, 0, 0);
+            }
         }
+
     }
 
     private float CalculateSuspension(float distance, Vector3 v3)
     {
 
         //The length of the compressed spring
-        float d = SuspensionDistance - distance;
+        float d = suspensionDistance - distance;
 
-        float force = -SuspensionStrength * d + (SuspensionDamping * rig.GetPointVelocity(v3).y);
+        //Current Vel at spring (on Y axis)
+        float curV = rig.GetPointVelocity(v3).y;
 
-        Debug.Log("Force = " + force);
-        return force;
+        //New Spring value
+        float newS = v3.y * d * suspensionStrength;
+
+        //New Spring Delta
+        float deltaF = newS - curV;
+
+        Debug.Log("Force = " + deltaF + " | Distance = " + d);
+
+        return deltaF;
+    }
+
+
+    void ColorChanged()
+    {
+        gameObject.transform.Find("CarBody").GetComponent<Renderer>().materials[1].color = state.VehicleColor;
     }
 
 
