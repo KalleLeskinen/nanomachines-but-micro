@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 7500964952691732484}
   - component: {fileID: 1149322299}
   - component: {fileID: 1149322296}
+  - component: {fileID: 4971520551937781757}
   m_Layer: 0
-  m_Name: temprallycar
+  m_Name: temprallycar-with-laps
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56,7 +57,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sceneGuid: 
   _serializerGuid: 3de9e892-f26c-4c0c-8e8a-1108c9280f81
-  _prefabId: 3
+  _prefabId: 2
   _updateRate: 1
   _autoFreezeProxyFrames: 0
   _clientPredicted: 0
@@ -124,6 +125,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.2, y: 1.550076, z: 4.0171046}
   m_Center: {x: -0.000000010025996, y: -0.46736923, z: 0.32844332}
+--- !u!114 &4971520551937781757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196592484905566973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72a8779f831d56f4abc1b8fce2c1971c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lapTimes: []
+  looseTimeBeforeStart: 0
 --- !u!1 &1584494672718385739
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,7 +11,7 @@ public class Menu : GlobalEventListener
 {
     void OnGUI()
     {
-        GUILayout.BeginArea(new Rect(10, 10, Screen.width - 20, Screen.height - 20));
+        GUILayout.BeginArea(new Rect(10, 10, Screen.width / 2, 50));
 
         if (GUILayout.Button("Start Server", GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true)))
         {
@@ -23,6 +23,7 @@ public class Menu : GlobalEventListener
         {
             // START CLIENT
             BoltLauncher.StartClient();
+            GUI.enabled = false;
         }
 
         GUILayout.EndArea();
@@ -36,7 +37,7 @@ public class Menu : GlobalEventListener
 
             BoltMatchmaking.CreateSession(
                 sessionID: matchName,
-                sceneToLoad: "PhotonTest" // <-  What scene to load
+                sceneToLoad: "StartFinishWin" // <-  What scene to load
             );
         }
     }
