@@ -7,7 +7,6 @@ public class LapTimeUpdate : MonoBehaviour
 {
     public Guid id;
     public List<float> lapTimes;
-    public float looseTimeBeforeStart;
     int lap;
     float clock;
     // Start is called before the first frame update
@@ -15,18 +14,7 @@ public class LapTimeUpdate : MonoBehaviour
     {
         clock = 0;
         lap = 0;
-        id = Guid.NewGuid();
-    }
-
-    public float[] ArrayOfLaps()
-    {
-        float[] array = new float[CountPassingCars.amountOfLaps+1];
-        foreach (var LapTime in lapTimes)
-        {
-            array[array.Length] = LapTime;
-            Debug.Log($"INSERTING TO ARRAY: {LapTime}");
-        }
-        return array;
+        id = Guid.NewGuid(); // generate a guid for the car
     }
 
     private void OnTriggerEnter(Collider other)
