@@ -1,18 +1,29 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
-public class InputController : MonoBehaviour
+public class InputController : BoltSingletonPrefab<InputController>, IInputController
 {
-    // Start is called before the first frame update
-    void Start()
+    
+    public bool GetButton(int playerId, InputAction action)
     {
-        
+        throw new System.NotImplementedException();
     }
 
-    // Update is called once per frame
-    void Update()
+    public bool GetButtonDown(int playerId, InputAction action)
     {
-        
+        throw new System.NotImplementedException();
+    }
+
+    public bool GetButtonUp(int playerId, InputAction action)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public float GetAxis(int playerId, InputAction action)
+    {
+        throw new System.NotImplementedException();
     }
 }

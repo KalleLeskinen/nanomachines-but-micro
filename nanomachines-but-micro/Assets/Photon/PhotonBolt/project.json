@@ -371,6 +371,13 @@
       "Name": "StateOfRace",
       "Guid": "5b4240e5-c79d-4e5c-a815-0bef66d62b57",
       "Groups": []
+    },
+    {
+      "$type": "Bolt.Compiler.ObjectDefinition, bolt.compiler",
+      "Properties": [],
+      "Name": "TempInput",
+      "Guid": "efec8dd7-564e-4755-b487-7dcaaa4aad6b",
+      "Groups": []
     }
   ],
   "ActiveGroup": "Everything"

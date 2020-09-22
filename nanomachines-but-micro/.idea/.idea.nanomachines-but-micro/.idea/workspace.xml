@@ -28,11 +28,17 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controllers/CameraController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controllers/InputController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../UnityProjects/RuildAndBun/Assets/Scenes/Tommi/Scripts/GameEvents.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controllers/InputAction.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/CameraController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/InputAction.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/IInputController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Vehicles/VehicleController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/InputController.cs" />
       </list>
     </option>
   </component>
@@ -44,5 +50,11 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
   <component name="Vcs.Log.Tabs.Properties">
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="784" y="225" key="RiderGenerateDialog" timestamp="1600769406076">
+      <screen x="62" y="0" width="1858" height="1080" />
+    </state>
+    <state x="784" y="225" key="RiderGenerateDialog/62.0.1858.1080/-1600.174.1600.870@62.0.1858.1080" timestamp="1600769406076" />
   </component>
 </project>

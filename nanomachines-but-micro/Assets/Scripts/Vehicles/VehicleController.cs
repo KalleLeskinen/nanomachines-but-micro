@@ -71,6 +71,7 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
     //All below should be cleaned up. vvvvvvvvvvvvvvvvvvvvvvvvvvv
 
     //Processing the player input
+    // Käytetäänkö ProcessInput():a InputControllerin kanssa?
     private void ProcessInput()
     {
         if (Input.GetKey(KeyCode.W))

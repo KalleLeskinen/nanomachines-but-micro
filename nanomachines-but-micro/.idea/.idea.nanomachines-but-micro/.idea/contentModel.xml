@@ -102,6 +102,8 @@
         <e p="scripts" t="Include">
           <e p="Controllers" t="Include">
             <e p="CameraController.cs" t="Include" />
+            <e p="IInputController.cs" t="Include" />
+            <e p="InputAction.cs" t="Include" />
             <e p="InputController.cs" t="Include" />
           </e>
           <e p="Menu.cs" t="Include" />
