@@ -258,7 +258,8 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
     //Callback for when a remote player changes color
     void ColorChanged()
     {
-        gameObject.transform.Find("CarBody").GetComponent<Renderer>().materials[1].color = state.VehicleColor;
+        if (gameObject.name.StartsWith("temprally"))
+            gameObject.transform.Find("CarBody").GetComponent<Renderer>().materials[1].color = state.VehicleColor;
     }
 
 
