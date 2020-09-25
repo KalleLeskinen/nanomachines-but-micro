@@ -15,7 +15,7 @@ public class NetworkCallbacks : GlobalEventListener
         var spawnPos = new Vector3(Random.Range(-2, 2), 1, -4);
 
         //Insantiate the player vehicle
-        BoltNetwork.Instantiate(BoltPrefabs.temprallycar_with_laps, spawnPos, Quaternion.identity);
+        BoltNetwork.Instantiate(BoltPrefabs.Car1_Torino, spawnPos, Quaternion.identity);
 
 
     }
