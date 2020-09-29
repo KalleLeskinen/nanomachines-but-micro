@@ -5,10 +5,16 @@ using UnityEngine.SceneManagement;
 using Bolt;
 using Bolt.Matchmaking;
 using UdpKit;
-
+using UnityEngine.UI;
 public class MainMenu : GlobalEventListener
 {
-    
+
+    public Button joinGameButtonPrefab;
+    public GameObject serverListPanel;
+    public float buttonSpacing;
+
+    private List<Button> _joinServerButtons = new List<Button>();
+
     public void ButtonStartServer()
     {
         BoltLauncher.StartServer();
@@ -28,28 +34,59 @@ public class MainMenu : GlobalEventListener
     {
         if (BoltNetwork.IsServer)
         {
-            string matchName = System.Guid.NewGuid().ToString();
+            int randomInt = Random.Range(0, 9999);
+            string matchName = "Test match " + randomInt;
 
             BoltMatchmaking.CreateSession(
                 sessionID: matchName,
                 sceneToLoad: "PhotonTest" // <-  What scene to load
             );
+
         }
     }
 
+    //LobbySystem behaviour
     public override void SessionListUpdated(Map<System.Guid, UdpSession> sessionList)
     {
-        Debug.LogFormat("Session list updated: {0} total sessions", sessionList.Count);
+        //Clear excess buttons
+        ClearSessions();
 
         foreach (var session in sessionList)
         {
             UdpSession photonSession = session.Value as UdpSession;
 
-            if (photonSession.Source == UdpSessionSource.Photon)
+            Button joinGameButtonClone = Instantiate(joinGameButtonPrefab);
+            joinGameButtonClone.transform.parent = serverListPanel.transform;
+            joinGameButtonClone.transform.localPosition = new Vector3(0, buttonSpacing * _joinServerButtons.Count, 0);
+            joinGameButtonClone.GetComponentInChildren<Text>().text = "Test match " + (_joinServerButtons.Count + 1);
+            joinGameButtonClone.gameObject.SetActive(true);
+
+            joinGameButtonClone.onClick.AddListener(() => JoinGame(photonSession));
+
+            _joinServerButtons.Add(joinGameButtonClone);
+            /*if (photonSession.Source == UdpSessionSource.Photon)
             {
-                BoltMatchmaking.JoinSession(photonSession);
-            }
+                
+            }*/
         }
+    }
+
+    private void JoinGame(UdpSession photonSession)
+    {
+        BoltMatchmaking.JoinSession(photonSession);
+    }
+
+    //Refresh sessions
+    private void ClearSessions()
+    {
+        Debug.Log("ClearSessions was called");
+
+        foreach (Button button in _joinServerButtons)
+        {
+            Destroy(button.gameObject);
+        }
+
+        _joinServerButtons.Clear();
     }
 
 }
