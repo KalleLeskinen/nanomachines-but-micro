@@ -1,4 +1,4 @@
-﻿public interface IInputController
+﻿public interface IInputManager
 {
     bool GetButton(int playerId, InputAction action);
     bool GetButtonDown(int playerId, InputAction action);

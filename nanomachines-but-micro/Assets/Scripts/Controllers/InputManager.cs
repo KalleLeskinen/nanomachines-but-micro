@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-public class InputController : BoltSingletonPrefab<InputController>, IInputController
+public class InputManager : BoltSingletonPrefab<InputManager>, IInputManager
 {
     
     public bool GetButton(int playerId, InputAction action)
