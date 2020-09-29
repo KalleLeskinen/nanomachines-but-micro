@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Bolt;
+using Random = UnityEngine.Random;
 
 
 public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
@@ -26,6 +28,11 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
 
     //Collider for the body of the car
     private BoxCollider body;
+    
+    private bool forward;
+    private bool backward;
+    private bool left;
+    private bool right;
 
 
 
@@ -62,10 +69,27 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
     //Acts as FixedUpdate() on the owner of the object
     public override void SimulateOwner()
     {
-        ProcessInput();
         GetCorners();
         CastRays(corners);
         Traction();
+    }
+
+    public override void SimulateController()
+    {
+        ProcessInput();
+
+        var input = PlayerCommand.Create();
+        input.Accelerate = forward;
+        input.Brake = backward;
+        input.TurnRight = right;
+        input.TurnLeft = left;
+
+        entity.QueueInput(input);
+    }
+
+    private void Update()
+    {
+        ProcessInput();
     }
 
     //All below should be cleaned up. vvvvvvvvvvvvvvvvvvvvvvvvvvv
@@ -74,7 +98,12 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
     // Käytetäänkö ProcessInput():a InputControllerin kanssa?
     private void ProcessInput()
     {
-        if (Input.GetKey(KeyCode.W))
+        forward = Input.GetKey(KeyCode.W);
+        right = Input.GetKey(KeyCode.D);
+        backward = Input.GetKey(KeyCode.S);
+        left = Input.GetKey(KeyCode.A);
+
+        /*if (Input.GetKey(KeyCode.W))
         {
             Accelerate();
         }
@@ -102,7 +131,7 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
         {
             transform.position = new Vector3(0, 10, 0);
             transform.rotation = new Quaternion();
-        }
+        }*/
     }
 
     //Turning

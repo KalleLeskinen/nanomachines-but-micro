@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using UnityEditor.PackageManager;
 using UnityEngine;
 
-// voidaanko käyttää CharacterControlleria Rigidbodyn ja erillisen colliderin sijasta?
+// Voidaanko käyttää CharacterControlleria Rigidbodyn ja erillisen colliderin sijasta?
+// Pitää implementoida fysiikka erikseen, mutta löytyisi valmiina lähteestä.
 [RequireComponent(typeof(Rigidbody), typeof(BoxCollider))]
 public class PlayerMotor : MonoBehaviour
 {
@@ -24,12 +25,8 @@ public class PlayerMotor : MonoBehaviour
     [SerializeField]
     private float maxVelocity = 32f;
     [SerializeField]
-    private Vector3 drag = new Vector3(1f, 0f, 1f);
-    [SerializeField]
-    LayerMask layerMask;
+    private LayerMask layerMask; // Tunneloimisen tsekkaamista varten (optional)
     
-    
-
     private void Awake()
     {
         collider = GetComponent<BoxCollider>();
@@ -86,7 +83,7 @@ public class PlayerMotor : MonoBehaviour
 
     private void DetectTunneling()
     {
-        if (Physics.Raycast(collider.center, Vector3.down, out var hit, collider.center.y, layerMask))
+        if (Physics.Raycast(collider.center, Vector3.down, out var hit, collider.center.y)) // + layerMask
             transform.position = hit.point;
     }
 }
