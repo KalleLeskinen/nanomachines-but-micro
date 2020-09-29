@@ -100,12 +100,6 @@
         </e>
         <e p="RayCastForCars.cs" t="Include" />
         <e p="scripts" t="Include">
-          <e p="Controllers" t="Include">
-            <e p="CameraController.cs" t="Include" />
-            <e p="IInputManager.cs" t="Include" />
-            <e p="InputAction.cs" t="Include" />
-            <e p="InputManager.cs" t="Include" />
-          </e>
           <e p="Menu.cs" t="Include" />
           <e p="Networking" t="Include">
             <e p="NetworkCallbacks.cs" t="Include" />

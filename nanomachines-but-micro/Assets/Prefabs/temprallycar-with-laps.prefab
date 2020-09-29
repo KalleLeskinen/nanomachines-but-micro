@@ -138,7 +138,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lapTimes: []
-  looseTimeBeforeStart: 0
 --- !u!1 &1584494672718385739
 GameObject:
   m_ObjectHideFlags: 0
