@@ -26,6 +26,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Input/PlayerMotor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../UnityProjects/RuildAndBun/Assets/Scenes/Tommi/Scripts/GameEvents.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -39,6 +40,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/IInputManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/InputManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/PlayerInput.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Input/PlayerMotor.cs" />
       </list>
     </option>
   </component>
