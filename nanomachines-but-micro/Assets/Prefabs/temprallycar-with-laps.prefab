@@ -140,6 +140,7 @@ MonoBehaviour:
   lapTimes: []
   car_passed_cps: 
   clock: 0
+  time: 
 --- !u!1 &1584494672718385739
 GameObject:
   m_ObjectHideFlags: 0

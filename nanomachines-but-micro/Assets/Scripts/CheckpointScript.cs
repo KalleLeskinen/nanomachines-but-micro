@@ -18,6 +18,8 @@ public class CheckpointScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!other.gameObject.GetComponent<LapTimeUpdate>().car_passed_cps.Contains(checkpointNumber))
+            other.gameObject.GetComponent<LapTimeUpdate>().car_passed_cps.Add(checkpointNumber);
         Guid id = other.gameObject.GetComponent<LapTimeUpdate>().id;
         Debug.Log("Guid was: " + id);
         float timePassedFromStart = other.GetComponent<LapTimeUpdate>().GetClock();

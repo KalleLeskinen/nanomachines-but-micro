@@ -200,6 +200,7 @@ MonoBehaviour:
   lapTimes: []
   car_passed_cps: 
   clock: 0
+  time: 
 --- !u!114 &-6088202138938105691
 MonoBehaviour:
   m_ObjectHideFlags: 0
