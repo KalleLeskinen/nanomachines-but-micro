@@ -56,7 +56,7 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
             Guid plr_id = GetGuid(car);
             PlayerData plr = new PlayerData(plr_id,plr_checkpoints,plr_laptimes);
             playerDataList.Add(plr);
-            Debug.Log($"added {plr_id} with {plr_laptimes.Count} laps and {plr_checkpoints.Count} checkpoints passed");
+            Debug.Log($"added {plr_id.ToString().Split('-')[0]}... with {plr_laptimes.Count} laps and {plr_checkpoints.Count} checkpoints passed");
             car.GetComponent<LapTimeUpdate>().clock = 0;
         }
 
@@ -103,48 +103,40 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
         return car.GetComponent<LapTimeUpdate>().lapTimes;
     }
 
-
-    private void SetCheckPointList(GameObject car)
-    {
-        //List<int> car_checkpoints = new List<int>();
-        //Guid car_id = car.GetComponent<LapTimeUpdate>().id;
-        //Debug.Log(car_id);
-        //passedCheckpoints.Add(car_id, car_checkpoints);
-        
-    }
     private List<int> GetCheckpointList(GameObject car)
     {
         return car.GetComponent<LapTimeUpdate>().car_passed_cps;
     }
 
-    public void CheckPointPassed(Guid carId, float cp_clock, int cp_number)
+    public void CheckPointPassed(GameObject Cp, Guid carId, float cp_clock, int cp_number)
     {
-        foreach (var player in playerDataList)
+        for (int i = 0; i < playerDataList.Count; i++)
         {
-            if (player.id == carId)
+            if (playerDataList[i].id == carId)
             {
-                if (!player.checkpointsPassed.Contains(cp_number))
-                {
-                    player.checkpointsPassed.Add(cp_number);
-                    Debug.Log($"checkpoint nb {cp_number} passed at {cp_clock}. total cps: {player.checkpointsPassed.Count}");
-                }
+                playerDataList[i].checkpointsPassed.Add(cp_number); // auto PlayerDatassa
+                Cp.GetComponent<CheckpointScript>()._material.color = Color.green;
+                Debug.Log($"{playerDataList[i].id.ToString().Split('-')[0]}... cp:{playerDataList[i].checkpointsPassed.Count}/{numberOfcheckpoints} ({cp_clock})");
             }
         }
     }
 
-    public void FinishLinePassed(Guid carId, float time)
+    public void FinishLinePassed(GameObject car, Guid carId, float time)
     {
         for (int i = 0; i<playerDataList.Count; i++)
         {
             if (playerDataList[i].id == carId && playerDataList[i].checkpointsPassed.Count % numberOfcheckpoints == 0)
             {
                 playerDataList[i].lapTimes.Add(time);
-                playerDataList[i].checkpointsPassed = new List<int>();
+                playerDataList[i].checkpointsPassed.Clear();
                 Debug.Log($"player {carId} crossed the finish line at {time}");
                 for (int cp = 0; cp<checkpoints.Length; cp++)
                 {
-                    checkpoints[cp].GetComponent<MeshRenderer>().material.color = Color.red;
+                    Debug.Log("reseting colors");
+                    checkpoints[cp].GetComponent<CheckpointScript>()._material.color = Color.red;
                 }
+                Debug.Log("setting up the cp list again");
+                playerDataList[i].checkpointsPassed = GetCheckpointList(car);
             }
         }
     }

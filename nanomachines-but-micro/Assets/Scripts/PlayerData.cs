@@ -16,4 +16,8 @@ public class PlayerData
         this.checkpointsPassed = cpP;
         this.lapTimes = lap;
     }
+    public void ClearCheckpointsList()
+    {
+        checkpointsPassed = new List<int>();
+    }
 }

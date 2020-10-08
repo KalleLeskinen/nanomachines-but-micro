@@ -25,9 +25,9 @@ public class FinishLineScript : MonoBehaviour
         float timePassedFromStart = other.GetComponent<LapTimeUpdate>().GetClock();
         if (cp_count > 0 && cp_count % number_of_cps == 0)
         {
-            raceScript.FinishLinePassed(id, timePassedFromStart);
+            raceScript.FinishLinePassed(other.gameObject, id, timePassedFromStart);
             other.gameObject.GetComponent<LapTimeUpdate>().clock = 0;
-            other.gameObject.GetComponent<LapTimeUpdate>().car_passed_cps = new List<int>();
+            other.gameObject.GetComponent<LapTimeUpdate>().car_passed_cps.Clear();
         }
     }
 
