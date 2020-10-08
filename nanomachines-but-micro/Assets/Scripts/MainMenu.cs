@@ -39,7 +39,7 @@ public class MainMenu : GlobalEventListener
 
             BoltMatchmaking.CreateSession(
                 sessionID: matchName,
-                sceneToLoad: "PhotonTest" // <-  What scene to load
+                sceneToLoad: "StartFinishWin" // <-  What scene to load
             );
 
         }

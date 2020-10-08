@@ -198,6 +198,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lapTimes: []
+  car_passed_cps: 
+  clock: 0
 --- !u!114 &-6088202138938105691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,8 +251,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.1942868, y: 1.2196994, z: 2.1857347}
-  m_Center: {x: 0, y: 0.6037357, z: -1.0867496}
+  m_Size: {x: 1.1942868, y: 1.052686, z: 2.1857347}
+  m_Center: {x: 0, y: 0.6872424, z: -1.0867496}
 --- !u!1 &5509055130974783930
 GameObject:
   m_ObjectHideFlags: 0
