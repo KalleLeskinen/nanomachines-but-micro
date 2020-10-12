@@ -20,14 +20,24 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
     public float steeringMultiplier;
     public float tractionMultiplier;
     public float suspensionStrength, suspensionDamping, suspensionDistance;
-
+    public float boostPower;
+    public float boostTime;
+    public float boostTimeLow;
+    public float boostTimeHigh;
+    public float boostFill;
+    public float boostWindowMax;
+    public float boostMeterSpeed;
+    public float boostMeterTime;
+    public bool boosting;
+    private IEnumerator barFill;
     //Rigidbody for the car
     private Rigidbody rig;
 
     //Collider for the body of the car
     private BoxCollider body;
 
-
+    //Bool for boost bar
+    private bool boostBarOn = false;
 
     //Attach acts like Start(), It's called when the object is setup on the server
     public override void Attached()
@@ -35,7 +45,7 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
 
         rig = GetComponent<Rigidbody>();
         body = gameObject.GetComponent<BoxCollider>();
-
+        barFill = BoostBar(0f, boostWindowMax, boostMeterTime);
 
 
         //Checks if you own the entity
@@ -69,6 +79,7 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
     }
 
     //All below should be cleaned up. vvvvvvvvvvvvvvvvvvvvvvvvvvv
+    
 
     //Processing the player input
     private void ProcessInput()
@@ -94,6 +105,20 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
         {
             //Turn Right
             Turn(-1);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (boostBarOn == true && boosting == false)
+            {
+                BoostMode(boostFill);
+            }
+            if (boostBarOn == false && boosting == false)
+            {
+                ResetBoostBar();
+                StartCoroutine(barFill);
+            }
+
         }
 
         //Reset
@@ -163,6 +188,108 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
             rig.AddForceAtPosition(fwd * -brakingPower, backWheels);
         }
 
+    }
+
+    //Calculate boost meter level
+    public IEnumerator BoostBar(float min, float max, float filltime)
+    {
+        
+        float fill = 0f;
+        float fillRate = (max / filltime) * boostMeterSpeed;
+        while(fill < boostWindowMax)
+        {
+            boostBarOn = true;
+            fill += Time.deltaTime * fillRate;
+            boostFill = Mathf.Lerp(min,max,fill);
+            yield return null;
+        }
+        ResetBoostBar();
+        boostBarOn = false;
+    }
+
+    //Reset boost bar
+    public void ResetBoostBar()
+    {
+        boostFill = 0;
+    }
+
+    //Handle what happens when boost button is pressed second time
+    public void BoostMode(float meterFill)
+    {
+        //if pressed right on time: boost
+        if (meterFill > boostTimeLow && meterFill < boostTimeHigh && !boosting)
+        {
+            Debug.Log(meterFill);
+            Boost();
+        }
+
+        //if pressed too early: slowdown
+        if (meterFill < boostTimeLow)
+        {
+            Debug.Log(meterFill);
+            SlowDown();
+        }
+
+        //if pressed too late: slowdown
+        if (boostFill > boostTimeHigh)
+        {
+            Debug.Log(meterFill);
+            SlowDown();
+
+        }
+
+        //if not pressed at all: reset meter
+        if (meterFill >= boostWindowMax)
+        {
+            ResetBoostBar();
+            boostBarOn = false;
+        }
+
+    }
+
+    //Slowdown used when boosting is failed 
+    private void SlowDown()
+    {
+        //Apply slowdown for set time
+        for (float i = 0; i < boostTime; i += Time.deltaTime)
+        {
+            //Checking if both the front tires are on the ground
+            if (contactPoints[0] != new Vector3(0, 0, 0) && contactPoints[2] != new Vector3(0, 0, 0))
+            {
+                //The point between the front tires
+                frontWheels = contactPoints[0] + (contactPoints[1] - contactPoints[0]) / 2;
+
+                Vector3 fwd = rig.transform.forward;
+
+                //Adding the slowdown to all tires
+                rig.AddForceAtPosition(fwd * -brakingPower, frontWheels);
+                rig.AddForceAtPosition(fwd * -brakingPower, backWheels);
+            }
+
+        }
+    }
+
+    //Apply boost to vehicle
+    private void Boost()
+    {
+        boosting = true;
+        //Apply boost for set time
+        for (float i = 0; i < boostTime; i += Time.deltaTime)
+       {
+            //Checking if both the front tires are on the ground
+            if (contactPoints[0] != new Vector3(0, 0, 0) && contactPoints[2] != new Vector3(0, 0, 0))
+            {
+                //The point between the front tires
+                frontWheels = contactPoints[0] + (contactPoints[1] - contactPoints[0]) / 2;
+
+                Vector3 fwd = rig.transform.forward; 
+
+                //Adding the boosted force to the position of the frontwheels
+                rig.AddForceAtPosition(fwd * enginePower * boostPower, frontWheels);
+            }
+
+       }
+        boosting = false;
     }
 
     //Gets the corners of the vehicles hitbox
