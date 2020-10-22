@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Bolt;
+using Random = UnityEngine.Random;
 
 
 public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
@@ -389,9 +391,12 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
             gameObject.transform.Find("CarBody").GetComponent<Renderer>().materials[1].color = state.VehicleColor;
     }
 
-
-
-
-
-
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("AmmoBlock"))
+        {
+            state.AmmoCount++;
+            Debug.Log(state.AmmoCount + "Ammo picked up.");
+        }
+    }
 }
