@@ -8,6 +8,8 @@
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="CameraPosition.cs" t="Include" />
+        <e p="minespawnpos.cs" t="Include" />
         <e p="Photon" t="Include">
           <e p="PhotonBolt" t="Include">
             <e p="assemblies" t="Include">
@@ -171,8 +173,10 @@
           </e>
         </e>
         <e p="scripts" t="Include">
+          <e p="AmmoBox.cs" t="Include" />
           <e p="CountPassingCars.cs" t="Include" />
           <e p="LapTimeUpdate.cs" t="Include" />
+          <e p="LocalEvents.cs" t="Include" />
           <e p="MainMenu.cs" t="Include" />
           <e p="menu_old.cs" t="Include" />
           <e p="Networking" t="Include">
@@ -217,6 +221,7 @@
             <e p="EmojiOne Attribution.txt" t="Include" />
           </e>
         </e>
+        <e p="WeaponsController.cs" t="Include" />
       </e>
       <e p="nanomachines-but-micro.sln" t="IncludeFlat" />
       <e p="obj" t="ExcludeRecursive" />
