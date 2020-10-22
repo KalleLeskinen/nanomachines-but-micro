@@ -29,20 +29,23 @@ public class WeaponsController : Bolt.EntityBehaviour<IVehicleState>
     }
     private int Shooty(int count)
     {
-
+        Vector3 NewPosition = GetComponentInChildren<minespawnpos>().minePos;
+        if (state.AmmoCount>=2)
+        {
+            state.AmmoCount -= 2;
+            BoltNetwork.Instantiate(BoltPrefabs.Mine, NewPosition, Quaternion.identity);
+            Debug.Log("mine");
+        }
         //spawn the mine behind the car
-        Vector3 NewPosition = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z - 3f);
-
-        state.AmmoCount -= 2; //miina
-
-        BoltNetwork.Instantiate(BoltPrefabs.Mine, NewPosition, Quaternion.identity);
-        Debug.Log("mine");
         return 0;
     }
     private int Shooty(float count)
     {
-        state.AmmoCount -= 1; //raketti
-        Debug.Log("rocket");
+        if (state.AmmoCount >= 1)
+        {
+            state.AmmoCount -= 1; //raketti
+            Debug.Log("rocket");
+        }
         return 1;
     }
 

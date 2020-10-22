@@ -440,7 +440,7 @@
           "BitsRequired": 8
         }
       },
-      "Name": "MiinaState",
+      "Name": "LandMineState",
       "Guid": "5727193e-a08f-4939-b534-56c851afd067",
       "Groups": []
     }

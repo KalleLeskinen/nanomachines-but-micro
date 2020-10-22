@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class minespawnpos : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Vector3 minePos;
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        minePos = gameObject.transform.position;
     }
 }
