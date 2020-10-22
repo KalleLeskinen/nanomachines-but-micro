@@ -226,7 +226,7 @@ MonoBehaviour:
   boostTime: 3
   boostTimeLow: 1
   boostTimeHigh: 9
-  boostWindow: 0
+  boostFill: 0
   boostWindowMax: 10
   boostMeterSpeed: 0.1
   boostMeterTime: 5

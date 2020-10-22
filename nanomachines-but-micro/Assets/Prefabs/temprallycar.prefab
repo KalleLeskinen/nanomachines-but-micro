@@ -102,6 +102,15 @@ MonoBehaviour:
   suspensionStrength: 13
   suspensionDamping: 0.3
   suspensionDistance: 0.8
+  boostPower: 0
+  boostTime: 0
+  boostTimeLow: 0
+  boostTimeHigh: 0
+  boostFill: 0
+  boostWindowMax: 0
+  boostMeterSpeed: 0
+  boostMeterTime: 0
+  boosting: 0
 --- !u!54 &1149322299
 Rigidbody:
   m_ObjectHideFlags: 0
