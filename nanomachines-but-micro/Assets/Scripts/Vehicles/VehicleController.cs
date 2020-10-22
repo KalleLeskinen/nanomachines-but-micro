@@ -395,8 +395,8 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
     {
         if (other.gameObject.CompareTag("AmmoBlock"))
         {
-            state.AmmoCount++;
-            Debug.Log(state.AmmoCount + "Ammo picked up.");
+            state.AmmoCount += other.gameObject.GetComponent<AmmoBox>().ammoAmount;
+            Debug.Log("Ammo picked up. Current ammo:" + state.AmmoCount);
         }
     }
 }
