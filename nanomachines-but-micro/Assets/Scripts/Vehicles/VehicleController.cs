@@ -96,7 +96,6 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
             Brake();
         }
 
-
         if (Input.GetKey(KeyCode.A))
         {
             //Turn Left
@@ -129,6 +128,7 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
             transform.position = new Vector3(0, 10, 0);
             transform.rotation = new Quaternion();
         }
+
     }
 
     //Turning

@@ -7,7 +7,6 @@ using Bolt;
 [BoltGlobalBehaviour]
 public class NetworkCallbacks : GlobalEventListener
 {
-
     public override void SceneLoadLocalDone(string scene)
     {
         
@@ -16,7 +15,7 @@ public class NetworkCallbacks : GlobalEventListener
 
         //Insantiate the player vehicle
         BoltNetwork.Instantiate(BoltPrefabs.Car1_Torino, spawnPos, Quaternion.identity);
-
+        
 
     }
 
