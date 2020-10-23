@@ -39,6 +39,11 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
     //Bool for boost bar
     private bool boostBarOn = false;
 
+    //Boost slider gameobjects
+    public GameObject boostSlider;
+    public GameObject boostGreenArea;
+    public GameObject boostYellowMeter;
+
     //Attach acts like Start(), It's called when the object is setup on the server
     public override void Attached()
     {
@@ -109,6 +114,7 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            boostSlider.SetActive(true);
             if (boostBarOn == true && boosting == false)
             {
                 BoostMode(boostFill);
