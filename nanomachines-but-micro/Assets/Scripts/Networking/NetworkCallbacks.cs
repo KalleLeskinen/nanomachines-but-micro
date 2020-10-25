@@ -10,12 +10,12 @@ public class NetworkCallbacks : GlobalEventListener
 
     public override void SceneLoadLocalDone(string scene)
     {
-        
+
         //Random position on table
-        var spawnPos = new Vector3(Random.Range(-2, 2), 1, -4);
+        var spawnPos = new Vector3(6, 2, -30) + new Vector3(Random.Range(-2, 2), 1, -4);
 
         //Insantiate the player vehicle
-        BoltNetwork.Instantiate(BoltPrefabs.Car1_Torino, spawnPos, Quaternion.identity);
+        BoltNetwork.Instantiate(BoltPrefabs.Kart, spawnPos, Quaternion.identity);
 
 
     }

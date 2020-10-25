@@ -1,46 +1,62 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Bolt;
 
 
-public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
+//Handles the controlling of karts
+
+public class KartController : Bolt.EntityBehaviour<IVehicleState>
 {
 
 
-    //Basically, the wheels, 0 = FL, 1 = FR, 2 = BL, 3 = BR;
+    //WheelPositions
     private Vector3[] corners = new Vector3[4];
 
     //Points where the "wheels" touch the ground
     public Vector3[] contactPoints = new Vector3[4];
 
+    //Front and back axel of the kart
     private Vector3 frontWheels, backWheels;
 
     public float enginePower, brakingPower;
-    public float steeringMultiplier;
-    public float tractionMultiplier;
-    public float suspensionStrength, suspensionDamping, suspensionDistance;
-    public float boostPower;
-    public float boostTime;
-    public float boostTimeLow;
-    public float boostTimeHigh;
-    public float cooldownTime;
-    public float cooldownDefault;
-    public float boostFill;
-    public float boostFillLow;
-    public float boostFillHigh;
-    public float boostWindowMax;
-    public float boostMeterSpeed;
-    public float boostMeterTime;
+
+    public float steeringMultiplier; //How sharp can the kart turn
+    public float tractionMultiplier; //How much the wheels can slip
+    
+    //Values for controlling suspension
+    public float 
+        suspensionStrength, //Strength of the suspension (how easily it is compressed)
+        suspensionDamping, //Damping of the suspension (how strongly does it come back up)
+        suspensionDistance; //How far from the body does the suspension reach (from suspension mountpoint to ground (there are no different tyres simulated))
+
+
+    public float
+        cooldownTime,
+        cooldownDefault;
+
+    public float
+        boostPower,
+        boostTime,
+        boostTimeLow,
+        boostTimeHigh,
+        boostFill,
+        boostFillLow,
+        boostFillHigh,
+        boostWindowMax,
+        boostMeterSpeed,
+        boostMeterTime;
+
     public bool boosting;
-    //Rigidbody for the car
+
+    public bool boostBarOn = false;
+
+
+    //Kart's rigidbody
     private Rigidbody rig;
 
-    //Collider for the body of the car
+    //Kart's collider
     private BoxCollider body;
 
-    //Bool for boost bar
-    public bool boostBarOn = false;
 
     //Attach acts like Start(), It's called when the object is setup on the server
     public override void Attached()
@@ -48,42 +64,38 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
 
         rig = GetComponent<Rigidbody>();
         body = gameObject.GetComponent<BoxCollider>();
-        //barFill = BoostBar(boostFill, boostWindowMax, boostMeterTime);
 
 
-        //Checks if you own the entity
-        if (entity.IsOwner)
+        //Checking if you own the entity
+        if(entity.IsOwner)
         {
-            //Sets the vehicles color to a random value    
             state.VehicleColor = new Color(Random.value, Random.value, Random.value);
-        }
-
-        //If you're not the owner
-        if (entity.IsOwner == false)
+        } else
         {
-            //Set the gravity to false, the owner of the object calculates the physics
+            //The other players computer will calculate their physics (<- fix?)
             rig.useGravity = false;
         }
 
+        //Adding a callback for when server sets your color
         state.AddCallback("VehicleColor", ColorChanged);
 
-        //SetTransforms tells Bolt to replicate the transform over the network
         state.SetTransforms(state.VehicleTransform, transform);
+
 
     }
 
-    //Acts as FixedUpdate() on the owner of the object
+
+    //Acts as a FixedUpdate() on the owner of the object
     public override void SimulateOwner()
     {
         ProcessInput();
         GetCorners();
         CastRays(corners);
         Traction();
-        
+
     }
 
-    //All below should be cleaned up. vvvvvvvvvvvvvvvvvvvvvvvvvvv
-    
+
 
     //Processing the player input
     private void ProcessInput()
@@ -162,7 +174,7 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
             frontWheels = contactPoints[0] + (contactPoints[1] - contactPoints[0]) / 2;
 
             Vector3 fwd = rig.transform.forward;
-
+            Debug.Log("fwd: " + fwd.ToString());
             //Adding the force at the position of the frontwheels
             rig.AddForceAtPosition(fwd * enginePower, frontWheels);
         }
@@ -206,8 +218,8 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
         {
             //boost bar on ehkä tähän 
             fill += Time.deltaTime * fillRate;
-            boostFill = Mathf.Lerp(min,max,fill);
-            if(boostFill >= boostWindowMax)
+            boostFill = Mathf.Lerp(min, max, fill);
+            if (boostFill >= boostWindowMax)
             {
                 Debug.Log("RESETTED");
                 ResetBoostBar();
@@ -222,7 +234,7 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
         //Debug.Log("RESETTED");
         boostBarOn = false;
         boostFill = 0;
-        
+
     }
 
     //Reset boost difficulty to default
@@ -309,20 +321,20 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
         StartCoroutine(BoostCoolDown());
         //Apply boost for set time
         for (float i = 0; i < boostTime; i += Time.deltaTime)
-       {
+        {
             //Checking if both the front tires are on the ground
             if (contactPoints[0] != new Vector3(0, 0, 0) && contactPoints[2] != new Vector3(0, 0, 0))
             {
                 //The point between the front tires
                 frontWheels = contactPoints[0] + (contactPoints[1] - contactPoints[0]) / 2;
 
-                Vector3 fwd = rig.transform.forward; 
+                Vector3 fwd = rig.transform.forward;
 
                 //Adding the boosted force to the position of the frontwheels
                 rig.AddForceAtPosition(fwd * enginePower * boostPower, frontWheels);
             }
 
-       }
+        }
     }
 
     //Gets the corners of the vehicles hitbox
@@ -396,7 +408,7 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
         //Removing the current speed of the suspension so that the expansion stays constant
         float deltaF = newS - curV;
 
-        Debug.Log("Force = " + deltaF + " | Distance = " + d);
+        //Debug.Log("Force = " + deltaF + " | Distance = " + d);
 
         return deltaF;
     }
@@ -421,8 +433,6 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
         if (gameObject.name.StartsWith("temprally"))
             gameObject.transform.Find("CarBody").GetComponent<Renderer>().materials[1].color = state.VehicleColor;
     }
-
-
 
 
 
