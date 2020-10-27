@@ -110,6 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cars: []
+  sceneguids: []
   checkpoints: []
   numberOfcheckpoints: 0
   numberOfLaps: 0

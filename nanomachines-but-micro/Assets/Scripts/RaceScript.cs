@@ -9,7 +9,7 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
     [SerializeField]
     List<GameObject> cars;
 
-    string[] sceneguids;
+    [SerializeField] string[] sceneguids;
     public GameObject[] checkpoints;
     public int numberOfcheckpoints;
     public int numberOfLaps;
@@ -29,16 +29,43 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
     {
         state.Finished = false;
         state.RaceStarted = false;
-
+        state.NumberOfLaps = numberOfLaps;
+        state.NumberOfCheckpoints = numberOfcheckpoints;
         state.Clock = 0;
         SetUpTheRace();
     }
 
 
-    public override void SimulateController()
+    public override void SimulateOwner()
     {
-        if (state.RaceStarted)
-            CountTime();
+        if (Time.frameCount % 60 == 0 && state.RaceStarted && !state.Finished)
+        {
+            CheckForWinner();
+        }
+    }
+
+    private void CheckForWinner()
+    {
+        for (int i = 0; i<playerDataList.Count; i++)
+        {
+            if (playerDataList[i].lapTimes.Count == state.NumberOfLaps)
+            {
+                state.Finished = true;
+                RaceWinner(playerDataList[i]);
+            }
+        }
+    }
+
+    private void RaceWinner(PlayerData playerData)
+    {
+        state.Winner = playerDataList[0].id;
+        
+        Debug.Log($"Winner: {playerData.id}");
+        int i = 0;
+        foreach (var laptime in playerData.lapTimes)
+        {
+            Debug.Log($"{++i} : {laptime}");
+        }
     }
 
     IEnumerator IntialiseTheGameIn(int warmupTime)
@@ -73,7 +100,6 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
         Debug.Log("SetUpTheRace");
         StartCoroutine(IntialiseTheGameIn(warmupTime));
         state.RaceStarted = true;
-
     }
 
     private void GetSceneGuids()
@@ -112,7 +138,7 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
     {
         for (int i = 0; i < playerDataList.Count; i++)
         {
-            if (playerDataList[i].id == carId)
+            if (playerDataList[i].id == carId && !state.Finished)
             {
                 playerDataList[i].checkpointsPassed.Add(cp_number); // auto PlayerDatassa
                 Cp.GetComponent<CheckpointScript>()._material.color = Color.green;
@@ -148,6 +174,11 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
     private Guid GetGuid(GameObject car)
     {
         return car.GetComponent<LapTimeUpdate>().id;
+    }
+    private void OnGUI()
+    {
+        if (state.Finished)
+            GUI.Box(new Rect(100, 100, 200, 50), state.Winner.ToString());
     }
 }
 
