@@ -9,7 +9,7 @@ using Random = UnityEngine.Random;
 public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
 {
 
-
+    public GameObject cam;
     //Basically, the wheels, 0 = FL, 1 = FR, 2 = BL, 3 = BR;
     private Vector3[] corners = new Vector3[4];
 
@@ -41,13 +41,14 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
     //Bool for boost bar
     private bool boostBarOn = false;
 
+
     //Attach acts like Start(), It's called when the object is setup on the server
     public override void Attached()
     {
-        LocalEvents.Instance.OnCarInstantiate += InstantiateCamera;
+        //LocalEvents.Instance.OnCarInstantiate += InstantiateCamera;
         rig = GetComponent<Rigidbody>();
         body = gameObject.GetComponent<BoxCollider>();
-        barFill = BoostBar(0f, boostWindowMax, boostMeterTime);
+        barFill = BoostBar(0f, boostWindowMax, boostMeterTime);        
 
 
         //Checks if you own the entity
@@ -55,13 +56,17 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
         {
             //Sets the vehicles color to a random value    
             state.VehicleColor = new Color(Random.value, Random.value, Random.value);
+            PlayerCamera.Instantiate();
+            cam = GameObject.FindGameObjectWithTag("MainCamera");
         }
+        
+
 
         //If you're not the owner
         if (entity.IsOwner == false)
         {
             //Set the gravity to false, the owner of the object calculates the physics
-            rig.useGravity = false;
+            rig.useGravity = true;
         }
 
         state.AddCallback("VehicleColor", ColorChanged);
@@ -78,10 +83,18 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
         GetCorners();
         CastRays(corners);
         Traction();
+        CameraFollow();
+    }
+
+    private void CameraFollow()
+    {
+        Vector3 camerapos = gameObject.GetComponentInChildren<CameraPosition>().cameraPos;
+        cam.gameObject.transform.position = camerapos;
+        cam.gameObject.transform.rotation = state.VehicleTransform.Rotation;
     }
 
     //All below should be cleaned up. vvvvvvvvvvvvvvvvvvvvvvvvvvv
-    
+
 
     //Processing the player input
     private void ProcessInput()

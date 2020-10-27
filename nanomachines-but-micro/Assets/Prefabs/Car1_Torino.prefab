@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2db1e5886dabb6f46905d6980dcbc45a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 0}
   contactPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}

@@ -7,7 +7,7 @@ public class CameraPosition : Bolt.EntityBehaviour<IVehicleState>
 {
     public Vector3 cameraPos;
 
-    public override void Attached()
+    public override void SimulateOwner()
     {
         cameraPos = gameObject.transform.position;
     }

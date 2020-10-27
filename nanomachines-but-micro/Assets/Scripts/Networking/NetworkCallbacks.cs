@@ -10,14 +10,17 @@ public class NetworkCallbacks : GlobalEventListener
 {
     public override void SceneLoadLocalDone(string scene)
     {
+        //Camera camera = new Camera();
         // LocalEvents.Instance.OnCarInstantiate += 
         //Random position on table
         var spawnPos = new Vector3(Random.Range(-2, 2), 1, -4);
 
         //Insantiate the player vehicle
-        var newCar = BoltNetwork.Instantiate(BoltPrefabs.Car1_Torino, spawnPos, Quaternion.identity);
+        BoltNetwork.Instantiate(BoltPrefabs.Car1_Torino, spawnPos, Quaternion.identity);
+        //PlayerCamera.Instantiate();
         //Tehkää prefab kamerasta, johon post-processingit yms.
         //if entity.isOwner??
-        LocalEvents.Instance.CameraInstantiate(newCar);
+        //LocalEvents.Instance.CameraInstantiate(newCar);
+
     }
 }
