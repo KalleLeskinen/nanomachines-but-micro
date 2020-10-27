@@ -66,7 +66,7 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
         if (entity.IsOwner == false)
         {
             //Set the gravity to false, the owner of the object calculates the physics
-            rig.useGravity = true;
+            rig.useGravity = false;
         }
 
         state.AddCallback("VehicleColor", ColorChanged);
