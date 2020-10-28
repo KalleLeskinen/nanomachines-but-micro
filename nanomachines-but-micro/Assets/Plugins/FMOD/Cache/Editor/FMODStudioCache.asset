@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-5884590772323714644
+--- !u!114 &-8992743919920601201
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Assets/AudioAssets/FMODBANKS/Desktop/Master.bank
   SubDir: 
-  lastModified: 637382715074448408
+  lastModified: 637389660412585608
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -50,15 +50,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: 2876930218317724896}
-  - {fileID: -5884590772323714644}
+  - {fileID: 222087276741078541}
   EditorEvents: []
   EditorParameters: []
   MasterBanks:
-  - {fileID: -5884590772323714644}
+  - {fileID: 222087276741078541}
   StringsBanks:
   - {fileID: 2876930218317724896}
-  stringsBankWriteTime: 637382715074458410
+  stringsBankWriteTime: 637375294190103133
   cacheVersion: 3
+--- !u!114 &222087276741078541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/AudioAssets/FMODBANKS/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637375294189953756
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &2876930218317724896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,13 +91,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Assets/AudioAssets/FMODBANKS/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637382715074458410
+  lastModified: 637375294190103133
   LoadResult: 0
   FileSizes:
   - Name: 
     Value: 688
   Exists: 1
---- !u!114 &5266554180519713678
+--- !u!114 &3265063876884834806
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,7 +111,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Assets/AudioAssets/FMODBANKS/Desktop/Master.bank
   SubDir: 
-  lastModified: 637381174844691790
+  lastModified: 637375294189953756
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
+--- !u!114 &9038778287301800125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/AudioAssets/FMODBANKS/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637389660412585608
   LoadResult: 0
   FileSizes: []
   Exists: 1
