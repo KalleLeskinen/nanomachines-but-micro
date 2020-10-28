@@ -42,6 +42,12 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
     //Bool for boost bar
     public bool boostBarOn = false;
 
+    //Boost UI
+    public GameObject boostRedBackground;
+    public GameObject boostGreenArea;
+    public GameObject boostYellowMeter;
+    public Vector3 boostYellowMeterOriginalPosition;
+
     //Attach acts like Start(), It's called when the object is setup on the server
     public override void Attached()
     {
@@ -69,6 +75,8 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
 
         //SetTransforms tells Bolt to replicate the transform over the network
         state.SetTransforms(state.VehicleTransform, transform);
+
+        boostYellowMeterOriginalPosition = new Vector3(boostYellowMeter.transform.position.x, boostYellowMeter.transform.position.y - 0.694f, boostYellowMeter.transform.position.z);
 
     }
 
@@ -112,6 +120,12 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
 
         if (Input.GetKeyDown(KeyCode.Space) && boosting == false)
         {
+
+            //mittari päälle
+            boostRedBackground.SetActive(true);
+            boostGreenArea.SetActive(true);
+            boostYellowMeter.SetActive(true);
+
             if (boostBarOn == false)
             {
                 StartCoroutine(BoostBar(boostFill, boostWindowMax, boostMeterTime));
@@ -203,12 +217,17 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
         boostBarOn = true;
         while (boostBarOn)
         {
+            //liikuttaa keltaista mittaria
+            boostYellowMeter.transform.Translate(new Vector3(0.3f * Time.deltaTime, 0, 0));
+
             //boost bar on ehkä tähän 
             fill += Time.deltaTime * fillRate;
             boostFill = Mathf.Lerp(min,max,fill);
             if(boostFill >= boostWindowMax)
             {
                 Debug.Log("RESETTED");
+                //palauttaa keltaisen mittarin paikoilleen
+                boostYellowMeter.transform.position = boostYellowMeterOriginalPosition;
                 ResetBoostBar();
             }
             yield return null;
@@ -221,7 +240,11 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
         //Debug.Log("RESETTED");
         boostBarOn = false;
         boostFill = 0;
-        
+
+        //mittari pois päältä
+        boostRedBackground.SetActive(false);
+        boostGreenArea.SetActive(false);
+        boostYellowMeter.SetActive(false);
     }
 
     //Reset boost difficulty to default
