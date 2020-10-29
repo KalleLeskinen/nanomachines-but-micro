@@ -47,7 +47,7 @@ public class WeaponsController : Bolt.EntityBehaviour<IVehicleState>
             Debug.Log(state.AmmoCount);
         }
     }
-    private void Shooty()
+    private void ShootMine()
     {
         mineFlag = false;
         Vector3 NewPosition = GetComponentInChildren<minespawnpos>().minePos;
@@ -59,14 +59,13 @@ public class WeaponsController : Bolt.EntityBehaviour<IVehicleState>
         }
         //spawn the mine behind the car
     }
-    private int Shooty(float count)
+    private void ShootRocket()
     {
         if (state.AmmoCount >= 1)
         {
             state.AmmoCount -= 1; //raketti
             Debug.Log("rocket");
         }
-        return 1;
     }
 
 }

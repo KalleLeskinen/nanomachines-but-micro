@@ -411,15 +411,4 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
             Debug.Log("Ammo picked up. Current ammo:" + state.AmmoCount);
         }
     }
-    private void Shooty()
-    {
-        Vector3 NewPosition = GetComponentInChildren<minespawnpos>().minePos;
-        if (state.AmmoCount >= 2)
-        {
-            state.AmmoCount -= 2;
-            BoltNetwork.Instantiate(BoltPrefabs.Mine, NewPosition, Quaternion.identity);
-            Debug.Log("mine");
-        }
-        //spawn the mine behind the car
-    }
 }
