@@ -45,7 +45,6 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
     //Attach acts like Start(), It's called when the object is setup on the server
     public override void Attached()
     {
-        //LocalEvents.Instance.OnCarInstantiate += InstantiateCamera;
         rig = GetComponent<Rigidbody>();
         body = gameObject.GetComponent<BoxCollider>();
         barFill = BoostBar(0f, boostWindowMax, boostMeterTime);        
@@ -142,13 +141,6 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
             transform.rotation = new Quaternion();
         }
 
-    }
-    
-    //Local events
-    private void InstantiateCamera(BoltEntity entity)
-    {
-        var newPos = GetComponentInChildren<CameraPosition>().cameraPos;
-        Instantiate(new Camera(), newPos, Quaternion.identity);
     }
 
     //Turning
