@@ -7,6 +7,9 @@ TagManager:
   - FinishLine
   - checkpoint
   - RaceHandler
+  - AmmoBlock
+  - rocket
+  - mine
   layers:
   - Default
   - TransparentFX

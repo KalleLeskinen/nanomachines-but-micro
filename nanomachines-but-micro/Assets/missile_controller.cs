@@ -12,5 +12,6 @@ public class missile_controller : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("boom");
+        other.GetComponent<OnHitController>().Explode();
     }
 }

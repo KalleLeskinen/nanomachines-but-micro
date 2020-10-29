@@ -55,7 +55,6 @@ public class WeaponsController : Bolt.EntityBehaviour<IVehicleState>
         {
             state.AmmoCount -= 2;
             BoltNetwork.Instantiate(BoltPrefabs.Mine, NewPosition, Quaternion.identity);
-            Debug.Log("mine");
         }
         //spawn the mine behind the car
     }
@@ -67,7 +66,6 @@ public class WeaponsController : Bolt.EntityBehaviour<IVehicleState>
         {
             state.AmmoCount -= 1; //raketti
             BoltNetwork.Instantiate(BoltPrefabs.missile, rocketSpawnPos, rotation);
-            Debug.Log("rocket");
         }
     }
 

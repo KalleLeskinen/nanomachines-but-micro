@@ -26,12 +26,15 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
     public float boostTime;
     public float boostTimeLow;
     public float boostTimeHigh;
+    public float cooldownTime;
+    public float cooldownDefault;
     public float boostFill;
+    public float boostFillLow;
+    public float boostFillHigh;
     public float boostWindowMax;
     public float boostMeterSpeed;
     public float boostMeterTime;
     public bool boosting;
-    private IEnumerator barFill;
     //Rigidbody for the car
     private Rigidbody rig;
 
@@ -47,8 +50,6 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
     {
         rig = GetComponent<Rigidbody>();
         body = gameObject.GetComponent<BoxCollider>();
-        barFill = BoostBar(0f, boostWindowMax, boostMeterTime);        
-
 
         //Checks if you own the entity
         if (entity.IsOwner)
@@ -120,18 +121,17 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
             Turn(-1);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && boosting == false)
         {
-            if (boostBarOn == true && boosting == false)
+            if (boostBarOn == false)
+            {
+                StartCoroutine(BoostBar(boostFill, boostWindowMax, boostMeterTime));
+            }
+
+            if (boostBarOn == true && boostFill > 0)
             {
                 BoostMode(boostFill);
             }
-            if (boostBarOn == false && boosting == false)
-            {
-                ResetBoostBar();
-                StartCoroutine(barFill);
-            }
-
         }
 
         //Reset
@@ -207,61 +207,81 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
     //Calculate boost meter level
     public IEnumerator BoostBar(float min, float max, float filltime)
     {
-        
+        yield return new WaitForEndOfFrame();
         float fill = 0f;
         float fillRate = (max / filltime) * boostMeterSpeed;
-        while(fill < boostWindowMax)
+        boostBarOn = true;
+        while (boostBarOn)
         {
-            boostBarOn = true;
+            //boost bar on ehkä tähän 
             fill += Time.deltaTime * fillRate;
-            boostFill = Mathf.Lerp(min,max,fill);
+            boostFill = Mathf.Lerp(min, max, fill);
+            if (boostFill >= boostWindowMax)
+            {
+                Debug.Log("RESETTED");
+                ResetBoostBar();
+            }
             yield return null;
         }
-        ResetBoostBar();
-        boostBarOn = false;
     }
 
     //Reset boost bar
     public void ResetBoostBar()
     {
+        //Debug.Log("RESETTED");
+        boostBarOn = false;
         boostFill = 0;
+
     }
 
+    //Reset boost difficulty to default
+    public void ResetValues()
+    {
+        cooldownTime = cooldownDefault;
+        boostTimeHigh = boostFillHigh;
+        boostTimeLow = boostFillLow;
+    }
     //Handle what happens when boost button is pressed second time
     public void BoostMode(float meterFill)
     {
         //if pressed right on time: boost
         if (meterFill > boostTimeLow && meterFill < boostTimeHigh && !boosting)
         {
-            Debug.Log(meterFill);
+            Debug.Log("on time");
             Boost();
+            //cooldownTime = 3;
+            //boostTimeHigh -= boostTimeHigh*0.2f;
+            //boostTimeLow += boostTimeLow*0.2f;
+        }
+
+        //if not pressed at all while boosting: reset meter
+        if (meterFill >= boostWindowMax)
+        {
+            Debug.Log("RESET METER");
+            ResetBoostBar();
+            ResetValues();
         }
 
         //if pressed too early: slowdown
         if (meterFill < boostTimeLow)
         {
-            Debug.Log(meterFill);
+            Debug.Log("too early");
             SlowDown();
+            //ResetBoostBar();
+            //ResetValues();
         }
 
         //if pressed too late: slowdown
         if (boostFill > boostTimeHigh)
         {
-            Debug.Log(meterFill);
+            Debug.Log("too late");
             SlowDown();
-
-        }
-
-        //if not pressed at all: reset meter
-        if (meterFill >= boostWindowMax)
-        {
-            ResetBoostBar();
-            boostBarOn = false;
+            //ResetValues();
         }
 
     }
 
-    //Slowdown used when boosting is failed 
+    //Slowdown used when boosting is failed NOT FINAL FORM!!
     private void SlowDown()
     {
         //Apply slowdown for set time
@@ -283,29 +303,36 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
         }
     }
 
-    //Apply boost to vehicle
+    //Cooldown for boost
+    public IEnumerator BoostCoolDown()
+    {
+        yield return new WaitForSeconds(cooldownTime);
+        boosting = false;
+        yield return null;
+    }
+
+    //Apply boost to vehicle NOT FINAL FORM!!
     private void Boost()
     {
         boosting = true;
+        StartCoroutine(BoostCoolDown());
         //Apply boost for set time
         for (float i = 0; i < boostTime; i += Time.deltaTime)
-       {
+        {
             //Checking if both the front tires are on the ground
             if (contactPoints[0] != new Vector3(0, 0, 0) && contactPoints[2] != new Vector3(0, 0, 0))
             {
                 //The point between the front tires
                 frontWheels = contactPoints[0] + (contactPoints[1] - contactPoints[0]) / 2;
 
-                Vector3 fwd = rig.transform.forward; 
+                Vector3 fwd = rig.transform.forward;
 
                 //Adding the boosted force to the position of the frontwheels
                 rig.AddForceAtPosition(fwd * enginePower * boostPower, frontWheels);
             }
 
-       }
-        boosting = false;
+        }
     }
-
     //Gets the corners of the vehicles hitbox
     private void GetCorners()
     {
