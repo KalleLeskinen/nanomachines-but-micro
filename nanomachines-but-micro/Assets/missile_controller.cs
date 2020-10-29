@@ -7,7 +7,7 @@ public class missile_controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gameObject.transform.Translate(Vector3.forward * Time.deltaTime * 5f);
+        gameObject.transform.Translate(Vector3.forward * Time.deltaTime * 15f);
     }
     private void OnTriggerEnter(Collider other)
     {
