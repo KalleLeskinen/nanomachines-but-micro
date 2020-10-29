@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7131543629298077963}
   m_Layer: 0
   m_Name: Mine
-  m_TagString: Untagged
+  m_TagString: mine
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneGuid: 
-  _serializerGuid: 5727193e-a08f-4939-b534-56c851afd067
+  _serializerGuid: da621fe3-d7de-4070-9713-64ed998733fa
   _prefabId: 3
   _updateRate: 1
   _autoFreezeProxyFrames: 0

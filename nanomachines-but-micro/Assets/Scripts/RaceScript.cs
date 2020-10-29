@@ -58,7 +58,7 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
 
     private void RaceWinner(PlayerData playerData)
     {
-        state.Winner = playerDataList[0].id;
+        state.Winner = playerData.id;
         
         Debug.Log($"Winner: {playerData.id}");
         int i = 0;

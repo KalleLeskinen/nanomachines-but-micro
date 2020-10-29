@@ -10,5 +10,9 @@ public class AmmoBox : MonoBehaviour
     {
         //määrä
     }
+    private void FixedUpdate()
+    {
+        gameObject.transform.Rotate(new Vector3(0, 0, 10 * Time.deltaTime));
+    }
 
 }
