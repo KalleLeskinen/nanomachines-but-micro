@@ -5,30 +5,51 @@ using UnityEngine;
 
 public enum Weapon
 {
-    Mine, Rocket
+    Minea, Rocketa
 }
 public class WeaponsController : Bolt.EntityBehaviour<IVehicleState>
 {
-    public override void SimulateOwner()
+    bool mineFlag = false;
+    bool rocketFlag = false;
+
+    public override void Attached()
+    {
+        state.OnShoot += Shooty;
+    }
+    private void Update()
     {
         ProcessMoreInputs();
     }
+    private void FixedUpdate()
+    {
+        if (mineFlag)
+        {
+            state.Shoot();
+            mineFlag = false;
+        }
+        if (rocketFlag)
+        {
+            Debug.Log("rocket");
+            rocketFlag = false;
+        }
+    }
 
-    private void ProcessMoreInputs()
+    public void ProcessMoreInputs()
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            Shooty(state.AmmoCount);
+            mineFlag = true;
             Debug.Log(state.AmmoCount);
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Shooty(1.0f);
+            rocketFlag = true;
             Debug.Log(state.AmmoCount);
         }
     }
-    private int Shooty(int count)
+    private void Shooty()
     {
+        mineFlag = false;
         Vector3 NewPosition = GetComponentInChildren<minespawnpos>().minePos;
         if (state.AmmoCount>=2)
         {
@@ -37,7 +58,6 @@ public class WeaponsController : Bolt.EntityBehaviour<IVehicleState>
             Debug.Log("mine");
         }
         //spawn the mine behind the car
-        return 0;
     }
     private int Shooty(float count)
     {
