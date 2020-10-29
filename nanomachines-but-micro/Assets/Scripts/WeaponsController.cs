@@ -14,7 +14,8 @@ public class WeaponsController : Bolt.EntityBehaviour<IVehicleState>
 
     public override void Attached()
     {
-        state.OnShoot += Shooty;
+        state.OnDropMine += DropMine;
+        state.OnShootRocket += ShootRocket;
     }
     private void Update()
     {
@@ -24,12 +25,12 @@ public class WeaponsController : Bolt.EntityBehaviour<IVehicleState>
     {
         if (mineFlag)
         {
-            state.Shoot();
+            state.DropMine();
             mineFlag = false;
         }
         if (rocketFlag)
         {
-            Debug.Log("rocket");
+            state.ShootRocket();
             rocketFlag = false;
         }
     }
@@ -47,9 +48,8 @@ public class WeaponsController : Bolt.EntityBehaviour<IVehicleState>
             Debug.Log(state.AmmoCount);
         }
     }
-    private void ShootMine()
+    private void DropMine()
     {
-        mineFlag = false;
         Vector3 NewPosition = GetComponentInChildren<minespawnpos>().minePos;
         if (state.AmmoCount>=2)
         {
@@ -61,9 +61,12 @@ public class WeaponsController : Bolt.EntityBehaviour<IVehicleState>
     }
     private void ShootRocket()
     {
+        Quaternion rotation = GetComponent<Transform>().rotation;
+        Vector3 rocketSpawnPos = GetComponentInChildren<rocketspawnpos>().rocketPos;
         if (state.AmmoCount >= 1)
         {
             state.AmmoCount -= 1; //raketti
+            BoltNetwork.Instantiate(BoltPrefabs.missile, rocketSpawnPos, rotation);
             Debug.Log("rocket");
         }
     }
