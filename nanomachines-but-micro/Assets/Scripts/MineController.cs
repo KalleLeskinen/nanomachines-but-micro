@@ -17,7 +17,7 @@ public class MineController : Bolt.EntityBehaviour<ILandMineState>
     private void handlerExplosion()
     {
         foreach (var car in affected)
-            Debug.Log($"exploded {car.GetComponent<LapTimeUpdate>().id}");
+            car.GetComponent<OnHitController>().Explode(); //autolle kutsuttava räjähdys
 
         BoltNetwork.Destroy(this.gameObject);
     }
@@ -28,12 +28,6 @@ public class MineController : Bolt.EntityBehaviour<ILandMineState>
         if (state.DetonateTime < 0)
         {
             state.Explosion();
-            //foreach(var car in affected)
-            //{
-            //    Vector3 underneath = new Vector3(car.transform.position.x, car.transform.position.y - 2, car.transform.position.z);
-            //    car.GetComponent<Rigidbody>().AddExplosionForce(1000000f, underneath, 10f);
-            //    Debug.Log("exploded");
-            //}
         }
     }
     private void OnTriggerEnter(Collider other)
