@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -4461588105855541605}
   - component: {fileID: 755163257422917789}
   - component: {fileID: 775671627041900489}
+  - component: {fileID: 2950285979404741915}
   m_Layer: 0
   m_Name: missile
   m_TagString: rocket
@@ -125,6 +126,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5056d68fe76894341bcdbae2ec07aa3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosion_collider: {fileID: 2950285979404741915}
+  affected: []
 --- !u!136 &775671627041900489
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -139,3 +142,17 @@ CapsuleCollider:
   m_Height: 0.8308296
   m_Direction: 2
   m_Center: {x: 0.0024208128, y: 0, z: 0.39814824}
+--- !u!136 &2950285979404741915
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1736792242539025587}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  m_Radius: 3
+  m_Height: 0
+  m_Direction: 0
+  m_Center: {x: 0, y: 0, z: 0.8}
