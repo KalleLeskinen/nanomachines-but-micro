@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class missile_controller : Bolt.EntityBehaviour<IRocketState>
 {
-    public CapsuleCollider explosion_collider;
+    public SphereCollider explosion_collider;
     public List<GameObject> affected;
     private void Start()
     {

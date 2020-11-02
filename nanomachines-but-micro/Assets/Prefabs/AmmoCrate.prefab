@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -9142447566831357867}
   m_Layer: 0
   m_Name: AmmoCrate
-  m_TagString: Untagged
+  m_TagString: AmmoBlock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

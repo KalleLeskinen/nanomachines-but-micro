@@ -186,6 +186,7 @@ GameObject:
   - component: {fileID: -3569182806789549336}
   - component: {fileID: -8899691190756897882}
   - component: {fileID: 9136450385060562163}
+  - component: {fileID: -2078993816151500747}
   m_Layer: 0
   m_Name: TruckV1
   m_TagString: Player
@@ -229,7 +230,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sceneGuid: 
   _serializerGuid: 3de9e892-f26c-4c0c-8e8a-1108c9280f81
-  _prefabId: 9
+  _prefabId: 8
   _updateRate: 1
   _autoFreezeProxyFrames: 0
   _clientPredicted: 1
@@ -363,6 +364,18 @@ MonoBehaviour:
   car_passed_cps: 
   clock: 0
   time: 
+--- !u!114 &-2078993816151500747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2191231537032320320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f8852d593d786d43bc871cb1e4ceef6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2334419567318930310
 GameObject:
   m_ObjectHideFlags: 0
