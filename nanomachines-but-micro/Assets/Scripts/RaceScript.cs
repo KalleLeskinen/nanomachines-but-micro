@@ -74,6 +74,7 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
     IEnumerator IntialiseTheGameIn(int warmupTime)
     {
         starting = true;
+        GameObject.FindGameObjectWithTag("FinishLine").GetComponent<BoxCollider>().isTrigger = false;
         Debug.Log($"Starting the game in {warmupTime} seconds");
         yield return new WaitForSeconds(warmupTime);
         playerDataList = new List<PlayerData>();
@@ -91,6 +92,8 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
             car.GetComponent<LapTimeUpdate>().clock = 0;
         }
         starting = false;
+        GameObject.FindGameObjectWithTag("FinishLine").GetComponent<BoxCollider>().isTrigger = true;
+
     }
 
     private void SetUpCheckPoints()

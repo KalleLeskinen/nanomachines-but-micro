@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -4461588105855541605}
   - component: {fileID: 755163257422917789}
   - component: {fileID: 775671627041900489}
+  - component: {fileID: 5749803874307750437}
   m_Layer: 0
   m_Name: missile
   m_TagString: rocket
@@ -98,7 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sceneGuid: 
   _serializerGuid: 73a13dc7-2343-4142-a786-7b17bb74900b
-  _prefabId: 3
+  _prefabId: 4
   _updateRate: 1
   _autoFreezeProxyFrames: 0
   _clientPredicted: 1
@@ -125,6 +126,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5056d68fe76894341bcdbae2ec07aa3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosion_collider: {fileID: 5749803874307750437}
+  affected: []
 --- !u!136 &775671627041900489
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -139,3 +142,16 @@ CapsuleCollider:
   m_Height: 0.8308296
   m_Direction: 2
   m_Center: {x: 0.0024208128, y: 0, z: 0.39814824}
+--- !u!135 &5749803874307750437
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1736792242539025587}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 1.5
+  m_Center: {x: 0, y: 0, z: 0.8}

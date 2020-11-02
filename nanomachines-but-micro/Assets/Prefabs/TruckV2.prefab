@@ -179,6 +179,7 @@ GameObject:
   - component: {fileID: 4385688838472963388}
   - component: {fileID: 942975467206990045}
   - component: {fileID: 2808738688497492451}
+  - component: {fileID: -7099674267259638101}
   m_Layer: 0
   m_Name: TruckV2
   m_TagString: Player
@@ -222,7 +223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sceneGuid: 
   _serializerGuid: 3de9e892-f26c-4c0c-8e8a-1108c9280f81
-  _prefabId: 10
+  _prefabId: 9
   _updateRate: 1
   _autoFreezeProxyFrames: 0
   _clientPredicted: 1
@@ -356,6 +357,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.2074181, y: 1, z: 2.6121397}
   m_Center: {x: -0.000000059604645, y: 0.53, z: -1.3107867}
+--- !u!114 &-7099674267259638101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1497629741990537548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f8852d593d786d43bc871cb1e4ceef6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3082134586257452938
 GameObject:
   m_ObjectHideFlags: 0
