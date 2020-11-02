@@ -13,10 +13,10 @@ public class NetworkCallbacks : GlobalEventListener
         //Camera camera = new Camera();
         // LocalEvents.Instance.OnCarInstantiate += 
         //Random position on table
-        var spawnPos = new Vector3(Random.Range(-2, 2), 1, -4);
-        PrefabId[] cars = { BoltPrefabs.Car1_Torino, BoltPrefabs.Car2_Torino, BoltPrefabs.TruckV1, BoltPrefabs.TruckV2 };
+        //var spawnPos = new Vector3(Random.Range(-2, 2), 1, -4);
+        var spawnInTheCorner = new Vector3(5, 3, -15);
         //Insantiate the player vehicle
-        BoltNetwork.Instantiate(cars[Random.Range(0,cars.Length)], spawnPos, Quaternion.identity);
+        BoltNetwork.Instantiate(BoltPrefabs.Car1_Torino, spawnInTheCorner, Quaternion.identity);
         //PlayerCamera.Instantiate();
         //Tehkää prefab kamerasta, johon post-processingit yms.
         //if entity.isOwner??
