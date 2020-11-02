@@ -13,9 +13,10 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
     public GameObject[] checkpoints;
     public int numberOfcheckpoints;
     public int numberOfLaps;
-
+    private bool starting = false;
     [SerializeField]
     GameObject FinishLine;
+    float countdownSeconds;
 
     public bool started = false;
     public bool finished = false;
@@ -33,6 +34,7 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
         state.NumberOfCheckpoints = numberOfcheckpoints;
         state.Clock = 0;
         SetUpTheRace();
+        countdownSeconds = warmupTime;
     }
 
 
@@ -42,6 +44,7 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
         {
             CheckForWinner();
         }
+        countdownSeconds -= Time.deltaTime;
     }
 
     private void CheckForWinner()
@@ -70,6 +73,7 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
 
     IEnumerator IntialiseTheGameIn(int warmupTime)
     {
+        starting = true;
         Debug.Log($"Starting the game in {warmupTime} seconds");
         yield return new WaitForSeconds(warmupTime);
         playerDataList = new List<PlayerData>();
@@ -86,7 +90,7 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
             Debug.Log($"added {plr_id.ToString().Split('-')[0]}... with {plr_laptimes.Count} laps and {plr_checkpoints.Count} checkpoints passed");
             car.GetComponent<LapTimeUpdate>().clock = 0;
         }
-
+        starting = false;
     }
 
     private void SetUpCheckPoints()
@@ -177,8 +181,13 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
     }
     private void OnGUI()
     {
-        if (state.Finished)
-            GUI.Box(new Rect(100, 100, 200, 50), state.Winner.ToString());
+        //if (state.Finished && state.RaceStarted)
+        //    GUI.Box(new Rect(100, 100, 200, 50), state.Winner.ToString());
+        if (starting == true)
+        {
+            string theString = $"Starting the race in {(int)countdownSeconds+1}";
+            GUI.Box(new Rect((Screen.width / 2) / 2, (Screen.height / 2)/2, Screen.width / 4, 30), theString);
+        }
     }
 }
 

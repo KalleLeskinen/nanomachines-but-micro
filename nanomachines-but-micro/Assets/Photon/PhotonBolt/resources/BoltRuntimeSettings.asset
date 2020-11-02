@@ -47,7 +47,7 @@ MonoBehaviour:
   debugClientCount: 2
   debugStartPort: 50538
   debugBuildMode: 1
-  debugStartMapName: StartFinishWin
+  debugStartMapName: blazing_race_template
   debugPlayAsServer: 1
   showDebugInfo: 1
   overrideTimeScale: 1
