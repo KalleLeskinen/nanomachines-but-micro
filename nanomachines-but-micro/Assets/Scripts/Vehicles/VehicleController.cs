@@ -1,13 +1,15 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Bolt;
+using Random = UnityEngine.Random;
 
 
 public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
 {
 
-
+    public GameObject cam;
     //Basically, the wheels, 0 = FL, 1 = FR, 2 = BL, 3 = BR;
     private Vector3[] corners = new Vector3[4];
 
@@ -40,29 +42,25 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
     private BoxCollider body;
 
     //Bool for boost bar
-    public bool boostBarOn = false;
+    private bool boostBarOn = false;
 
-    //Boost UI
-    public GameObject boostRedBackground;
-    public GameObject boostGreenArea;
-    public GameObject boostYellowMeter;
-    public Vector3 boostYellowMeterOriginalPosition;
 
     //Attach acts like Start(), It's called when the object is setup on the server
     public override void Attached()
     {
-
         rig = GetComponent<Rigidbody>();
         body = gameObject.GetComponent<BoxCollider>();
-        //barFill = BoostBar(boostFill, boostWindowMax, boostMeterTime);
-
 
         //Checks if you own the entity
         if (entity.IsOwner)
         {
             //Sets the vehicles color to a random value    
             state.VehicleColor = new Color(Random.value, Random.value, Random.value);
+            PlayerCamera.Instantiate();
+            cam = GameObject.FindGameObjectWithTag("MainCamera");
         }
+        
+
 
         //If you're not the owner
         if (entity.IsOwner == false)
@@ -76,8 +74,6 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
         //SetTransforms tells Bolt to replicate the transform over the network
         state.SetTransforms(state.VehicleTransform, transform);
 
-        boostYellowMeterOriginalPosition = new Vector3(boostYellowMeter.transform.position.x, boostYellowMeter.transform.position.y - 0.694f, boostYellowMeter.transform.position.z);
-
     }
 
     //Acts as FixedUpdate() on the owner of the object
@@ -87,10 +83,18 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
         GetCorners();
         CastRays(corners);
         Traction();
+        CameraFollow();
+    }
+
+    private void CameraFollow()
+    {
+        Vector3 camerapos = gameObject.GetComponentInChildren<CameraPosition>().cameraPos;
+        cam.gameObject.transform.position = camerapos;
+        cam.gameObject.transform.rotation = state.VehicleTransform.Rotation;
     }
 
     //All below should be cleaned up. vvvvvvvvvvvvvvvvvvvvvvvvvvv
-    
+
 
     //Processing the player input
     private void ProcessInput()
@@ -104,7 +108,6 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
         {
             Brake();
         }
-
 
         if (Input.GetKey(KeyCode.A))
         {
@@ -120,12 +123,6 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
 
         if (Input.GetKeyDown(KeyCode.Space) && boosting == false)
         {
-
-            //mittari päälle
-            boostRedBackground.SetActive(true);
-            boostGreenArea.SetActive(true);
-            boostYellowMeter.SetActive(true);
-
             if (boostBarOn == false)
             {
                 StartCoroutine(BoostBar(boostFill, boostWindowMax, boostMeterTime));
@@ -135,8 +132,6 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
             {
                 BoostMode(boostFill);
             }
-
-
         }
 
         //Reset
@@ -145,6 +140,7 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
             transform.position = new Vector3(0, 10, 0);
             transform.rotation = new Quaternion();
         }
+
     }
 
     //Turning
@@ -217,17 +213,12 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
         boostBarOn = true;
         while (boostBarOn)
         {
-            //liikuttaa keltaista mittaria
-            boostYellowMeter.transform.Translate(new Vector3(0.3f * Time.deltaTime, 0, 0));
-
             //boost bar on ehkä tähän 
             fill += Time.deltaTime * fillRate;
-            boostFill = Mathf.Lerp(min,max,fill);
-            if(boostFill >= boostWindowMax)
+            boostFill = Mathf.Lerp(min, max, fill);
+            if (boostFill >= boostWindowMax)
             {
                 Debug.Log("RESETTED");
-                //palauttaa keltaisen mittarin paikoilleen
-                boostYellowMeter.transform.position = boostYellowMeterOriginalPosition;
                 ResetBoostBar();
             }
             yield return null;
@@ -241,10 +232,6 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
         boostBarOn = false;
         boostFill = 0;
 
-        //mittari pois päältä
-        boostRedBackground.SetActive(false);
-        boostGreenArea.SetActive(false);
-        boostYellowMeter.SetActive(false);
     }
 
     //Reset boost difficulty to default
@@ -331,22 +318,21 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
         StartCoroutine(BoostCoolDown());
         //Apply boost for set time
         for (float i = 0; i < boostTime; i += Time.deltaTime)
-       {
+        {
             //Checking if both the front tires are on the ground
             if (contactPoints[0] != new Vector3(0, 0, 0) && contactPoints[2] != new Vector3(0, 0, 0))
             {
                 //The point between the front tires
                 frontWheels = contactPoints[0] + (contactPoints[1] - contactPoints[0]) / 2;
 
-                Vector3 fwd = rig.transform.forward; 
+                Vector3 fwd = rig.transform.forward;
 
                 //Adding the boosted force to the position of the frontwheels
                 rig.AddForceAtPosition(fwd * enginePower * boostPower, frontWheels);
             }
 
-       }
+        }
     }
-
     //Gets the corners of the vehicles hitbox
     private void GetCorners()
     {
@@ -444,9 +430,12 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
             gameObject.transform.Find("CarBody").GetComponent<Renderer>().materials[1].color = state.VehicleColor;
     }
 
-
-
-
-
-
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("AmmoBlock"))
+        {
+            state.AmmoCount += other.gameObject.GetComponent<AmmoBox>().ammoAmount;
+            Debug.Log("Ammo picked up. Current ammo:" + state.AmmoCount);
+        }
+    }
 }

@@ -57,7 +57,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sceneGuid: 
   _serializerGuid: 3de9e892-f26c-4c0c-8e8a-1108c9280f81
-  _prefabId: 2
+  _prefabId: 6
   _updateRate: 1
   _autoFreezeProxyFrames: 0
   _clientPredicted: 0
@@ -84,6 +84,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2db1e5886dabb6f46905d6980dcbc45a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 0}
   contactPoints:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -96,7 +97,19 @@ MonoBehaviour:
   suspensionStrength: 13
   suspensionDamping: 0.3
   suspensionDistance: 0.8
-  boostPower: 1.5
+  boostPower: 0
+  boostTime: 0
+  boostTimeLow: 0
+  boostTimeHigh: 0
+  cooldownTime: 0
+  cooldownDefault: 0
+  boostFill: 0
+  boostFillLow: 0
+  boostFillHigh: 0
+  boostWindowMax: 0
+  boostMeterSpeed: 0
+  boostMeterTime: 0
+  boosting: 0
 --- !u!54 &1149322299
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -139,6 +152,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lapTimes: []
+  car_passed_cps: 
+  clock: 0
+  time: 
 --- !u!1 &1584494672718385739
 GameObject:
   m_ObjectHideFlags: 0

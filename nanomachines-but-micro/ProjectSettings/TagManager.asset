@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - FinishLine
+  - checkpoint
+  - RaceHandler
+  - AmmoBlock
+  - rocket
+  - mine
   layers:
   - Default
   - TransparentFX
