@@ -50,11 +50,12 @@ public class WeaponsController : Bolt.EntityBehaviour<IVehicleState>
     }
     private void DropMine()
     {
-        Vector3 NewPosition = GetComponentInChildren<minespawnpos>().minePos;
+        Quaternion rotation = GetComponent<Transform>().rotation;
+        Vector3 mineSpawnPos = GetComponentInChildren<minespawnpos>().minePos;
         if (state.AmmoCount>=2)
         {
             state.AmmoCount -= 2;
-            BoltNetwork.Instantiate(BoltPrefabs.Mine, NewPosition, Quaternion.identity);
+            BoltNetwork.Instantiate(BoltPrefabs.Mine, mineSpawnPos, rotation);
         }
         //spawn the mine behind the car
     }
