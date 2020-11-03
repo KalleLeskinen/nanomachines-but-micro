@@ -24,7 +24,9 @@ public class missile_controller : Bolt.EntityBehaviour<IRocketState>
         }
         // tuhoa missile kun kaikki autot on räjäytetty
         StartCoroutine(FindAllCarsInExplosionRadius());
-        Debug.Log("EXXXPLOOOOODEDDDDDDDD");
+
+        // tähän räjähdysanimaatio ja äänet!
+
     }
 
     IEnumerator FindAllCarsInExplosionRadius()
