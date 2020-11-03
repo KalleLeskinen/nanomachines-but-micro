@@ -20,14 +20,17 @@ public class CheckpointScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Guid id = other.gameObject.GetComponent<LapTimeUpdate>().id;
-        Debug.Log("Guid was: " + id);
-        float timePassedFromStart = other.GetComponent<LapTimeUpdate>().GetClock();
-        if (!other.gameObject.GetComponent<LapTimeUpdate>().car_passed_cps.Contains(checkpointNumber))
+        if (other.gameObject.tag == "Player")
         {
-            raceScript.CheckPointPassed(gameObject, id, timePassedFromStart, checkpointNumber);
-            //other.gameObject.GetComponent<LapTimeUpdate>().car_passed_cps.Add(checkpointNumber);
-            Debug.Log("ADDED FROM CPS");
+            Guid id = other.gameObject.GetComponent<LapTimeUpdate>().id;
+            Debug.Log("Guid was: " + id);
+            float timePassedFromStart = other.GetComponent<LapTimeUpdate>().GetClock();
+            if (!other.gameObject.GetComponent<LapTimeUpdate>().car_passed_cps.Contains(checkpointNumber))
+            {
+                raceScript.CheckPointPassed(gameObject, id, timePassedFromStart, checkpointNumber);
+                //other.gameObject.GetComponent<LapTimeUpdate>().car_passed_cps.Add(checkpointNumber);
+                Debug.Log("ADDED FROM CPS");
+            }
         }
     }
 

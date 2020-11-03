@@ -5,21 +5,38 @@ using UnityEngine;
 
 public class MineController : Bolt.EntityBehaviour<ILandMineState>
 {
-    public Rigidbody[] rb;
+    public float trigger_time;
+    public SphereCollider explosion_collider;
     public List<GameObject> affected;
     public override void Attached()
     {
-        //rb = GetComponents<Rigidbody>();
-        state.DetonateTime = 10f;
+        state.DetonateTime = 20f;
         state.OnExplosion += handlerExplosion;
     }
 
     private void handlerExplosion()
     {
+        // ota käyttöös uusi iso sphere collider
+        explosion_collider.enabled = true;
         foreach (var car in affected)
             car.GetComponent<OnHitController>().Explode(); //autolle kutsuttava räjähdys
 
+        // tähän räjähdysanimaatio ja äänet!
+
+        // tuhoa miina kun kaikki autot on räjäytetty
+        StartCoroutine(FindAllCarsInExplosionRadius());
+    }
+    IEnumerator FindAllCarsInExplosionRadius()
+    {
+        yield return new WaitForSeconds(0.05f);
         BoltNetwork.Destroy(this.gameObject);
+        Debug.Log($"EXPLODED {affected.Count} CARS AND DELETED THE MINE!" );
+    }
+
+    IEnumerator ExplodeIn(float time)
+    {
+        yield return new WaitForSeconds(time);
+        state.Explosion();
     }
 
     public override void SimulateOwner()
@@ -30,11 +47,14 @@ public class MineController : Bolt.EntityBehaviour<ILandMineState>
             state.Explosion();
         }
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (!other.gameObject.CompareTag("Player"))
             return;
+        Debug.Log("CAR DROVE OVER THE MINE..........EXPLODING!");
         affected.Add(other.gameObject);
+        StartCoroutine(ExplodeIn(trigger_time));
 
     }
     private void OnTriggerExit(Collider other)

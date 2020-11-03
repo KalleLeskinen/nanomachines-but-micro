@@ -15,7 +15,7 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
 
     //Points where the "wheels" touch the ground
     public Vector3[] contactPoints = new Vector3[4];
-
+    
     private Vector3 frontWheels, backWheels;
 
     public float enginePower, brakingPower;
@@ -153,6 +153,7 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
         {
             transform.position = new Vector3(0, 10, 0);
             transform.rotation = new Quaternion();
+            transform.rotation = Quaternion.identity;
         }
 
     }
