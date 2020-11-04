@@ -302,6 +302,7 @@ GameObject:
   - component: {fileID: -4562105955992795668}
   - component: {fileID: -483449108905229253}
   - component: {fileID: 7040450406913625520}
+  - component: {fileID: 4110795763754931633}
   m_Layer: 0
   m_Name: Car1_Torino
   m_TagString: Player
@@ -496,6 +497,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f8852d593d786d43bc871cb1e4ceef6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4110795763754931633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4662757946459190235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ab3743cd435d4c41a75ee79c21bdc82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 3
+  explosionEffect: {fileID: 1000011797152326, guid: acf39d9f4addf294d93fa56fa373961b, type: 3}
 --- !u!1 &4785564755065699041
 GameObject:
   m_ObjectHideFlags: 0
