@@ -46,6 +46,12 @@ public class MineController : Bolt.EntityBehaviour<ILandMineState>
         {
             state.Explosion();
         }
+        if (Time.frameCount % 50 == 0)
+        {
+            gameObject.GetComponentsInChildren<Renderer>()[1].material.EnableKeyword("_EMISSION");
+        }
+        if (Time.frameCount % 25 == 0 && Time.frameCount % 50 != 0)
+            gameObject.GetComponentsInChildren<Renderer>()[1].material.DisableKeyword("_EMISSION");
     }
 
     private void OnTriggerEnter(Collider other)
