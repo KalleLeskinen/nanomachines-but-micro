@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class missile_controller : Bolt.EntityBehaviour<IRocketState>
 {
+    public GameObject explosion_effect;
     public SphereCollider explosion_collider;
     public List<GameObject> affected;
     private void Start()
@@ -26,6 +27,7 @@ public class missile_controller : Bolt.EntityBehaviour<IRocketState>
         StartCoroutine(FindAllCarsInExplosionRadius());
 
         // tähän räjähdysanimaatio ja äänet!
+        Instantiate(explosion_effect, transform.position, transform.rotation);
 
     }
 
@@ -43,17 +45,21 @@ public class missile_controller : Bolt.EntityBehaviour<IRocketState>
         if (state.DetonateTime < 0)
         {
             state.Explosion();
-            BoltNetwork.Destroy(this.gameObject);
         }   // räjähdys / ei räjähdystä vaan katoaminen? (lähellä ei autoja.......)
     }
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.tag.Equals("generic_wall"))
+        {
+            state.Explosion();
+        }
+
         if (other.gameObject.tag.Equals("Player") && !affected.Contains(other.gameObject))
         {
             affected.Add(other.gameObject);
             Debug.Log($"ADDED {other.gameObject} to LIST OF AFFECTED PLAYERS ({affected.Count})");
+            state.Explosion();
         }
-        state.Explosion();
     }
     private void OnTriggerExit(Collider other)
     {
@@ -62,4 +68,13 @@ public class missile_controller : Bolt.EntityBehaviour<IRocketState>
             affected.Remove(other.gameObject);
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag.Equals("generic_wall"))
+        {
+            state.Explosion();
+        }
+    }
+
 }
