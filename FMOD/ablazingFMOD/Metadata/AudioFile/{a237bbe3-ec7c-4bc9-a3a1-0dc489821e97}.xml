@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{a237bbe3-ec7c-4bc9-a3a1-0dc489821e97}">
+		<property name="assetPath">
+			<value>ABL_rpm_2.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>2.7000000000000002</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{5b86252c-405e-4d21-8464-065361e8dff6}</destination>
+		</relationship>
+	</object>
+</objects>
