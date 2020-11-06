@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 
 public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
 {
-
+    public GameObject boost_effect;
     public GameObject cam;
     //Basically, the wheels, 0 = FL, 1 = FR, 2 = BL, 3 = BR;
     private Vector3[] corners = new Vector3[4];
@@ -98,7 +98,7 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
     {
         Vector3 camerapos = gameObject.GetComponentInChildren<CameraPosition>().cameraPos;
         cam.gameObject.transform.position = camerapos;
-        cam.gameObject.transform.rotation = state.VehicleTransform.Rotation;
+        cam.gameObject.transform.LookAt(this.gameObject.transform);
     }
 
     //All below should be cleaned up. vvvvvvvvvvvvvvvvvvvvvvvvvvv
@@ -326,12 +326,17 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
 
         }
     }
-
+    IEnumerator BoostTrailTime()
+    {
+        yield return new WaitForSeconds(1.5f);
+        boost_effect.SetActive(false);
+    }
     //Cooldown for boost
     public IEnumerator BoostCoolDown()
     {
         yield return new WaitForSeconds(cooldownTime);
         boosting = false;
+        boost_effect.SetActive(false);
         yield return null;
     }
 
@@ -339,7 +344,10 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
     private void Boost()
     {
         boosting = true;
+
         StartCoroutine(BoostCoolDown());
+        boost_effect.SetActive(true);
+        StartCoroutine(BoostTrailTime());
         //Apply boost for set time
         for (float i = 0; i < boostTime; i += Time.deltaTime)
         {

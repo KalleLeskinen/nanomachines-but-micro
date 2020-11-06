@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class MineController : Bolt.EntityBehaviour<ILandMineState>
 {
+    public GameObject explosion_effect;
     public float trigger_time;
     public SphereCollider explosion_collider;
     public List<GameObject> affected;
@@ -22,6 +23,7 @@ public class MineController : Bolt.EntityBehaviour<ILandMineState>
             car.GetComponent<OnHitController>().Explode(); //autolle kutsuttava räjähdys
 
         // tähän räjähdysanimaatio ja äänet!
+        Instantiate(explosion_effect, transform.position, transform.rotation);
 
         // tuhoa miina kun kaikki autot on räjäytetty
         StartCoroutine(FindAllCarsInExplosionRadius());

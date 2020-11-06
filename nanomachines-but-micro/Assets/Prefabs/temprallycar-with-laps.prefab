@@ -84,6 +84,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2db1e5886dabb6f46905d6980dcbc45a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boost_effect: {fileID: 0}
   cam: {fileID: 0}
   contactPoints:
   - {x: 0, y: 0, z: 0}
@@ -110,6 +111,10 @@ MonoBehaviour:
   boostMeterSpeed: 0
   boostMeterTime: 0
   boosting: 0
+  boostRedBackground: {fileID: 0}
+  boostGreenArea: {fileID: 0}
+  boostYellowMeter: {fileID: 0}
+  boostYellowMeterOriginalPosition: {x: 0, y: 0, z: 0}
 --- !u!54 &1149322299
 Rigidbody:
   m_ObjectHideFlags: 0

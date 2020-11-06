@@ -10,6 +10,7 @@ TagManager:
   - AmmoBlock
   - rocket
   - mine
+  - generic_wall
   layers:
   - Default
   - TransparentFX
