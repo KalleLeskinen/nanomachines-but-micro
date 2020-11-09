@@ -160,11 +160,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restLength: 0.2
-  springTravel: 0.4
+  springTravel: 0.25
   springStiffness: 30000
   damperStiffness: 4000
   steerAngle: 0
-  steeringTime: 4
+  steeringTime: 7
   wheelRadius: 0.15
   wheel: 2
 --- !u!1 &3813066438746694947
@@ -212,11 +212,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restLength: 0.2
-  springTravel: 0.4
+  springTravel: 0.25
   springStiffness: 30000
   damperStiffness: 4000
   steerAngle: 0
-  steeringTime: 4
+  steeringTime: 7
   wheelRadius: 0.15
   wheel: 0
 --- !u!1 &3813066438873061751
@@ -264,11 +264,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restLength: 0.2
-  springTravel: 0.4
+  springTravel: 0.25
   springStiffness: 30000
   damperStiffness: 4000
   steerAngle: 0
-  steeringTime: 4
+  steeringTime: 7
   wheelRadius: 0.15
   wheel: 1
 --- !u!1 &3813066439302805287
@@ -397,11 +397,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restLength: 0.2
-  springTravel: 0.4
+  springTravel: 0.25
   springStiffness: 30000
   damperStiffness: 4000
   steerAngle: 0
-  steeringTime: 4
+  steeringTime: 7
   wheelRadius: 0.15
   wheel: 3
 --- !u!1 &3813066439679548245
