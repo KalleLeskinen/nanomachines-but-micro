@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2539396977277928587}
   - component: {fileID: 1482277523794758446}
   - component: {fileID: 3708411670184722404}
+  - component: {fileID: 3480428777369004124}
   m_Layer: 0
   m_Name: CardRamp
   m_TagString: Untagged
@@ -81,3 +82,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3480428777369004124
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2915536174802689585}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4730044765917013758, guid: 32cf2eecb4e2e974592a5ec79b2d1b8e, type: 3}
