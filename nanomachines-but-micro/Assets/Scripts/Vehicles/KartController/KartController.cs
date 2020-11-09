@@ -74,9 +74,6 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
     void Update()
     {
 
-
-
-
         SetSteeringAngle();
         HandleInput();
 
