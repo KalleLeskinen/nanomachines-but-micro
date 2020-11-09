@@ -24,5 +24,6 @@ MonoBehaviour:
   - {fileID: 1196592484905566973, guid: d15546d9f2d3def458e2857d6dca990f, type: 3}
   - {fileID: 2191231537032320320, guid: 10c50250815eef64dae41b4defc0f55f, type: 3}
   - {fileID: 1497629741990537548, guid: b99e4eb05419d0045baf250b6ed60fc9, type: 3}
+  - {fileID: 5804628764685650375, guid: 26f39fc57a1821e46bd24fe6c2d4fa93, type: 3}
   SearchPaths:
   - Assets/Prefabs
