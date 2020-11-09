@@ -16,3 +16,10 @@ Builds/StartFinishWin/nanomachines-but-micro_Data/Managed/Mono.Security.dll
 Builds/StartFinishWin/nanomachines-but-micro.exe
 Builds/StartFinishWin/MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll
 >>>>>>> origin/pick-up-ables
+nanomachines-but-micro/Assets/Photon/PhotonBolt/packages/bolt_samples.unitypackage.meta
+nanomachines-but-micro/Assets/Photon/PhotonLibs/Metro/Photon3Unity3D.dll.mdb.meta
+nanomachines-but-micro/Assets/Photon/PhotonLibs/Metro/Photon3Unity3D.pdb.meta
+nanomachines-but-micro/Assets/Photon/PhotonLibs/netstandard2.0/Photon3Unity3D.dll.mdb.meta
+nanomachines-but-micro/Assets/Photon/PhotonLibs/netstandard2.0/Photon3Unity3D.pdb.meta
+nanomachines-but-micro/Assets/Photon/PhotonLibs/Photon3Unity3D.dll.mdb.meta
+nanomachines-but-micro/Assets/Photon/PhotonLibs/Photon3Unity3D.pdb.meta
