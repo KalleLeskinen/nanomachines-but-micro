@@ -16,12 +16,16 @@ public class KartWheel : MonoBehaviour
     public float springStiffness;
     public float damperStiffness;
 
-    private float minLength;
-    private float maxLength;
-    private float lastLength;
-    private float springLength;
-    private float springVelocity;
-    private float springForce;
+    private float
+        minLength,
+        maxLength,
+        lastLength;
+
+    private float
+        springLength,
+        springVelocity,
+        springForce;
+
     private float damperForce;
 
     private Vector3 suspensionForce;
