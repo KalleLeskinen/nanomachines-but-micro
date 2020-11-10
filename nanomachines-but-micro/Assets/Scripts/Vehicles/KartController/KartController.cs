@@ -70,11 +70,12 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
     // Bool for boost bar
     private bool boostBarOn = false;
 
+    private bool boostFlag = false;
 
     void Update()
     {
 
-        SetSteeringAngle();
+        
         HandleInput();
 
     }
@@ -106,31 +107,32 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
 
     }
 
-
-
-    void HandleInput()
+    void FixedUpdate()
     {
+        SetSteeringAngle();
 
-        if (Input.GetKeyDown(KeyCode.Space) && boosting == false)
+        if(boostFlag)
         {
-
             //mittari päälle
             boostRedBackground.SetActive(true);
             boostGreenArea.SetActive(true);
             boostYellowMeter.SetActive(true);
 
             if (boostBarOn == false)
-            {
                 StartCoroutine(BoostBar(boostFill, boostWindowMax, boostMeterTime));
-            }
 
             if (boostBarOn == true && boostFill > 0)
-            {
                 BoostMode(boostFill);
-            }
-
         }
+    }
 
+
+    void HandleInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            boostFlag = true;
+        }
     }
 
     /* Based on ackerman steering
