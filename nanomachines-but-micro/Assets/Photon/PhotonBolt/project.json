@@ -515,7 +515,7 @@
           "Name": "DetonateTime",
           "Enabled": true,
           "Expanded": true,
-          "ReplicationMode": 1,
+          "ReplicationMode": 2,
           "Priority": 1,
           "PropertyType": {
             "$type": "Bolt.Compiler.PropertyTypeFloat, bolt.compiler",
@@ -541,7 +541,7 @@
           "Name": "Explosion",
           "Enabled": true,
           "Expanded": true,
-          "ReplicationMode": 1,
+          "ReplicationMode": 2,
           "Priority": 1,
           "PropertyType": {
             "$type": "Bolt.Compiler.PropertyTypeTrigger, bolt.compiler"
@@ -633,7 +633,7 @@
           "Name": "Explosion",
           "Enabled": true,
           "Expanded": true,
-          "ReplicationMode": 1,
+          "ReplicationMode": 2,
           "Priority": 1,
           "PropertyType": {
             "$type": "Bolt.Compiler.PropertyTypeTrigger, bolt.compiler"
@@ -650,7 +650,7 @@
           "Name": "DetonateTime",
           "Enabled": true,
           "Expanded": true,
-          "ReplicationMode": 1,
+          "ReplicationMode": 2,
           "Priority": 1,
           "PropertyType": {
             "$type": "Bolt.Compiler.PropertyTypeFloat, bolt.compiler",

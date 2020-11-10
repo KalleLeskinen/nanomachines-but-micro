@@ -56,6 +56,7 @@ public class WeaponsController : Bolt.EntityBehaviour<IVehicleState>
         Quaternion newRot = Quaternion.Euler(RotVec3);
 
         Vector3 mineSpawnPos = GetComponentInChildren<minespawnpos>().minePos;
+
         if (state.AmmoCount>=2)
         {
             state.AmmoCount -= 2;
@@ -71,6 +72,14 @@ public class WeaponsController : Bolt.EntityBehaviour<IVehicleState>
         {
             state.AmmoCount -= 1; //raketti
             BoltNetwork.Instantiate(BoltPrefabs.missile, rocketSpawnPos, rotation);
+        }
+    }
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("AmmoBlock"))
+        {
+            state.AmmoCount += other.gameObject.GetComponent<AmmoBox>().ammoAmount;
+            Debug.Log("Ammo picked up. Current ammo:" + state.AmmoCount);
         }
     }
 
