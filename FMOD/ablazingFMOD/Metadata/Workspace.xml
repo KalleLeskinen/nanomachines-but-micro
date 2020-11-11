@@ -2,7 +2,10 @@
 <objects serializationModel="Studio.02.00.00">
 	<object class="Workspace" id="{9d61bfc1-52d3-4b76-a0d2-ca9be3b4922e}">
 		<property name="builtBanksOutputDirectory" />
+<<<<<<< Updated upstream
 		<property name="builtBanksEncryptionKey" />
+=======
+>>>>>>> Stashed changes
 		<relationship name="masterEventFolder">
 			<destination>{9d68eb1b-7e43-4283-b967-2088aa57cfe9}</destination>
 		</relationship>
