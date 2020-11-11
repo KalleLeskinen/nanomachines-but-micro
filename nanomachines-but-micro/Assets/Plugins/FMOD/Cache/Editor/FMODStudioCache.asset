@@ -36,6 +36,24 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &-6396382036253970729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/AudioAssets/FMODBANKS/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637390678083319779
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-4959721310152499500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,14 +176,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: 2876930218317724896}
-  - {fileID: 1855192234929850711}
+  - {fileID: -6396382036253970729}
   EditorEvents: []
   EditorParameters: []
   MasterBanks:
-  - {fileID: 1855192234929850711}
+  - {fileID: -6396382036253970729}
   StringsBanks:
   - {fileID: 2876930218317724896}
-  stringsBankWriteTime: 637389660412735410
+  stringsBankWriteTime: 637390678083646283
   cacheVersion: 3
 --- !u!114 &1855192234929850711
 MonoBehaviour:
@@ -184,7 +202,7 @@ MonoBehaviour:
   lastModified: 637389660412585608
   LoadResult: 0
   FileSizes: []
-  Exists: 1
+  Exists: 0
 --- !u!114 &2315301701868895952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,7 +235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Assets/AudioAssets/FMODBANKS/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637389660412735410
+  lastModified: 637390678083646283
   LoadResult: 0
   FileSizes:
   - Name: 

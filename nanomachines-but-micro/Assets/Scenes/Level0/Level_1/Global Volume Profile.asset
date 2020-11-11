@@ -16,13 +16,13 @@ MonoBehaviour:
   m_AdvancedMode: 0
   lift:
     m_OverrideState: 1
-    m_Value: {x: 0.95342284, y: 0.9587563, z: 1, w: 6.757133e-10}
+    m_Value: {x: 1, y: 1, z: 1, w: -0.036166362}
   gamma:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.9558456, z: 0.8883619, w: 0.06460687}
+    m_Value: {x: 1, y: 1, z: 1, w: 0.1084991}
   gain:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.97003573, z: 0.84453285, w: 0.16871478}
+    m_Value: {x: 1, y: 1, z: 1, w: 0.018083187}
 --- !u!114 &-4926422004568081931
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -39,26 +39,26 @@ MonoBehaviour:
   m_AdvancedMode: 0
   postExposure:
     m_OverrideState: 1
-    m_Value: 0.68
+    m_Value: 0.86
   contrast:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 1
     min: -100
     max: 100
   colorFilter:
     m_OverrideState: 0
-    m_Value: {r: 0.9811321, g: 0, b: 0.01012687, a: 1}
+    m_Value: {r: 0.6698113, g: 0, b: 0.008037792, a: 1}
     hdr: 1
     showAlpha: 0
     showEyeDropper: 1
   hueShift:
     m_OverrideState: 0
-    m_Value: 20
+    m_Value: 3
     min: -180
     max: 180
   saturation:
     m_OverrideState: 1
-    m_Value: 21
+    m_Value: 23
     min: -100
     max: 100
 --- !u!114 &-3785414563450029250
@@ -159,26 +159,26 @@ MonoBehaviour:
   m_AdvancedMode: 0
   shadows:
     m_OverrideState: 1
-    m_Value: {x: 0.88468206, y: 0.9103684, z: 1, w: -0.021810263}
+    m_Value: {x: 0.6871581, y: 0.79725534, z: 1, w: 0.14466552}
   midtones:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.96902037, z: 0.8383176, w: 0.03271537}
+    m_Value: {x: 1, y: 0.92779297, z: 0.8854873, w: 0.039783098}
   highlights:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.9632676, z: 0.8908675, w: 0.0032714044}
+    m_Value: {x: 1, y: 0.8482371, z: 0.79120135, w: 0.41953015}
   shadowsStart:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
     min: 0
   shadowsEnd:
-    m_OverrideState: 0
-    m_Value: 0.5
+    m_OverrideState: 1
+    m_Value: 0.69
     min: 0
   highlightsStart:
-    m_OverrideState: 0
-    m_Value: 0.55
+    m_OverrideState: 1
+    m_Value: 0.51
     min: 0
   highlightsEnd:
-    m_OverrideState: 0
-    m_Value: 1
+    m_OverrideState: 1
+    m_Value: 1.28
     min: 0
