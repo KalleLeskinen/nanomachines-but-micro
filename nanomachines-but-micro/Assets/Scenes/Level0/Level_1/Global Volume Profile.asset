@@ -19,10 +19,10 @@ MonoBehaviour:
     m_Value: {x: 0.95342284, y: 0.9587563, z: 1, w: 6.757133e-10}
   gamma:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.9475605, z: 0.88072395, w: 0.108227365}
+    m_Value: {x: 1, y: 0.9558456, z: 0.8883619, w: 0.06460687}
   gain:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.9519389, z: 0.88580436, w: 0.16871478}
+    m_Value: {x: 1, y: 0.97003573, z: 0.84453285, w: 0.16871478}
 --- !u!114 &-4926422004568081931
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -162,10 +162,10 @@ MonoBehaviour:
     m_Value: {x: 0.88468206, y: 0.9103684, z: 1, w: -0.021810263}
   midtones:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.93553084, z: 0.83045805, w: 0.03271537}
+    m_Value: {x: 1, y: 0.96902037, z: 0.8383176, w: 0.03271537}
   highlights:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.9901185, z: 0.9604788, w: 0.0032714044}
+    m_Value: {x: 1, y: 0.9632676, z: 0.8908675, w: 0.0032714044}
   shadowsStart:
     m_OverrideState: 0
     m_Value: 0
