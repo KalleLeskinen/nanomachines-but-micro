@@ -241,6 +241,8 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
         boostRedBackground.SetActive(false);
         boostGreenArea.SetActive(false);
         boostYellowMeter.SetActive(false);
+        boostFlag = false;
+
     }
 
     //Handle what happens when boost button is pressed second time
