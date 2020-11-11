@@ -17,8 +17,7 @@ public class MineController : Bolt.EntityBehaviour<ILandMineState>
 
     private void handlerExplosion()
     {
-        // ota käyttöös uusi iso sphere collider
-        explosion_collider.enabled = true;
+        
         // tähän räjähdysanimaatio ja äänet!
         //
         // tuhoa miina kun kaikki autot on räjäytetty
@@ -37,6 +36,9 @@ public class MineController : Bolt.EntityBehaviour<ILandMineState>
 
     IEnumerator ExplodeIn(float time)
     {
+        // ota käyttöös uusi iso sphere collider
+        explosion_collider.enabled = true;
+
         yield return new WaitForSeconds(time);
         state.Explosion();
     }
