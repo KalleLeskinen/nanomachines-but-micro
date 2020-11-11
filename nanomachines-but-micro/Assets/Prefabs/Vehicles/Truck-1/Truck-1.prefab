@@ -581,6 +581,7 @@ GameObject:
   - component: {fileID: 5390181267357601576}
   - component: {fileID: 5390181267357601577}
   - component: {fileID: 8685317999889267330}
+  - component: {fileID: 5404320750332829925}
   m_Layer: 0
   m_Name: Truck_Body
   m_TagString: Untagged
@@ -710,19 +711,19 @@ MonoBehaviour:
   boostGreenArea: {fileID: 8176882396006366544}
   boostYellowMeter: {fileID: 7518775610004289740}
   boostYellowMeterOriginalPosition: {x: 0, y: 0, z: 0}
-  boostPower: 0
-  slowPower: 0
-  boostTime: 0
-  boostTimeLow: 0
-  boostTimeHigh: 0
-  cooldownTime: 0
-  cooldownDefault: 0
+  boostPower: 1.5
+  slowPower: 1.5
+  boostTime: 3
+  boostTimeLow: 2.5
+  boostTimeHigh: 7.5
+  cooldownTime: 5
+  cooldownDefault: 5
   boostFill: 0
-  boostFillLow: 0
-  boostFillHigh: 0
-  boostWindowMax: 0
-  boostMeterSpeed: 0
-  boostMeterTime: 0
+  boostFillLow: 2.5
+  boostFillHigh: 7.5
+  boostWindowMax: 10
+  boostMeterSpeed: 1
+  boostMeterTime: 10
   boosting: 0
 --- !u!114 &8685317999889267330
 MonoBehaviour:
@@ -740,6 +741,29 @@ MonoBehaviour:
   car_passed_cps: 
   clock: 0
   time: 
+--- !u!114 &5404320750332829925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5390181267357601582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/TestCar
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
 --- !u!1 &5804628764685650375
 GameObject:
   m_ObjectHideFlags: 0
