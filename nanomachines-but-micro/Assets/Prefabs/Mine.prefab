@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion_effect: {fileID: 1000011797152326, guid: acf39d9f4addf294d93fa56fa373961b, type: 3}
-  trigger_time: 0.1
+  trigger_time: 0.075
   explosion_collider: {fileID: 8676623890309365900}
   affected: []
 --- !u!54 &7060202283363778337

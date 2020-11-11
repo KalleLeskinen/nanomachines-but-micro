@@ -5,17 +5,8 @@ using UnityEngine;
 
 public class OnHitController : MonoBehaviour
 {
-    void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.tag == "rocket" && other.gameObject.tag == "mine")
-        {
-            Debug.Log("ouch!!");
-            Destroy(other.gameObject);
-        }
-    }
-
     public void Explode()
     {
-        GetComponent<Rigidbody>().AddExplosionForce(100000f, gameObject.transform.position, 15f);
+        GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
     }
 }

@@ -17,26 +17,28 @@ public class MineController : Bolt.EntityBehaviour<ILandMineState>
 
     private void handlerExplosion()
     {
-        // ota käyttöös uusi iso sphere collider
-        explosion_collider.enabled = true;
-        foreach (var car in affected)
-            car.GetComponent<OnHitController>().Explode(); //autolle kutsuttava räjähdys
-
+        
         // tähän räjähdysanimaatio ja äänet!
-        Instantiate(explosion_effect, transform.position, transform.rotation);
-
+        //
         // tuhoa miina kun kaikki autot on räjäytetty
         StartCoroutine(FindAllCarsInExplosionRadius());
+        //auto(i)lle kutsuttava räjähdys
+        foreach (var car in affected)
+            car.GetComponent<OnHitController>().Explode();
+        BoltNetwork.Destroy(this.gameObject);
+
     }
     IEnumerator FindAllCarsInExplosionRadius()
     {
-        yield return new WaitForSeconds(0.05f);
-        BoltNetwork.Destroy(this.gameObject);
-        Debug.Log($"EXPLODED {affected.Count} CARS AND DELETED THE MINE!" );
+        yield return new WaitForSeconds(0.075f);
+        Debug.Log($"EXPLODED {affected.Count} CARS" );
     }
 
     IEnumerator ExplodeIn(float time)
     {
+        // ota käyttöös uusi iso sphere collider
+        explosion_collider.enabled = true;
+
         yield return new WaitForSeconds(time);
         state.Explosion();
     }
@@ -46,6 +48,7 @@ public class MineController : Bolt.EntityBehaviour<ILandMineState>
         state.DetonateTime = state.DetonateTime - Time.deltaTime;
         if (state.DetonateTime < 0)
         {
+            Instantiate(explosion_effect, transform.position, transform.rotation);
             state.Explosion();
         }
         if (Time.frameCount % 50 == 0)
@@ -62,6 +65,7 @@ public class MineController : Bolt.EntityBehaviour<ILandMineState>
             return;
         Debug.Log("CAR DROVE OVER THE MINE..........EXPLODING!");
         affected.Add(other.gameObject);
+        Instantiate(explosion_effect, transform.position, transform.rotation);
         StartCoroutine(ExplodeIn(trigger_time));
 
     }

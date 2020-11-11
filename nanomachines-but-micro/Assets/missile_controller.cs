@@ -18,32 +18,37 @@ public class missile_controller : Bolt.EntityBehaviour<IRocketState>
     {
         // ota käyttöös uusi iso sphere collider
         explosion_collider.enabled = true;
-        // tarkista mitkä autot on räjähdysalueen sisällä
+
+        // tähän räjähdysanimaatio ja äänet!
+        //Instantiate(explosion_effect, transform.position, transform.rotation);
+        //sound.play()
+
+        // etsi kaikki autot sphere colliderin sisältä (odota hetki)
+        StartCoroutine(FindAllCarsInExplosionRadius());
+
+        // räjäytä autot
         foreach (var car in affected)   // räjäytä autot
         {
             car.GetComponent<OnHitController>().Explode(); //autolle kutsuttava räjähdys
         }
-        // tuhoa missile kun kaikki autot on räjäytetty
-        StartCoroutine(FindAllCarsInExplosionRadius());
 
-        // tähän räjähdysanimaatio ja äänet!
-        Instantiate(explosion_effect, transform.position, transform.rotation);
-
+        BoltNetwork.Destroy(this.gameObject);
     }
 
     IEnumerator FindAllCarsInExplosionRadius()
     {
-        yield return new WaitForSeconds(0.05f);
-        BoltNetwork.Destroy(this.gameObject);
+        yield return new WaitForSeconds(0.075f);
+
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         state.DetonateTime -= Time.deltaTime;
         gameObject.transform.Translate(Vector3.forward * Time.deltaTime * 15f);
         if (state.DetonateTime < 0)
         {
+            Instantiate(explosion_effect, transform.position, transform.rotation);
             state.Explosion();
         }   // räjähdys / ei räjähdystä vaan katoaminen? (lähellä ei autoja.......)
     }
@@ -51,6 +56,7 @@ public class missile_controller : Bolt.EntityBehaviour<IRocketState>
     {
         if (other.gameObject.tag.Equals("generic_wall"))
         {
+            Instantiate(explosion_effect, transform.position, transform.rotation);
             state.Explosion();
         }
 
@@ -58,6 +64,7 @@ public class missile_controller : Bolt.EntityBehaviour<IRocketState>
         {
             affected.Add(other.gameObject);
             Debug.Log($"ADDED {other.gameObject} to LIST OF AFFECTED PLAYERS ({affected.Count})");
+            Instantiate(explosion_effect, transform.position, transform.rotation);
             state.Explosion();
         }
     }
@@ -73,6 +80,7 @@ public class missile_controller : Bolt.EntityBehaviour<IRocketState>
     {
         if (collision.gameObject.tag.Equals("generic_wall"))
         {
+            Instantiate(explosion_effect, transform.position, transform.rotation);
             state.Explosion();
         }
     }
