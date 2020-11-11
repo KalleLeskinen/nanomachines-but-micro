@@ -66,12 +66,18 @@ public class WeaponsController : Bolt.EntityBehaviour<IVehicleState>
     }
     private void ShootRocket()
     {
-        Quaternion rotation = GetComponent<Transform>().rotation;
+
+
         Vector3 rocketSpawnPos = GetComponentInChildren<rocketspawnpos>().rocketPos;
+        
+        Vector3 rocketDir = GetComponentInChildren<rocketdir>().rocketDir;
+
+        Vector3 fwdVector = new Vector3(rocketDir.x - rocketSpawnPos.x, 0, rocketDir.z - rocketSpawnPos.z);
+
         if (state.AmmoCount >= 1)
         {
             state.AmmoCount -= 1; //raketti
-            BoltNetwork.Instantiate(BoltPrefabs.missile, rocketSpawnPos, rotation);
+            BoltNetwork.Instantiate(BoltPrefabs.missile, rocketSpawnPos, Quaternion.LookRotation(fwdVector, Vector3.up));
         }
     }
     public void OnTriggerEnter(Collider other)

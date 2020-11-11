@@ -39,7 +39,7 @@ public class MainMenu : GlobalEventListener
 
             BoltMatchmaking.CreateSession(
                 sessionID: matchName,
-                sceneToLoad: "StartFinishWin" // <-  What scene to load
+                sceneToLoad: "Level_1" // <-  What scene to load
             );
 
         }

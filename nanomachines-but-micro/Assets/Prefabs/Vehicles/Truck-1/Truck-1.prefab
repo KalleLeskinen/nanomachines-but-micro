@@ -142,7 +142,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.08783722, y: -0.008999944, z: 1.4710007}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 5618094515313561284}
   m_Father: {fileID: 6598861330506113059}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -671,6 +672,7 @@ GameObject:
   - component: {fileID: 8685317999889267330}
   - component: {fileID: 4709539524005674840}
   - component: {fileID: 2553122197089853966}
+  - component: {fileID: 2719605435426130466}
   m_Layer: 0
   m_Name: Truck_Body
   m_TagString: Player
@@ -856,6 +858,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d6bc1bef60d4c349a053195a1c3c8d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2719605435426130466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5390181267357601582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7571f3521cecfb84eb982aa8e1f128f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion_effect: {fileID: 1000011797152326, guid: acf39d9f4addf294d93fa56fa373961b, type: 3}
 --- !u!1 &5804628764685650375
 GameObject:
   m_ObjectHideFlags: 0
@@ -919,6 +934,50 @@ MonoBehaviour:
   _entityBehaviourQueryOption: 0
   _entityPriorityCalculatorQueryOption: 1
   _entityReplicationFilterQueryOption: 1
+--- !u!1 &7295147549061746139
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5618094515313561284}
+  - component: {fileID: 5229040174358427493}
+  m_Layer: 0
+  m_Name: rocketdir
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5618094515313561284
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7295147549061746139}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2043232135307058618}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5229040174358427493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7295147549061746139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32f2bedca560e447b0701283ca35e6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rocketDir: {x: 0, y: 0, z: 0}
 --- !u!1 &7518775610004289740
 GameObject:
   m_ObjectHideFlags: 0
