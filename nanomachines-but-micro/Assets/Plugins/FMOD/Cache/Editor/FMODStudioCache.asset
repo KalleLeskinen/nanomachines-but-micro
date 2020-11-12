@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7858358679471652695
+--- !u!114 &-9065940741026393845
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,13 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/TestCar/RPM
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
   m_EditorClassIdentifier: 
-  Name: RPM
-  Min: 0
-  Max: 100
-  Default: 0
+  Path: ../FMOD/ablazingFMOD/Build/Desktop/Master.strings.bank
+  SubDir: 
+  lastModified: 637407265818773712
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 828
   Exists: 1
 --- !u!114 &-7329647542924466979
 MonoBehaviour:
@@ -53,6 +56,23 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &-5061269931144825020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/TestCar/RPM
+  m_EditorClassIdentifier: 
+  Name: RPM
+  Min: 0
+  Max: 100
+  Default: 0
+  Exists: 0
 --- !u!114 &-4959721310152499500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,24 +91,6 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
---- !u!114 &-4830010952817042325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/CarBank.bank
-  m_EditorClassIdentifier: 
-  Path: ../FMOD/ablazingFMOD/Build/Desktop/CarBank.bank
-  SubDir: 
-  lastModified: 637407013526156297
-  LoadResult: 0
-  FileSizes: []
-  Exists: 1
 --- !u!114 &-4446555481002070123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,23 +109,6 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 1
---- !u!114 &-4233661321949306009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/TestCar/RPM
-  m_EditorClassIdentifier: 
-  Name: RPM
-  Min: 0
-  Max: 100
-  Default: 0
-  Exists: 0
 --- !u!114 &-4211859978512462651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,7 +145,7 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
---- !u!114 &-2292086356046100223
+--- !u!114 &-2703109843373252306
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -174,7 +159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: ../FMOD/ablazingFMOD/Build/Desktop/Master.bank
   SubDir: 
-  lastModified: 637407013526166289
+  lastModified: 637407265818713843
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -196,31 +181,6 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 1
---- !u!114 &-1060723752353819729
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/TestCar
-  m_EditorClassIdentifier: 
-  Path: event:/TestCar
-  guid: 70d8f9a245682a4d813ca7f4e597203b
-  Banks:
-  - {fileID: -4830010952817042325}
-  - {fileID: -2292086356046100223}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 0
-  Parameters:
-  - {fileID: -7858358679471652695}
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 0
 --- !u!114 &-564593089835974059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,18 +230,43 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: 5947127121857069636}
-  - {fileID: -4830010952817042325}
-  - {fileID: -2292086356046100223}
+  - {fileID: -9065940741026393845}
+  - {fileID: 5326704966364114178}
+  - {fileID: -2703109843373252306}
   EditorEvents:
-  - {fileID: -1060723752353819729}
+  - {fileID: 232551071508192883}
   EditorParameters: []
   MasterBanks:
-  - {fileID: -2292086356046100223}
+  - {fileID: -2703109843373252306}
   StringsBanks:
-  - {fileID: 5947127121857069636}
-  stringsBankWriteTime: 637407013526166289
+  - {fileID: -9065940741026393845}
+  stringsBankWriteTime: 637407265818773712
   cacheVersion: 3
+--- !u!114 &232551071508192883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/TestCar
+  m_EditorClassIdentifier: 
+  Path: event:/TestCar
+  guid: 70d8f9a245682a4d813ca7f4e597203b
+  Banks:
+  - {fileID: 5326704966364114178}
+  - {fileID: -2703109843373252306}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 5545453565718239132}
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 0
 --- !u!114 &2315301701868895952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -338,7 +323,7 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 1
---- !u!114 &5947127121857069636
+--- !u!114 &5326704966364114178
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -348,15 +333,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.strings.bank
+  m_Name: bank:/CarBank.bank
   m_EditorClassIdentifier: 
-  Path: ../FMOD/ablazingFMOD/Build/Desktop/Master.strings.bank
+  Path: ../FMOD/ablazingFMOD/Build/Desktop/CarBank.bank
   SubDir: 
-  lastModified: 637407013526166289
+  lastModified: 637407265818600041
   LoadResult: 0
-  FileSizes:
-  - Name: 
-    Value: 828
+  FileSizes: []
+  Exists: 1
+--- !u!114 &5545453565718239132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/TestCar/RPM
+  m_EditorClassIdentifier: 
+  Name: RPM
+  Min: 0
+  Max: 100
+  Default: 0
   Exists: 1
 --- !u!114 &6869551631605631675
 MonoBehaviour:
