@@ -16,12 +16,12 @@ public class KartWheel : MonoBehaviour
     public float springStiffness;
     public float damperStiffness;
 
-    private float
+    public float
         minLength,
         maxLength,
         lastLength;
 
-    private float
+    public float
         springLength,
         springVelocity,
         springForce;
@@ -69,8 +69,7 @@ public class KartWheel : MonoBehaviour
 
         // restLength must always be higher than spring travel ( if rest at a position lower than the suspension can extend, the suspension will spaz out
 
-        minLength = restLength - springTravel;
-        maxLength = restLength + springTravel;
+        
 
     }
 
@@ -78,6 +77,9 @@ public class KartWheel : MonoBehaviour
     {
         wheelAngle = Mathf.Lerp(wheelAngle, steerAngle, steeringTime * Time.deltaTime);
         transform.localRotation = Quaternion.Euler(Vector3.up * wheelAngle);
+
+        minLength = restLength - springTravel;
+        maxLength = restLength + springTravel;
     }
 
 
@@ -103,6 +105,8 @@ public class KartWheel : MonoBehaviour
             springForce = springStiffness * (restLength - springLength);
             damperForce = damperStiffness * springVelocity;
 
+            springForce = Mathf.Clamp(springForce, -1500, 9000);
+
             suspensionForce = (springForce + damperForce) * transform.up;
 
             // Adding the throttle
@@ -118,6 +122,8 @@ public class KartWheel : MonoBehaviour
 
 
             //Debug.Log("rpm: " + RPMCounter());
+
+            
 
 
         }
@@ -141,11 +147,19 @@ public class KartWheel : MonoBehaviour
     }
 
 
-
     // Returns RPM of the vehicle
     public float RPMCounter()
     {
         // EVERYTHING IS BROKEN OH GOD
+
+
+
+
+
+
+
+
+
         return 0;
     }
 }
