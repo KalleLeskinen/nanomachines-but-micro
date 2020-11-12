@@ -20,9 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54e1185e-b36a-48be-80e4-7b3ad73de5e3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.nanomachines-but-micro/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.nanomachines-but-micro/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.nanomachines-but-micro/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.nanomachines-but-micro/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/missile/Missile1.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/missile/Missile1.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level0/Level_1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level0/Level_1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level0/Level_1/Global Volume Profile.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level0/Level_1/Global Volume Profile.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +32,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@8.2.0/Runtime/Data/UniversalRenderPipelineAsset.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../UnityProjects/RuildAndBun/Assets/Scenes/Tommi/Scripts/PlayerInventory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@8.2.0/Runtime/UniversalAdditionalCameraData.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../UnityProjects/RuildAndBun/Assets/Scenes/Tommi/Scripts/GameEvents.cs" root0="SKIP_HIGHLIGHTING" />
