@@ -951,7 +951,7 @@ MonoBehaviour:
   - {fileID: 3813066439483887122}
   wheelbase: 3
   rearTrack: 2
-  turnRadius: 12
+  turnRadius: 8
   boost_effect: {fileID: 5523617289055551854}
   boostRedBackground: {fileID: 2484680570521075630}
   boostGreenArea: {fileID: 8176882396006366544}
