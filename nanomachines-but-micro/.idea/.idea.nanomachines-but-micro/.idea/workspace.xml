@@ -20,8 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54e1185e-b36a-48be-80e4-7b3ad73de5e3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level0/Level_1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level0/Level_1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level0/Level_1/Global Volume Profile.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level0/Level_1/Global Volume Profile.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.nanomachines-but-micro/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.nanomachines-but-micro/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.nanomachines-but-micro/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.nanomachines-but-micro/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonBolt/assemblies/bolt.user.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonBolt/assemblies/bolt.user.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Car1_Torino.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Car1_Torino.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Car2_Torino.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Car2_Torino.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Mine.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Mine.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TruckV1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/TruckV1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TruckV2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/TruckV2.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Vehicles/Truck-1/Truck-1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Vehicles/Truck-1/Truck-1.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +53,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Networking/NetworkCallbacks.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/LocalEvents.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Vehicles/VehicleController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Vehicles/KartController/KartController.cs" />
       </list>
     </option>
   </component>
@@ -92,6 +100,7 @@
       <workItem from="1603365131846" duration="2846000" />
       <workItem from="1603368032649" duration="690000" />
       <workItem from="1603964261899" duration="1795000" />
+      <workItem from="1605266878858" duration="1068000" />
     </task>
     <servers />
   </component>
