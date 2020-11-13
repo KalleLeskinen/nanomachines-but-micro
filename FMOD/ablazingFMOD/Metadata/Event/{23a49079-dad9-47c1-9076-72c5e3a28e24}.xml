@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.00.00">
+<objects serializationModel="Studio.02.01.00">
 	<object class="Event" id="{23a49079-dad9-47c1-9076-72c5e3a28e24}">
 		<property name="name">
 			<value>TestCar BU</value>
@@ -45,6 +45,9 @@
 		</relationship>
 	</object>
 	<object class="MasterTrack" id="{389bc907-926b-4c89-95f3-f0a83cb85b38}">
+		<property name="uiTrackHeight">
+			<value>28</value>
+		</property>
 		<relationship name="mixerGroup">
 			<destination>{b8ac0053-6668-43e8-9bb1-8514d835b8ac}</destination>
 		</relationship>
@@ -61,8 +64,15 @@
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{bffb8cf1-718c-486a-b335-7a153c2a6260}" />
-	<object class="MarkerTrack" id="{23fa7f9e-b0e3-4bff-a4a0-8e4494f8da53}" />
+	<object class="MarkerTrack" id="{23fa7f9e-b0e3-4bff-a4a0-8e4494f8da53}">
+		<property name="uiTrackHeight">
+			<value>100</value>
+		</property>
+	</object>
 	<object class="GroupTrack" id="{24e95e81-17fd-4657-9188-058ccc2d627f}">
+		<property name="uiTrackHeight">
+			<value>100</value>
+		</property>
 		<relationship name="modules">
 			<destination>{c63907de-973f-4872-b337-d9d31526075d}</destination>
 		</relationship>
@@ -71,6 +81,9 @@
 		</relationship>
 	</object>
 	<object class="GroupTrack" id="{a8587804-ec70-4f7d-8991-4619e56b5940}">
+		<property name="uiTrackHeight">
+			<value>100</value>
+		</property>
 		<relationship name="modules">
 			<destination>{4c46ee0a-50a8-462a-b37e-14b4a269246a}</destination>
 		</relationship>
@@ -79,6 +92,9 @@
 		</relationship>
 	</object>
 	<object class="GroupTrack" id="{b71fb72d-6850-4018-b3fb-95d463b30051}">
+		<property name="uiTrackHeight">
+			<value>100</value>
+		</property>
 		<relationship name="modules">
 			<destination>{a09ad64e-67f6-4ee3-9c94-c7acb4684c88}</destination>
 		</relationship>
@@ -87,6 +103,9 @@
 		</relationship>
 	</object>
 	<object class="GroupTrack" id="{cfe20432-26a7-4c1d-89f7-ab06dd47fee0}">
+		<property name="uiTrackHeight">
+			<value>100</value>
+		</property>
 		<relationship name="modules">
 			<destination>{3b262321-58e0-495c-a284-acde10251706}</destination>
 		</relationship>
@@ -95,6 +114,9 @@
 		</relationship>
 	</object>
 	<object class="GroupTrack" id="{124feb27-88f5-4f15-a266-45c45bbd79a2}">
+		<property name="uiTrackHeight">
+			<value>100</value>
+		</property>
 		<relationship name="modules">
 			<destination>{c1cedbc2-0ce8-4a27-b3e0-dbdcfb1ed6e8}</destination>
 		</relationship>
@@ -105,11 +127,11 @@
 	<object class="Timeline" id="{ef801128-9ffd-41ad-b2a2-44ff2dbf2ace}" />
 	<object class="ParameterProxy" id="{c0ca13e3-d53a-4c2c-b3c5-31ccf85e5afe}">
 		<relationship name="modules">
-			<destination>{c63907de-973f-4872-b337-d9d31526075d}</destination>
-			<destination>{a09ad64e-67f6-4ee3-9c94-c7acb4684c88}</destination>
 			<destination>{4c46ee0a-50a8-462a-b37e-14b4a269246a}</destination>
-			<destination>{c1cedbc2-0ce8-4a27-b3e0-dbdcfb1ed6e8}</destination>
 			<destination>{3b262321-58e0-495c-a284-acde10251706}</destination>
+			<destination>{a09ad64e-67f6-4ee3-9c94-c7acb4684c88}</destination>
+			<destination>{c1cedbc2-0ce8-4a27-b3e0-dbdcfb1ed6e8}</destination>
+			<destination>{c63907de-973f-4872-b337-d9d31526075d}</destination>
 		</relationship>
 		<relationship name="preset">
 			<destination>{aa08337c-7c02-423f-bf4b-595e6710bfd5}</destination>
@@ -158,13 +180,12 @@
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{4c46ee0a-50a8-462a-b37e-14b4a269246a}">
-		<property name="length">
-			<value>60</value>
-		</property>
 		<property name="color">
 			<value>Green</value>
 		</property>
-		<property name="name" />
+		<property name="length">
+			<value>60</value>
+		</property>
 		<property name="looping">
 			<value>true</value>
 		</property>
@@ -193,14 +214,14 @@
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{a09ad64e-67f6-4ee3-9c94-c7acb4684c88}">
+		<property name="color">
+			<value>Yellow</value>
+		</property>
 		<property name="start">
 			<value>10</value>
 		</property>
 		<property name="length">
 			<value>90</value>
-		</property>
-		<property name="color">
-			<value>Yellow</value>
 		</property>
 		<property name="looping">
 			<value>true</value>
@@ -270,14 +291,14 @@
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{c1cedbc2-0ce8-4a27-b3e0-dbdcfb1ed6e8}">
+		<property name="color">
+			<value>Red</value>
+		</property>
 		<property name="start">
 			<value>56</value>
 		</property>
 		<property name="length">
 			<value>44</value>
-		</property>
-		<property name="color">
-			<value>Red</value>
 		</property>
 		<property name="pitch">
 			<value>0.5</value>
