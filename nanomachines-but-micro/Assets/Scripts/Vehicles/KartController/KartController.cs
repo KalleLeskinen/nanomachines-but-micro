@@ -13,7 +13,7 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
 
     public KartWheel[] wheels;
 
-
+    private Rigidbody rig;
 
     public float wheelbase;     // Distance between the wheels
     public float rearTrack;     // Track of the wheels
@@ -27,6 +27,9 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
 
 
 
+    private float
+        minRPM = 0,
+        maxRPM = 100;
 
 
     // Boosting
@@ -72,12 +75,17 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
 
     private bool boostFlag = false;
 
+    private void Start()
+    {
+        rig = transform.GetComponent<Rigidbody>();
+    }
+
     void Update()
     {
 
         
         HandleInput();
-
+        EngineAudio(minRPM, maxRPM);
     }
 
 
@@ -385,7 +393,15 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
     }
 
 
+    // Returns RPM of the vehicle
+    public void EngineAudio(float min, float max)
+    {
+        var speed = Mathf.Log10(rig.velocity.sqrMagnitude);
+        float RPM = Mathf.Lerp(min, max, speed/5);
+        var emitter = GetComponent<FMODUnity.StudioEventEmitter>();
+        emitter.SetParameter("RPM", RPM);
 
+    }
 
 
 
