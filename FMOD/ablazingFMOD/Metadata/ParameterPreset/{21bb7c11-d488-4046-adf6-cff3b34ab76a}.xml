@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="ParameterPreset" id="{21bb7c11-d488-4046-adf6-cff3b34ab76a}">
+		<property name="name">
+			<value>Rand</value>
+		</property>
+		<relationship name="folder">
+			<destination>{156c74b5-d094-4d97-9726-cf00471a8c0e}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{30596b19-e6bb-409a-bfa9-d3f18134a47e}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{30596b19-e6bb-409a-bfa9-d3f18134a47e}">
+		<property name="maximum">
+			<value>10</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
