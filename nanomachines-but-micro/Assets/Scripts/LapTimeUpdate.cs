@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class LapTimeUpdate : MonoBehaviour
 {
+
     public Guid id;
+    public string guid_string;
     public List<float> lapTimes;
     public List<int> car_passed_cps;
     public float clock;
@@ -15,11 +17,15 @@ public class LapTimeUpdate : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = gameObject.GetComponent<BoltEntity>();
-        clock = 0;
-        id = Guid.NewGuid(); // generate a guid for the car
-        raceHandler = GameObject.FindGameObjectWithTag("RaceHandler");
-        //car_passed_cps = new List<int>();
+        player = gameObject.GetComponentInParent<BoltEntity>();
+        if (player.IsOwner)
+        {
+            clock = 0;
+            id = Guid.NewGuid(); // generate a guid for the car
+            raceHandler = GameObject.FindGameObjectWithTag("RaceHandler");
+            //car_passed_cps = new List<int>();
+            guid_string = id.ToString();
+        }
     }
 
     private void Update()

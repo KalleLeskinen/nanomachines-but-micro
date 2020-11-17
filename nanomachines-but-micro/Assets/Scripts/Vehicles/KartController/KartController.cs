@@ -13,8 +13,6 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
 
     public KartWheel[] wheels;
 
-
-
     public float wheelbase;     // Distance between the wheels
     public float rearTrack;     // Track of the wheels
     public float turnRadius;    // Turn radius of the vehicle
@@ -123,6 +121,7 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
 
             if (boostBarOn == true && boostFill > 0)
                 BoostMode(boostFill);
+            boostFlag = false;
         }
     }
 
@@ -189,8 +188,6 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
             {
                 w.steerAngle = steeringAngleRight;
             }
-
-
         }
 
     }
@@ -241,7 +238,7 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
         boostRedBackground.SetActive(false);
         boostGreenArea.SetActive(false);
         boostYellowMeter.SetActive(false);
-        boostFlag = false;
+        //boostFlag = false;
 
     }
 

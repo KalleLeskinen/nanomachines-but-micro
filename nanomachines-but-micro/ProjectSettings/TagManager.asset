@@ -11,6 +11,9 @@ TagManager:
   - rocket
   - mine
   - generic_wall
+  - pole_position
+  - second_position
+  - Remote-Player
   layers:
   - Default
   - TransparentFX

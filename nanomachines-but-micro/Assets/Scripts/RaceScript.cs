@@ -6,17 +6,19 @@ using System;
 
 public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
 {
-    [SerializeField]
-    List<GameObject> cars;
-
+    public List<GameObject> cars;
+    private StartingPositions sp_script;
     [SerializeField] string[] sceneguids;
     public GameObject[] checkpoints;
     public int numberOfcheckpoints;
     public int numberOfLaps;
-    private bool starting = false;
+    public bool starting = false;
     [SerializeField]
     GameObject FinishLine;
     float countdownSeconds;
+
+	public Vector3[] _start_pos;
+    
 
     public bool started = false;
     public bool finished = false;
@@ -24,27 +26,59 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
 
     [SerializeField] public List<PlayerData> playerDataList;
 
-    int warmupTime = 5;
+    int warmupTime = 10;
 
     public override void Attached()
     {
-        state.Finished = false;
-        state.RaceStarted = false;
-        state.NumberOfLaps = numberOfLaps;
-        state.NumberOfCheckpoints = numberOfcheckpoints;
-        state.Clock = 0;
-        SetUpTheRace();
-        countdownSeconds = warmupTime;
+        if (BoltNetwork.IsServer)
+        {
+            Debug.Log("a Server was found ");
+            state.Finished = false;
+            state.RaceStarted = false;
+            state.NumberOfLaps = numberOfLaps;
+            state.NumberOfCheckpoints = 0;
+            state.Clock = 0;
+            countdownSeconds = warmupTime;
+            StartCoroutine(IntialiseTheGameIn(warmupTime));
+        }
+        sp_script = GameObject.FindGameObjectWithTag("RaceHandler").GetComponent<StartingPositions>();
+        //state.Finished = false;
+        //state.RaceStarted = false;
+        //state.NumberOfLaps = numberOfLaps;
+        //state.NumberOfCheckpoints = 0;
+        //state.Clock = 0;
+        //SetUpTheRace();
+        //countdownSeconds = warmupTime;
+        //sp_script = GameObject.FindGameObjectWithTag("RaceHandler").GetComponent<StartingPositions>();
     }
 
+    public void StartRace()
+    {
+        Debug.Log("Race = Started!!");
+        foreach (var car in cars)
+        {
+            car.GetComponentInChildren<Rigidbody>().mass = 1500;
+            Debug.Log("UnFroze a car");
+        }
+    }
 
     public override void SimulateOwner()
     {
-        if (Time.frameCount % 60 == 0 && state.RaceStarted && !state.Finished)
+        if (BoltNetwork.IsServer)
         {
-            CheckForWinner();
+            if (Time.frameCount % 60 == 0 && state.RaceStarted && !state.Finished)
+            {
+                CheckForWinner();
+            }
+            if (countdownSeconds>0)
+            {
+                countdownSeconds -= Time.deltaTime;
+            }
+            if (state.Finished)
+            {
+                //TODO: uusi peli äänestys/poistu 
+            }
         }
-        countdownSeconds -= Time.deltaTime;
     }
 
     private void CheckForWinner()
@@ -70,7 +104,12 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
             Debug.Log($"{++i} : {laptime}");
         }
     }
-
+    IEnumerator WaitFor(float time)
+    {
+        //sp_script.SetCarsToStartingPositions();
+        StartRace();
+        yield return new WaitForSeconds(time);
+    }
     IEnumerator IntialiseTheGameIn(int warmupTime)
     {
         starting = true;
@@ -79,8 +118,9 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
         yield return new WaitForSeconds(warmupTime);
         playerDataList = new List<PlayerData>();
         SetUpCheckPoints();
-        GetAllCars();
-        GetSceneGuids();
+        GetAllCars(); // this sets the cars into the "cars" List<GameObject>
+        //GetSceneGuids();
+	    int i = 0;
         foreach (var car in cars)
         {
             List<float> plr_laptimes = GetLapTimeList(car);
@@ -90,24 +130,25 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
             playerDataList.Add(plr);
             Debug.Log($"added {plr_id.ToString().Split('-')[0]}... with {plr_laptimes.Count} laps and {plr_checkpoints.Count} checkpoints passed");
             car.GetComponent<LapTimeUpdate>().clock = 0;
+            car.GetComponent<ToStartingPosition>()._startingPosition = i;
+            car.GetComponent<ToStartingPosition>().PlaceCarInStartPos(sp_script.startingPositions[i]);
+            i++;
         }
-        starting = false;
-        GameObject.FindGameObjectWithTag("FinishLine").GetComponent<BoxCollider>().isTrigger = true;
+        state.RaceStarted = true;
+        yield return new WaitForSeconds(3f);
 
+        StartCoroutine(WaitFor(3f)); // 3-2-1-go step
+        GameObject.FindGameObjectWithTag("FinishLine").GetComponent<BoxCollider>().isTrigger = true;
+        starting = false;
     }
 
     private void SetUpCheckPoints()
     {
         checkpoints = GameObject.FindGameObjectsWithTag("checkpoint");
         numberOfcheckpoints = checkpoints.Length;
+        state.NumberOfCheckpoints = numberOfcheckpoints;
     }
 
-    private void SetUpTheRace()
-    {
-        Debug.Log("SetUpTheRace");
-        StartCoroutine(IntialiseTheGameIn(warmupTime));
-        state.RaceStarted = true;
-    }
 
     private void GetSceneGuids()
     {

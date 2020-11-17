@@ -8,6 +8,7 @@ using Bolt.Utils;
 [BoltGlobalBehaviour]
 public class NetworkCallbacks : GlobalEventListener
 {
+    public Vector3 spawnPos;
     public override void SceneLoadLocalDone(string scene)
     {
         //Camera camera = new Camera();
@@ -16,7 +17,7 @@ public class NetworkCallbacks : GlobalEventListener
         //var spawnPos = new Vector3(Random.Range(-2, 2), 1, -4);
 
         //level_1 spawnpos
-        Vector3 spawnPos = new Vector3(-26.23f, 4.98f, 18.7f);
+         spawnPos = new Vector3(-26.23f, 4.98f, 18.7f);
 
 
         //var spawnInTheCorner = new Vector3(5, 3, -15);

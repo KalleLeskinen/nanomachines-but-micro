@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8220461886486678039}
   - component: {fileID: 8220461886486678037}
   - component: {fileID: 8220461886486678059}
+  - component: {fileID: 6034852110591636154}
   m_Layer: 0
   m_Name: Race_Handler
   m_TagString: RaceHandler
@@ -114,7 +115,9 @@ MonoBehaviour:
   checkpoints: []
   numberOfcheckpoints: 0
   numberOfLaps: 0
+  starting: 0
   FinishLine: {fileID: 0}
+  _start_pos: []
   started: 0
   finished: 0
   playerDataList: []
@@ -147,3 +150,18 @@ MonoBehaviour:
   _entityBehaviourQueryOption: 0
   _entityPriorityCalculatorQueryOption: 1
   _entityReplicationFilterQueryOption: 1
+--- !u!114 &6034852110591636154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8220461886486678036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4fcadf2d5ec3fa4f97b3149ee95dae6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  max_players: 0
+  players: []
+  playersReady: []
