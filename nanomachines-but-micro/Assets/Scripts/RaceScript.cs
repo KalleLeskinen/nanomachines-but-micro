@@ -8,7 +8,9 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
 {
     [SerializeField]
     List<GameObject> cars;
-
+    [SerializeField] public Vector3[] startingPositions;
+    Vector3 pole_position;
+    Vector3 second_position;
     [SerializeField] string[] sceneguids;
     public GameObject[] checkpoints;
     public int numberOfcheckpoints;
@@ -17,29 +19,67 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
     [SerializeField]
     GameObject FinishLine;
     float countdownSeconds;
+    bool ongoing = false;
 
     public bool started = false;
     public bool finished = false;
     BoltEntity winner;
-
+    private MatchMaker mm_script;
     [SerializeField] public List<PlayerData> playerDataList;
 
     int warmupTime = 5;
 
     public override void Attached()
     {
+        if (BoltNetwork.IsServer)
+        {
+            mm_script = GetComponent<MatchMaker>();
+        }
+        InitStartingPositions();
         state.Finished = false;
         state.RaceStarted = false;
         state.NumberOfLaps = numberOfLaps;
         state.NumberOfCheckpoints = numberOfcheckpoints;
-        state.Clock = 0;
+        state.Clock = 7;
+        state.OnStartTheRace += StartTheRaceHandler;
         SetUpTheRace();
         countdownSeconds = warmupTime;
     }
 
+    private void StartTheRaceHandler()
+    {
+        int i = 0;
+        foreach (var car in cars)
+        {
+            //Transform target = new GameObject().transform;
+            //target.position = mm_script.startingPositions[i];
+            Transform target = CreateTransform(startingPositions[i]);
+
+            BoltEntity player = car.GetComponentInParent<BoltEntity>();
+            Bolt.NetworkTransform player_transform = player.GetState<IVehicleState>().VehicleTransform;
+
+            //Transform target = GameObject.FindGameObjectWithTag("pole_position").transform;
+            player.GetState<IVehicleState>().SetTransforms(player_transform, target);
+
+            car.transform.position = target.position;
+
+            player.GetState<IVehicleState>().SetTransforms(player.GetState<IVehicleState>().VehicleTransform, car.transform);
+            Debug.LogError("START THE RACE HANDLER");
+            i++;
+        }
+    }
 
     public override void SimulateOwner()
     {
+        if (BoltNetwork.IsServer)
+        {
+            state.Clock -= Time.deltaTime;
+        }
+        if (state.Clock < 0 && !ongoing)
+        {
+            state.StartTheRace();
+            ongoing = true;
+        }
         if (Time.frameCount % 60 == 0 && state.RaceStarted && !state.Finished)
         {
             CheckForWinner();
@@ -104,6 +144,7 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
 
     private void SetUpTheRace()
     {
+        
         Debug.Log("SetUpTheRace");
         StartCoroutine(IntialiseTheGameIn(warmupTime));
         state.RaceStarted = true;
@@ -192,5 +233,32 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
             GUI.Box(new Rect((Screen.width / 2) / 2, (Screen.height / 2)/2, Screen.width / 4, 30), theString);
         }
     }
+    public Transform CreateTransform(Vector3 position)
+    {
+        GameObject helper = new GameObject();
+        helper.transform.position = position;
+        return helper.transform;
+    }
+
+    private void InitStartingPositions()
+    {
+        startingPositions = new Vector3[6];
+        Debug.Log("#232 InitStartingPositions");
+        pole_position = GameObject.FindGameObjectWithTag("pole_position").transform.position;
+        second_position = GameObject.FindGameObjectWithTag("second_position").transform.position;
+        startingPositions[0] = pole_position;
+        startingPositions[1] = second_position;
+        int j = 1;
+        for (int i = 2; i < 6; i++)
+        {
+            if (i % 2 == 0)
+                startingPositions[i] = startingPositions[i - 2] + new Vector3(0, 0, 10.5f);
+            else
+                startingPositions[i] += startingPositions[i - 2] + new Vector3(0, 0, 10.5f);
+        }
+        //this is for level_1
+    }
+
+
 }
 
