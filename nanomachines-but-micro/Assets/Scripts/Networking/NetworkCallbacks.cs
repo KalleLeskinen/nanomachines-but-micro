@@ -3,36 +3,38 @@ using System.Collections.Generic;
 using UnityEngine;
 using Bolt;
 using Bolt.Utils;
+using UnityEngine.SceneManagement;
 
 
 [BoltGlobalBehaviour]
 public class NetworkCallbacks : GlobalEventListener
 {
+    //private GameObject[] players;
+    private void Awake()
+    {
+        //players = new GameObject[6];
+    }
     public override void SceneLoadLocalDone(string scene)
     {
-        //Camera camera = new Camera();
-        // LocalEvents.Instance.OnCarInstantiate += 
-        //Random position on table
-        //var spawnPos = new Vector3(Random.Range(-2, 2), 1, -4);
+        if (SceneManager.GetActiveScene().name == "Level_1")
+        {
+            //players = GameObject.FindGameObjectsWithTag("Player");
 
-        //level_1 spawnpos
-        Vector3 spawnPos = new Vector3(-26.23f, 4.98f, 18.7f);
+            //Debug.Log($"");
+            //level_1 spawnpos
+            Vector3 spawnPos = new Vector3(-26.23f, 4.98f, 18.7f);
 
 
-        //var spawnInTheCorner = new Vector3(5, 3, -15);
-        PrefabId[] cars = { BoltPrefabs.Car1_Torino, BoltPrefabs.Car2_Torino, BoltPrefabs.TruckV1, BoltPrefabs.TruckV2 };
-        //Instantiate the player vehicle
-        //BoltNetwork.Instantiate(cars[Random.Range(0, cars.Length)], spawnInTheCorner, Quaternion.identity);
+            //var spawnInTheCorner = new Vector3(5, 3, -15);
+            PrefabId[] cars = { BoltPrefabs.Car1_Torino, BoltPrefabs.Car2_Torino, BoltPrefabs.TruckV1, BoltPrefabs.TruckV2 };
+            //Instantiate the player vehicle
+            //BoltNetwork.Instantiate(cars[Random.Range(0, cars.Length)], spawnInTheCorner, Quaternion.identity);
 
-        //NEW PHYSICS CARS!
 
-        BoltEntity car = BoltNetwork.Instantiate(BoltPrefabs.Truck_1);
-        car.transform.position = spawnPos;
-
-        //PlayerCamera.Instantiate();
-        //Tehkää prefab kamerasta, johon post-processingit yms.
-        //if entity.isOwner??
-        //LocalEvents.Instance.CameraInstantiate(newCar);
+            //NEW PHYSICS CARS!
+            BoltEntity car = BoltNetwork.Instantiate(BoltPrefabs.Truck_1);
+            car.transform.position = spawnPos;
+        }
 
     }
 }
