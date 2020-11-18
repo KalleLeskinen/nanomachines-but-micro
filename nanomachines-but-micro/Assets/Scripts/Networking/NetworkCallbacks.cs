@@ -32,14 +32,15 @@ public class NetworkCallbacks : GlobalEventListener
         //car.transform.position = matchmaker_script.startingPositions[0];
         //car.transform.position = matchmaker_script.startingPositions[0];
 
+
         var joinedRoomEvent = JoinedRoom.Create();
         joinedRoomEvent.playerEntity = car;
         joinedRoomEvent.Send();
 
-        var setCarToStartPosEvent = SetCarToStartPosEvent.Create();
-        setCarToStartPosEvent.playerEntity = car;
-        setCarToStartPosEvent.StartingPos = 0;
-        setCarToStartPosEvent.Send();
+        //var setCarToStartPosEvent = SetCarToStartPosEvent.Create();
+        //setCarToStartPosEvent.playerEntity = car;
+        //setCarToStartPosEvent.StartingPos = 0;
+        //setCarToStartPosEvent.Send();
 
         //car.transform.LookAt(new Vector3(1,0,0));
 

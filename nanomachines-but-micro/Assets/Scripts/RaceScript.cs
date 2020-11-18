@@ -4,7 +4,7 @@ using UnityEngine;
 using Bolt;
 using System;
 
-public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
+public class RaceScript : EntityBehaviour<IStateOfRace>
 {
     [SerializeField]
     List<GameObject> cars;
@@ -48,24 +48,20 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
 
     private void StartTheRaceHandler()
     {
-        int i = 0;
         foreach (var car in cars)
         {
+            car.GetComponentInParent<BoltEntity>().GetState<IVehicleState>().SpawnCar();
             //Transform target = new GameObject().transform;
             //target.position = mm_script.startingPositions[i];
-            Transform target = CreateTransform(startingPositions[i]);
-
-            BoltEntity player = car.GetComponentInParent<BoltEntity>();
-            Bolt.NetworkTransform player_transform = player.GetState<IVehicleState>().VehicleTransform;
-
-            //Transform target = GameObject.FindGameObjectWithTag("pole_position").transform;
-            player.GetState<IVehicleState>().SetTransforms(player_transform, target);
-
-            car.transform.position = target.position;
-
-            player.GetState<IVehicleState>().SetTransforms(player.GetState<IVehicleState>().VehicleTransform, car.transform);
-            Debug.LogError("START THE RACE HANDLER");
-            i++;
+            //BoltEntity player = car.GetComponentInParent<BoltEntity>();
+            //int startPos = player.GetState<IVehicleState>().startingPosition
+            //Transform target = CreateTransform(startingPositions[startPos]);
+            //Bolt.NetworkTransform player_transform = player.GetState<IVehicleState>().VehicleTransform
+            ////Transform target = GameObject.FindGameObjectWithTag("pole_position").transform;
+            //player.GetState<IVehicleState>().SetTransforms(player_transform, target
+            //car.transform.position = target.position;
+            //player.GetState<IVehicleState>().SetTransforms(player.GetState<IVehicleState>().VehicleTransform, car.transform);
+            //Debug.LogError("START THE RACE HANDLER");
         }
     }
 

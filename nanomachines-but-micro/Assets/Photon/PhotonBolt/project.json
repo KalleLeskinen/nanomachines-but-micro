@@ -171,6 +171,41 @@
             "ExtrapolationMaxFrames": 9,
             "SnapMagnitude": 10.0
           }
+        },
+        {
+          "Name": "startingPosition",
+          "Enabled": true,
+          "Expanded": true,
+          "ReplicationMode": 2,
+          "Priority": 1,
+          "PropertyType": {
+            "$type": "Bolt.Compiler.PropertyTypeInteger, bolt.compiler",
+            "MaxValue": 255
+          },
+          "AssetSettings": {
+            "$type": "Bolt.Compiler.PropertyStateSettings, bolt.compiler",
+            "ExtrapolationErrorTolerance": 0.25,
+            "_ExtrapolationCorrectionFrames": 6,
+            "ExtrapolationMaxFrames": 9,
+            "SnapMagnitude": 10.0
+          }
+        },
+        {
+          "Name": "SpawnCar",
+          "Enabled": true,
+          "Expanded": true,
+          "ReplicationMode": 2,
+          "Priority": 1,
+          "PropertyType": {
+            "$type": "Bolt.Compiler.PropertyTypeTrigger, bolt.compiler"
+          },
+          "AssetSettings": {
+            "$type": "Bolt.Compiler.PropertyStateSettings, bolt.compiler",
+            "ExtrapolationErrorTolerance": 0.25,
+            "_ExtrapolationCorrectionFrames": 6,
+            "ExtrapolationMaxFrames": 9,
+            "SnapMagnitude": 10.0
+          }
         }
       ],
       "PacketMaxBits": 1024,
@@ -285,13 +320,14 @@
         {
           "Name": "ArrayOfPlayers",
           "Enabled": true,
+          "Expanded": true,
           "ReplicationMode": 1,
           "Priority": 1,
           "PropertyType": {
             "$type": "Bolt.Compiler.PropertyTypeArray, bolt.compiler",
-            "ElementCount": 8,
+            "ElementCount": 6,
             "ElementType": {
-              "$type": "Bolt.Compiler.PropertyTypeObject, bolt.compiler"
+              "$type": "Bolt.Compiler.PropertyTypeEntity, bolt.compiler"
             }
           },
           "AssetSettings": {
@@ -386,7 +422,6 @@
         {
           "Name": "Clock",
           "Enabled": true,
-          "Expanded": true,
           "ReplicationMode": 3,
           "Priority": 1,
           "PropertyType": {
@@ -412,6 +447,7 @@
         {
           "Name": "ArrayOfCheckpoints",
           "Enabled": true,
+          "Expanded": true,
           "ReplicationMode": 1,
           "Priority": 1,
           "PropertyType": {
