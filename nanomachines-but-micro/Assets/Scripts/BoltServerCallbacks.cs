@@ -24,21 +24,27 @@ public class BoltServerCallbacks : Bolt.GlobalEventListener
     {
         var spawnEvent = SpawnOnJoin.Create();
         spawnEvent.id = players.Count;
+
         spawnEvent.Send();
         
+
         players.Add(players.Count);
         Debug.Log("#213" + connection.ToString());
+
+
     }
 
     public override void OnEvent(SpawnOnJoin evnt)
     {
-        SpawnPlayer(evnt.id);
+        var car = SpawnPlayer(evnt.id);
+        car.AssignControl(evnt.RaisedBy);
     }
 
-    private void SpawnPlayer(int id)
+    private BoltEntity SpawnPlayer(int id)
     {
         BoltEntity car = BoltNetwork.Instantiate(BoltPrefabs.Truck_1);
         car.transform.position = new Vector3(id*2, id, id*2);
+        return car;
     }
 
 

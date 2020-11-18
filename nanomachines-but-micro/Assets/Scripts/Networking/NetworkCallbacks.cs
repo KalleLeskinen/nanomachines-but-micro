@@ -33,7 +33,7 @@ public class NetworkCallbacks : GlobalEventListener
 
             //NEW PHYSICS CARS!
             BoltEntity car = BoltNetwork.Instantiate(BoltPrefabs.Truck_1);
-            car.transform.position = spawnPos;
+            //car.transform.position = spawnPos;
         }
 
     }
