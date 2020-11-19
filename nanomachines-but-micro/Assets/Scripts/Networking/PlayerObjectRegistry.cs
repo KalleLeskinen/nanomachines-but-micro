@@ -10,8 +10,7 @@ public static class PlayerObjectRegistry
 
     static PlayerObject CreatePlayer(BoltConnection connection)
     {
-        var player = new PlayerObject();
-        player.connection = connection;
+        var player = new PlayerObject {connection = connection};
 
         if (player.connection != null)
         {
