@@ -35,6 +35,10 @@ public class NetworkCallbacks : GlobalEventListener
 
     public override void ControlOfEntityGained(BoltEntity entity)
     {
-        PlayerCamera.instance.SetTarget(entity);
+
+        var testi = new BoltEntity();
+
+
+        PlayerCamera.instance.SetTarget(testi);
     }
 }
