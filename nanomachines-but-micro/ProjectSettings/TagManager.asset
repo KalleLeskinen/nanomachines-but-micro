@@ -11,6 +11,12 @@ TagManager:
   - rocket
   - mine
   - generic_wall
+  - 1_pos
+  - 2_pos
+  - 3_pos
+  - 4_pos
+  - 5_pos
+  - 6_pos
   layers:
   - Default
   - TransparentFX
