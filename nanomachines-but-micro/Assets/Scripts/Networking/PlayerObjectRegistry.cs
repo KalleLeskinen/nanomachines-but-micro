@@ -2,17 +2,47 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerObjectRegistry : MonoBehaviour
+public static class PlayerObjectRegistry
 {
-    // Start is called before the first frame update
-    void Start()
+    static List<PlayerObject> players = new List<PlayerObject>();
+    
+    public static IEnumerable<PlayerObject> AllPlayers => players;
+
+    static PlayerObject CreatePlayer(BoltConnection connection)
     {
-        
+        var player = new PlayerObject();
+        player.connection = connection;
+
+        if (player.connection != null)
+        {
+            player.connection.UserData = player;
+        }
+
+        players.Add(player);
+
+        return player;
     }
 
-    // Update is called once per frame
-    void Update()
+    public static PlayerObject ServerPlayer
     {
-        
+        get { return players.Find(player => player.IsServer); }
+    }
+
+    public static PlayerObject CreateServerPlayer()
+    {
+        return CreatePlayer(null);
+    }
+
+    public static PlayerObject CreateClientPlayer(BoltConnection connection)
+    {
+        return CreatePlayer(connection);
+    }
+
+    public static PlayerObject GetPlayer(BoltConnection connection)
+    {
+        if (connection == null)
+            return ServerPlayer;
+
+        return (PlayerObject) connection.UserData;
     }
 }
