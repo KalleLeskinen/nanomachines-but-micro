@@ -29,16 +29,9 @@ public class NetworkCallbacks : GlobalEventListener
             //NEW PHYSICS CARS!
             //BoltEntity car = BoltNetwork.Instantiate(BoltPrefabs.Truck_1);
             //car.transform.position = spawnPos;
-            PlayerCamera.Instantiate();
+            
         }
     }
 
-    public override void ControlOfEntityGained(BoltEntity entity)
-    {
 
-        var testi = new BoltEntity();
-
-
-        PlayerCamera.instance.SetTarget(testi);
-    }
 }

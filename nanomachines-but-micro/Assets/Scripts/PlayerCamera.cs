@@ -5,9 +5,6 @@ using UnityEngine;
 
 public class PlayerCamera : BoltSingletonPrefab<PlayerCamera>
 {
-    private float 
-        startFOV,
-        startDis;
     
     public float smoothing;
     
@@ -25,7 +22,6 @@ public class PlayerCamera : BoltSingletonPrefab<PlayerCamera>
 
     private void FixedUpdate()
     {
-        //2
         //Getting vector to player
         Vector3 lookDir =  GameObject.FindGameObjectWithTag("Player").transform.position - transform.position;
 
