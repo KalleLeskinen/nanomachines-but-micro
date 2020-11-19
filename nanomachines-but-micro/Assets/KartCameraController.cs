@@ -17,7 +17,9 @@ public class KartCameraController : MonoBehaviour
 
     private void Start()
     {
+
         player = GameObject.FindGameObjectWithTag("Player");
+
         startPos = transform.position;
         
         
@@ -53,7 +55,6 @@ public class KartCameraController : MonoBehaviour
         // Rotation
 
         Vector3 lookDir = player.transform.position - transform.position;
-
 
         Quaternion rotDir = Quaternion.LookRotation(lookDir);
 
