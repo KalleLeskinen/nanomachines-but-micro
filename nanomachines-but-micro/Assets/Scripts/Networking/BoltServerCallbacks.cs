@@ -23,7 +23,7 @@ public class BoltServerCallbacks : Bolt.GlobalEventListener
 
     public override void SceneLoadLocalDone(string scene)
     {
-        
+        PlayerObjectRegistry.ServerPlayer.Spawn();
         // var spawnEvent = SpawnOnJoin.Create();
         // spawnEvent.id = 0;
         // spawnEvent.Send();
@@ -33,7 +33,7 @@ public class BoltServerCallbacks : Bolt.GlobalEventListener
     }
     public override void SceneLoadRemoteDone(BoltConnection connection)
     {
-        
+        PlayerObjectRegistry.GetPlayer(connection).Spawn();
         // var spawnEvent = SpawnOnJoin.Create();
         // spawnEvent.id = players.Count;
         //
