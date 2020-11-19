@@ -22,13 +22,9 @@
     <list default="true" id="54e1185e-b36a-48be-80e4-7b3ad73de5e3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.nanomachines-but-micro/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.nanomachines-but-micro/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.nanomachines-but-micro/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.nanomachines-but-micro/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonBolt/assemblies/bolt.user.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonBolt/assemblies/bolt.user.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Car1_Torino.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Car1_Torino.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Car2_Torino.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Car2_Torino.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Mine.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Mine.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TruckV1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/TruckV1.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TruckV2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/TruckV2.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Vehicles/Truck-1/Truck-1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Vehicles/Truck-1/Truck-1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BoltServerCallbacks.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BoltServerCallbacks.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fmod_editor.log" beforeDir="false" afterPath="$PROJECT_DIR$/fmod_editor.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +36,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@8.2.0/Runtime/Data/UniversalRenderPipelineAsset.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Networking/PlayerObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../UnityProjects/RuildAndBun/Assets/Scenes/Tommi/Scripts/PlayerInventory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@8.2.0/Runtime/UniversalAdditionalCameraData.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../UnityProjects/RuildAndBun/Assets/Scenes/Tommi/Scripts/GameEvents.cs" root0="SKIP_HIGHLIGHTING" />
@@ -54,6 +51,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/LocalEvents.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Vehicles/VehicleController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Vehicles/KartController/KartController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Networking/PlayerObject.cs" />
       </list>
     </option>
   </component>
@@ -69,6 +67,14 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$USER_HOME$/racebuild/build2\nanomachines-but-micro.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\SONNI\racebuild\build2" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
@@ -101,6 +107,7 @@
       <workItem from="1603368032649" duration="690000" />
       <workItem from="1603964261899" duration="1795000" />
       <workItem from="1605266878858" duration="1068000" />
+      <workItem from="1605786685194" duration="783000" />
     </task>
     <servers />
   </component>
@@ -133,5 +140,9 @@
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
     <state x="154" y="92" width="1674" height="896" key="VCS.FileHistoryDialog/62.0.1858.1080/-1538.174.1538.900@62.0.1858.1080" timestamp="1603966067090" />
+    <state x="647" y="250" key="run.anything.popup" timestamp="1605787023239">
+      <screen x="62" y="0" width="1858" height="1080" />
+    </state>
+    <state x="647" y="250" key="run.anything.popup/62.0.1858.1080/-1538.174.1538.900@62.0.1858.1080" timestamp="1605787023239" />
   </component>
 </project>
