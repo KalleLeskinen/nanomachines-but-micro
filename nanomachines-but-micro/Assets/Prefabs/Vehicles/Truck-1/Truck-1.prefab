@@ -837,6 +837,7 @@ GameObject:
   - component: {fileID: 2719605435426130466}
   - component: {fileID: 857421673}
   - component: {fileID: 7581918767104958202}
+  - component: {fileID: 5384252792319068552}
   m_Layer: 0
   m_Name: Truck_Body
   m_TagString: Player
@@ -1048,6 +1049,18 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 0
   OverrideMaxDistance: 0
+--- !u!114 &5384252792319068552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5390181267357601582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 072f45eafba7f634489450d04de93d58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5804628764685650375
 GameObject:
   m_ObjectHideFlags: 0

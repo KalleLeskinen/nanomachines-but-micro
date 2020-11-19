@@ -17,6 +17,7 @@ TagManager:
   - 4_pos
   - 5_pos
   - 6_pos
+  - Remote-Player
   layers:
   - Default
   - TransparentFX

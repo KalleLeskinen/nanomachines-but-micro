@@ -8,8 +8,10 @@ using Bolt.Utils;
 [BoltGlobalBehaviour]
 public class NetworkCallbacks : GlobalEventListener
 {
+    
     public override void SceneLoadLocalDone(string scene)
     {
+
         //Camera camera = new Camera();
         // LocalEvents.Instance.OnCarInstantiate += 
         //Random position on table
@@ -27,12 +29,22 @@ public class NetworkCallbacks : GlobalEventListener
         //NEW PHYSICS CARS!
 
         BoltEntity car = BoltNetwork.Instantiate(BoltPrefabs.Truck_1);
-        car.transform.position = spawnPos;
+        car.GetState<IVehicleState>().SpawnPointID = GameObject.FindGameObjectsWithTag("Player").Length;
+        string tagToFind = (car.GetState<IVehicleState>().SpawnPointID + 1).ToString() + "_pos";
+        Debug.Log("Tag to find #333 " + tagToFind);
+        car.transform.position = GameObject.FindGameObjectWithTag(tagToFind).transform.position;
+        
 
         //PlayerCamera.Instantiate();
         //Tehkää prefab kamerasta, johon post-processingit yms.
         //if entity.isOwner??
         //LocalEvents.Instance.CameraInstantiate(newCar);
+    }
 
+    public override void OnEvent(RespawnCar evnt)
+    {
+        int spawnIndice = evnt.SpawnPosition;
+        BoltEntity playerEntity = evnt.playerEntity;
+        Debug.Log(playerEntity.ToString() + " should spawn at pos: " + spawnIndice);
     }
 }
