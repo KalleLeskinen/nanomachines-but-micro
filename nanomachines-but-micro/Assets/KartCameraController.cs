@@ -54,9 +54,10 @@ public class KartCameraController : MonoBehaviour
 
         Vector3 lookDir = player.transform.position - transform.position;
 
+
         Quaternion rotDir = Quaternion.LookRotation(lookDir);
 
-        transform.localRotation= Quaternion.Lerp(transform.rotation, rotDir, rotationSmoothing * Time.deltaTime);
+        transform.localRotation = Quaternion.Lerp(transform.rotation, rotDir, rotationSmoothing * Time.deltaTime);
 
     
     }
