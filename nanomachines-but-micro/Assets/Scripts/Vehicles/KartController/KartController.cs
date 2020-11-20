@@ -83,7 +83,7 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
     void Update()
     {
 
-        
+
         HandleInput();
         EngineAudio(minRPM, maxRPM);
     }
@@ -91,7 +91,7 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
 
     public override void Attached()
     {
-        if(entity.IsOwner)
+        if (entity.IsOwner)
         {
 
             transform.gameObject.tag = "Player";
@@ -119,7 +119,7 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
     {
         SetSteeringAngle();
 
-        if(boostFlag)
+        if (boostFlag)
         {
             //mittari päälle
             boostRedBackground.SetActive(true);
@@ -228,10 +228,10 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
             }
             yield return null;
         }
-    
+
     }
 
-    
+
 
 
     //Reset boost difficulty to default
@@ -397,7 +397,7 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
     public void EngineAudio(float min, float max)
     {
         var speed = Mathf.Log10(rig.velocity.sqrMagnitude);
-        float RPM = Mathf.Lerp(min, max, speed/5);
+        float RPM = Mathf.Lerp(min, max, speed / 5);
         var emitter = GetComponent<FMODUnity.StudioEventEmitter>();
         emitter.SetParameter("RPM", RPM);
 

@@ -31,6 +31,11 @@ public class NetworkCallbacks : GlobalEventListener
             //car.transform.position = spawnPos;
             
         }
+
+        foreach(BoltEntity be in BoltNetwork.Entities)
+        {
+            Debug.Log(be.name);
+        }
     }
 
 

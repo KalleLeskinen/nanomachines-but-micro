@@ -13,20 +13,6 @@ public class PlayerObject
 
     public void Spawn()
     {
-        if (!entity)
-        {
-            entity = BoltNetwork.Instantiate(BoltPrefabs.Truck_1, new Vector3(0, 0, 0), Quaternion.identity);
-
-            if (IsServer)
-            {
-                entity.TakeControl();
-            }
-            else
-            {
-                entity.AssignControl(connection);
-            }
-        }
-
-        entity.transform.position = new Vector3(0,0,0);
+       
     }
 }
