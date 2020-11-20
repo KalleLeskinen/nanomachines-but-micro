@@ -8,7 +8,7 @@ using Bolt.Utils;
 [BoltGlobalBehaviour]
 public class NetworkCallbacks : GlobalEventListener
 {
-    int connectcount = 1;
+    int connectcount = 2;
     public static List<BoltEntity> players;
     public override void SceneLoadLocalDone(string scene)
     {
