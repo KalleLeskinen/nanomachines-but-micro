@@ -75,5 +75,4 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 # Fmod vittuilijat
-/[Aa]ssets/[Pp]lugins/[Ff]MOD/lib/win/x86_64/fmodstudiol.dll
 fmod_editor.log
