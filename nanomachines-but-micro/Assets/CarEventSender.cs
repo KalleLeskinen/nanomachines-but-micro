@@ -5,11 +5,8 @@ using UnityEngine;
 public class CarEventSender : Bolt.EntityBehaviour<IVehicleState>
 {
     bool eventFlag = false;
+    bool startTheGameFlag = false;
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     private void FixedUpdate()
     {
@@ -21,6 +18,12 @@ public class CarEventSender : Bolt.EntityBehaviour<IVehicleState>
             SpawnEvent.Send();
             eventFlag = false;
         }
+        if (startTheGameFlag)
+        {
+            var startGame = StartTheGame.Create();
+            startGame.Send();
+            startTheGameFlag = false;
+        }
     }
 
     // Update is called once per frame
@@ -29,6 +32,10 @@ public class CarEventSender : Bolt.EntityBehaviour<IVehicleState>
         if (Input.GetKeyDown(KeyCode.R) && Input.GetKeyDown(KeyCode.T))
         {
             eventFlag = true;
+        }
+        if (Input.GetKeyDown(KeyCode.F) && BoltNetwork.IsServer)
+        {
+            startTheGameFlag = true;
         }
     }
 }

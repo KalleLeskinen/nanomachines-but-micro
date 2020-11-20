@@ -1070,7 +1070,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6612972793311662973}
-  - component: {fileID: 1725755500603101652}
+  - component: {fileID: 6308140656531591691}
   m_Layer: 0
   m_Name: Truck-1
   m_TagString: Untagged
@@ -1094,7 +1094,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1725755500603101652
+--- !u!114 &6308140656531591691
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

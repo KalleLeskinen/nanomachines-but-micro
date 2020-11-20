@@ -51,7 +51,7 @@ MonoBehaviour:
   debugPlayAsServer: 1
   showDebugInfo: 1
   overrideTimeScale: 1
-  debugEditorMode: 1
+  debugEditorMode: 0
   consoleToggleKey: 9
   consoleVisibleByDefault: 1
   compilationWarnLevel: 4
