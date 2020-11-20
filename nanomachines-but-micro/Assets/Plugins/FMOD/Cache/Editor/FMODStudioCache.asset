@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: ../FMOD/ablazingFMOD/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637411558930058888
+  lastModified: 637407017259156143
   LoadResult: 0
   FileSizes:
   - Name: 
@@ -35,6 +35,24 @@ MonoBehaviour:
   Path: ../FMOD/ablazingFMOD/Build/Desktop/CarBank.bank
   SubDir: 
   lastModified: 637407017259076349
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
+--- !u!114 &-7605063118234247431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: ../FMOD/ablazingFMOD/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637407017259106280
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -161,6 +179,23 @@ MonoBehaviour:
   lastModified: 637411558930048894
   LoadResult: 0
   FileSizes: []
+  Exists: 0
+--- !u!114 &-6017367848144052148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/TestCar/RPM
+  m_EditorClassIdentifier: 
+  Name: RPM
+  Min: 0
+  Max: 100
+  Default: 0
   Exists: 1
 --- !u!114 &-6011564706385591476
 MonoBehaviour:
@@ -232,6 +267,24 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &-4577556769281524892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/CarBank.bank
+  m_EditorClassIdentifier: 
+  Path: ../FMOD/ablazingFMOD/Build/Desktop/CarBank.bank
+  SubDir: 
+  lastModified: 637407017259076349
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-4446555481002070123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -424,16 +477,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: -9065940741026393845}
-  - {fileID: 6522433253329230348}
-  - {fileID: -6071772776262791679}
+  - {fileID: -4577556769281524892}
+  - {fileID: -7605063118234247431}
   EditorEvents:
   - {fileID: 232551071508192883}
   EditorParameters: []
   MasterBanks:
-  - {fileID: -6071772776262791679}
+  - {fileID: -7605063118234247431}
   StringsBanks:
   - {fileID: -9065940741026393845}
-  stringsBankWriteTime: 637411558930058888
+  stringsBankWriteTime: 637407017259156143
   cacheVersion: 3
 --- !u!114 &232551071508192883
 MonoBehaviour:
@@ -450,13 +503,13 @@ MonoBehaviour:
   Path: event:/TestCar
   guid: 70d8f9a245682a4d813ca7f4e597203b
   Banks:
-  - {fileID: 6522433253329230348}
-  - {fileID: -6071772776262791679}
+  - {fileID: -4577556769281524892}
+  - {fileID: -7605063118234247431}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 7869745030902275782}
+  - {fileID: -6017367848144052148}
   MinDistance: 0
   MaxDistance: 0
   Length: 0
@@ -551,6 +604,23 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &3610874628759275753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/TestCar/RPM
+  m_EditorClassIdentifier: 
+  Name: RPM
+  Min: 0
+  Max: 100
+  Default: 0
+  Exists: 0
 --- !u!114 &4393170289633945785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -673,7 +743,7 @@ MonoBehaviour:
   lastModified: 637411558930048894
   LoadResult: 0
   FileSizes: []
-  Exists: 1
+  Exists: 0
 --- !u!114 &6867741018556029613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -725,4 +795,4 @@ MonoBehaviour:
   Min: 0
   Max: 100
   Default: 0
-  Exists: 1
+  Exists: 0

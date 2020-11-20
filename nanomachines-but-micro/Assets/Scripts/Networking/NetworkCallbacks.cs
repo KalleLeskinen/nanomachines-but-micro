@@ -8,25 +8,12 @@ using Bolt.Utils;
 [BoltGlobalBehaviour]
 public class NetworkCallbacks : GlobalEventListener
 {
-    int connectcount = 2;
-    public static List<BoltEntity> players;
     public override void SceneLoadLocalDone(string scene)
     {
-        if (BoltNetwork.IsServer && scene == "Level_1")
-        {
-            players = new List<BoltEntity>();
-            Debug.Log("#411: player list was created by the host:");
-        }
-        var list = BoltNetwork.Clients;
-        foreach (var obj in list)
-        {
-            Debug.Log("#2009" + obj.ConnectionId);
-            connectcount++;
-            Debug.Log("#2009 cc:" + connectcount);
-        }
+
         //level_1 spawnpos
         //Vector3 spawnPos = new Vector3(-26.23f, 4.98f, 18.7f);
-        GameObject startpos = GameObject.FindGameObjectWithTag($"{connectcount}_pos");
+        GameObject startpos = GameObject.FindGameObjectWithTag($"{BoltServerIncrementer.connectCount}_pos");
         GameObject serverPos = GameObject.FindGameObjectWithTag("server_pos");
         //var spawnInTheCorner = new Vector3(5, 3, -15);
         PrefabId[] cars = { BoltPrefabs.Car1_Torino, BoltPrefabs.Car2_Torino, BoltPrefabs.TruckV1, BoltPrefabs.TruckV2 };
@@ -49,20 +36,18 @@ public class NetworkCallbacks : GlobalEventListener
 
     public override void Connected(BoltConnection connection)
     {
-        Debug.Log("#411: player was added to the list. connection:");
+        BoltServerIncrementer.connectCount++;
     }
 
     public override void OnEvent(RespawnCar evnt)
     {
         int spawnIndex = evnt.SpawnPosition;
         BoltEntity playerEntity = evnt.playerEntity;
-        Debug.Log(playerEntity.ToString() + " should spawn at pos: " + spawnIndex);
     }
 
     public override void OnEvent(JoinedRoom evnt)
     {
         players.Add(evnt.playerEntity);
-        Debug.Log("#411 " + players.Count);
     }
 
     //public override void OnEvent(StartTheGame evnt)
