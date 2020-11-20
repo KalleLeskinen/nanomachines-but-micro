@@ -17,10 +17,12 @@ public class NetworkCallbacks : GlobalEventListener
             players = new List<BoltEntity>();
             Debug.Log("#411: player list was created by the host:");
         }
-        var list = BoltNetwork.Connections;
+        var list = BoltNetwork.Clients;
         foreach (var obj in list)
         {
+            Debug.Log("#2009" + obj.ConnectionId);
             connectcount++;
+            Debug.Log("#2009 cc:" + connectcount);
         }
         //level_1 spawnpos
         //Vector3 spawnPos = new Vector3(-26.23f, 4.98f, 18.7f);
