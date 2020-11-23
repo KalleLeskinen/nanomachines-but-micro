@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using Bolt;
 using Bolt.Utils;
-
+using System;
 
 [BoltGlobalBehaviour]
 public class NetworkCallbacks : GlobalEventListener
 {
+    GameObject raceHandler;
+    int spawnpos;
     public override void SceneLoadLocalDone(string scene)
-    {
-
-        //level_1 spawnpos
-        //Vector3 spawnPos = new Vector3(-26.23f, 4.98f, 18.7f);
-        GameObject startpos = GameObject.FindGameObjectWithTag($"{BoltServerIncrementer.connectCount}_pos");
+    { 
+        //GameObject startpos = GameObject.FindGameObjectWithTag($"{BoltServerIncrementer.GetNextConnectCount()}_pos");
         GameObject serverPos = GameObject.FindGameObjectWithTag("server_pos");
+
         //var spawnInTheCorner = new Vector3(5, 3, -15);
         PrefabId[] cars = { BoltPrefabs.Car1_Torino, BoltPrefabs.Car2_Torino, BoltPrefabs.TruckV1, BoltPrefabs.TruckV2 };
         //Instantiate the player vehicle
@@ -25,43 +25,37 @@ public class NetworkCallbacks : GlobalEventListener
         {
             if (BoltNetwork.IsServer)
             {
-                BoltEntity serverCar = BoltNetwork.Instantiate(BoltPrefabs.Truck_1, serverPos.transform.position , serverPos.transform.rotation);
-            } else
-            {
-                BoltEntity Car = BoltNetwork.Instantiate(BoltPrefabs.Truck_1, startpos.transform.position, startpos.transform.rotation);
+                BoltEntity serverCar = BoltNetwork.Instantiate(BoltPrefabs.Truck_1, serverPos.transform.position, serverPos.transform.rotation);
+                serverCar.GetComponentInChildren<Rigidbody>().isKinematic = true;
+                serverCar.transform.parent = GameObject.FindGameObjectWithTag("server_pos").transform;
             }
-            //car.GetState<IVehicleState>().SpawnPointID = ++playedNo;
+            else
+            {
+                StartCoroutine(WaitAndSpawn(2));
+
+            }
         }
     }
-
-    public override void Connected(BoltConnection connection)
+    IEnumerator WaitAndSpawn(float time)
     {
-        BoltServerIncrementer.connectCount++;
+        yield return new WaitForSeconds(time);
+        raceHandler = GameObject.FindGameObjectWithTag("RaceHandler");
+        spawnpos = raceHandler.GetComponent<BoltEntity>().GetState<IStateOfRace>().NumberOfPlayers;
+        GameObject startpos = GameObject.FindGameObjectWithTag($"{spawnpos}_pos");
+        BoltEntity Car = BoltNetwork.Instantiate(BoltPrefabs.Truck_1, startpos.transform.position, startpos.transform.rotation);
+        Car.GetComponentInChildren<Rigidbody>().isKinematic = true;
     }
 
-    public override void OnEvent(RespawnCar evnt)
-    {
-        int spawnIndex = evnt.SpawnPosition;
-        BoltEntity playerEntity = evnt.playerEntity;
-    }
 
-    public override void OnEvent(JoinedRoom evnt)
+    public override void OnEvent(StartTheGame evnt)
     {
-        players.Add(evnt.playerEntity);
+        foreach (BoltEntity bE in BoltNetwork.Entities)
+        {
+            if (bE.StateIs<IVehicleState>())
+            {
+                bE.GetComponentInChildren<Rigidbody>().isKinematic = false;
+                bE.gameObject.transform.parent = null;
+            }
+        }
     }
-
-    //public override void OnEvent(StartTheGame evnt)
-    //{
-    //    int playerNumber = 0;
-    //    foreach (BoltEntity bE in BoltNetwork.Entities)
-    //    {
-    //        if (bE.StateIs<IVehicleState>())
-    //        {
-    //            var omistaja = bE.Source;
-    //            Vector3 startpos = GameObject.FindGameObjectWithTag($"{++playerNumber}_pos").transform.position;
-    //            bE.GetState<IVehicleState>().SetTeleport(bE.GetState<IVehicleState>().VehicleTransform);
-    //            bE.GetComponentsInChildren<Transform>()[1].position = startpos;
-    //        }
-    //    }
-    //}
 }

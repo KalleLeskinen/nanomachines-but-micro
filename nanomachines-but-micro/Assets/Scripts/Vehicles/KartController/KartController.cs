@@ -117,6 +117,7 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
 
     void FixedUpdate()
     {
+
         SetSteeringAngle();
 
         if(boostFlag)
@@ -131,6 +132,8 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
 
             if (boostBarOn == true && boostFill > 0)
                 BoostMode(boostFill);
+
+            boostFlag = false;
         }
     }
 
@@ -253,7 +256,6 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
         boostRedBackground.SetActive(false);
         boostGreenArea.SetActive(false);
         boostYellowMeter.SetActive(false);
-        boostFlag = false;
 
     }
 

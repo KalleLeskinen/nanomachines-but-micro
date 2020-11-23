@@ -19,6 +19,8 @@ TagManager:
   - 6_pos
   - Remote-Player
   - server_pos
+  - active_car
+  - starting_grid
   layers:
   - Default
   - TransparentFX
