@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 1052018796058447673}
   - component: {fileID: 4392388598938956192}
   - component: {fileID: 4079118176006889948}
+  - component: {fileID: 3275411622686488052}
   m_Layer: 0
   m_Name: BigBottle
   m_TagString: Untagged
@@ -194,3 +195,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3275411622686488052
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2561860069137022380}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7342981519196042279, guid: c8950bce44d0ec64c957dc42eb00fa06, type: 3}
