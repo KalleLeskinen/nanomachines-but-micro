@@ -38,8 +38,7 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
     public GameObject boost_effect;
 
     public GameObject
-        boostRedBackground,
-        boostGreenArea,
+        boostMeterUI,
         boostYellowMeter;
 
     public Vector3 boostYellowMeterOriginalPosition;
@@ -107,7 +106,7 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
         //SetTransforms tells Bolt to replicate the transform over the network
         state.SetTransforms(state.VehicleTransform, transform);
 
-        boostYellowMeterOriginalPosition = new Vector3(boostYellowMeter.transform.position.x, boostYellowMeter.transform.position.y - 0.694f, boostYellowMeter.transform.position.z);
+        boostYellowMeterOriginalPosition = new Vector3(boostYellowMeter.transform.position.x, boostYellowMeter.transform.position.y, boostYellowMeter.transform.position.z);
     }
 
     public override void SimulateOwner()
@@ -122,8 +121,7 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
         if(boostFlag)
         {
             //mittari päälle
-            boostRedBackground.SetActive(true);
-            boostGreenArea.SetActive(true);
+            boostMeterUI.SetActive(true);
             boostYellowMeter.SetActive(true);
 
             if (boostBarOn == false)
@@ -214,7 +212,7 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
         while (boostBarOn)
         {
             // liikuttaa keltaista mittaria
-            boostYellowMeter.transform.Translate(new Vector3(1.6f * Time.deltaTime, 0, 0));
+            boostYellowMeter.transform.Translate(new Vector3(250f * Time.deltaTime, 0, 0));
 
             // boost bar on ehkä tähän 
             fill += Time.deltaTime * fillRate;
@@ -250,9 +248,8 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
         boostFill = 0;
 
         //mittari pois päältä
-        boostRedBackground.SetActive(false);
-        boostGreenArea.SetActive(false);
-        boostYellowMeter.SetActive(false);
+        boostMeterUI.SetActive(false);
+        //boostYellowMeter.SetActive(false);
         boostFlag = false;
 
     }
