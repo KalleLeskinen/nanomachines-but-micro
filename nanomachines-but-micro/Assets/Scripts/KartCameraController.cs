@@ -15,6 +15,7 @@ public class KartCameraController : MonoBehaviour
 
 
     private GameObject player;
+    private GameObject cam;
     private GameObject camPos;
 
 
@@ -33,13 +34,19 @@ public class KartCameraController : MonoBehaviour
     IEnumerator waitForSpawn(float time)
     {
         yield return new WaitForSeconds(time);
-        player = transform.parent.gameObject;
+        player = transform.parent.GetChild(0).gameObject;
         Debug.Log("Player: " + player);
         camPos = new GameObject();
         camPos.name = "Camera Position";
         camPos.transform.parent = player.transform;
+
         camPos.transform.localPosition = new Vector3(0,2.5f,-10);
+
+        camPos.transform.parent = transform.parent.GetChild(0).transform;
         cameraActive = true;
+    
+    
+    
     }
 
     private void FixedUpdate()
@@ -56,6 +63,7 @@ public class KartCameraController : MonoBehaviour
             return;
         } else
         {
+
 
         // Position
 
