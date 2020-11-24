@@ -10,7 +10,7 @@ using System;
 
 public class KartController : Bolt.EntityBehaviour<IVehicleState>
 {
-
+    private GameObject camera;
     public KartWheel[] wheels;
 
     private Rigidbody rig;
@@ -93,9 +93,11 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
     {
         if(entity.IsOwner)
         {
-
+            camera = GameObject.FindGameObjectWithTag("MainCamera");
             transform.gameObject.tag = "Player";
-
+            camera.transform.localPosition = gameObject.transform.position + new Vector3(0,2.5f,10);
+            camera.transform.parent = gameObject.transform;
+            camera.transform.localRotation = new Quaternion(0,0,0, 0);
         }
 
         //If you're not the owner

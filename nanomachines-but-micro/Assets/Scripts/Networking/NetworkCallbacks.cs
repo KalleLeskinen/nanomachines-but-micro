@@ -27,7 +27,6 @@ public class NetworkCallbacks : GlobalEventListener
             {
                 BoltEntity serverCar = BoltNetwork.Instantiate(BoltPrefabs.Truck_1, serverPos.transform.position, serverPos.transform.rotation);
                 serverCar.GetComponentInChildren<Rigidbody>().isKinematic = true;
-                PlayerCamera.Instantiate();
             }
             else
             {

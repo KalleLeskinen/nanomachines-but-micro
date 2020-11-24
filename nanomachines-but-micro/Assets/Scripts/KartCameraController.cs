@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class KartCameraController : MonoBehaviour
 {
+    private bool
+        cameraActive = false;
 
     public float 
         positionSmoothing,
@@ -15,24 +17,30 @@ public class KartCameraController : MonoBehaviour
     private GameObject player;
     private GameObject camPos;
 
+
     private void Start()
     {
+        StartCoroutine(waitForSpawn(3f));
 
-        player = GameObject.FindGameObjectWithTag("Player");
-
-        startPos = transform.position;
-        
+        startPos = transform.localPosition;
         
         // Saving the cameras starting position on the player
-        camPos = new GameObject();
-        camPos.name = "Camera Position";
-        camPos.transform.parent = player.transform;
-        camPos.transform.position = startPos;
+
 
         
     }
 
-
+    IEnumerator waitForSpawn(float time)
+    {
+        yield return new WaitForSeconds(time);
+        player = transform.parent.gameObject;
+        Debug.Log("Player: " + player);
+        camPos = new GameObject();
+        camPos.name = "Camera Position";
+        camPos.transform.parent = player.transform;
+        camPos.transform.localPosition = new Vector3(0,2.5f,-10);
+        cameraActive = true;
+    }
 
     private void FixedUpdate()
     {
@@ -42,6 +50,12 @@ public class KartCameraController : MonoBehaviour
 
     private void UpdateCamera()
     {
+        if (!cameraActive)
+        {
+            Debug.Log("return pois");
+            return;
+        } else
+        {
 
         // Position
 
@@ -52,16 +66,14 @@ public class KartCameraController : MonoBehaviour
 
 
 
-        // Rotation
+        //// Rotation
 
         Vector3 lookDir = player.transform.position - transform.position;
 
         Quaternion rotDir = Quaternion.LookRotation(lookDir);
 
-        transform.localRotation = Quaternion.Lerp(transform.rotation, rotDir, rotationSmoothing * Time.deltaTime);
+        transform.rotation = Quaternion.Lerp(transform.rotation, rotDir, rotationSmoothing * Time.deltaTime);
 
-    
+        }
     }
-
-
 }
