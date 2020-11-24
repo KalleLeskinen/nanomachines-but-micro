@@ -1,20 +1,14 @@
 fileFormatVersion: 2
-guid: 7b148e42040a1a943b3c394b00bf097c
+guid: e0170b77ba656084a9eb3b297e4664c6
 ModelImporter:
   serializedVersion: 20101
-  internalIDToNameTable:
-  - first:
-      74: -2156340318645267504
-    second: Grid|Action
-  - first:
-      74: -5087800166826718370
-    second: Grid|GridAction.003
+  internalIDToNameTable: []
   externalObjects: {}
   materials:
     materialImportMode: 1
     materialName: 0
     materialSearch: 1
-    materialLocation: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -51,7 +45,7 @@ ModelImporter:
     importLights: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
