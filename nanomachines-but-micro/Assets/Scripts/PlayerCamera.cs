@@ -10,6 +10,4 @@ public class PlayerCamera : BoltSingletonPrefab<PlayerCamera>
     {
         get { return camera; }
     }
-
-
 }

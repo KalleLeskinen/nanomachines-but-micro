@@ -27,12 +27,11 @@ public class NetworkCallbacks : GlobalEventListener
             {
                 BoltEntity serverCar = BoltNetwork.Instantiate(BoltPrefabs.Truck_1, serverPos.transform.position, serverPos.transform.rotation);
                 serverCar.GetComponentInChildren<Rigidbody>().isKinematic = true;
-                serverCar.transform.parent = GameObject.FindGameObjectWithTag("server_pos").transform;
+                PlayerCamera.Instantiate();
             }
             else
             {
                 StartCoroutine(WaitAndSpawn(2));
-
             }
         }
     }
