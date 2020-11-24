@@ -104,6 +104,7 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
         if (entity.IsOwner == false)
         {
             entity.tag = "Remote-Player";
+            gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         }
 
         //SetTransforms tells Bolt to replicate the transform over the network

@@ -26,14 +26,27 @@ public class NetworkCallbacks : GlobalEventListener
             if (BoltNetwork.IsServer)
             {
                 BoltEntity serverCar = BoltNetwork.Instantiate(BoltPrefabs.Truck_1, serverPos.transform.position, serverPos.transform.rotation);
-                serverCar.GetComponentInChildren<Rigidbody>().isKinematic = true;
+                serverCar.GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             }
             else
             {
                 StartCoroutine(WaitAndSpawn(2));
             }
         }
+
     }
+
+    public override void SceneLoadRemoteDone(BoltConnection connection)
+    {
+        foreach (BoltEntity bE in BoltNetwork.Entities)
+        {
+            if (bE.StateIs<IVehicleState>())
+            {
+                bE.gameObject.GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+            }
+        }
+    }
+
     IEnumerator WaitAndSpawn(float time)
     {
         yield return new WaitForSeconds(time);
@@ -41,8 +54,9 @@ public class NetworkCallbacks : GlobalEventListener
         spawnpos = raceHandler.GetComponent<BoltEntity>().GetState<IStateOfRace>().NumberOfPlayers;
         GameObject startpos = GameObject.FindGameObjectWithTag($"{spawnpos}_pos");
         BoltEntity Car = BoltNetwork.Instantiate(BoltPrefabs.Truck_1, startpos.transform.position, startpos.transform.rotation);
-        Car.GetComponentInChildren<Rigidbody>().isKinematic = true;
+        Car.GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
     }
+
 
 
     public override void OnEvent(StartTheGame evnt)
@@ -51,7 +65,7 @@ public class NetworkCallbacks : GlobalEventListener
         {
             if (bE.StateIs<IVehicleState>())
             {
-                bE.GetComponentInChildren<Rigidbody>().isKinematic = false;
+                bE.gameObject.GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.None;
                 bE.gameObject.transform.parent = null;
             }
         }
