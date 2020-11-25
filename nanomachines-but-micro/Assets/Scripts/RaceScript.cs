@@ -60,6 +60,7 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
             {
                 state.Finished = true;
                 RaceWinner(playerDataList[i]);
+                GameObject.FindGameObjectWithTag("score_panel").SetActive(true);
             }
         }
     }
