@@ -28,10 +28,7 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
 
     public override void Attached()
     {
-        if (BoltNetwork.IsServer)
-        {
-            state.NumberOfPlayers = 1;
-        }
+        FinishLine = GameObject.FindGameObjectWithTag("FinishLine");
         state.Finished = false;
         state.RaceStarted = false;
         state.NumberOfLaps = numberOfLaps;
