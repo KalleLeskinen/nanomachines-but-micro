@@ -11,7 +11,7 @@ public class SetCenterOffMass : MonoBehaviour
 
         var joint = GetComponent<FixedJoint>();
         var rig = joint.connectedBody;
-        gameObject.transform.position = rig.gameObject.transform.position + new Vector3(0,-1.5f,0);
+        gameObject.transform.position = rig.gameObject.transform.position + new Vector3(0,-1,0);
         
     }
 }

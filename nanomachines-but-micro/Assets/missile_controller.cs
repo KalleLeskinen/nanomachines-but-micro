@@ -46,7 +46,7 @@ public class missile_controller : Bolt.EntityBehaviour<IRocketState>
     {
         state.DetonateTime -= Time.deltaTime;
         gameObject.transform.Translate(Vector3.forward * Time.deltaTime * 15f);
-        if (state.DetonateTime <= 0)
+        if (state.DetonateTime < 0)
         {
             Instantiate(explosion_effect, transform.position, transform.rotation);
             state.Explosion();

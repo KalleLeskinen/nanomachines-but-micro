@@ -10,7 +10,7 @@ using System;
 
 public class KartController : Bolt.EntityBehaviour<IVehicleState>
 {
-
+    private GameObject camera;
     public KartWheel[] wheels;
 
     private Rigidbody rig;
@@ -93,15 +93,18 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
     {
         if(entity.IsOwner)
         {
-
+            camera = GameObject.FindGameObjectWithTag("MainCamera");
             transform.gameObject.tag = "Player";
-
+            camera.transform.localPosition = gameObject.transform.position + new Vector3(0,2.5f,10);
+            camera.transform.parent = gameObject.transform.parent;
+            camera.transform.localRotation = new Quaternion(0,0,0, 0);
         }
 
         //If you're not the owner
         if (entity.IsOwner == false)
         {
             entity.tag = "Remote-Player";
+            gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         }
 
         //SetTransforms tells Bolt to replicate the transform over the network
@@ -117,6 +120,7 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
 
     void FixedUpdate()
     {
+
         SetSteeringAngle();
 
         if(boostFlag)
@@ -131,6 +135,8 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
 
             if (boostBarOn == true && boostFill > 0)
                 BoostMode(boostFill);
+
+            boostFlag = false;
         }
     }
 
@@ -253,7 +259,6 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
         boostRedBackground.SetActive(false);
         boostGreenArea.SetActive(false);
         boostYellowMeter.SetActive(false);
-        boostFlag = false;
 
     }
 

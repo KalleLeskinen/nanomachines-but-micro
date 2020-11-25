@@ -174,8 +174,6 @@
           </e>
         </e>
         <e p="prevent_roll_over.cs" t="Include" />
-        <e p="RenderCubeMapWizard.cs" t="Include" />
-        <e p="rocketdir.cs" t="Include" />
         <e p="scripts" t="Include">
           <e p="AmmoBox.cs" t="Include" />
           <e p="CameraPosition.cs" t="Include" />
@@ -191,10 +189,7 @@
           <e p="MineController.cs" t="Include" />
           <e p="minespawnpos.cs" t="Include" />
           <e p="Networking" t="Include">
-            <e p="BoltServerCallbacks.cs" t="Include" />
             <e p="NetworkCallbacks.cs" t="Include" />
-            <e p="PlayerObject.cs" t="Include" />
-            <e p="PlayerObjectRegistry.cs" t="Include" />
           </e>
           <e p="OLD" t="Include">
             <e p="CarFollowCam.cs" t="Include" />
@@ -214,7 +209,6 @@
           </e>
           <e p="WeaponsController.cs" t="Include" />
         </e>
-        <e p="SetCenterOffMass.cs" t="Include" />
         <e p="Shared" t="Include">
           <e p="scripts" t="Include">
             <e p="DecalDestroyer.cs" t="Include" />
