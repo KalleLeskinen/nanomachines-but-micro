@@ -16,6 +16,10 @@ public class VehicleSelectionCallbacks : GlobalEventListener
 
     private GameObject rotatingDisplay;
 
+    private GameObject displayedModel = new GameObject();
+
+    private int i = 0;
+
     private void Awake()
     {
         //modelPrefabs.Add(0, Resources.Load<GameObject>("Car1_Torino_Model"));
@@ -30,13 +34,32 @@ public class VehicleSelectionCallbacks : GlobalEventListener
     {
         rotatingDisplay = GameObject.FindGameObjectWithTag("VehicleTray");
 
-        var model = modelPrefabs[0];
-        DisplayModel(model);
+        displayedModel = modelPrefabs[i];
+        DisplayModel(displayedModel);
     }
     
     // Väliaikaisratkaisu.
     private GameObject DisplayModel(GameObject model)
     {
-        return Instantiate(model, rotatingDisplay.transform.position, Quaternion.identity);
+        Destroy(displayedModel);
+        displayedModel = Instantiate(model, rotatingDisplay.transform.position, Quaternion.identity);
+        return displayedModel;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            if(i <= 2)
+            {
+                Debug.Log("gotem");
+                DisplayModel(modelPrefabs[i++]);
+            }
+            else
+            {
+                i = 0;
+                DisplayModel(modelPrefabs[i]);
+            }
+        }
     }
 }
