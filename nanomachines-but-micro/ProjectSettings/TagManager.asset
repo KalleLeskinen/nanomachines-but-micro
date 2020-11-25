@@ -21,6 +21,7 @@ TagManager:
   - server_pos
   - active_car
   - starting_grid
+  - VehicleTray
   layers:
   - Default
   - TransparentFX

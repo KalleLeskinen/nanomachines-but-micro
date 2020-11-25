@@ -20,9 +20,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54e1185e-b36a-48be-80e4-7b3ad73de5e3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.nanomachines-but-micro/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.nanomachines-but-micro/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.nanomachines-but-micro/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.nanomachines-but-micro/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonBolt/assemblies/bolt.user.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonBolt/assemblies/bolt.user.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonBolt/resources/BoltPrefabDatabase.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonBolt/resources/BoltPrefabDatabase.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonBolt/resources/BoltRuntimeSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonBolt/resources/BoltRuntimeSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Car1_Torino.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Car1_Torino.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Car2_Torino.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Car2_Torino.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Mine.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Mine.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Race_Handler Variant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Race_Handler Variant.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Race_Handler.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Race_Handler.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TruckV1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/TruckV1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TruckV2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/TruckV2.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Vehicles/Truck-1/Truck-1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Vehicles/Truck-1/Truck-1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/missile.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/missile.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/temprallycar-with-laps.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/temprallycar-with-laps.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/temprallycar.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/temprallycar.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/GarageScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GarageScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/VehicleSelectionCallbacks.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/VehicleSelectionCallbacks.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +127,7 @@
       <workItem from="1605266878858" duration="1068000" />
       <workItem from="1605786685194" duration="783000" />
       <workItem from="1605787501598" duration="3078000" />
-      <workItem from="1606218266974" duration="1651000" />
+      <workItem from="1606218266974" duration="6025000" />
     </task>
     <servers />
   </component>
@@ -136,14 +152,22 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="758" y="264" key="RiderGenerateDialog" timestamp="1603366253907">
+    <state x="758" y="264" key="RiderGenerateDialog" timestamp="1606307777961">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
-    <state x="758" y="264" key="RiderGenerateDialog/62.0.1858.1080/-1538.174.1538.900@62.0.1858.1080" timestamp="1603366253906" />
+    <state x="758" y="264" key="RiderGenerateDialog/62.0.1858.1080/-1538.174.1538.900@62.0.1858.1080" timestamp="1606307777961" />
     <state x="154" y="92" width="1674" height="896" key="VCS.FileHistoryDialog" timestamp="1603966067090">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
     <state x="154" y="92" width="1674" height="896" key="VCS.FileHistoryDialog/62.0.1858.1080/-1538.174.1538.900@62.0.1858.1080" timestamp="1603966067090" />
+    <state x="-1385" y="161" width="1554" height="988" maximized="true" key="dock-window-1" timestamp="1606309355933">
+      <screen x="-1538" y="174" width="1538" height="900" />
+    </state>
+    <state x="-1385" y="161" width="1554" height="988" maximized="true" key="dock-window-1/62.0.1858.1080/-1538.174.1538.900@62.0.1858.1080" timestamp="1606309355933" />
+    <state x="196" y="35" width="1555" height="909" key="dock-window-2" timestamp="1606312133455">
+      <screen x="62" y="0" width="1858" height="1080" />
+    </state>
+    <state x="196" y="35" width="1555" height="909" key="dock-window-2/62.0.1858.1080/-1538.174.1538.900@62.0.1858.1080" timestamp="1606312133455" />
     <state x="647" y="250" key="run.anything.popup" timestamp="1605787023239">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
