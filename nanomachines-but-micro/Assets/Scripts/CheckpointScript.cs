@@ -6,7 +6,7 @@ using UnityEngine;
 public class CheckpointScript : MonoBehaviour
 {
     [SerializeField]
-    int checkpointNumber;
+    public int checkpointNumber;
     public Material _material;
     static RaceScript raceScript;
     // Start is called before the first frame update

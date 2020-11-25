@@ -28,6 +28,7 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
 
     public override void Attached()
     {
+        Debug.Log("#666 STARTING");
         if (BoltNetwork.IsServer)
         {
             state.NumberOfPlayers = 1;
@@ -192,8 +193,8 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
         //    GUI.Box(new Rect(100, 100, 200, 50), state.Winner.ToString());
         if (starting == true)
         {
-            string theString = $"Starting the race in {(int)countdownSeconds+1}";
-            GUI.Box(new Rect((Screen.width / 2) / 2, (Screen.height / 2)/2, Screen.width / 4, 30), theString);
+            string theString = $"Starting the race in {(int)countdownSeconds+1} \n PRESS F TO START UNLEASH";
+            GUI.Box(new Rect((Screen.width / 2) / 2, (Screen.height / 2)/2, Screen.width / 4, 50), theString);
         }
     }
 }
