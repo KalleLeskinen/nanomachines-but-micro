@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Bolt;
+using Bolt.Matchmaking;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,13 +16,11 @@ public class VehicleSelectionCallbacks : GlobalEventListener
     //private Dictigonary<int, GameObject> modelPrefabs;
     private static GameObject[] modelPrefabs = new GameObject[3];
 
-    public static GameObject[] ModelPrefabs => modelPrefabs; // getteri inte setteri
-
     private GameObject rotatingDisplay;
 
     private GameObject displayedModel = new GameObject();
 
-    private int i = 0;
+    public static int i = 0;
 
     private void Awake()
     {
@@ -69,6 +68,12 @@ public class VehicleSelectionCallbacks : GlobalEventListener
                 i = 0;
                 DisplayModel(modelPrefabs[i]);
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            //BoltNetwork.LoadScene	("Level_1");
+            BoltMatchmaking.CreateSession	(sessionID: "kives", sceneToLoad: "Level_1");
         }
     }
 }
