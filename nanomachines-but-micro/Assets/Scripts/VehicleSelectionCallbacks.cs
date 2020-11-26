@@ -10,17 +10,13 @@ using UnityEngine.SceneManagement;
 [BoltGlobalBehaviour]
 public class VehicleSelectionCallbacks : GlobalEventListener
 {
-    private PrefabId[] entityPrefabIds =
-        { BoltPrefabs.Car1_Torino, BoltPrefabs.Car2_Torino, BoltPrefabs.TruckV1 };
-
-    //private Dictigonary<int, GameObject> modelPrefabs;
-    private static GameObject[] modelPrefabs = new GameObject[3];
+    private static GameObject[] modelPrefabs = new GameObject[4];
 
     private GameObject rotatingDisplay;
 
     private GameObject displayedModel = new GameObject();
 
-    public static int i = 0;
+    public static int _i = 0;
 
     private void Awake()
     {
@@ -29,7 +25,8 @@ public class VehicleSelectionCallbacks : GlobalEventListener
         //modelPrefabs.Add(2, Resources.Load<GameObject>("TruckV1Model"));
         modelPrefabs[0] = Resources.Load("Car1_Torino_Model") as GameObject;
         modelPrefabs[1] = Resources.Load("Car2_Torino_Model") as GameObject;
-        modelPrefabs[2] = Resources.Load("TruckV1Model") as GameObject;
+        modelPrefabs[2] = Resources.Load("Truck-1_Model") as GameObject;
+        modelPrefabs[3] = Resources.Load("TruckV1Model") as GameObject;
     }
 
     public override void SceneLoadLocalDone(string scene)
@@ -37,7 +34,7 @@ public class VehicleSelectionCallbacks : GlobalEventListener
         if (scene != "GarageScene") return;
         rotatingDisplay = GameObject.FindGameObjectWithTag("VehicleTray");
 
-        displayedModel = modelPrefabs[i];
+        displayedModel = modelPrefabs[_i];
         DisplayModel(displayedModel);
     }
     
@@ -58,15 +55,15 @@ public class VehicleSelectionCallbacks : GlobalEventListener
         }
         if (Input.GetKeyDown(KeyCode.A))
         {
-            if(i <= 2)
+            if(_i <= 2)
             {
                 Debug.Log("gotem");
-                DisplayModel(modelPrefabs[i++]);
+                DisplayModel(modelPrefabs[_i++]);
             }
             else
             {
-                i = 0;
-                DisplayModel(modelPrefabs[i]);
+                _i = 0;
+                DisplayModel(modelPrefabs[_i]);
             }
         }
 

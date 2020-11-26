@@ -26,7 +26,7 @@ public class NetworkCallbacks : GlobalEventListener
             
             if (BoltNetwork.IsServer)
             {
-                BoltEntity serverCar = BoltNetwork.Instantiate(cars[VehicleSelectionCallbacks.i], serverPos.transform.position, serverPos.transform.rotation);
+                BoltEntity serverCar = BoltNetwork.Instantiate(cars[VehicleSelectionCallbacks._i], serverPos.transform.position, serverPos.transform.rotation);
                 serverCar.GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             }
             else
