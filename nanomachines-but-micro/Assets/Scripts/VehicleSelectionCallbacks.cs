@@ -13,7 +13,9 @@ public class VehicleSelectionCallbacks : GlobalEventListener
         { BoltPrefabs.Car1_Torino, BoltPrefabs.Car2_Torino, BoltPrefabs.TruckV1 };
 
     //private Dictigonary<int, GameObject> modelPrefabs;
-    public static GameObject[] modelPrefabs = new GameObject[3];
+    private static GameObject[] modelPrefabs = new GameObject[3];
+
+    public static GameObject[] ModelPrefabs => modelPrefabs; // getteri inte setteri
 
     private GameObject rotatingDisplay;
 
