@@ -177,6 +177,7 @@
         </e>
         <e p="prevent_roll_over.cs" t="Include" />
         <e p="RenderCubeMapWizard.cs" t="Include" />
+        <e p="RespawnToCheckpoint.cs" t="Include" />
         <e p="rocketdir.cs" t="Include" />
         <e p="scripts" t="Include">
           <e p="AmmoBox.cs" t="Include" />

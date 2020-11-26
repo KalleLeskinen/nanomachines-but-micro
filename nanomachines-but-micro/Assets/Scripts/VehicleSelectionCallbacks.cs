@@ -72,8 +72,7 @@ public class VehicleSelectionCallbacks : GlobalEventListener
 
         if (Input.GetKeyDown(KeyCode.N))
         {
-            //BoltNetwork.LoadScene	("Level_1");
-            BoltMatchmaking.CreateSession	(sessionID: "kives", sceneToLoad: "Level_1");
+            BoltNetwork.LoadScene("Level_1");
         }
     }
 }
