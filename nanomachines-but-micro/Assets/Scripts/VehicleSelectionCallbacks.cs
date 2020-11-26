@@ -4,15 +4,16 @@ using System.Collections.Generic;
 using System.Linq;
 using Bolt;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-[BoltGlobalBehaviour("GarageScene")]
+[BoltGlobalBehaviour]
 public class VehicleSelectionCallbacks : GlobalEventListener
 {
     private PrefabId[] entityPrefabIds =
         { BoltPrefabs.Car1_Torino, BoltPrefabs.Car2_Torino, BoltPrefabs.TruckV1 };
 
-    //private Dictionary<int, GameObject> modelPrefabs;
-    private GameObject[] modelPrefabs = new GameObject[3];
+    //private Dictigonary<int, GameObject> modelPrefabs;
+    public static GameObject[] modelPrefabs = new GameObject[3];
 
     private GameObject rotatingDisplay;
 
@@ -32,6 +33,7 @@ public class VehicleSelectionCallbacks : GlobalEventListener
 
     public override void SceneLoadLocalDone(string scene)
     {
+        if (scene != "GarageScene") return;
         rotatingDisplay = GameObject.FindGameObjectWithTag("VehicleTray");
 
         displayedModel = modelPrefabs[i];
@@ -42,12 +44,17 @@ public class VehicleSelectionCallbacks : GlobalEventListener
     private GameObject DisplayModel(GameObject model)
     {
         Destroy(displayedModel);
-        displayedModel = Instantiate(model, rotatingDisplay.transform.position, Quaternion.identity);
-        return displayedModel;
+        return displayedModel = Instantiate(model, rotatingDisplay.transform.position, Quaternion.identity);
     }
 
+    // tähän UI napit keyboard inputin sijaan, jos hyvin käy voidaan pitää ratkaisu samana jos nämä ei haittaa 
+    // inputtia gameplayn aikana.
     private void Update()
     {
+        if (SceneManager.GetActiveScene().name == "GarageScene")
+        {
+            // Input napeista tai näppisinputista jotka togglee autojen välillä, voisi hajauttaa omaan metodiinsa.
+        }
         if (Input.GetKeyDown(KeyCode.A))
         {
             if(i <= 2)
