@@ -57,7 +57,7 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
         //{
         //    CheckForWinner();
         //}
-        if (Time.frameCount % 30 == 0 && state.Clock < 0 && state.Clock > -1 && !StartFlag)
+        if (Time.frameCount % 30 == 0 && Time.timeSinceLevelLoad > 3 && state.Clock < 0 && state.Clock > -1 && !StartFlag)
         {
             StartRace();
         }
