@@ -4,14 +4,21 @@ using UnityEngine;
 using Bolt;
 using Bolt.Utils;
 using System;
+using UnityEngine.UI;
 
 [BoltGlobalBehaviour]
 public class NetworkCallbacks : GlobalEventListener
 {
     GameObject raceHandler;
     int spawnpos;
+    public GameObject scoreboard_ui;
+
+    private void Awake()
+    {
+    }
     public override void SceneLoadLocalDone(string scene)
     { 
+        scoreboard_ui = GameObject.FindGameObjectWithTag("score_panel");
         //GameObject startpos = GameObject.FindGameObjectWithTag($"{BoltServerIncrementer.GetNextConnectCount()}_pos");
         GameObject serverPos = GameObject.FindGameObjectWithTag("server_pos");
 
@@ -30,9 +37,11 @@ public class NetworkCallbacks : GlobalEventListener
             }
             else
             {
-                StartCoroutine(WaitAndSpawn(2));
+                StartCoroutine(WaitAndSpawn(2f));
             }
+            
         }
+
 
     }
 
@@ -44,7 +53,9 @@ public class NetworkCallbacks : GlobalEventListener
             {
                 bE.gameObject.GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             }
+
         }
+        GameObject.FindGameObjectWithTag("RaceHandler").GetComponent<RaceScript>().UpdatePlayerBase();
     }
 
     IEnumerator WaitAndSpawn(float time)
@@ -55,6 +66,7 @@ public class NetworkCallbacks : GlobalEventListener
         GameObject startpos = GameObject.FindGameObjectWithTag($"{spawnpos}_pos");
         BoltEntity Car = BoltNetwork.Instantiate(BoltPrefabs.Truck_1, startpos.transform.position, startpos.transform.rotation);
         Car.GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        GameObject.FindGameObjectWithTag("RaceHandler").GetComponent<RaceScript>().UpdatePlayerBase();
     }
 
 
@@ -67,6 +79,52 @@ public class NetworkCallbacks : GlobalEventListener
             {
                 bE.gameObject.GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.None;
                 bE.gameObject.transform.parent = null;
+            }
+        }
+    }
+
+    public override void OnEvent(PlayerReadyEvent evnt)
+    {
+        if (BoltNetwork.IsServer)
+        {
+
+            foreach (BoltEntity bE in BoltNetwork.Entities)
+            {
+                if (bE.StateIs<IStateOfRace>())
+                {
+                    bE.GetState<IStateOfRace>().PlayersReady += 1;
+                }
+            }
+        }
+    }
+    public override void OnEvent(HostReadyEvent evnt)
+    {
+        if (BoltNetwork.IsServer)
+        {
+            foreach (BoltEntity bE in BoltNetwork.Entities)
+            {
+                if (bE.StateIs<IStateOfRace>())
+                {
+                    bE.GetState<IStateOfRace>().PlayersReady += 1;
+                }
+            }
+        }
+    }
+    public override void OnEvent(CarFinished evnt)
+    {
+        string winner;
+        string second;
+        string third;
+        foreach (BoltEntity bE in BoltNetwork.Entities)
+        {
+            if (bE.StateIs<IStateOfRace>())
+            {
+                winner = bE.GetState<IStateOfRace>().Winner;
+                second = bE.GetState<IStateOfRace>().Second;
+                third = bE.GetState<IStateOfRace>().Third;
+                GameObject.FindGameObjectWithTag("scoreboard_winner").GetComponent<Text>().text = $"1. {winner}";
+                GameObject.FindGameObjectWithTag("scoreboard_second").GetComponent<Text>().text = $"2. {second}";
+                GameObject.FindGameObjectWithTag("scoreboard_third").GetComponent<Text>().text = $"3. {third}";
             }
         }
     }

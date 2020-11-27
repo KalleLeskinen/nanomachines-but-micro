@@ -22,6 +22,13 @@ TagManager:
   - active_car
   - starting_grid
   - score_panel
+  - player_name
+  - player_name_ui
+  - host_name_laps_ui
+  - client_start_ui
+  - scoreboard_winner
+  - scoreboard_second
+  - scoreboard_third
   layers:
   - Default
   - TransparentFX
