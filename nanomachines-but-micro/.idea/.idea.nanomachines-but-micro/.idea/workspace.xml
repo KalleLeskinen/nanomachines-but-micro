@@ -20,7 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54e1185e-b36a-48be-80e4-7b3ad73de5e3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Models/World/Guitar/Guitar.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/World/Guitar/Guitar.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Truck-1_Model.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Truck-1_Model.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +32,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@8.2.0/Runtime/Data/UniversalRenderPipelineAsset.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Networking/PlayerObject.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/VehicleSelectionCallbacks.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../UnityProjects/RuildAndBun/Assets/Scenes/Tommi/Scripts/PlayerInventory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@8.2.0/Runtime/UniversalAdditionalCameraData.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../UnityProjects/RuildAndBun/Assets/Scenes/Tommi/Scripts/GameEvents.cs" root0="SKIP_HIGHLIGHTING" />
@@ -50,7 +50,9 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Networking/BoltServerCallbacks.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerCamera.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Networking/PlayerObjectRegistry.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MainMenu.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Networking/NetworkCallbacks.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/VehicleSelectionCallbacks.cs" />
       </list>
     </option>
   </component>
@@ -108,7 +110,10 @@
       <workItem from="1605266878858" duration="1068000" />
       <workItem from="1605786685194" duration="783000" />
       <workItem from="1605787501598" duration="3078000" />
-      <workItem from="1606218266974" duration="621000" />
+      <workItem from="1606218266974" duration="7902000" />
+      <workItem from="1606404203704" duration="2509000" />
+      <workItem from="1606412727305" duration="2228000" />
+      <workItem from="1606475444046" duration="644000" />
     </task>
     <servers />
   </component>
@@ -133,14 +138,22 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="758" y="264" key="RiderGenerateDialog" timestamp="1603366253907">
+    <state x="758" y="264" key="RiderGenerateDialog" timestamp="1606307777961">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
-    <state x="758" y="264" key="RiderGenerateDialog/62.0.1858.1080/-1538.174.1538.900@62.0.1858.1080" timestamp="1603366253906" />
+    <state x="758" y="264" key="RiderGenerateDialog/62.0.1858.1080/-1538.174.1538.900@62.0.1858.1080" timestamp="1606307777961" />
     <state x="154" y="92" width="1674" height="896" key="VCS.FileHistoryDialog" timestamp="1603966067090">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
     <state x="154" y="92" width="1674" height="896" key="VCS.FileHistoryDialog/62.0.1858.1080/-1538.174.1538.900@62.0.1858.1080" timestamp="1603966067090" />
+    <state x="984" y="0" width="943" height="1087" key="dock-window-1" timestamp="1606405942357">
+      <screen x="62" y="0" width="1858" height="1080" />
+    </state>
+    <state x="984" y="0" width="943" height="1087" key="dock-window-1/62.0.1858.1080/-1538.174.1538.900@62.0.1858.1080" timestamp="1606405942357" />
+    <state x="256" y="32" width="1554" height="988" key="dock-window-2" timestamp="1606476173624">
+      <screen x="62" y="0" width="1858" height="1080" />
+    </state>
+    <state x="256" y="32" width="1554" height="988" key="dock-window-2/62.0.1858.1080/-1538.174.1538.900@62.0.1858.1080" timestamp="1606476173624" />
     <state x="647" y="250" key="run.anything.popup" timestamp="1605787023239">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>

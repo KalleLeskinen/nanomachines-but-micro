@@ -16,16 +16,17 @@ public class NetworkCallbacks : GlobalEventListener
         GameObject serverPos = GameObject.FindGameObjectWithTag("server_pos");
 
         //var spawnInTheCorner = new Vector3(5, 3, -15);
-        PrefabId[] cars = { BoltPrefabs.Car1_Torino, BoltPrefabs.Car2_Torino, BoltPrefabs.TruckV1, BoltPrefabs.TruckV2 };
+        PrefabId[] cars = { BoltPrefabs.Torino, BoltPrefabs.Blurino, BoltPrefabs.Truck_1, BoltPrefabs.Truck_yellow };
         //Instantiate the player vehicle
         //BoltNetwork.Instantiate(cars[Random.Range(0, cars.Length)], spawnInTheCorner, Quaternion.identity);
 
         //NEW PHYSICS CARS!
         if (scene == "Level_1")
         {
+            
             if (BoltNetwork.IsServer)
             {
-                BoltEntity serverCar = BoltNetwork.Instantiate(BoltPrefabs.Truck_1, serverPos.transform.position, serverPos.transform.rotation);
+                BoltEntity serverCar = BoltNetwork.Instantiate(cars[VehicleSelectionCallbacks._i], serverPos.transform.position, serverPos.transform.rotation);
                 serverCar.GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             }
             else
