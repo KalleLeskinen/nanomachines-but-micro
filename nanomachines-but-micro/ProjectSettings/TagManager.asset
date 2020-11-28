@@ -31,6 +31,9 @@ TagManager:
   - scoreboard_third
   - VehicleTray
   - start_time_counter_ui
+  - best_lap_winner
+  - best_lap_second
+  - best_lap_third
   layers:
   - Default
   - TransparentFX

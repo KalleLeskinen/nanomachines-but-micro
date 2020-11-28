@@ -114,18 +114,32 @@ public class NetworkCallbacks : GlobalEventListener
     public override void OnEvent(CarFinished evnt)
     {
         string winner;
+        string winnerBestLap;
         string second;
+        string secondBestLap;
         string third;
+        string thirdBestLap;
         foreach (BoltEntity bE in BoltNetwork.Entities)
         {
-            if (bE.StateIs<IStateOfRace>())
+            if (bE.StateIs<IStateOfRace>() && bE.TryFindState<IStateOfRace>(out IStateOfRace state))
             {
-                winner = bE.GetState<IStateOfRace>().Winner;
-                second = bE.GetState<IStateOfRace>().Second;
-                third = bE.GetState<IStateOfRace>().Third;
+                winner = state.Winner;
+                winnerBestLap = state.WinBestLap.ToString();
+                second = state.Second;
+                secondBestLap = state.SecBestLap.ToString();
+                third = state.Third;
+                thirdBestLap = state.ThrBestLap.ToString();
+
                 GameObject.FindGameObjectWithTag("scoreboard_winner").GetComponent<Text>().text = $"1. {winner}";
+                GameObject.FindGameObjectWithTag("best_lap_winner").GetComponent<Text>().text = $"best lap: {winnerBestLap} s";
+
                 GameObject.FindGameObjectWithTag("scoreboard_second").GetComponent<Text>().text = $"2. {second}";
+                if (secondBestLap != "0")
+                    GameObject.FindGameObjectWithTag("best_lap_second").GetComponent<Text>().text = $"best lap: {secondBestLap} s";
+
                 GameObject.FindGameObjectWithTag("scoreboard_third").GetComponent<Text>().text = $"3. {third}";
+                if (thirdBestLap != "0")
+                    GameObject.FindGameObjectWithTag("best_lap_third").GetComponent<Text>().text = $"best lap: {thirdBestLap} s";
             }
         }
     }

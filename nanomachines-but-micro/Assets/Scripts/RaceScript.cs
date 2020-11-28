@@ -174,12 +174,15 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
         {
             case 1:
                 state.Winner = playerData.name;
+                state.WinBestLap = playerData.FindBestLap();
                 break;
             case 2:
                 state.Second = playerData.name;
+                state.SecBestLap = playerData.FindBestLap();
                 break;
             case 3:
                 state.Third = playerData.name;
+                state.ThrBestLap = playerData.FindBestLap();
                 break;
         }
         int i = 0;

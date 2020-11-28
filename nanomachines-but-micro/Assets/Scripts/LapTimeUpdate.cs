@@ -34,12 +34,4 @@ public class LapTimeUpdate : MonoBehaviour
     {
         return clock;
     }
-    public void OnGUI()
-    {
-        if (raceHandler && player)
-        {
-            GUI.Box(new Rect(50, 30, 100, 30), $"laptime: {time}");
-            GUI.Box(new Rect(50, 60, 100, 30), $"passed: {car_passed_cps.Count.ToString()}/{raceHandler.GetComponent<RaceScript>().numberOfcheckpoints}");
-        }
-    }
 }
