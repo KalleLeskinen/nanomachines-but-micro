@@ -82,6 +82,7 @@ GameObject:
   - component: {fileID: 3619762775717056693}
   - component: {fileID: 1277663853595969479}
   - component: {fileID: 1342397963702338584}
+  - component: {fileID: 2982561635517262302}
   m_Layer: 0
   m_Name: Torino_Body
   m_TagString: Player
@@ -316,6 +317,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9169bb875a1ce5b488386f674cde91e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2982561635517262302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1283064853744058721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c3ca35a56fbb084984fba4fc3aaed47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3060625671244886815
