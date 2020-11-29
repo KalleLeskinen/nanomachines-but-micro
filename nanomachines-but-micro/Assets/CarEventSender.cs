@@ -6,7 +6,17 @@ public class CarEventSender : Bolt.EntityBehaviour<IVehicleState>
 {
     bool eventFlag = false;
     bool startTheGameFlag = false;
+    public GameObject raceHandler;
+    bool started = false;
+
     // Start is called before the first frame update
+    private void Start()
+    {
+        if (BoltNetwork.IsServer)
+        {
+            raceHandler = GameObject.FindGameObjectWithTag("RaceHandler");
+        }
+    }
 
     private void FixedUpdate()
     {
@@ -18,11 +28,12 @@ public class CarEventSender : Bolt.EntityBehaviour<IVehicleState>
             SpawnEvent.Send();
             eventFlag = false;
         }
-        if (startTheGameFlag)
+        if (startTheGameFlag && !started)
         {
             var startGame = StartTheGame.Create();
             startGame.Send();
             startTheGameFlag = false;
+            started = true;
         }
     }
 
@@ -33,9 +44,16 @@ public class CarEventSender : Bolt.EntityBehaviour<IVehicleState>
         {
             eventFlag = true;
         }
-        if (Input.GetKeyDown(KeyCode.F) && BoltNetwork.IsServer)
+        if (BoltNetwork.IsServer && !started)
         {
-            startTheGameFlag = true;
+            int playersRdy = raceHandler.GetComponent<BoltEntity>().GetState<IStateOfRace>().PlayersReady;
+            int nbOfPlayers = raceHandler.GetComponent<BoltEntity>().GetState<IStateOfRace>().NumberOfPlayers;
+            bool isTheGameStarted = raceHandler.GetComponent<BoltEntity>().GetState<IStateOfRace>().RaceStarted;
+            if (isTheGameStarted && playersRdy == nbOfPlayers || Input.GetKeyDown(KeyCode.F))
+            {
+                //TODO: WAIT FOR 3,2,1,GO
+                startTheGameFlag = true;
+            }
         }
     }
 }

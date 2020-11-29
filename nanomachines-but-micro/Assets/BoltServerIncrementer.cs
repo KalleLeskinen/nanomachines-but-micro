@@ -10,6 +10,7 @@ public class BoltServerIncrementer : Bolt.GlobalEventListener
     public override void Connected(BoltConnection connection)
     {
         GameObject.FindGameObjectWithTag("RaceHandler").GetComponent<BoltEntity>().GetState<IStateOfRace>().NumberOfPlayers += 1;
+
     }
 
 }

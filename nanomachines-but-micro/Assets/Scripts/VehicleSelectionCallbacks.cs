@@ -51,25 +51,25 @@ public class VehicleSelectionCallbacks : GlobalEventListener
     {
         if (SceneManager.GetActiveScene().name == "GarageScene")
         {
-            // Input napeista tai näppisinputista jotka togglee autojen välillä, voisi hajauttaa omaan metodiinsa.
-        }
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            if(_i <= 2)
+            if (Input.GetKeyDown(KeyCode.A))
             {
-                Debug.Log("gotem");
-                DisplayModel(modelPrefabs[_i++]);
+                if(_i <= 2)
+                {
+                    Debug.Log("gotem");
+                    DisplayModel(modelPrefabs[_i++]);
+                }
+                else
+                {
+                    _i = 0;
+                    DisplayModel(modelPrefabs[_i]);
+                }
             }
-            else
-            {
-                _i = 0;
-                DisplayModel(modelPrefabs[_i]);
-            }
-        }
 
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            BoltNetwork.LoadScene("Level_1");
+            if (Input.GetKeyDown(KeyCode.Return)) //huom muutettu enteriksi.
+            {
+                BoltNetwork.LoadScene("Level_1"); // tähän BoltLauncher.StartServer(); if (BoltNetwork.Isserver) elseif (isclient) {BoltMatchmaking.JoinSession(photonSession); } luettelo servereistä tähän sceneen? ? ?
+            }
+            // Input napeista tai näppisinputista jotka togglee autojen välillä, voisi hajauttaa omaan metodiinsa.
         }
     }
 }
