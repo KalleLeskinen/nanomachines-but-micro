@@ -20,10 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54e1185e-b36a-48be-80e4-7b3ad73de5e3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.nanomachines-but-micro/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.nanomachines-but-micro/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/GarageScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GarageScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MainMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MainMenu.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/VehicleSelection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/VehicleSelection.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -58,6 +55,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Networking/NetworkCallbacks.cs" />
         <option value="$PROJECT_DIR$/Assets/VehicleSelection.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MainMenu.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SelectionMenu.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/VehicleSelection.cs" />
       </list>
     </option>
@@ -120,7 +118,7 @@
       <workItem from="1606404203704" duration="2509000" />
       <workItem from="1606412727305" duration="2228000" />
       <workItem from="1606475444046" duration="644000" />
-      <workItem from="1606734509713" duration="3252000" />
+      <workItem from="1606734509713" duration="4514000" />
     </task>
     <servers />
   </component>
@@ -149,6 +147,10 @@
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
     <state x="758" y="264" key="RiderGenerateDialog/62.0.1858.1080/-1538.174.1538.900@62.0.1858.1080" timestamp="1606307777961" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1606739110583">
+      <screen x="62" y="0" width="1858" height="1080" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/62.0.1858.1080/-1538.174.1538.900@62.0.1858.1080" timestamp="1606739110583" />
     <state x="154" y="92" width="1674" height="896" key="VCS.FileHistoryDialog" timestamp="1603966067090">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
@@ -157,13 +159,17 @@
       <screen x="-1538" y="174" width="1538" height="900" />
     </state>
     <state x="-776" y="174" width="783" height="907" key="dock-window-1/62.0.1858.1080/-1538.174.1538.900@62.0.1858.1080" timestamp="1606737112657" />
-    <state x="206" y="43" width="1543" height="1068" key="dock-window-2" timestamp="1606737549873">
+    <state x="206" y="43" width="1543" height="1068" key="dock-window-2" timestamp="1606739270954">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
-    <state x="206" y="43" width="1543" height="1068" key="dock-window-2/62.0.1858.1080/-1538.174.1538.900@62.0.1858.1080" timestamp="1606737549873" />
+    <state x="206" y="43" width="1543" height="1068" key="dock-window-2/62.0.1858.1080/-1538.174.1538.900@62.0.1858.1080" timestamp="1606739270954" />
     <state x="647" y="250" key="run.anything.popup" timestamp="1606735860052">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
     <state x="647" y="250" key="run.anything.popup/62.0.1858.1080/-1538.174.1538.900@62.0.1858.1080" timestamp="1606735860052" />
+    <state x="633" y="234" width="672" height="676" key="search.everywhere.popup" timestamp="1606738635505">
+      <screen x="62" y="0" width="1858" height="1080" />
+    </state>
+    <state x="633" y="234" width="672" height="676" key="search.everywhere.popup/62.0.1858.1080/-1538.174.1538.900@62.0.1858.1080" timestamp="1606738635505" />
   </component>
 </project>
