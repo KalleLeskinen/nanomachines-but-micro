@@ -8,6 +8,11 @@ public class SelectionMenu : GlobalEventListener
 {
     public void ButtonConfirm()
     {
+        SelectionContainer.Instance.ConfirmSelection();
+    }
+
+    public void ButtonBack()
+    {
         SceneManager.LoadScene("MainMenu");
     }
 }

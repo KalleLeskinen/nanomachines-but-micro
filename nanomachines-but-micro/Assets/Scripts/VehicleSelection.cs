@@ -4,21 +4,27 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+using UnityEngine.Serialization;
 
 public class VehicleSelection : MonoBehaviour
 {
     [SerializeField] private GameObject rotatingDisplay;
 
-    [SerializeField] private GameObject DataContainer;
-    
+    [SerializeField] private GameObject dataContainer;
+
     private GameObject[] modelPrefabs;
     
     private GameObject displayedModel;
 
-    private int i;
+    public int i;
+
+    public static VehicleSelection Instance;
 
     private void Awake()
     {
+        if (Instance != null) Destroy(gameObject);
+        Instance = this;
+        
         i = 0;
         displayedModel = new GameObject();
         modelPrefabs = new GameObject[4];
@@ -71,5 +77,5 @@ public class VehicleSelection : MonoBehaviour
             }
         }
     }
-    
+
 }
