@@ -190,21 +190,16 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
         {
             Debug.Log($"{++i} : {laptime}");
         }
-        //StartCoroutine(WaitFor30AndEnd());
+        StartCoroutine(WaitFor30AndEnd());
     }
 
     private IEnumerator WaitFor30AndEnd()
     {
-        Debug.Log("Waiting for 1 second");
-        yield return new WaitForSeconds(1f);
-        foreach (var obj in BoltNetwork.SceneObjects)
-        {
-            if (obj.IsOwner)
-            {
-                Debug.Log("My object was " + obj.name);
-            }
-            Debug.Log("Calling a function for sceneobjects.");
-        }
+        Debug.Log("Waiting for 30 second");
+        yield return new WaitForSeconds(25f);
+        //aloita animaatio fade in 5 sekunnisksi?
+        yield return new WaitForSeconds(5f);
+        BoltNetwork.LoadScene("MainMenu");
     }
     private void WaitForPlayersAndInitGame()
     {
