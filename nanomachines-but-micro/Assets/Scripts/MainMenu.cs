@@ -25,6 +25,11 @@ public class MainMenu : GlobalEventListener
         BoltLauncher.StartClient();
     }
 
+    public void ButtonSelectCar()
+    {
+        SceneManager.LoadScene("GarageScene");
+    }
+
     public void ButtonQuitGame()
     {
         Application.Quit();
@@ -39,7 +44,7 @@ public class MainMenu : GlobalEventListener
 
             BoltMatchmaking.CreateSession(
                 sessionID: matchName,
-                sceneToLoad: "GarageScene" // <-  What scene to load
+                sceneToLoad: "Level_1" // <-  What scene to load
             );
 
         }

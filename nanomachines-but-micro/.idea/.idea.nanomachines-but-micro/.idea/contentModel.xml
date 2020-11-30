@@ -206,6 +206,7 @@
           <e p="PlayerData.cs" t="Include" />
           <e p="RaceScript.cs" t="Include" />
           <e p="rocketspawnpos.cs" t="Include" />
+          <e p="SelectionMenu.cs" t="Include" />
           <e p="TestCam.cs" t="Include" />
           <e p="Vehicles" t="Include">
             <e p="Explosion.cs" t="Include" />
