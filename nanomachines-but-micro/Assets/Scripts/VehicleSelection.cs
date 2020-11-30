@@ -40,8 +40,14 @@ public class VehicleSelection : MonoBehaviour
     private void Update()
     { 
         ProcessInput();
+        ChangeRemainder();
     }
-    
+
+    private void ChangeRemainder()
+    {
+        DisplayModel(modelPrefabs[i % modelPrefabs.Length]);
+    }
+
     private GameObject DisplayModel(GameObject model)
     {
         Destroy(displayedModel);
@@ -52,30 +58,10 @@ public class VehicleSelection : MonoBehaviour
     private void ProcessInput()
     {
         if (Input.GetKeyDown(KeyCode.A))
-        {
-            if (i == 0)
-            {
-                i = 4;
-                DisplayModel(modelPrefabs[i]);
-            } 
-            else
-            {
-                DisplayModel(modelPrefabs[--i]);
-            }
-        }
+            i--;
 
         if (Input.GetKeyDown(KeyCode.D))
-        {
-            if (i == 4)
-            {
-                i = 0;
-                DisplayModel(modelPrefabs[i]);
-            }
-            else
-            {
-                DisplayModel(modelPrefabs[++i]);
-            }
-        }
+            i++;
     }
 
 }
