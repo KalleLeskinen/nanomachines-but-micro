@@ -11164,7 +11164,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: edu koskinen
+  m_Text: 
 --- !u!222 &1275368269
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11464,7 +11464,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: aatu kostaja 511
+  m_Text: 
 --- !u!222 &1302713947
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11916,7 +11916,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: juha liimatainen
+  m_Text: 
 --- !u!222 &1350797663
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14780,7 +14780,7 @@ GameObject:
   - component: {fileID: 1643378984}
   m_Layer: 5
   m_Name: connected_players_ui
-  m_TagString: Untagged
+  m_TagString: connected_players_ui
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15421,7 +15421,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: jonni_tuhoaja_2
+  m_Text: 
 --- !u!222 &1682827202
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19155,7 +19155,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Tekstipuheeksi
+  m_Text: 
 --- !u!222 &2085146312
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19675,7 +19675,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "r\xE4hm\xE4k\xE4p\xE4l\xE469"
+  m_Text: 
 --- !u!222 &2130805741
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19826,6 +19826,10 @@ PrefabInstance:
       propertyPath: player_laptime_ui
       value: 
       objectReference: {fileID: 844064058}
+    - target: {fileID: 4106203892158778030, guid: ebd762b1d00a788409d3cd32643b4d29, type: 3}
+      propertyPath: connected_players_ui
+      value: 
+      objectReference: {fileID: 1643378980}
     - target: {fileID: 4106203892158778031, guid: ebd762b1d00a788409d3cd32643b4d29, type: 3}
       propertyPath: m_Name
       value: Race_Handler_real

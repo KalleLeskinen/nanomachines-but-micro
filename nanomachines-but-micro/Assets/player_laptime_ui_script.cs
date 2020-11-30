@@ -9,8 +9,6 @@ public class player_laptime_ui_script : MonoBehaviour
     private bool isFinished;
     private GameObject myCar;
     public int maxLaps;
-    Guid carId;
-    int playerDataIndex;
     private void Start()
     {
         maxLaps = 999;
@@ -20,7 +18,6 @@ public class player_laptime_ui_script : MonoBehaviour
         if (Time.timeSinceLevelLoad > 1 && maxLaps == 999)
         {
             maxLaps = GameObject.FindGameObjectWithTag("RaceHandler").GetComponent<BoltEntity>().GetState<IStateOfRace>().NumberOfLaps;
-            carId = myCar.GetComponentInChildren<LapTimeUpdate>().id;
         }
         if (Time.timeSinceLevelLoad > 1 && myCar == null)
         {
@@ -30,15 +27,6 @@ public class player_laptime_ui_script : MonoBehaviour
                 {
                     myCar = car;
                 }
-            }
-            int i = 0;
-            foreach (var player in GameObject.FindGameObjectWithTag("RaceHandler").GetComponent<RaceScript>().playerDataList)
-            {
-                if (player.id == carId)
-                {
-                    playerDataIndex = i;
-                }
-                i++;
             }
         }
         if (Time.frameCount % 30 == 0)

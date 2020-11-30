@@ -990,6 +990,7 @@ MonoBehaviour:
   car_passed_cps: 
   clock: 0
   time: 
+  car_passed_laps: 0
 --- !u!114 &2553122197089853966
 MonoBehaviour:
   m_ObjectHideFlags: 0

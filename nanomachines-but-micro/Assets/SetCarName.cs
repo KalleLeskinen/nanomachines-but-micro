@@ -33,6 +33,7 @@ public class SetCarName : MonoBehaviour
                     Debug.Log("field text was " + nametoset);
                     obj.GetState<IVehicleState>().PlayerName = nametoset;
                     var ClientReadyEvent = PlayerReadyEvent.Create();
+                    ClientReadyEvent.name = nametoset;
                     ClientReadyEvent.Send();
                 }
             }
@@ -62,6 +63,7 @@ public class SetCarName : MonoBehaviour
                     string nametoset = GameObject.FindGameObjectWithTag("player_name").GetComponent<Text>().text;
                     obj.GetState<IVehicleState>().PlayerName = nametoset;
                     var hostready = HostReadyEvent.Create();
+                    hostready.name = nametoset;
                     hostready.Send();
                 }
             }

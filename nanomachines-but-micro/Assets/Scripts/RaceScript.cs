@@ -22,6 +22,7 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
 
     public GameObject scoreboard_ui;
     public GameObject player_laptime_ui;
+    public GameObject connected_players_ui;
 
     public bool started = false;
     public bool finished = false;
@@ -88,6 +89,7 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
             car.GetComponent<LapTimeUpdate>().clock = 0;
         }
         player_laptime_ui.SetActive(true);
+        connected_players_ui.SetActive(false);
         if (BoltNetwork.IsServer)
             state.RaceStarted = true;
     }
