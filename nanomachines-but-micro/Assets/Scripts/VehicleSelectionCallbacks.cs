@@ -10,7 +10,7 @@ using UnityEngine.SceneManagement;
 [BoltGlobalBehaviour]
 public class VehicleSelectionCallbacks : GlobalEventListener
 {
-    private static GameObject[] modelPrefabs = new GameObject[4];
+    /*private static GameObject[] modelPrefabs = new GameObject[4];
 
     private GameObject rotatingDisplay;
 
@@ -71,5 +71,5 @@ public class VehicleSelectionCallbacks : GlobalEventListener
             }
             // Input napeista tai näppisinputista jotka togglee autojen välillä, voisi hajauttaa omaan metodiinsa.
         }
-    }
+    }*/
 }
