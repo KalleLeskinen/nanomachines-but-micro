@@ -89,7 +89,6 @@ public class NetworkCallbacks : GlobalEventListener
     {
         if (BoltNetwork.IsServer)
         {
-
             foreach (BoltEntity bE in BoltNetwork.Entities)
             {
                 if (bE.StateIs<IStateOfRace>())
@@ -98,9 +97,19 @@ public class NetworkCallbacks : GlobalEventListener
                 }
             }
         }
+        GameObject players_ui = GameObject.FindGameObjectWithTag("connected_players_ui");
+        foreach (var textField in players_ui.GetComponentsInChildren<Text>())
+        {
+            if (textField.text == "")
+            {
+                textField.text = evnt.name;
+                break;
+            }
+        }
     }
     public override void OnEvent(HostReadyEvent evnt)
     {
+        GameObject players_ui = GameObject.FindGameObjectWithTag("connected_players_ui");
         if (BoltNetwork.IsServer)
         {
             foreach (BoltEntity bE in BoltNetwork.Entities)
@@ -109,6 +118,14 @@ public class NetworkCallbacks : GlobalEventListener
                 {
                     bE.GetState<IStateOfRace>().PlayersReady += 1;
                 }
+            }
+        }
+        foreach (var textField in players_ui.GetComponentsInChildren<Text>())
+        {
+            if (textField.text == "")
+            { 
+                textField.text = evnt.name;
+                break;
             }
         }
     }

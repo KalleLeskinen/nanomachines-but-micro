@@ -34,6 +34,9 @@ TagManager:
   - best_lap_winner
   - best_lap_second
   - best_lap_third
+  - host_name_laps_ui_slider
+  - player_laptime_ui
+  - connected_players_ui
   - ServerName
   layers:
   - Default

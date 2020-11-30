@@ -160,6 +160,7 @@ MonoBehaviour:
   car_passed_cps: 
   clock: 0
   time: 
+  car_passed_laps: 0
 --- !u!1 &1584494672718385739
 GameObject:
   m_ObjectHideFlags: 0
