@@ -12,6 +12,7 @@ public class MainMenu : GlobalEventListener
     public Button joinGameButtonPrefab;
     public GameObject serverListPanel;
     public float buttonSpacing;
+    private string roomName;
 
     private List<Button> _joinServerButtons = new List<Button>();
 
@@ -35,12 +36,17 @@ public class MainMenu : GlobalEventListener
         SceneManager.LoadScene("GarageScene");
     }
 
+    public void SetRoomName()
+    {
+        roomName = GameObject.FindGameObjectWithTag("ServerName").GetComponent<Text>().text;
+    }
+
     public override void BoltStartDone()
     {
         if (BoltNetwork.IsServer)
         {
             int randomInt = Random.Range(0, 9999);
-            string matchName = "Test match " + randomInt;
+            string matchName = roomName + randomInt;
 
             BoltMatchmaking.CreateSession(
                 sessionID: matchName,
