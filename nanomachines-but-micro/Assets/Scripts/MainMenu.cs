@@ -30,6 +30,11 @@ public class MainMenu : GlobalEventListener
         Application.Quit();
     }
 
+    public void ButtonSelectCar()
+    {
+        SceneManager.LoadScene("GarageScene");
+    }
+
     public override void BoltStartDone()
     {
         if (BoltNetwork.IsServer)

@@ -12,6 +12,7 @@
         <e p="CarEventSender.cs" t="Include" />
         <e p="KartWheel.cs" t="Include" />
         <e p="missile_controller.cs" t="Include" />
+        <e p="name_above_car.cs" t="Include" />
         <e p="OnHitController.cs" t="Include" />
         <e p="Photon" t="Include">
           <e p="PhotonBolt" t="Include">
@@ -220,6 +221,7 @@
           <e p="WeaponsController.cs" t="Include" />
         </e>
         <e p="SelectionContainer.cs" t="Include" />
+        <e p="SetCarName.cs" t="Include" />
         <e p="SetCenterOffMass.cs" t="Include" />
         <e p="Shared" t="Include">
           <e p="scripts" t="Include">
@@ -266,6 +268,7 @@
             <e p="EmojiOne Attribution.txt" t="Include" />
           </e>
         </e>
+        <e p="ui_countdown_ui_script.cs" t="Include" />
       </e>
       <e p="nanomachines-but-micro.sln" t="IncludeFlat" />
       <e p="obj" t="ExcludeRecursive" />

@@ -62,10 +62,11 @@ public class NetworkCallbacks : GlobalEventListener
     IEnumerator WaitAndSpawn(float time)
     {
         yield return new WaitForSeconds(time);
+        PrefabId[] cars = { BoltPrefabs.Torino, BoltPrefabs.Blurino, BoltPrefabs.Truck_1, BoltPrefabs.Truck_yellow };
         raceHandler = GameObject.FindGameObjectWithTag("RaceHandler");
         spawnpos = raceHandler.GetComponent<BoltEntity>().GetState<IStateOfRace>().NumberOfPlayers;
         GameObject startpos = GameObject.FindGameObjectWithTag($"{spawnpos}_pos");
-        BoltEntity Car = BoltNetwork.Instantiate(BoltPrefabs.Truck_1, startpos.transform.position, startpos.transform.rotation);
+        BoltEntity Car = BoltNetwork.Instantiate(cars[SelectionContainer.Instance.prefabIdInteger], startpos.transform.position, startpos.transform.rotation);
         Car.GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         GameObject.FindGameObjectWithTag("RaceHandler").GetComponent<RaceScript>().UpdatePlayerBase();
     }
