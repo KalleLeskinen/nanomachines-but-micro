@@ -214,6 +214,7 @@
             </e>
             <e p="VehicleController.cs" t="Include" />
           </e>
+          <e p="VehicleSelection.cs" t="Include" />
           <e p="VehicleSelectionCallbacks.cs" t="Include" />
           <e p="WeaponsController.cs" t="Include" />
         </e>
@@ -263,7 +264,6 @@
             <e p="EmojiOne Attribution.txt" t="Include" />
           </e>
         </e>
-        <e p="VehicleSelection.cs" t="Include" />
       </e>
       <e p="nanomachines-but-micro.sln" t="IncludeFlat" />
       <e p="obj" t="ExcludeRecursive" />
