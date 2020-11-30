@@ -16,7 +16,7 @@ public class SelectionContainer : MonoBehaviour
         if (Instance != null) Destroy(gameObject);
         Instance = this;
         DontDestroyOnLoad(gameObject);
-        prefabIdInteger = 0;
+        prefabIdInteger = 3;
     }
 
     public void ConfirmSelection()
