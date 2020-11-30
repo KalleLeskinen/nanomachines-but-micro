@@ -65,19 +65,7 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
 
     public override void SimulateOwner()
     {
-
-        //if (Time.frameCount % 60 == 0 && state.RaceStarted && !state.Finished)
-        //{
-        //    CheckForWinner();
-        //}
-
         CountTime(); //servu laskee staten aikaa
-
-        //if (Time.frameCount % 30 == 0 && state.Clock < 0 && state.Clock > -1 && !StartFlag)
-        //{
-        //    StartRace();
-        //}
-        
     }
 
     private void StartRace() //tämä pitää alustaa jokaisen pelaajan itse
@@ -201,51 +189,12 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
         yield return new WaitForSeconds(5f);
         BoltNetwork.LoadScene("MainMenu");
     }
-    private void WaitForPlayersAndInitGame()
-    {
-        Debug.Log($"Starting the game in {warmupTime} seconds");
-        playerDataList = new List<PlayerData>();
-
-    }
-
-    //IEnumerator IntialiseTheGameIn(int warmupTime)
-    //{
-    //    starting = true;
-    //    GameObject.FindGameObjectWithTag("FinishLine").GetComponent<BoxCollider>().isTrigger = false;
-    //    Debug.Log($"Starting the game in {warmupTime} seconds");
-    //    yield return new WaitForSeconds(warmupTime);
-    //    playerDataList = new List<PlayerData>();
-    //    SetUpCheckPoints();
-    //    GetAllCars();
-    //    GetSceneGuids();
-    //    foreach (var car in cars)
-    //    {
-    //        List<float> plr_laptimes = GetLapTimeList(car);
-    //        List<int> plr_checkpoints = GetCheckpointList(car);
-    //        Guid plr_id = GetGuid(car);
-    //        string plr_name = car.GetComponentInParent<BoltEntity>().GetState<IVehicleState>().PlayerName;
-    //        PlayerData plr = new PlayerData(plr_id,plr_checkpoints,plr_laptimes, plr_name);
-    //        playerDataList.Add(plr);
-    //        Debug.Log($"added {plr_name}... with {plr_laptimes.Count} laps and {plr_checkpoints.Count} checkpoints passed");
-    //        car.GetComponent<LapTimeUpdate>().clock = 0;
-    //    }
-    //    starting = false;
-    //    GameObject.FindGameObjectWithTag("FinishLine").GetComponent<BoxCollider>().isTrigger = true;
-
-    //}
 
     private void SetUpCheckPoints()
     {
         checkpoints = GameObject.FindGameObjectsWithTag("checkpoint");
         numberOfcheckpoints = checkpoints.Length;
     }
-
-    //private void SetUpTheRace()
-    //{
-    //    Debug.Log("SetUpTheRace");
-    //    StartCoroutine(IntialiseTheGameIn(warmupTime));
-    //    state.RaceStarted = true;
-    //}
 
     private void GetSceneGuids()
     {
@@ -327,11 +276,6 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
     private Guid GetGuid(GameObject car)
     {
         return car.GetComponent<LapTimeUpdate>().id;
-    }
-    private void OnGUI()
-    {
-        //if (state.Clock > 0)
-        //    GUI.Box(new Rect(100, 100, 200, 50), Mathf.FloorToInt(state.Clock).ToString());
     }
 }
 

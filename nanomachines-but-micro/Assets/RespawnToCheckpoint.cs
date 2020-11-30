@@ -20,6 +20,7 @@ public class RespawnToCheckpoint : MonoBehaviour
                 if (cp.GetComponent<CheckpointScript>().checkpointNumber == whichCP-1)
                 {
                     other.transform.position = cp_pos + Vector3.up * 3;
+                    other.transform.rotation = cp.transform.rotation;
                 }
             }
         }
