@@ -21,6 +21,7 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
     float countdownSeconds;
 
     public GameObject scoreboard_ui;
+    public GameObject player_laptime_ui;
 
     public bool started = false;
     public bool finished = false;
@@ -86,6 +87,7 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
             Debug.Log($"added {plr_name}... with {plr_laptimes.Count} laps and {plr_checkpoints.Count} checkpoints passed");
             car.GetComponent<LapTimeUpdate>().clock = 0;
         }
+        player_laptime_ui.SetActive(true);
         if (BoltNetwork.IsServer)
             state.RaceStarted = true;
     }
