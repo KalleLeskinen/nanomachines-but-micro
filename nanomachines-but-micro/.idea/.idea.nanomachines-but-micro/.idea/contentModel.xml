@@ -219,6 +219,7 @@
           <e p="VehicleSelectionCallbacks.cs" t="Include" />
           <e p="WeaponsController.cs" t="Include" />
         </e>
+        <e p="SelectionContainer.cs" t="Include" />
         <e p="SetCenterOffMass.cs" t="Include" />
         <e p="Shared" t="Include">
           <e p="scripts" t="Include">

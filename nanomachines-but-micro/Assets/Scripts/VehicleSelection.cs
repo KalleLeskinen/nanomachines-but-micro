@@ -7,9 +7,10 @@ using UnityEngine.PlayerLoop;
 
 public class VehicleSelection : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject rotatingDisplay;
+    [SerializeField] private GameObject rotatingDisplay;
 
+    [SerializeField] private GameObject DataContainer;
+    
     private GameObject[] modelPrefabs;
     
     private GameObject displayedModel;
@@ -53,7 +54,7 @@ public class VehicleSelection : MonoBehaviour
             } 
             else
             {
-                DisplayModel(modelPrefabs[i--]);
+                DisplayModel(modelPrefabs[--i]);
             }
         }
 
@@ -66,7 +67,7 @@ public class VehicleSelection : MonoBehaviour
             }
             else
             {
-                DisplayModel(modelPrefabs[i++]);
+                DisplayModel(modelPrefabs[++i]);
             }
         }
     }

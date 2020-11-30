@@ -20,7 +20,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54e1185e-b36a-48be-80e4-7b3ad73de5e3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GarageScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GarageScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/VehicleSelection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/VehicleSelection.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -118,7 +117,7 @@
       <workItem from="1606404203704" duration="2509000" />
       <workItem from="1606412727305" duration="2228000" />
       <workItem from="1606475444046" duration="644000" />
-      <workItem from="1606734509713" duration="4514000" />
+      <workItem from="1606734509713" duration="4852000" />
     </task>
     <servers />
   </component>
