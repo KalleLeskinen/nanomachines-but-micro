@@ -20,7 +20,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54e1185e-b36a-48be-80e4-7b3ad73de5e3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Truck-1_Model.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Truck-1_Model.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.nanomachines-but-micro/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.nanomachines-but-micro/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonBolt/assemblies/bolt.user.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonBolt/assemblies/bolt.user.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonBolt/resources/BoltPrefabDatabase.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonBolt/resources/BoltPrefabDatabase.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Race_Handler Variant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Race_Handler Variant.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Race_Handler.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Race_Handler.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TruckV1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/TruckV1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TruckV2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/TruckV2.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Vehicles/Torino-1/Torino.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Vehicles/Torino-1/Torino.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Vehicles/Torino-2/Blurino.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Vehicles/Torino-2/Blurino.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Vehicles/Truck-1/Truck-1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Vehicles/Truck-1/Truck-1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Vehicles/Truck-2/Truck_yellow.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Vehicles/Truck-2/Truck_yellow.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/temprallycar-with-laps.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/temprallycar-with-laps.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/temprallycar.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/temprallycar.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GarageScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GarageScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/VehicleSelectionCallbacks.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/VehicleSelectionCallbacks.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,6 +128,7 @@
       <workItem from="1606404203704" duration="2509000" />
       <workItem from="1606412727305" duration="2228000" />
       <workItem from="1606475444046" duration="644000" />
+      <workItem from="1606734509713" duration="2035000" />
     </task>
     <servers />
   </component>
@@ -150,13 +165,13 @@
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
     <state x="984" y="0" width="943" height="1087" key="dock-window-1/62.0.1858.1080/-1538.174.1538.900@62.0.1858.1080" timestamp="1606405942357" />
-    <state x="256" y="32" width="1554" height="988" key="dock-window-2" timestamp="1606476173624">
+    <state x="256" y="32" width="1554" height="988" key="dock-window-2" timestamp="1606736778698">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
-    <state x="256" y="32" width="1554" height="988" key="dock-window-2/62.0.1858.1080/-1538.174.1538.900@62.0.1858.1080" timestamp="1606476173624" />
-    <state x="647" y="250" key="run.anything.popup" timestamp="1605787023239">
+    <state x="256" y="32" width="1554" height="988" key="dock-window-2/62.0.1858.1080/-1538.174.1538.900@62.0.1858.1080" timestamp="1606736778698" />
+    <state x="647" y="250" key="run.anything.popup" timestamp="1606735860052">
       <screen x="62" y="0" width="1858" height="1080" />
     </state>
-    <state x="647" y="250" key="run.anything.popup/62.0.1858.1080/-1538.174.1538.900@62.0.1858.1080" timestamp="1605787023239" />
+    <state x="647" y="250" key="run.anything.popup/62.0.1858.1080/-1538.174.1538.900@62.0.1858.1080" timestamp="1606735860052" />
   </component>
 </project>
