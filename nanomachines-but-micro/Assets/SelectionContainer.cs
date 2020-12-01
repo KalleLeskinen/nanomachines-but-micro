@@ -16,10 +16,11 @@ public class SelectionContainer : MonoBehaviour
         if (Instance != null) Destroy(gameObject);
         Instance = this;
         DontDestroyOnLoad(gameObject);
+        prefabIdInteger = 3;
     }
 
     public void ConfirmSelection()
     {
-        prefabIdInteger = VehicleSelection.Instance.i;
+        prefabIdInteger = VehicleSelection.Instance.i % VehicleSelection.Instance.modelCount;
     }
 }
