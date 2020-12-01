@@ -27,13 +27,17 @@ public class VehicleSelection : MonoBehaviour
         Instance = this;
         
         i = 40;
-        modelCount = 4;
+        modelCount = 7;
         displayedModel = new GameObject();
         modelPrefabs = new GameObject[modelCount];
         modelPrefabs[0] = Resources.Load("Car1_Torino_Model") as GameObject;
         modelPrefabs[1] = Resources.Load("Car2_Torino_Model") as GameObject;
-        modelPrefabs[2] = Resources.Load("Truck-1_Model") as GameObject;
-        modelPrefabs[3] = Resources.Load("TruckV1Model") as GameObject;
+        modelPrefabs[2] = Resources.Load("Car3_Torino_Model") as GameObject;
+        modelPrefabs[3] = Resources.Load("Truck-1_Model") as GameObject;
+        modelPrefabs[4] = Resources.Load("Truck-2_Model") as GameObject;
+        modelPrefabs[5] = Resources.Load("TruckV1Model") as GameObject;
+        modelPrefabs[6] = Resources.Load("TruckV2Model") as GameObject;
+
 
         displayedModel = modelPrefabs[0];
         DisplayModel(displayedModel);
