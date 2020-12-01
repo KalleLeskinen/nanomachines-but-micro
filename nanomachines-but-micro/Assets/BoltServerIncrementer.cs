@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Bolt;
+using UdpKit;
 
 [BoltGlobalBehaviour(BoltNetworkModes.Server)]
 public class BoltServerIncrementer : Bolt.GlobalEventListener
@@ -10,7 +11,10 @@ public class BoltServerIncrementer : Bolt.GlobalEventListener
     public override void Connected(BoltConnection connection)
     {
         GameObject.FindGameObjectWithTag("RaceHandler").GetComponent<BoltEntity>().GetState<IStateOfRace>().NumberOfPlayers += 1;
-
+        if (GameObject.FindGameObjectWithTag("RaceHandler").GetComponent<BoltEntity>().GetState<IStateOfRace>().Clock < 20 && BoltNetwork.IsServer)
+        {
+            GameObject.FindGameObjectWithTag("RaceHandler").GetComponent<BoltEntity>().GetState<IStateOfRace>().Clock += 20;
+        }
     }
 
 }
