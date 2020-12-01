@@ -18,6 +18,7 @@ public class MainMenu : GlobalEventListener
 
     public void ButtonStartServer()
     {
+        SetRoomName();
         BoltLauncher.StartServer();
     }
 
@@ -39,16 +40,21 @@ public class MainMenu : GlobalEventListener
     public void SetRoomName()
     {
         roomName = GameObject.FindGameObjectWithTag("ServerName").GetComponent<Text>().text;
+        if (roomName == "")
+        {
+            roomName = "<unnamed lobby>";
+        }
     }
 
     public override void BoltStartDone()
     {
         if (BoltNetwork.IsServer)
         {
-            int randomInt = Random.Range(0, 9999);
-            string matchName = roomName + randomInt;
+            //int randomInt = Random.Range(0, 9999);
+            string matchName = roomName;
 
             BoltMatchmaking.CreateSession(
+                
                 sessionID: matchName,
                 sceneToLoad: "Level_1" // <-  What scene to load.... muutettu level 1 koska garage scene bugaa atm... T:jonni
             );
@@ -65,11 +71,11 @@ public class MainMenu : GlobalEventListener
         foreach (var session in sessionList)
         {
             UdpSession photonSession = session.Value as UdpSession;
-
+            Debug.Log("Session found " + photonSession.HostName);
             Button joinGameButtonClone = Instantiate(joinGameButtonPrefab);
             joinGameButtonClone.transform.parent = serverListPanel.transform;
-            joinGameButtonClone.transform.localPosition = new Vector3(0, buttonSpacing * _joinServerButtons.Count, 0);
-            joinGameButtonClone.GetComponentInChildren<Text>().text = "Test match " + (_joinServerButtons.Count + 1);
+            joinGameButtonClone.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 100 + buttonSpacing * _joinServerButtons.Count, 0);
+            joinGameButtonClone.GetComponentInChildren<Text>().text = photonSession.HostName;
             joinGameButtonClone.gameObject.SetActive(true);
 
             joinGameButtonClone.onClick.AddListener(() => JoinGame(photonSession));
