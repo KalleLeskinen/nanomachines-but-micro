@@ -32,7 +32,7 @@ public class NetworkCallbacks : GlobalEventListener
         GameObject serverPos = GameObject.FindGameObjectWithTag("server_pos");
 
         //var spawnInTheCorner = new Vector3(5, 3, -15);
-        PrefabId[] cars = { BoltPrefabs.Torino, BoltPrefabs.Blurino, BoltPrefabs.Splitrino, BoltPrefabs.Truck_1_green, BoltPrefabs.Truck_2_yellow, BoltPrefabs.Truck_1_blue_orange, BoltPrefabs.Truck_2_black };
+        PrefabId[] cars = { BoltPrefabs.Torino, BoltPrefabs.Blurino, BoltPrefabs.Splitrino, BoltPrefabs.Truck_1_green, BoltPrefabs.Truck_1_blue_orange, BoltPrefabs.Truck_2_yellow, BoltPrefabs.Truck_2_black };
         //Instantiate the player vehicle
         //BoltNetwork.Instantiate(cars[Random.Range(0, cars.Length)], spawnInTheCorner, Quaternion.identity);
 
@@ -71,7 +71,7 @@ public class NetworkCallbacks : GlobalEventListener
     IEnumerator WaitAndSpawn(float time)
     {
         yield return new WaitForSeconds(time);
-        PrefabId[] cars = { BoltPrefabs.Torino, BoltPrefabs.Blurino, BoltPrefabs.Splitrino, BoltPrefabs.Truck_1_green, BoltPrefabs.Truck_2_yellow, BoltPrefabs.Truck_1_blue_orange, BoltPrefabs.Truck_2_black };
+        PrefabId[] cars = { BoltPrefabs.Torino, BoltPrefabs.Blurino, BoltPrefabs.Splitrino, BoltPrefabs.Truck_1_green, BoltPrefabs.Truck_1_blue_orange, BoltPrefabs.Truck_2_yellow, BoltPrefabs.Truck_2_black };
         raceHandler = GameObject.FindGameObjectWithTag("RaceHandler");
         spawnpos = raceHandler.GetComponent<BoltEntity>().GetState<IStateOfRace>().NumberOfPlayers;
         GameObject startpos = GameObject.FindGameObjectWithTag($"{spawnpos}_pos");

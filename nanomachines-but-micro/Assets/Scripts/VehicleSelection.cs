@@ -26,7 +26,7 @@ public class VehicleSelection : MonoBehaviour
         if (Instance != null) Destroy(gameObject);
         Instance = this;
         
-        i = 40;
+        i = 0;
         modelCount = 7;
         displayedModel = new GameObject();
         modelPrefabs = new GameObject[modelCount];
@@ -39,8 +39,9 @@ public class VehicleSelection : MonoBehaviour
         modelPrefabs[6] = Resources.Load("TruckV2Model") as GameObject;
 
 
-        displayedModel = modelPrefabs[0];
-        DisplayModel(displayedModel);
+        displayedModel = Instantiate(modelPrefabs[0], rotatingDisplay.transform.position, rotatingDisplay.transform.rotation);
+        displayedModel.transform.parent = rotatingDisplay.transform;
+        //DisplayModel(displayedModel);
     }
     
     private void Update()
@@ -50,13 +51,12 @@ public class VehicleSelection : MonoBehaviour
 
     private void ChangeRemainder()
     {
-        DisplayModel(modelPrefabs[i % modelPrefabs.Length]);
+        DisplayModel(modelPrefabs[Math.Abs(i % modelCount)]);
     }
 
     private void DisplayModel(GameObject model)
     {
         Destroy(displayedModel);
-        //displayedModel = new GameObject();
         displayedModel = Instantiate(model, rotatingDisplay.transform.position, rotatingDisplay.transform.rotation);
         displayedModel.transform.parent = rotatingDisplay.transform;
     }
