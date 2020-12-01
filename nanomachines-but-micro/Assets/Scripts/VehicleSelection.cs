@@ -57,8 +57,6 @@ public class VehicleSelection : MonoBehaviour
     private void DisplayModel(GameObject model)
     {
         Destroy(displayedModel);
-        //displayedModel = new GameObject();
-        Debug.LogError(i);
         displayedModel = Instantiate(model, rotatingDisplay.transform.position, rotatingDisplay.transform.rotation);
         displayedModel.transform.parent = rotatingDisplay.transform;
     }
