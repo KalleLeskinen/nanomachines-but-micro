@@ -17,6 +17,7 @@ public class VehicleSelection : MonoBehaviour
     private GameObject displayedModel;
 
     public int i;
+    public int modelCount;
 
     public static VehicleSelection Instance;
 
@@ -25,9 +26,10 @@ public class VehicleSelection : MonoBehaviour
         if (Instance != null) Destroy(gameObject);
         Instance = this;
         
-        i = 0;
+        i = 40;
+        modelCount = 4;
         displayedModel = new GameObject();
-        modelPrefabs = new GameObject[4];
+        modelPrefabs = new GameObject[modelCount];
         modelPrefabs[0] = Resources.Load("Car1_Torino_Model") as GameObject;
         modelPrefabs[1] = Resources.Load("Car2_Torino_Model") as GameObject;
         modelPrefabs[2] = Resources.Load("Truck-1_Model") as GameObject;
@@ -40,7 +42,6 @@ public class VehicleSelection : MonoBehaviour
     private void Update()
     { 
         ProcessInput();
-        ChangeRemainder();
     }
 
     private void ChangeRemainder()
@@ -48,20 +49,27 @@ public class VehicleSelection : MonoBehaviour
         DisplayModel(modelPrefabs[i % modelPrefabs.Length]);
     }
 
-    private GameObject DisplayModel(GameObject model)
+    private void DisplayModel(GameObject model)
     {
         Destroy(displayedModel);
-        displayedModel = new GameObject();
-        return displayedModel = Instantiate(model, rotatingDisplay.transform.position, Quaternion.identity);
+        //displayedModel = new GameObject();
+        displayedModel = Instantiate(model, rotatingDisplay.transform.position, rotatingDisplay.transform.rotation);
+        displayedModel.transform.parent = rotatingDisplay.transform;
     }
     
     private void ProcessInput()
     {
         if (Input.GetKeyDown(KeyCode.A))
+        {
             i--;
+            ChangeRemainder();
+        }
 
         if (Input.GetKeyDown(KeyCode.D))
+        {
             i++;
+            ChangeRemainder();
+        }
     }
 
 }
