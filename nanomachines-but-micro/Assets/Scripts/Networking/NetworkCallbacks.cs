@@ -12,6 +12,7 @@ public class NetworkCallbacks : GlobalEventListener
     GameObject raceHandler;
     int spawnpos;
     public GameObject scoreboard_ui;
+    int car_to_spawn;
 
     private void Awake()
     {
@@ -19,6 +20,14 @@ public class NetworkCallbacks : GlobalEventListener
     public override void SceneLoadLocalDone(string scene)
     { 
         scoreboard_ui = GameObject.FindGameObjectWithTag("score_panel");
+        GameObject selection_container = GameObject.FindGameObjectWithTag("selection_data_container");
+        if (selection_container == null)
+        {
+            car_to_spawn = 0; //torino if player has not chosen one from the main menu
+        } else
+        {
+            car_to_spawn = SelectionContainer.Instance.prefabIdInteger;
+        }
         //GameObject startpos = GameObject.FindGameObjectWithTag($"{BoltServerIncrementer.GetNextConnectCount()}_pos");
         GameObject serverPos = GameObject.FindGameObjectWithTag("server_pos");
 
@@ -33,7 +42,7 @@ public class NetworkCallbacks : GlobalEventListener
             
             if (BoltNetwork.IsServer)
             {
-                BoltEntity serverCar = BoltNetwork.Instantiate(cars[SelectionContainer.Instance.prefabIdInteger], serverPos.transform.position, serverPos.transform.rotation);
+                BoltEntity serverCar = BoltNetwork.Instantiate(cars[car_to_spawn], serverPos.transform.position, serverPos.transform.rotation);
                 serverCar.GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             }
             else
@@ -66,7 +75,7 @@ public class NetworkCallbacks : GlobalEventListener
         raceHandler = GameObject.FindGameObjectWithTag("RaceHandler");
         spawnpos = raceHandler.GetComponent<BoltEntity>().GetState<IStateOfRace>().NumberOfPlayers;
         GameObject startpos = GameObject.FindGameObjectWithTag($"{spawnpos}_pos");
-        BoltEntity Car = BoltNetwork.Instantiate(cars[SelectionContainer.Instance.prefabIdInteger], startpos.transform.position, startpos.transform.rotation);
+        BoltEntity Car = BoltNetwork.Instantiate(cars[car_to_spawn], startpos.transform.position, startpos.transform.rotation);
         Car.GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         GameObject.FindGameObjectWithTag("RaceHandler").GetComponent<RaceScript>().UpdatePlayerBase();
     }
