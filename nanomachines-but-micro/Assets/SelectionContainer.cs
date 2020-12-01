@@ -8,19 +8,22 @@ using UnityEngine;
 public class SelectionContainer : MonoBehaviour
 {
     public int prefabIdInteger;
-
+    public bool set = false;
     public static SelectionContainer Instance;
 
     private void Awake()
     {
+        gameObject.tag = "selection_data_container";
         if (Instance != null) Destroy(gameObject);
         Instance = this;
         DontDestroyOnLoad(gameObject);
-        prefabIdInteger = 3;
+        if (!set)
+            prefabIdInteger = 0;
     }
 
     public void ConfirmSelection()
     {
         prefabIdInteger = VehicleSelection.Instance.i % VehicleSelection.Instance.modelCount;
+        set = true;
     }
 }
