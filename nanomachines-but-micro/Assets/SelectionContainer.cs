@@ -23,7 +23,7 @@ public class SelectionContainer : MonoBehaviour
 
     public void ConfirmSelection()
     {
-        prefabIdInteger = VehicleSelection.Instance.i % VehicleSelection.Instance.modelCount;
+        prefabIdInteger = Math.Abs(VehicleSelection.Instance.i % VehicleSelection.Instance.modelCount);
         set = true;
     }
 }

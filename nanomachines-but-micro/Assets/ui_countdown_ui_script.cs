@@ -21,7 +21,7 @@ public class ui_countdown_ui_script : MonoBehaviour
         {
             if (Time.frameCount % 10 == 0)
                 textfield.GetComponent<Text>().text = Mathf.FloorToInt(state.Clock).ToString();
-            if (Mathf.FloorToInt(state.Clock) < 1)
+            if (Mathf.FloorToInt(state.Clock) < 3.3f)
             {
                 textfield.transform.parent.gameObject.SetActive(false);
             }

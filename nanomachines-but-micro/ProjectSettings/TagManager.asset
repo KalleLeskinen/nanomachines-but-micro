@@ -39,6 +39,7 @@ TagManager:
   - connected_players_ui
   - ServerName
   - selection_data_container
+  - 3_2_1_go_ui
   layers:
   - Default
   - TransparentFX

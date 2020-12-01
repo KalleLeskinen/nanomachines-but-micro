@@ -10,7 +10,7 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
 {
     [SerializeField]
     List<GameObject> cars;
-
+    private bool played = false;
     [SerializeField] string[] sceneguids;
     public GameObject[] checkpoints;
     public int numberOfcheckpoints;
@@ -23,6 +23,7 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
     public GameObject scoreboard_ui;
     public GameObject player_laptime_ui;
     public GameObject connected_players_ui;
+    public GameObject ui_3_2_1_go;
 
     public bool started = false;
     public bool finished = false;
@@ -55,13 +56,19 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
 
     private void Update()
     {
-        //if (Time.frameCount % 60 == 0 && state.RaceStarted && !state.Finished)
-        //{
-        //    CheckForWinner();
-        //}
         if (Time.frameCount % 30 == 0 && Time.timeSinceLevelLoad > 3 && state.Clock < 0 && state.Clock > -1 && !StartFlag)
         {
             StartRace();
+        }
+
+    }
+    private void FixedUpdate()
+    {
+        if (state.Clock < 3.3f && !played)
+        {
+            played = true;
+            ui_3_2_1_go.SetActive(true);
+            ui_3_2_1_go.GetComponent<Animation>().Play();
         }
     }
 
@@ -90,6 +97,8 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
         }
         player_laptime_ui.SetActive(true);
         connected_players_ui.SetActive(false);
+        ui_3_2_1_go.SetActive(false);
+        
         if (BoltNetwork.IsServer)
             state.RaceStarted = true;
     }
