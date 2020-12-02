@@ -137,9 +137,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2981167435952280742}
   - component: {fileID: 975477685791987061}
+  - component: {fileID: 2915289166646721353}
   m_Layer: 0
   m_Name: minespawnpos
-  m_TagString: Untagged
+  m_TagString: MineTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -171,6 +172,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minePos: {x: 0, y: 0, z: 0}
+--- !u!65 &2915289166646721353
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1188908364535972824}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.2, y: 1.18, z: 3.02}
+  m_Center: {x: 0, y: 0.37, z: 1.39}
 --- !u!1 &1477675610622865906
 GameObject:
   m_ObjectHideFlags: 0
@@ -1128,7 +1142,8 @@ GameObject:
   - component: {fileID: 7697721561500677738}
   - component: {fileID: 7622843391742752181}
   - component: {fileID: 6397834272456635312}
-  - component: {fileID: 5529198959798656384}
+  - component: {fileID: 4510973765979664709}
+  - component: {fileID: 1347260104077250020}
   m_Layer: 0
   m_Name: Torino_Body
   m_TagString: Player
@@ -1328,8 +1343,8 @@ MonoBehaviour:
   Preload: 0
   Params: []
   OverrideAttenuation: 0
-  OverrideMinDistance: 0
-  OverrideMaxDistance: 0
+  OverrideMinDistance: 7.4
+  OverrideMaxDistance: 55
 --- !u!114 &7697721561500677738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1367,7 +1382,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c3ca35a56fbb084984fba4fc3aaed47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!65 &5529198959798656384
+--- !u!114 &4510973765979664709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7685037445990658252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/ImpactLight
+  PlayEvent: 7
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 7.2000003
+  OverrideMaxDistance: 55
+--- !u!65 &1347260104077250020
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
