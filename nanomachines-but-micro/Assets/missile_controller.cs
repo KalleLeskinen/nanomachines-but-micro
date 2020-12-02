@@ -57,6 +57,7 @@ public class missile_controller : Bolt.EntityBehaviour<IRocketState>
         if (other.gameObject.tag.Equals("generic_wall"))
         {
             Instantiate(explosion_effect, transform.position, transform.rotation);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/missileMiss", GetComponent<Transform>().position);
             state.Explosion();
         }
 
@@ -65,6 +66,7 @@ public class missile_controller : Bolt.EntityBehaviour<IRocketState>
             affected.Add(other.gameObject);
             Debug.Log($"ADDED {other.gameObject} to LIST OF AFFECTED PLAYERS ({affected.Count})");
             Instantiate(explosion_effect, transform.position, transform.rotation);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/WeaponHit", GetComponent<Transform>().position);
             state.Explosion();
         }
     }
@@ -81,6 +83,7 @@ public class missile_controller : Bolt.EntityBehaviour<IRocketState>
         if (collision.gameObject.tag.Equals("generic_wall"))
         {
             Instantiate(explosion_effect, transform.position, transform.rotation);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/missileMiss", GetComponent<Transform>().position);
             state.Explosion();
         }
     }
