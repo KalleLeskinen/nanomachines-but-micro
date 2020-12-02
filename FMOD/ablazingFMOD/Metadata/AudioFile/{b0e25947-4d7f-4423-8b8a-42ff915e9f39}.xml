@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{b0e25947-4d7f-4423-8b8a-42ff915e9f39}">
+		<property name="assetPath">
+			<value>ABL_imp_light2.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>0.44199546485260771</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{5b86252c-405e-4d21-8464-065361e8dff6}</destination>
+		</relationship>
+	</object>
+</objects>

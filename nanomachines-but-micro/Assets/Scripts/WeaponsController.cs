@@ -37,12 +37,12 @@ public class WeaponsController : Bolt.EntityBehaviour<IVehicleState>
 
     public void ProcessMoreInputs()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q) && entity.IsOwner)
         {
             mineFlag = true;
             Debug.Log(state.AmmoCount);
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && entity.IsOwner)
         {
             rocketFlag = true;
             Debug.Log(state.AmmoCount);
