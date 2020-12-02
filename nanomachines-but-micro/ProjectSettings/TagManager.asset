@@ -21,26 +21,7 @@ TagManager:
   - server_pos
   - active_car
   - starting_grid
-  - score_panel
-  - player_name
-  - player_name_ui
-  - host_name_laps_ui
-  - client_start_ui
-  - scoreboard_winner
-  - scoreboard_second
-  - scoreboard_third
-  - VehicleTray
-  - start_time_counter_ui
-  - best_lap_winner
-  - best_lap_second
-  - best_lap_third
-  - host_name_laps_ui_slider
-  - player_laptime_ui
-  - connected_players_ui
-  - ServerName
-  - selection_data_container
-  - 3_2_1_go_ui
-  - MineTrigger
+  - car
   layers:
   - Default
   - TransparentFX
@@ -50,7 +31,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Ignore ReflecionProbe
   - 
   - 
   - 
