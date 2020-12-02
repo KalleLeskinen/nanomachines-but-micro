@@ -365,6 +365,21 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
 
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.impulse.magnitude > 2000)
+        {
+            Debug.Log(collision.impulse.magnitude);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/ImpactLight", GetComponent<Transform>().position);
+        }
+        if (collision.impulse.magnitude >9000)
+        {
+            Debug.Log(collision.impulse.magnitude);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/ImpactHard", GetComponent<Transform>().position);
+        }
+        
+    }
+
     // Slowdown used when boosting fails, Edited to work with the new vehicle controller
     private void SlowDown()
     {

@@ -49,6 +49,7 @@ public class missile_controller : Bolt.EntityBehaviour<IRocketState>
         if (state.DetonateTime < 0)
         {
             Instantiate(explosion_effect, transform.position, transform.rotation);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/missileMiss", GetComponent<Transform>().position);
             state.Explosion();
         }   // räjähdys / ei räjähdystä vaan katoaminen? (lähellä ei autoja.......)
     }
@@ -57,7 +58,7 @@ public class missile_controller : Bolt.EntityBehaviour<IRocketState>
         if (other.gameObject.tag.Equals("generic_wall"))
         {
             Instantiate(explosion_effect, transform.position, transform.rotation);
-            FMODUnity.RuntimeManager.PlayOneShot("event:/missileMiss", GetComponent<Transform>().position);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Explosion", GetComponent<Transform>().position);
             state.Explosion();
         }
 
