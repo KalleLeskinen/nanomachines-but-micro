@@ -204,7 +204,7 @@ MonoBehaviour:
   boostYellowMeter: {fileID: 3709110286748605142}
   boostYellowMeterOriginalPosition: {x: 0, y: 0, z: 0}
   boostPower: 1.5
-  slowPower: 0
+  slowPower: 1
   boostTime: 3
   boostTimeLow: 2.5
   boostTimeHigh: 7.5
@@ -214,7 +214,7 @@ MonoBehaviour:
   boostFillLow: 2.5
   boostFillHigh: 7.5
   boostWindowMax: 10
-  boostMeterSpeed: 1
+  boostMeterSpeed: 0.1
   boostMeterTime: 10
   boosting: 0
 --- !u!114 &2569607086832638104
