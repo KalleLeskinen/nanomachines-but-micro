@@ -53,7 +53,7 @@
 			<destination>{d47953d1-b286-4d91-9951-d78bf5773517}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{b8bbd43b-58e4-4c5d-bb62-a0ccb410ba71}</destination>
+			<destination>{a49d0496-7e12-41eb-ae54-286541a11ca5}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{6ca2e023-2d52-4005-bce2-80143f2efa46}" />
@@ -139,7 +139,14 @@
 	</object>
 	<object class="MixerBusPanner" id="{60bfbfe7-121f-4c66-8a71-93b17c20a367}" />
 	<object class="MixerBusFader" id="{b252171f-563a-4150-b82a-3e9600bf3e46}" />
-	<object class="SpatialiserEffect" id="{ac7e1534-5305-4be4-badf-1dc830d3bf39}" />
+	<object class="SpatialiserEffect" id="{ac7e1534-5305-4be4-badf-1dc830d3bf39}">
+		<property name="minimumDistance">
+			<value>7.5999999</value>
+		</property>
+		<property name="maximumDistance">
+			<value>75</value>
+		</property>
+	</object>
 	<object class="RandomizerModulator" id="{814fc0d2-330d-4dc4-9f01-4c9e0b719803}">
 		<property name="nameOfPropertyBeingModulated">
 			<value>pitch</value>

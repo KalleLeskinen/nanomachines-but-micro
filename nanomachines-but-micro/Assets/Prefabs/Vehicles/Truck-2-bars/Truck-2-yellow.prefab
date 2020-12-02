@@ -215,7 +215,7 @@ MonoBehaviour:
   boostFillLow: 2.5
   boostFillHigh: 7.5
   boostWindowMax: 10
-  boostMeterSpeed: 1
+  boostMeterSpeed: 0.1
   boostMeterTime: 10
   boosting: 0
   cooldownFlag: 0

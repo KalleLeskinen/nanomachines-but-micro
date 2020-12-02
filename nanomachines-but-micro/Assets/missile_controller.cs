@@ -36,6 +36,7 @@ public class missile_controller : Bolt.EntityBehaviour<IRocketState>
         if (other.gameObject.tag.Equals("generic_wall") && !exploded)
         {
             Instantiate(explosion_effect, transform.position, transform.rotation);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/missileMiss", GetComponent<Transform>().position);
             state.Explosion();
         }
 
@@ -43,6 +44,7 @@ public class missile_controller : Bolt.EntityBehaviour<IRocketState>
         {
             Instantiate(explosion_effect, transform.position, transform.rotation);
             other.gameObject.GetComponent<OnHitController>().Explode();
+            FMODUnity.RuntimeManager.PlayOneShot("event:/WeaponHit", GetComponent<Transform>().position);
             state.Explosion();
         }
     }

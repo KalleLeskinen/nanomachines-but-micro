@@ -339,7 +339,7 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
     private void Boost()
     {
         boosting = true;
-
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Boost", GetComponent<Transform>().position);
         StartCoroutine(BoostCoolDown());
         boost_effect.SetActive(true);
         StartCoroutine(BoostTrailTime());
@@ -379,6 +379,7 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
     // Slowdown used when boosting fails, Edited to work with the new vehicle controller
     private void SlowDown()
     {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/BoostFail", GetComponent<Transform>().position);
         foreach (KartWheel w in wheels)
         {
 
