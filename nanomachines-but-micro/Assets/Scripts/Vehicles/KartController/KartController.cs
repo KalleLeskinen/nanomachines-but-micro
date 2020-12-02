@@ -48,7 +48,8 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
 
     public float
         boostPower,
-        slowPower;
+        slowPower,
+        explosionPower;
 
     public float
         boostTime,
@@ -121,10 +122,11 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
 
     void FixedUpdate()
     {
+        if (entity.IsOwner)
+            SetSteeringAngle();
+        
 
-        SetSteeringAngle();
-
-        if(boostFlag && !cooldownFlag)
+        if(boostFlag && !cooldownFlag && entity.IsOwner)
         {
             //mittari päälle
             boostRedBackground.SetActive(true);
@@ -389,6 +391,23 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
             {
                 w.SlowDown(slowPower);
             }
+        }
+    }
+
+    public void OnWeaponHit()
+    {
+        foreach (KartWheel w in wheels)
+        {
+            w.OnExplosion(explosionPower);
+            //if (w.wheel == KartWheel.Wheels.Front_Left)
+            //{
+            //    w.OnExplosion(explosionPower);
+            //}
+
+            //if (w.wheel == KartWheel.Wheels.Front_Right)
+            //{
+            //    w.OnExplosion(explosionPower);
+            //}
         }
     }
 

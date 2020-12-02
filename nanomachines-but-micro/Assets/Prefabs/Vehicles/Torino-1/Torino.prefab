@@ -152,7 +152,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1188908364535972824}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.003, z: -2.446}
+  m_LocalPosition: {x: 0, y: -0.5, z: -2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8933071212006432705}
@@ -1124,11 +1124,11 @@ GameObject:
   - component: {fileID: 6404975390179001696}
   - component: {fileID: 217855612975652332}
   - component: {fileID: 420667818426660288}
-  - component: {fileID: 2336094537762637963}
   - component: {fileID: 5283596922452517144}
   - component: {fileID: 7697721561500677738}
   - component: {fileID: 7622843391742752181}
   - component: {fileID: 6397834272456635312}
+  - component: {fileID: 5529198959798656384}
   m_Layer: 0
   m_Name: Torino_Body
   m_TagString: Player
@@ -1251,6 +1251,7 @@ MonoBehaviour:
   boostYellowMeterOriginalPosition: {x: 0, y: 0, z: 0}
   boostPower: 3.5
   slowPower: 10
+  explosionPower: 3850
   boostTime: 3
   boostTimeLow: 2.5
   boostTimeHigh: 7.5
@@ -1306,19 +1307,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hit_smoke: {fileID: 7902270455532459262}
---- !u!65 &2336094537762637963
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7685037445990658252}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.74, y: 0.48771614, z: 2.46}
-  m_Center: {x: 0.00005310774, y: -0.09038004, z: 0}
 --- !u!114 &5283596922452517144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1379,6 +1367,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c3ca35a56fbb084984fba4fc3aaed47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &5529198959798656384
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7685037445990658252}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.74, y: 0.48771614, z: 2.46}
+  m_Center: {x: 0.00005310774, y: -0.09038004, z: 0}
 --- !u!1 &8135003416550438437
 GameObject:
   m_ObjectHideFlags: 0

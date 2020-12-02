@@ -21,7 +21,6 @@ public class MineController : Bolt.EntityBehaviour<ILandMineState>
     void FixedUpdate()
     {
         state.DetonateTime = state.DetonateTime - Time.deltaTime;
-
         if (state.DetonateTime < 0)
         {
             Instantiate(explosion_effect, transform.position, transform.rotation);
@@ -34,7 +33,7 @@ public class MineController : Bolt.EntityBehaviour<ILandMineState>
     }
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player") && !state.Exploded)
+        if (other.gameObject.CompareTag("Player") && !state.Exploded && state.DetonateTime < 44f && state.DetonateTime != 0)
         {
             Instantiate(explosion_effect, transform.position, transform.rotation);
             other.gameObject.GetComponent<OnHitController>().Explode();

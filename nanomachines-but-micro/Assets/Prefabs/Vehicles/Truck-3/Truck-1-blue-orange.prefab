@@ -325,7 +325,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3464570215136885818}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: -2}
+  m_LocalPosition: {x: 0, y: -0.5, z: -2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6598861330506113059}
@@ -962,6 +962,7 @@ MonoBehaviour:
   boostYellowMeterOriginalPosition: {x: 0, y: 0, z: 0}
   boostPower: 3.5
   slowPower: 10
+  explosionPower: 3850
   boostTime: 3
   boostTimeLow: 2.5
   boostTimeHigh: 7.5

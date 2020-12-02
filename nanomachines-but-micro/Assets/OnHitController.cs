@@ -14,8 +14,8 @@ public class OnHitController : Bolt.EntityBehaviour<IVehicleState>
 
     private void explosionEffect()
     {
-        GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-        GetComponent<Rigidbody>().AddExplosionForce(4000f, Vector3.down, 5f);
+        GetComponent<KartController>().OnWeaponHit();
+        //GetComponent<Rigidbody>().AddExplosionForce(4000f, Vector3.down, 5f);
     }
 
     public void Explode()

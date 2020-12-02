@@ -39,7 +39,7 @@ public class missile_controller : Bolt.EntityBehaviour<IRocketState>
             state.Explosion();
         }
 
-        if (other.gameObject.tag.Equals("Player") && !state.Exploded)
+        if (other.gameObject.tag.Equals("Player") && !state.Exploded && state.DetonateTime < 4.9f && state.DetonateTime != 0)
         {
             Instantiate(explosion_effect, transform.position, transform.rotation);
             other.gameObject.GetComponent<OnHitController>().Explode();
