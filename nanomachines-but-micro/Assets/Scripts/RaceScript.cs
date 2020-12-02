@@ -11,14 +11,12 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
     [SerializeField]
     List<GameObject> cars;
     private bool played = false;
-    [SerializeField] string[] sceneguids;
+    //[SerializeField] string[] sceneguids;
     public GameObject[] checkpoints;
     public int numberOfcheckpoints;
     public int numberOfLaps;
-    private bool starting = false;
     [SerializeField]
     GameObject FinishLine;
-    float countdownSeconds;
 
     public GameObject scoreboard_ui;
     public GameObject player_laptime_ui;
@@ -27,17 +25,13 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
 
     public bool started = false;
     public bool finished = false;
-    BoltEntity winner;
 
     [SerializeField] public List<PlayerData> playerDataList;
-
-    int warmupTime = 15;
 
     public bool StartFlag = false;
 
     public override void Attached()
     {
-        Debug.Log("#666 STARTING");
         if (BoltNetwork.IsServer)
         {
             state.NumberOfPlayers = 1;
@@ -46,8 +40,6 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
             state.NumberOfLaps = numberOfLaps;
             state.NumberOfCheckpoints = numberOfcheckpoints;
             state.Clock = 15;
-            //SetUpTheRace();
-            countdownSeconds = warmupTime;
             state.Winner = "";
             state.Second = "";
             state.Third = "";
@@ -83,7 +75,7 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
         playerDataList = new List<PlayerData>();
         SetUpCheckPoints();
         GetAllCars();
-        GetSceneGuids();
+        //GetSceneGuids();
         foreach (var car in cars)
         {
             List<float> plr_laptimes = GetLapTimeList(car);
@@ -210,16 +202,16 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
         numberOfcheckpoints = checkpoints.Length;
     }
 
-    private void GetSceneGuids()
-    {
-        sceneguids = new string[cars.Count];
-        int i = 0;
-        Debug.Log("GetSceneGuids");
-        foreach (var player in cars)
-        {
-            sceneguids[i++] = player.GetComponent<LapTimeUpdate>().id.ToString();
-        }
-    }
+    //private void GetSceneGuids()
+    //{
+    //    sceneguids = new string[cars.Count];
+    //    int i = 0;
+    //    Debug.Log("GetSceneGuids");
+    //    foreach (var player in cars)
+    //    {
+    //        sceneguids[i++] = player.GetComponent<LapTimeUpdate>().id.ToString();
+    //    }
+    //}
 
     private void GetAllCars()
     {

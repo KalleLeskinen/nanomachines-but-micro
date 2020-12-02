@@ -134,7 +134,8 @@ public class KartWheel : MonoBehaviour
     {
         if (Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, maxLength + wheelRadius))
         {
-            rig.AddForceAtPosition(boostAmount * transform.forward, hit.point);
+            //rig.AddForceAtPosition(boostAmount * Vector3.forward, hit.point);
+            rig.velocity += transform.forward * boostAmount;
         }
     }
 
@@ -142,7 +143,20 @@ public class KartWheel : MonoBehaviour
     {
         if (Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, maxLength + wheelRadius))
         {
-            rig.AddForceAtPosition(slowAmount * transform.forward, hit.point);
+            //rig.AddForceAtPosition(slowAmount * Vector3.forward, hit.point);
+            rig.velocity -= transform.forward * slowAmount;
+        }
+    }
+
+    public void OnExplosion(float explosionAmount)
+    {
+        if (Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, maxLength + wheelRadius))
+        {
+            //rig.AddForceAtPosition(slowAmount * Vector3.forward, hit.point);
+            //rig.velocity -= transform.up * explosionAmount;
+            rig.velocity = Vector3.zero;
+            rig.AddExplosionForce(explosionAmount, transform.position, 1f, 5f, ForceMode.Impulse);
+            
         }
     }
 

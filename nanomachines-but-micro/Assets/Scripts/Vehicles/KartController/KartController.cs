@@ -48,7 +48,8 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
 
     public float
         boostPower,
-        slowPower;
+        slowPower,
+        explosionPower;
 
     public float
         boostTime,
@@ -74,6 +75,7 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
     private bool boostBarOn = false;
 
     private bool boostFlag = false;
+    public bool cooldownFlag = false;
 
     private void Start()
     {
@@ -120,10 +122,11 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
 
     void FixedUpdate()
     {
+        if (entity.IsOwner)
+            SetSteeringAngle();
+        
 
-        SetSteeringAngle();
-
-        if(boostFlag)
+        if(boostFlag && !cooldownFlag && entity.IsOwner)
         {
             //mittari päälle
             boostRedBackground.SetActive(true);
@@ -140,6 +143,11 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
         }
     }
 
+    private IEnumerator cooldown()
+    {
+        yield return new WaitForSeconds(cooldownTime);
+        cooldownFlag = false;
+    }
 
     void HandleInput()
     {
@@ -259,7 +267,6 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
         boostRedBackground.SetActive(false);
         boostGreenArea.SetActive(false);
         boostYellowMeter.SetActive(false);
-
     }
 
     //Handle what happens when boost button is pressed second time
@@ -270,6 +277,7 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
         {
             Debug.Log("on time");
             Boost();
+            cooldownFlag = true;
             //cooldownTime = 3;
             //boostTimeHigh -= boostTimeHigh*0.2f;
             //boostTimeLow += boostTimeLow*0.2f;
@@ -288,6 +296,7 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
         {
             Debug.Log("too early");
             SlowDown();
+            cooldownFlag = true;
             //ResetBoostBar();
             //ResetValues();
         }
@@ -297,8 +306,10 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
         {
             Debug.Log("too late");
             SlowDown();
+            cooldownFlag = true;
             //ResetValues();
         }
+        StartCoroutine(cooldown());
 
     }
 
@@ -381,6 +392,23 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
             {
                 w.SlowDown(slowPower);
             }
+        }
+    }
+
+    public void OnWeaponHit()
+    {
+        foreach (KartWheel w in wheels)
+        {
+            w.OnExplosion(explosionPower);
+            //if (w.wheel == KartWheel.Wheels.Front_Left)
+            //{
+            //    w.OnExplosion(explosionPower);
+            //}
+
+            //if (w.wheel == KartWheel.Wheels.Front_Right)
+            //{
+            //    w.OnExplosion(explosionPower);
+            //}
         }
     }
 
