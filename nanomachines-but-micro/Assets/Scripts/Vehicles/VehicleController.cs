@@ -307,7 +307,6 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
     //Slowdown used when boosting is failed NOT FINAL FORM!!
     private void SlowDown()
     {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/BoostFail", GetComponent<Transform>().position);
         //Apply slowdown for set time
         for (float i = 0; i < boostTime; i += Time.deltaTime)
         {
@@ -344,7 +343,7 @@ public class VehicleController : Bolt.EntityBehaviour<IVehicleState>
     private void Boost()
     {
         boosting = true;
-        FMODUnity.RuntimeManager.PlayOneShot("event:/BoostFail", GetComponent<Transform>().position);
+
         StartCoroutine(BoostCoolDown());
         boost_effect.SetActive(true);
         StartCoroutine(BoostTrailTime());

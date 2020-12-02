@@ -35,11 +35,11 @@ namespace FMODUnity
                 SerializedProperty newBank = banks.GetArrayElementAtIndex(banks.arraySize - 1);
                 newBank.stringValue = "";
 
-                EventBrowser browser = CreateInstance<EventBrowser>();
+                var browser = EventBrowser.CreateInstance<EventBrowser>();
 
                 browser.titleContent = new GUIContent("Select FMOD Bank");
 
-                browser.ChooseBank(newBank);
+                browser.SelectBank(newBank);
                 browser.ShowUtility();
             }
 

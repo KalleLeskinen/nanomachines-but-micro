@@ -181,13 +181,6 @@ namespace FMODUnity
             if (system.isValid())
             {
                 CheckResult(system.update());
-
-                if (speakerMode != Settings.Instance.GetEditorSpeakerMode())
-                {
-                    PreviewStop();
-                    DestroySystem();
-                    CreateSystem();
-                }
             }
 
             if (previewEventInstance.isValid())
@@ -202,7 +195,6 @@ namespace FMODUnity
         }
 
         static FMOD.Studio.System system;
-        static FMOD.SPEAKERMODE speakerMode;
 
         static void DestroySystem()
         {
@@ -231,8 +223,7 @@ namespace FMODUnity
             CheckResult(system.getCoreSystem(out lowlevel));
 
             // Use play-in-editor speaker mode for event browser preview and metering
-            speakerMode = Settings.Instance.GetEditorSpeakerMode();
-            CheckResult(lowlevel.setSoftwareFormat(0, speakerMode, 0));
+            lowlevel.setSoftwareFormat(0, (FMOD.SPEAKERMODE)Settings.Instance.GetSpeakerMode(FMODPlatform.Default),0 );
 
             CheckResult(system.initialize(256, FMOD.Studio.INITFLAGS.ALLOW_MISSING_PLUGINS | FMOD.Studio.INITFLAGS.SYNCHRONOUS_UPDATE, FMOD.INITFLAGS.NORMAL, IntPtr.Zero));
 
@@ -681,10 +672,10 @@ namespace FMODUnity
             int channels;
             lowlevel.getSpeakerModeChannels(mode, out channels);
 
-            float[] data = new float[channels];
+            float[] data = new float[outputMetering.numchannels > 0 ? outputMetering.numchannels : channels];
             if (outputMetering.numchannels > 0)
             {
-                Array.Copy(outputMetering.rmslevel, data, channels);
+                Array.Copy(outputMetering.rmslevel, data, outputMetering.numchannels);
             }
             return data;
         }
@@ -842,7 +833,6 @@ namespace FMODUnity
             }
             catch (Exception)
             {
-                Debug.LogWarning("[FMOD] File used by another application. Failed to open " + path);
             }
             return open;
         }

@@ -31,8 +31,6 @@ public class FinishLineScript : MonoBehaviour
                 raceScript.FinishLinePassed(other.gameObject, id, timePassedFromStart);
                 other.gameObject.GetComponent<LapTimeUpdate>().clock = 0;
                 other.gameObject.GetComponent<LapTimeUpdate>().car_passed_cps.Clear();
-                other.gameObject.GetComponent<LapTimeUpdate>().CarIncrementLap();
-               
             }
         }
     }

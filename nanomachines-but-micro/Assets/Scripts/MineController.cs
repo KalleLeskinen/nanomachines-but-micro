@@ -7,39 +7,75 @@ public class MineController : Bolt.EntityBehaviour<ILandMineState>
 {
     public GameObject explosion_effect;
     public float trigger_time;
-    void Start()
+    public SphereCollider explosion_collider;
+    public List<GameObject> affected;
+    public override void Attached()
     {
-        state.DetonateTime = 45f;
+        state.DetonateTime = 20f;
         state.OnExplosion += handlerExplosion;
-        state.Exploded = false;
     }
-    void handlerExplosion()
+
+    private void handlerExplosion()
     {
-        state.Exploded = true;
+        
+        // tähän räjähdysanimaatio ja äänet!
+        //
+        // tuhoa miina kun kaikki autot on räjäytetty
+        StartCoroutine(FindAllCarsInExplosionRadius());
+        //auto(i)lle kutsuttava räjähdys
+        foreach (var car in affected)
+            car.GetComponent<OnHitController>().Explode();
         BoltNetwork.Destroy(this.gameObject);
+
     }
-    void FixedUpdate()
+    IEnumerator FindAllCarsInExplosionRadius()
+    {
+        yield return new WaitForSeconds(0.075f);
+        Debug.Log($"EXPLODED {affected.Count} CARS" );
+    }
+
+    IEnumerator ExplodeIn(float time)
+    {
+        // ota käyttöös uusi iso sphere collider
+        explosion_collider.enabled = true;
+
+        yield return new WaitForSeconds(time);
+        state.Explosion();
+    }
+
+    public override void SimulateOwner()
     {
         state.DetonateTime = state.DetonateTime - Time.deltaTime;
         if (state.DetonateTime < 0)
         {
             Instantiate(explosion_effect, transform.position, transform.rotation);
-            FMODUnity.RuntimeManager.PlayOneShot("event:/Explosion", GetComponent<Transform>().position);
             state.Explosion();
         }
         if (Time.frameCount % 50 == 0)
+        {
             gameObject.GetComponentsInChildren<Renderer>()[1].material.EnableKeyword("_EMISSION");
+        }
         if (Time.frameCount % 25 == 0 && Time.frameCount % 50 != 0)
             gameObject.GetComponentsInChildren<Renderer>()[1].material.DisableKeyword("_EMISSION");
     }
-    void OnTriggerEnter(Collider other)
+
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player") && !state.Exploded && state.DetonateTime < 44f && state.DetonateTime != 0)
+        if (!other.gameObject.CompareTag("Player"))
+            return;
+        Debug.Log("CAR DROVE OVER THE MINE..........EXPLODING!");
+        affected.Add(other.gameObject);
+        Instantiate(explosion_effect, transform.position, transform.rotation);
+        StartCoroutine(ExplodeIn(trigger_time));
+
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if(!other.gameObject.CompareTag("Player"))
+            return;
+        if (affected.Contains(other.gameObject))
         {
-            Instantiate(explosion_effect, transform.position, transform.rotation);
-            other.gameObject.GetComponent<OnHitController>().Explode();
-            FMODUnity.RuntimeManager.PlayOneShot("event:/Explosion", GetComponent<Transform>().position);
-            state.Explosion();
+            affected.Remove(other.gameObject);
         }
     }
 }

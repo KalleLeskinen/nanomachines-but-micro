@@ -110,18 +110,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cars: []
+  sceneguids: []
   checkpoints: []
   numberOfcheckpoints: 0
   numberOfLaps: 0
   FinishLine: {fileID: 0}
-  scoreboard_ui: {fileID: 0}
-  player_laptime_ui: {fileID: 0}
-  connected_players_ui: {fileID: 0}
-  ui_3_2_1_go: {fileID: 0}
   started: 0
   finished: 0
   playerDataList: []
-  StartFlag: 0
 --- !u!114 &8220461886486678059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,7 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sceneGuid: 
   _serializerGuid: 5b4240e5-c79d-4e5c-a815-0bef66d62b57
-  _prefabId: 6
+  _prefabId: 5
   _updateRate: 1
   _autoFreezeProxyFrames: 0
   _clientPredicted: 1

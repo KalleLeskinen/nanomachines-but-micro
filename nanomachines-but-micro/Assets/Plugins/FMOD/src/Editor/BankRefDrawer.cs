@@ -51,9 +51,9 @@ namespace FMODUnity
             EditorGUI.PropertyField(pathRect, pathProperty, GUIContent.none);
             if (GUI.Button(searchRect, new GUIContent(browseIcon, "Select FMOD Bank"), buttonStyle))
             {
-                var eventBrowser = ScriptableObject.CreateInstance<EventBrowser>();
+                var eventBrowser = EventBrowser.CreateInstance<EventBrowser>();
 
-                eventBrowser.ChooseBank(property);
+                eventBrowser.SelectBank(property);
                 var windowRect = position;
                 windowRect.position = GUIUtility.GUIToScreenPoint(windowRect.position);
                 windowRect.height = searchRect.height + 1;

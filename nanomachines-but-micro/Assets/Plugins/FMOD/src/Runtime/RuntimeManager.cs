@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Collections;
-using System.IO;
-using System.Runtime.InteropServices;
 using System.Text;
 using UnityEngine;
+using System.Runtime.InteropServices;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -18,15 +17,12 @@ namespace FMODUnity
         static SystemNotInitializedException initException = null;
         static RuntimeManager instance;
 
-        Platform currentPlatform;
+        [SerializeField]
+        FMODPlatform fmodPlatform;
 
         [AOT.MonoPInvokeCallback(typeof(FMOD.DEBUG_CALLBACK))]
-        static FMOD.RESULT DEBUG_CALLBACK(FMOD.DEBUG_FLAGS flags, IntPtr filePtr, int line, IntPtr funcPtr, IntPtr messagePtr)
+        static FMOD.RESULT DEBUG_CALLBACK(FMOD.DEBUG_FLAGS flags, FMOD.StringWrapper file, int line, FMOD.StringWrapper func, FMOD.StringWrapper message)
         {
-            FMOD.StringWrapper file = new FMOD.StringWrapper(filePtr);
-            FMOD.StringWrapper func = new FMOD.StringWrapper(funcPtr);
-            FMOD.StringWrapper message = new FMOD.StringWrapper(messagePtr);
-            
             if (flags == FMOD.DEBUG_FLAGS.ERROR)
             {
                 Debug.LogError(string.Format(("[FMOD] {0} : {1}"), (string)func, (string)message));
@@ -104,6 +100,7 @@ namespace FMODUnity
                         }
                         #endif
 
+                        RuntimeUtils.VerifyPlatformLibsExist();
                         RuntimeUtils.EnforceLibraryOrder();
                         initResult = instance.Initialize();
                     }
@@ -150,6 +147,7 @@ namespace FMODUnity
         }
 
         Dictionary<string, LoadedBank> loadedBanks = new Dictionary<string, LoadedBank>();
+        Dictionary<string, uint> loadedPlugins = new Dictionary<string, uint>();
 
         // Explicit comparer to avoid issues on platforms that don't support JIT compilation
         class GuidComparer : IEqualityComparer<Guid>
@@ -189,18 +187,16 @@ namespace FMODUnity
             FMOD.RESULT result = FMOD.RESULT.OK;
             FMOD.RESULT initResult = FMOD.RESULT.OK;
             Settings fmodSettings = Settings.Instance;
-            currentPlatform = fmodSettings.FindCurrentPlatform();
+            fmodPlatform = RuntimeUtils.GetCurrentPlatform();
 
-            int sampleRate = currentPlatform.SampleRate;
-            int realChannels = Math.Min(currentPlatform.RealChannelCount, 256);
-            int virtualChannels = currentPlatform.VirtualChannelCount;
-            uint dspBufferLength = (uint)currentPlatform.DSPBufferLength;
-            int dspBufferCount = currentPlatform.DSPBufferCount;
-            FMOD.SPEAKERMODE speakerMode = currentPlatform.SpeakerMode;
-            FMOD.OUTPUTTYPE outputType = currentPlatform.GetOutputType();
+            int sampleRate = fmodSettings.GetSampleRate(fmodPlatform);
+            int realChannels = Math.Min(fmodSettings.GetRealChannels(fmodPlatform), 256);
+            int virtualChannels = fmodSettings.GetVirtualChannels(fmodPlatform);
+            FMOD.SPEAKERMODE speakerMode = (FMOD.SPEAKERMODE)fmodSettings.GetSpeakerMode(fmodPlatform);
+            FMOD.OUTPUTTYPE outputType = FMOD.OUTPUTTYPE.AUTODETECT;
 
             FMOD.ADVANCEDSETTINGS advancedSettings = new FMOD.ADVANCEDSETTINGS();
-            advancedSettings.randomSeed = (uint)DateTime.UtcNow.Ticks;
+            advancedSettings.randomSeed = (uint)DateTime.Now.Ticks;
             #if UNITY_EDITOR || UNITY_STANDALONE
             advancedSettings.maxVorbisCodecs = realChannels;
             #elif UNITY_XBOXONE
@@ -211,22 +207,15 @@ namespace FMODUnity
             advancedSettings.maxFADPCMCodecs = realChannels;
             #endif
 
-            currentPlatform.PreSystemCreate(CheckInitResult);
+            SetThreadAffinity();
 
             #if UNITY_EDITOR || DEVELOPMENT_BUILD
             result = FMOD.Debug.Initialize(fmodSettings.LoggingLevel, FMOD.DEBUG_MODE.CALLBACK, DEBUG_CALLBACK, null);
-            if(result == FMOD.RESULT.ERR_UNSUPPORTED)
-            {
-                Debug.LogWarning("[FMOD] Unable to initialize debug logging: Logging will be disabled.\nCheck the Import Settings of the FMOD libs to enable the logging library.");
-            }
-            else
-            {
-                CheckInitResult(result, "FMOD.Debug.Initialize");
-            }
+            CheckInitResult(result, "FMOD.Debug.Initialize");
             #endif
 
             FMOD.Studio.INITFLAGS studioInitFlags = FMOD.Studio.INITFLAGS.NORMAL | FMOD.Studio.INITFLAGS.DEFERRED_CALLBACKS;
-            if (currentPlatform.IsLiveUpdateEnabled)
+            if (fmodSettings.IsLiveUpdateEnabled(fmodPlatform))
             {
                 studioInitFlags |= FMOD.Studio.INITFLAGS.LIVEUPDATE;
                 advancedSettings.profilePort = fmodSettings.LiveUpdatePort;
@@ -248,12 +237,6 @@ retry:
             result = coreSystem.setSoftwareFormat(sampleRate, speakerMode, 0);
             CheckInitResult(result, "FMOD.System.setSoftwareFormat");
 
-            if (dspBufferLength > 0 && dspBufferCount > 0)
-            {
-                result = coreSystem.setDSPBufferSize(dspBufferLength, dspBufferCount);
-                CheckInitResult(result, "FMOD.System.setDSPBufferSize");
-            }
-
             result = coreSystem.setAdvancedSettings(ref advancedSettings);
             CheckInitResult(result, "FMOD.System.setAdvancedSettings");
 
@@ -262,20 +245,6 @@ retry:
                 FMOD.Studio.ADVANCEDSETTINGS studioAdvancedSettings = new FMOD.Studio.ADVANCEDSETTINGS();
                 result = studioSystem.setAdvancedSettings(studioAdvancedSettings, Settings.Instance.EncryptionKey);
                 CheckInitResult(result, "FMOD.Studio.System.setAdvancedSettings");
-            }
-
-            if (Settings.Instance.EnableMemoryTracking)
-            {
-                studioInitFlags |= FMOD.Studio.INITFLAGS.MEMORY_TRACKING;
-            }
-
-            currentPlatform.PreInitialize(studioSystem);
-
-            PlatformCallbackHandler callbackHandler = currentPlatform.CallbackHandler;
-
-            if (callbackHandler != null)
-            {
-                callbackHandler.PreInitialize(studioSystem, CheckInitResult);
             }
 
             result = studioSystem.initialize(virtualChannels, studioInitFlags, FMOD.INITFLAGS.NORMAL, IntPtr.Zero);
@@ -307,7 +276,7 @@ retry:
                 }
             }
 
-            currentPlatform.LoadPlugins(coreSystem, CheckInitResult);
+            LoadPlugins(fmodSettings);
             LoadBanks(fmodSettings);
 
             #if (UNITY_IOS || UNITY_TVOS) && !UNITY_EDITOR
@@ -467,7 +436,7 @@ retry:
                     eventPositionWarnings.RemoveAt(i);
                 }
 
-                isOverlayEnabled = currentPlatform.IsOverlayEnabled;
+                isOverlayEnabled = Settings.Instance.IsOverlayEnabled(fmodPlatform);
                 #endif
 
                 if (isOverlayEnabled)
@@ -553,7 +522,7 @@ retry:
         #if !UNITY_EDITOR
         private void Start()
         {
-            isOverlayEnabled = currentPlatform.IsOverlayEnabled;
+            isOverlayEnabled = Settings.Instance.IsOverlayEnabled(fmodPlatform);
         }
         #endif
 
@@ -591,8 +560,8 @@ retry:
                     coreSystem.getChannelsPlaying(out channels, out realchannels);
                     debug.AppendFormat("CHANNELS: real = {0}, total = {1}\n", realchannels, channels);
 
-                    FMOD.DSP_METERING_INFO inputMetering, outputMetering;
-                    mixerHead.getMeteringInfo(out inputMetering, out outputMetering);
+                    FMOD.DSP_METERING_INFO outputMetering;
+                    mixerHead.getMeteringInfo(IntPtr.Zero, out outputMetering);
                     float rms = 0;
                     for (int i = 0; i < outputMetering.numchannels; i++)
                     {
@@ -763,34 +732,13 @@ retry:
             }
             else
             {
-                string bankFolder = Instance.currentPlatform.GetBankFolder();
+                string bankPath = RuntimeUtils.GetBankPath(bankName);
+                FMOD.RESULT loadResult;
 
-#if !UNITY_EDITOR
-                if (!string.IsNullOrEmpty(Settings.Instance.TargetSubFolder))
+                #if !UNITY_EDITOR
+                #if UNITY_ANDROID && !UNITY_2018_OR_NEWER
+                if (!bankPath.StartsWith("file:///android_asset"))
                 {
-                    bankFolder = Path.Combine(bankFolder, Settings.Instance.TargetSubFolder);
-                }
-#endif
-
-                const string BankExtension = ".bank";
-
-                string bankPath;
-
-                if (System.IO.Path.GetExtension(bankName) != BankExtension)
-                {
-                    bankPath = string.Format("{0}/{1}{2}", bankFolder, bankName, BankExtension);
-                }
-                else
-                {
-                    bankPath = string.Format("{0}/{1}", bankFolder, bankName);
-                }
-
-                #if UNITY_ANDROID && !UNITY_EDITOR 
-                if (Settings.Instance.AndroidUseOBB)
-                {
-                    #if UNITY_2018_1_OR_NEWER
-                    Instance.StartCoroutine(Instance.loadFromWeb(bankPath, bankName, loadSamples));
-                    #else
                     using (var www = new WWW(bankPath))
                     {
                         while (!www.isDone) { }
@@ -805,19 +753,19 @@ retry:
                             Instance.loadedBankRegister(loadedBank, bankPath, bankName, loadSamples, loadResult);
                         }
                     }
-                    #endif
                 }
                 else
-                #elif UNITY_WEBGL && !UNITY_EDITOR
-                if (true)
+                #elif UNITY_ANDROID || UNITY_WEBGL
+                if (bankPath.Contains("://"))
                 {
                     Instance.StartCoroutine(Instance.loadFromWeb(bankPath, bankName, loadSamples));
                 }
                 else
-                #endif // (UNITY_ANDROID || UNITY_WEBGL) && !UNITY_EDITOR
+                #endif // UNITY_ANDROID || UNITY_WEBGL
+                #endif // !UNITY_EDITOR
                 {
                     LoadedBank loadedBank = new LoadedBank();
-                    FMOD.RESULT loadResult = Instance.studioSystem.loadBankFile(bankPath, FMOD.Studio.LOAD_BANK_FLAGS.NORMAL, out loadedBank.Bank);
+                    loadResult = Instance.studioSystem.loadBankFile(bankPath, FMOD.Studio.LOAD_BANK_FLAGS.NORMAL, out loadedBank.Bank);
                     Instance.loadedBankRegister(loadedBank, bankPath, bankName, loadSamples, loadResult);
                 }
             }
@@ -1075,58 +1023,34 @@ retry:
         public static List<StudioListener> Listeners = new List<StudioListener>();
         private static int numListeners = 0;
 
-        public static void SetListenerLocation(GameObject gameObject, Rigidbody rigidBody = null, GameObject attenuationObject = null)
+        public static void SetListenerLocation(GameObject gameObject, Rigidbody rigidBody = null)
         {
-            SetListenerLocation3D(0, gameObject.transform, rigidBody, attenuationObject);
+            Instance.studioSystem.setListenerAttributes(0, RuntimeUtils.To3DAttributes(gameObject, rigidBody));
         }
         
-        public static void SetListenerLocation(GameObject gameObject, Rigidbody2D rigidBody2D, GameObject attenuationObject = null)
+        public static void SetListenerLocation(GameObject gameObject, Rigidbody2D rigidBody2D)
         {
-            SetListenerLocation2D(0, gameObject.transform, rigidBody2D, attenuationObject);
+            Instance.studioSystem.setListenerAttributes(0, RuntimeUtils.To3DAttributes(gameObject, rigidBody2D));
         }
 
-        public static void SetListenerLocation(Transform transform, GameObject attenuationObject = null)
+        public static void SetListenerLocation(Transform transform)
         {
-            SetListenerLocation3D(0, transform, null, attenuationObject);
+            Instance.studioSystem.setListenerAttributes(0, transform.To3DAttributes());
         }
 
-        public static void SetListenerLocation(int listenerIndex, GameObject gameObject, Rigidbody rigidBody = null, GameObject attenuationObject = null)
+        public static void SetListenerLocation(int listenerIndex, GameObject gameObject, Rigidbody rigidBody = null)
         {
-            SetListenerLocation3D(listenerIndex, gameObject.transform, rigidBody, attenuationObject);
+            Instance.studioSystem.setListenerAttributes(listenerIndex, RuntimeUtils.To3DAttributes(gameObject, rigidBody));
         }
         
-        public static void SetListenerLocation(int listenerIndex, GameObject gameObject, Rigidbody2D rigidBody2D, GameObject attenuationObject = null)
+        public static void SetListenerLocation(int listenerIndex, GameObject gameObject, Rigidbody2D rigidBody2D)
         {
-            SetListenerLocation2D(listenerIndex, gameObject.transform, rigidBody2D, attenuationObject);
+            Instance.studioSystem.setListenerAttributes(listenerIndex, RuntimeUtils.To3DAttributes(gameObject, rigidBody2D));
         }
 
-        public static void SetListenerLocation(int listenerIndex, Transform transform, GameObject attenuationObject = null)
+        public static void SetListenerLocation(int listenerIndex, Transform transform)
         {
-            SetListenerLocation3D(0, transform, null, attenuationObject);
-        }
-
-        private static void SetListenerLocation3D(int listenerIndex, Transform transform, Rigidbody rigidBody = null, GameObject attenuationObject = null)
-        {
-            if (attenuationObject)
-            {
-                Instance.studioSystem.setListenerAttributes(0, RuntimeUtils.To3DAttributes(transform, rigidBody), RuntimeUtils.ToFMODVector(attenuationObject.transform.position));
-            }
-            else
-            {
-                Instance.studioSystem.setListenerAttributes(0, RuntimeUtils.To3DAttributes(transform, rigidBody));
-            }
-        }
-
-        private static void SetListenerLocation2D(int listenerIndex, Transform transform, Rigidbody2D rigidBody = null, GameObject attenuationObject = null)
-        {
-            if (attenuationObject)
-            {
-                Instance.studioSystem.setListenerAttributes(0, RuntimeUtils.To3DAttributes(transform, rigidBody), RuntimeUtils.ToFMODVector(attenuationObject.transform.position));
-            }
-            else
-            {
-                Instance.studioSystem.setListenerAttributes(0, RuntimeUtils.To3DAttributes(transform, rigidBody));
-            }
+            Instance.studioSystem.setListenerAttributes(listenerIndex, transform.To3DAttributes());
         }
 
         public static FMOD.Studio.Bus GetBus(string path)
@@ -1191,10 +1115,88 @@ retry:
 
         public static bool HasBankLoaded(string loadedBank)
         {
-            return (Instance.loadedBanks.ContainsKey(loadedBank));
+            return (instance.loadedBanks.ContainsKey(loadedBank));
+        }
+
+        private void LoadPlugins(Settings fmodSettings)
+        {
+            #if (UNITY_IOS || UNITY_TVOS) && !UNITY_EDITOR
+            FmodUnityNativePluginInit(coreSystem.handle);
+            #else
+
+            FMOD.RESULT result;
+            foreach (var pluginName in fmodSettings.Plugins)
+            {
+                if (string.IsNullOrEmpty(pluginName))
+                    continue;
+                string pluginPath = RuntimeUtils.GetPluginPath(pluginName);
+                uint handle;
+                result = coreSystem.loadPlugin(pluginPath, out handle);
+                #if UNITY_64 || UNITY_EDITOR_64
+                // Add a "64" suffix and try again
+                if (result == FMOD.RESULT.ERR_FILE_BAD || result == FMOD.RESULT.ERR_FILE_NOTFOUND)
+                {
+                    string pluginPath64 = RuntimeUtils.GetPluginPath(pluginName + "64");
+                    result = coreSystem.loadPlugin(pluginPath64, out handle);
+                }
+                #endif
+                CheckInitResult(result, String.Format("Loading plugin '{0}' from '{1}'", pluginName, pluginPath));
+                loadedPlugins.Add(pluginName, handle);
+            }
+            #endif
+        }
+
+        private void SetThreadAffinity()
+        {
+            #if UNITY_PS4 && !UNITY_EDITOR
+            FMOD.PS4.THREADAFFINITY affinity = new FMOD.PS4.THREADAFFINITY
+            {
+                mixer = FMOD.PS4.THREAD.CORE2,
+                studioUpdate = FMOD.PS4.THREAD.CORE4,
+                studioLoadBank = FMOD.PS4.THREAD.CORE4,
+                studioLoadSample = FMOD.PS4.THREAD.CORE4
+            };
+            FMOD.RESULT result = FMOD.PS4.setThreadAffinity(ref affinity);
+            CheckInitResult(result, "FMOD.PS4.setThreadAffinity");
+
+            #elif UNITY_XBOXONE && !UNITY_EDITOR
+            FMOD.XboxOne.THREADAFFINITY affinity = new FMOD.XboxOne.THREADAFFINITY
+            {
+                mixer = FMOD.XboxOne.THREAD.CORE2,
+                studioUpdate = FMOD.XboxOne.THREAD.CORE4,
+                studioLoadBank = FMOD.XboxOne.THREAD.CORE4,
+                studioLoadSample = FMOD.XboxOne.THREAD.CORE4
+            };
+            FMOD.RESULT result = FMOD.XboxOne.setThreadAffinity(ref affinity);
+            CheckInitResult(result, "FMOD.XboxOne.setThreadAffinity");
+
+            #elif UNITY_SWITCH && !UNITY_EDITOR
+            FMOD.Switch.THREADAFFINITY affinity = new FMOD.Switch.THREADAFFINITY
+            {
+                mixer = FMOD.Switch.THREAD.DEFAULT,
+                studioUpdate = FMOD.Switch.THREAD.DEFAULT,
+                studioLoadBank = FMOD.Switch.THREAD.DEFAULT,
+                studioLoadSample = FMOD.Switch.THREAD.DEFAULT
+            };
+            FMOD.RESULT result = FMOD.Switch.setThreadAffinity(ref affinity);
+            CheckInitResult(result, "FMOD.Switch.setThreadAffinity");
+            #elif UNITY_ANDROID && !UNITY_EDITOR
+            FMOD.Android.THREADAFFINITY affinity = new FMOD.Android.THREADAFFINITY
+            {
+                mixer = FMOD.Android.THREAD.DEFAULT,
+                studioUpdate = FMOD.Android.THREAD.DEFAULT,
+                studioLoadBank = FMOD.Android.THREAD.DEFAULT,
+                studioLoadSample = FMOD.Android.THREAD.DEFAULT
+            };
+            FMOD.RESULT result = FMOD.Android.setThreadAffinity(ref affinity);
+            CheckInitResult(result, "FMOD.Android.setThreadAffinity");
+            #endif
         }
 
         #if (UNITY_IOS || UNITY_TVOS) && !UNITY_EDITOR
+        [DllImport("__Internal")]
+        private static extern FMOD.RESULT FmodUnityNativePluginInit(IntPtr system);
+
         [DllImport("__Internal")]
         private static extern void RegisterSuspendCallback(Action<bool> func);
         #endif

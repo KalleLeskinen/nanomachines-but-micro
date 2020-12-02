@@ -8,11 +8,8 @@
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="BoltServerIncrementer.cs" t="Include" />
-        <e p="CarEventSender.cs" t="Include" />
         <e p="KartWheel.cs" t="Include" />
         <e p="missile_controller.cs" t="Include" />
-        <e p="name_above_car.cs" t="Include" />
         <e p="OnHitController.cs" t="Include" />
         <e p="Photon" t="Include">
           <e p="PhotonBolt" t="Include">
@@ -177,9 +174,6 @@
           </e>
         </e>
         <e p="prevent_roll_over.cs" t="Include" />
-        <e p="RenderCubeMapWizard.cs" t="Include" />
-        <e p="RespawnToCheckpoint.cs" t="Include" />
-        <e p="rocketdir.cs" t="Include" />
         <e p="scripts" t="Include">
           <e p="AmmoBox.cs" t="Include" />
           <e p="CameraPosition.cs" t="Include" />
@@ -187,7 +181,6 @@
           <e p="CheckpointScript.cs" t="Include" />
           <e p="CountPassingCars.cs" t="Include" />
           <e p="FinishLineScript.cs" t="Include" />
-          <e p="KartCameraController.cs" t="Include" />
           <e p="LapTimeUpdate.cs" t="Include" />
           <e p="LocalEvents.cs" t="Include" />
           <e p="MainCameraController.cs" t="Include" />
@@ -196,7 +189,6 @@
           <e p="MineController.cs" t="Include" />
           <e p="minespawnpos.cs" t="Include" />
           <e p="Networking" t="Include">
-            <e p="BoltServerCallbacks.cs" t="Include" />
             <e p="NetworkCallbacks.cs" t="Include" />
           </e>
           <e p="OLD" t="Include">
@@ -207,7 +199,6 @@
           <e p="PlayerData.cs" t="Include" />
           <e p="RaceScript.cs" t="Include" />
           <e p="rocketspawnpos.cs" t="Include" />
-          <e p="SelectionMenu.cs" t="Include" />
           <e p="TestCam.cs" t="Include" />
           <e p="Vehicles" t="Include">
             <e p="Explosion.cs" t="Include" />
@@ -216,13 +207,8 @@
             </e>
             <e p="VehicleController.cs" t="Include" />
           </e>
-          <e p="VehicleSelection.cs" t="Include" />
-          <e p="VehicleSelectionCallbacks.cs" t="Include" />
           <e p="WeaponsController.cs" t="Include" />
         </e>
-        <e p="SelectionContainer.cs" t="Include" />
-        <e p="SetCarName.cs" t="Include" />
-        <e p="SetCenterOffMass.cs" t="Include" />
         <e p="Shared" t="Include">
           <e p="scripts" t="Include">
             <e p="DecalDestroyer.cs" t="Include" />
@@ -268,7 +254,6 @@
             <e p="EmojiOne Attribution.txt" t="Include" />
           </e>
         </e>
-        <e p="ui_countdown_ui_script.cs" t="Include" />
       </e>
       <e p="nanomachines-but-micro.sln" t="IncludeFlat" />
       <e p="obj" t="ExcludeRecursive" />

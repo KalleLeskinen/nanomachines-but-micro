@@ -10,19 +10,21 @@ public class LapTimeUpdate : MonoBehaviour
     public List<int> car_passed_cps;
     public float clock;
     public string time = "";
-    public int car_passed_laps;
     GameObject raceHandler;
     BoltEntity player;
     // Start is called before the first frame update
     void Start()
     {
-        car_passed_laps = 0;
+        player = gameObject.GetComponent<BoltEntity>();
         clock = 0;
         id = Guid.NewGuid(); // generate a guid for the car
+        raceHandler = GameObject.FindGameObjectWithTag("RaceHandler");
+        //car_passed_cps = new List<int>();
     }
 
     private void Update()
     {
+
         if (clock > 0)
             time = clock.ToString("#.#");
         clock += Time.deltaTime; // tämä pitää vaihtaa laskemaan vain silloin kun on saatu merkki pelin alkamisesta
@@ -32,12 +34,12 @@ public class LapTimeUpdate : MonoBehaviour
     {
         return clock;
     }
-    public string GetClockFormatted()
+    public void OnGUI()
     {
-        return Math.Floor(clock).ToString();
-    }
-    public void CarIncrementLap()
-    {
-        car_passed_laps++;
+        if (raceHandler && player)
+        {
+            GUI.Box(new Rect(50, 30, 100, 30), $"laptime: {time}");
+            GUI.Box(new Rect(50, 60, 100, 30), $"passed: {car_passed_cps.Count.ToString()}/{raceHandler.GetComponent<RaceScript>().numberOfcheckpoints}");
+        }
     }
 }

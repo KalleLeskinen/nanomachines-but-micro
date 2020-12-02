@@ -1,6 +1,4 @@
-﻿#if (UNITY_TIMELINE_EXIST || !UNITY_2019_1_OR_NEWER)
-
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
 
@@ -68,4 +66,3 @@ public class FMODEventMixerBehaviour : PlayableBehaviour
         }
     }
 }
-#endif
