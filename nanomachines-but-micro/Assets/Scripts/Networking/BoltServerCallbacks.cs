@@ -9,17 +9,6 @@ using System;
 [BoltGlobalBehaviour(BoltNetworkModes.Server)]
 public class BoltServerCallbacks : Bolt.GlobalEventListener
 {
-    public List<int> players;
-
-    private void Awake()
-    {
-        
-    }
-
-    public override void Connected(BoltConnection connection)
-    {
-        
-    }
 
     public override void SceneLoadLocalDone(string scene)
     {

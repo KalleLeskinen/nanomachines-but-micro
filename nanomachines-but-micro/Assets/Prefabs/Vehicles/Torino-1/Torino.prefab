@@ -137,9 +137,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2981167435952280742}
   - component: {fileID: 975477685791987061}
+  - component: {fileID: 2915289166646721353}
   m_Layer: 0
   m_Name: minespawnpos
-  m_TagString: Untagged
+  m_TagString: MineTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -152,7 +153,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1188908364535972824}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: -2}
+  m_LocalPosition: {x: 0, y: -0.5, z: -2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8933071212006432705}
@@ -171,6 +172,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minePos: {x: 0, y: 0, z: 0}
+--- !u!65 &2915289166646721353
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1188908364535972824}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.2, y: 1.18, z: 3.02}
+  m_Center: {x: 0, y: 0.37, z: 1.39}
 --- !u!1 &1477675610622865906
 GameObject:
   m_ObjectHideFlags: 0
@@ -1124,10 +1138,12 @@ GameObject:
   - component: {fileID: 6404975390179001696}
   - component: {fileID: 217855612975652332}
   - component: {fileID: 420667818426660288}
-  - component: {fileID: 2336094537762637963}
   - component: {fileID: 5283596922452517144}
   - component: {fileID: 7697721561500677738}
   - component: {fileID: 7622843391742752181}
+  - component: {fileID: 6397834272456635312}
+  - component: {fileID: 4510973765979664709}
+  - component: {fileID: 1347260104077250020}
   m_Layer: 0
   m_Name: Torino_Body
   m_TagString: Player
@@ -1248,8 +1264,9 @@ MonoBehaviour:
   boostGreenArea: {fileID: 5841563087946318514}
   boostYellowMeter: {fileID: 5202632897263339310}
   boostYellowMeterOriginalPosition: {x: 0, y: 0, z: 0}
-  boostPower: 1.5
-  slowPower: 0
+  boostPower: 3.5
+  slowPower: 10
+  explosionPower: 3850
   boostTime: 3
   boostTimeLow: 2.5
   boostTimeHigh: 7.5
@@ -1262,6 +1279,7 @@ MonoBehaviour:
   boostMeterSpeed: 1
   boostMeterTime: 10
   boosting: 0
+  cooldownFlag: 0
 --- !u!114 &6404975390179001696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1278,6 +1296,7 @@ MonoBehaviour:
   car_passed_cps: 
   clock: 0
   time: 
+  car_passed_laps: 0
 --- !u!114 &217855612975652332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1303,19 +1322,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hit_smoke: {fileID: 7902270455532459262}
---- !u!65 &2336094537762637963
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7685037445990658252}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.74, y: 0.48771614, z: 2.46}
-  m_Center: {x: 0.00005310774, y: -0.09038004, z: 0}
 --- !u!114 &5283596922452517144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1337,8 +1343,8 @@ MonoBehaviour:
   Preload: 0
   Params: []
   OverrideAttenuation: 0
-  OverrideMinDistance: 0
-  OverrideMaxDistance: 0
+  OverrideMinDistance: 7.4
+  OverrideMaxDistance: 55
 --- !u!114 &7697721561500677738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1351,6 +1357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 072f45eafba7f634489450d04de93d58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  raceHandler: {fileID: 0}
 --- !u!114 &7622843391742752181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1363,6 +1370,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9169bb875a1ce5b488386f674cde91e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6397834272456635312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7685037445990658252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c3ca35a56fbb084984fba4fc3aaed47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4510973765979664709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7685037445990658252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/ImpactLight
+  PlayEvent: 7
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 7.2000003
+  OverrideMaxDistance: 55
+--- !u!65 &1347260104077250020
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7685037445990658252}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.74, y: 0.48771614, z: 2.46}
+  m_Center: {x: 0.00005310774, y: -0.09038004, z: 0}
 --- !u!1 &8135003416550438437
 GameObject:
   m_ObjectHideFlags: 0
@@ -1410,7 +1465,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sceneGuid: 
   _serializerGuid: 3de9e892-f26c-4c0c-8e8a-1108c9280f81
-  _prefabId: 11
+  _prefabId: 12
   _updateRate: 1
   _autoFreezeProxyFrames: 0
   _clientPredicted: 1
@@ -1565,13 +1620,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a36ce7ce9126734486129557e2da6b6, type: 3}
---- !u!4 &7901347159031644830 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2789169122396151443, guid: 7a36ce7ce9126734486129557e2da6b6, type: 3}
-  m_PrefabInstance: {fileID: 5409429991688936461}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7902270455532459262 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2790163547850868979, guid: 7a36ce7ce9126734486129557e2da6b6, type: 3}
+  m_PrefabInstance: {fileID: 5409429991688936461}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7901347159031644830 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2789169122396151443, guid: 7a36ce7ce9126734486129557e2da6b6, type: 3}
   m_PrefabInstance: {fileID: 5409429991688936461}
   m_PrefabAsset: {fileID: 0}

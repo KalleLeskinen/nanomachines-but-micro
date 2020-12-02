@@ -110,14 +110,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cars: []
-  sceneguids: []
   checkpoints: []
   numberOfcheckpoints: 0
   numberOfLaps: 0
   FinishLine: {fileID: 0}
+  scoreboard_ui: {fileID: 0}
+  player_laptime_ui: {fileID: 0}
+  connected_players_ui: {fileID: 0}
+  ui_3_2_1_go: {fileID: 0}
   started: 0
   finished: 0
   playerDataList: []
+  StartFlag: 0
 --- !u!114 &8220461886486678059
 MonoBehaviour:
   m_ObjectHideFlags: 0

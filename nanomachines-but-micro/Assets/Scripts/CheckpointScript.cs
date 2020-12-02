@@ -26,7 +26,7 @@ public class CheckpointScript : MonoBehaviour
             Debug.Log("Guid was: " + id);
             float timePassedFromStart = other.GetComponent<LapTimeUpdate>().GetClock();
             if (!other.gameObject.GetComponent<LapTimeUpdate>().car_passed_cps.Contains(checkpointNumber))
-            {
+            { // ei sisällä nykyistä checkpointtia, sisältää aikasemman checkpointin
                 raceScript.CheckPointPassed(gameObject, id, timePassedFromStart, checkpointNumber);
                 //other.gameObject.GetComponent<LapTimeUpdate>().car_passed_cps.Add(checkpointNumber);
                 Debug.Log("ADDED FROM CPS");
