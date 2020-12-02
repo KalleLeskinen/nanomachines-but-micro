@@ -74,6 +74,7 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
     private bool boostBarOn = false;
 
     private bool boostFlag = false;
+    public bool cooldownFlag = false;
 
     private void Start()
     {
@@ -123,7 +124,7 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
 
         SetSteeringAngle();
 
-        if(boostFlag)
+        if(boostFlag && !cooldownFlag)
         {
             //mittari päälle
             boostRedBackground.SetActive(true);
@@ -140,6 +141,11 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
         }
     }
 
+    private IEnumerator cooldown()
+    {
+        yield return new WaitForSeconds(cooldownTime);
+        cooldownFlag = false;
+    }
 
     void HandleInput()
     {
@@ -259,7 +265,6 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
         boostRedBackground.SetActive(false);
         boostGreenArea.SetActive(false);
         boostYellowMeter.SetActive(false);
-
     }
 
     //Handle what happens when boost button is pressed second time
@@ -270,6 +275,7 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
         {
             Debug.Log("on time");
             Boost();
+            cooldownFlag = true;
             //cooldownTime = 3;
             //boostTimeHigh -= boostTimeHigh*0.2f;
             //boostTimeLow += boostTimeLow*0.2f;
@@ -288,6 +294,7 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
         {
             Debug.Log("too early");
             SlowDown();
+            cooldownFlag = true;
             //ResetBoostBar();
             //ResetValues();
         }
@@ -297,8 +304,10 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
         {
             Debug.Log("too late");
             SlowDown();
+            cooldownFlag = true;
             //ResetValues();
         }
+        StartCoroutine(cooldown());
 
     }
 

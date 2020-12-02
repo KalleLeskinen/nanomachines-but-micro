@@ -1249,8 +1249,8 @@ MonoBehaviour:
   boostGreenArea: {fileID: 5841563087946318514}
   boostYellowMeter: {fileID: 5202632897263339310}
   boostYellowMeterOriginalPosition: {x: 0, y: 0, z: 0}
-  boostPower: 1.5
-  slowPower: 0
+  boostPower: 3.5
+  slowPower: 10
   boostTime: 3
   boostTimeLow: 2.5
   boostTimeHigh: 7.5
@@ -1263,6 +1263,7 @@ MonoBehaviour:
   boostMeterSpeed: 1
   boostMeterTime: 10
   boosting: 0
+  cooldownFlag: 0
 --- !u!114 &6404975390179001696
 MonoBehaviour:
   m_ObjectHideFlags: 0
