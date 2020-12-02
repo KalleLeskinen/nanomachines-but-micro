@@ -130,8 +130,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion_effect: {fileID: 1000011797152326, guid: acf39d9f4addf294d93fa56fa373961b, type: 3}
-  explosion_collider: {fileID: 5749803874307750437}
-  affected: []
 --- !u!136 &775671627041900489
 CapsuleCollider:
   m_ObjectHideFlags: 0
