@@ -28,7 +28,10 @@ MonoBehaviour:
   - {fileID: 1497629741990537548, guid: b99e4eb05419d0045baf250b6ed60fc9, type: 3}
   - {fileID: 8135003416550438437, guid: 6535bbc32691061459f1af7fa06109e7, type: 3}
   - {fileID: 832522687384307592, guid: 3a9267652b25fc240b1b184f6a7d0489, type: 3}
+  - {fileID: 832522687384307592, guid: ad7d496c12dd44d4db85c0b8daf0813d, type: 3}
   - {fileID: 5804628764685650375, guid: 26f39fc57a1821e46bd24fe6c2d4fa93, type: 3}
   - {fileID: 841972644505103325, guid: 254c21863bd36cc499f16f3ada5b10e2, type: 3}
+  - {fileID: 5804628764685650375, guid: 18761bf5c6e125443924e3bea7b21acb, type: 3}
+  - {fileID: 841972644505103325, guid: 4fc25f5cdc3669d42ae5458d52c13457, type: 3}
   SearchPaths:
   - Assets/Prefabs
