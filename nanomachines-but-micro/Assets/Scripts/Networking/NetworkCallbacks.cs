@@ -92,6 +92,11 @@ public class NetworkCallbacks : GlobalEventListener
                 bE.gameObject.transform.parent = null;
             }
         }
+
+        foreach(BoltEntity be in BoltNetwork.Entities)
+        {
+            Debug.Log(be.name);
+        }
     }
 
     public override void OnEvent(PlayerReadyEvent evnt)
