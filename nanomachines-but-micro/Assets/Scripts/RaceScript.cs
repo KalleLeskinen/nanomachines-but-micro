@@ -64,7 +64,7 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
                     state.Clock += 15;
             }
         }
-        if (state.Clock < 3.3f && !played)
+        if (state.Clock < 3.2f && !played)
         {
             played = true;
             ui_3_2_1_go.SetActive(true);
