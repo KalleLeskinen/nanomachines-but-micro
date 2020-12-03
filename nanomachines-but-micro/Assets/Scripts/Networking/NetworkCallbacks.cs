@@ -51,6 +51,20 @@ public class NetworkCallbacks : GlobalEventListener
             }
             
         }
+        else if (scene == "Level_2")
+        {
+            
+            if (BoltNetwork.IsServer)
+            {
+                BoltEntity serverCar = BoltNetwork.Instantiate(cars[car_to_spawn], serverPos.transform.position, serverPos.transform.rotation);
+                serverCar.GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+            }
+            else
+            {
+                StartCoroutine(WaitAndSpawn(2f));
+            }
+            
+        }
 
 
     }
