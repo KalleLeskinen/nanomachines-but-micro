@@ -37,13 +37,15 @@ public class MainMenu : GlobalEventListener
     {
         if (!VehicleSelection.Instance)
         {
-            Instantiate(modelPrefabs[0], new Vector3(-30f, -10f, 50f),
+            GameObject defaultCar = Instantiate(modelPrefabs[0], new Vector3(-30f, -10f, 50f),
                 Quaternion.Euler(new Vector3(0, 180, 0)));
+            defaultCar.transform.localScale = new Vector3(14, 14, 14);
         }
         else if (SelectionContainer.Instance)
         {
-            Instantiate(modelPrefabs[SelectionContainer.Instance.prefabIdInteger],
+            GameObject selectedCar = Instantiate(modelPrefabs[SelectionContainer.Instance.prefabIdInteger],
                 new Vector3(-30f, -10f, 50f), Quaternion.Euler(new Vector3(0, 180, 0)));
+                selectedCar.transform.localScale = new Vector3(14, 14, 14);
         }
     }
 
