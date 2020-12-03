@@ -267,8 +267,10 @@ MonoBehaviour:
   - Master
   Banks:
   - Atmo
+  - Bank A
   - CarBank
   - Impact
+  - Music
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0
