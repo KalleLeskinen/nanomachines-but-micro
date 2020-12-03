@@ -12,31 +12,27 @@ public class CarEventSender : Bolt.EntityBehaviour<IVehicleState>
     bool cooldown = false;
     bool raceStarted = false;
 
-    // Start is called before the first frame update
-    private void Start()
-    {
-        if (BoltNetwork.IsServer)
-        {
-            raceHandler = GameObject.FindGameObjectWithTag("RaceHandler");
-        }
-    }
-
     private void FixedUpdate()
     {
-        if (!raceStarted && Time.frameCount % 30 == 0)
-        {       
+        if (!raceStarted && Time.frameCount % 30 == 0 && Time.timeSinceLevelLoad>3)
+        {
+            if (!raceHandler)
+                raceHandler = GameObject.FindGameObjectWithTag("RaceHandler");
             raceStarted = raceHandler.GetComponent<BoltEntity>().GetState<IStateOfRace>().RaceStarted;
         }
 
         if (eventFlag)
         {
-            var SpawnEvent = RespawnCar.Create();
-            SpawnEvent.playerEntity = GetComponentInParent<BoltEntity>();
-            SpawnEvent.SpawnPosition = state.SpawnPointID;
-            SpawnEvent.Send();
-            eventFlag = false;
-            cooldown = true;
-            StartCoroutine(StartCooldown());
+            if (entity.IsOwner)
+            {
+                var SpawnEvent = RespawnCar.Create();
+                SpawnEvent.playerEntity = GetComponentInParent<BoltEntity>();
+                SpawnEvent.SpawnPosition = state.SpawnPointID;
+                SpawnEvent.Send();
+                eventFlag = false;
+                cooldown = true;
+                StartCoroutine(StartCooldown());
+            }
         }
         if (startTheGameFlag && !started)
         {
@@ -63,7 +59,7 @@ public class CarEventSender : Bolt.EntityBehaviour<IVehicleState>
         {
             eventFlag = true;
         }
-        if (BoltNetwork.IsServer && !started)
+        if (BoltNetwork.IsServer && !started && Time.timeSinceLevelLoad>2.5f)
         {
             int playersRdy = raceHandler.GetComponent<BoltEntity>().GetState<IStateOfRace>().PlayersReady;
             int nbOfPlayers = raceHandler.GetComponent<BoltEntity>().GetState<IStateOfRace>().NumberOfPlayers;

@@ -13,7 +13,7 @@ public class BoltServerIncrementer : Bolt.GlobalEventListener
         GameObject.FindGameObjectWithTag("RaceHandler").GetComponent<BoltEntity>().GetState<IStateOfRace>().NumberOfPlayers += 1;
         if (GameObject.FindGameObjectWithTag("RaceHandler").GetComponent<BoltEntity>().GetState<IStateOfRace>().Clock < 20 && BoltNetwork.IsServer)
         {
-            GameObject.FindGameObjectWithTag("RaceHandler").GetComponent<BoltEntity>().GetState<IStateOfRace>().Clock += 20;
+            GameObject.FindGameObjectWithTag("RaceHandler").GetComponent<BoltEntity>().GetState<IStateOfRace>().Clock += 10;
         }
     }
 

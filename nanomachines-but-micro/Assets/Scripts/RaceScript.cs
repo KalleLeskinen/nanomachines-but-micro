@@ -56,7 +56,7 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
     }
     private void FixedUpdate()
     {
-        if (state.Clock < 5)
+        if (state.Clock < 5 && Time.timeSinceLevelLoad>4)
         {
             if (state.NumberOfPlayers != state.PlayersReady)
             {

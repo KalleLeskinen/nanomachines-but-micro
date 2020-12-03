@@ -229,6 +229,26 @@ MonoBehaviour:
     data1: 0
     data2: 0
   Exists: 1
+--- !u!114 &-7329279018014714057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/TestCar/RPM
+  m_EditorClassIdentifier: 
+  Name: RPM
+  Min: 0
+  Max: 100
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 0
 --- !u!114 &-7091468055976139580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,7 +337,7 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 1
   Parameters: []
-  MinDistance: 1
+  MinDistance: 6.4
   MaxDistance: 20
   Length: 999
 --- !u!114 &-6729372126475203320
@@ -374,7 +394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: ../FMOD/ablazingFMOD/Build/Desktop/Bank A.bank
   Name: Bank A
-  lastModified: 637426178774449698
+  lastModified: 637426138485639155
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -438,7 +458,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 1
   Parameters:
-  - {fileID: -2787600469680209707}
+  - {fileID: 6383003333677461570}
   MinDistance: 0
   MaxDistance: 0
   Length: 0
@@ -579,7 +599,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: ../FMOD/ablazingFMOD/Build/Desktop/Atmo.bank
   Name: Atmo
-  lastModified: 637426178774379874
+  lastModified: 637425359071916389
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -677,7 +697,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: ../FMOD/ablazingFMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
-  lastModified: 637426178775729857
+  lastModified: 637426192971807250
   LoadResult: 0
   FileSizes:
   - Name: 
@@ -803,7 +823,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: ../FMOD/ablazingFMOD/Build/Desktop/Music.bank
   Name: Music
-  lastModified: 637426178776447308
+  lastModified: 637426192972445551
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -1088,6 +1108,26 @@ MonoBehaviour:
   MinDistance: 7.2000003
   MaxDistance: 55
   Length: 883
+--- !u!114 &-765091436374018079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Todd helder game music 1/Parameter 1
+  m_EditorClassIdentifier: 
+  Name: Parameter 1
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
 --- !u!114 &-735280961753807019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1245,7 +1285,7 @@ MonoBehaviour:
   - {fileID: 126290382761754961}
   StringsBanks:
   - {fileID: -3577341575330388346}
-  stringsBankWriteTime: 637426178775729857
+  stringsBankWriteTime: 637426192971807250
   cacheVersion: 5
 --- !u!114 &126290382761754961
 MonoBehaviour:
@@ -1261,7 +1301,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: ../FMOD/ablazingFMOD/Build/Desktop/Master.bank
   Name: Master
-  lastModified: 637426178775660074
+  lastModified: 637426192971717482
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -1693,6 +1733,26 @@ MonoBehaviour:
   MinDistance: 7.6
   MaxDistance: 9.400001
   Length: 0
+--- !u!114 &4724210580850836254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/TestCar/RPM
+  m_EditorClassIdentifier: 
+  Name: RPM
+  Min: 0
+  Max: 100
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
 --- !u!114 &4996594390841086619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1796,7 +1856,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: -2268518799802888334}
+  - {fileID: -765091436374018079}
   MinDistance: 0
   MaxDistance: 0
   Length: 500
@@ -1883,6 +1943,26 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 851
+--- !u!114 &6383003333677461570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/XyloAll/key
+  m_EditorClassIdentifier: 
+  Name: key
+  Min: 0
+  Max: 15
+  Default: 15
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
 --- !u!114 &6392689389543567821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1964,7 +2044,7 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: 6655570111894467171}
+  - {fileID: 4724210580850836254}
   MinDistance: 7.4
   MaxDistance: 55
   Length: 0
@@ -1982,7 +2062,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: ../FMOD/ablazingFMOD/Build/Desktop/CarBank.bank
   Name: CarBank
-  lastModified: 637426178774842286
+  lastModified: 637425359071956291
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -2126,7 +2206,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: ../FMOD/ablazingFMOD/Build/Desktop/Impact.bank
   Name: Impact
-  lastModified: 637426178775350895
+  lastModified: 637426192971627719
   LoadResult: 0
   FileSizes: []
   Exists: 1
