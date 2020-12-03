@@ -121,24 +121,25 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
 
     void FixedUpdate()
     {
-        if (entity.IsOwner)
-            SetSteeringAngle();
+        SetSteeringAngle();
+       //if (entity.IsOwner)
+            
         
 
-        if(boostFlag && !cooldownFlag && entity.IsOwner)
-        {
-            //mittari päälle
-            boostMeterUI.SetActive(true);
-            boostYellowMeter.SetActive(true);
+        //if(boostFlag && !cooldownFlag && entity.IsOwner)
+        //{
+        //    //mittari päälle
+        //    boostMeterUI.SetActive(true);
+        //    boostYellowMeter.SetActive(true);
 
-            if (boostBarOn == false)
-                StartCoroutine(BoostBar(boostFill, boostWindowMax, boostMeterTime));
+        //    if (boostBarOn == false)
+        //        StartCoroutine(BoostBar(boostFill, boostWindowMax, boostMeterTime));
 
-            if (boostBarOn == true && boostFill > 0)
-                BoostMode(boostFill);
+        //    if (boostBarOn == true && boostFill > 0)
+        //        BoostMode(boostFill);
 
-            boostFlag = false;
-        }
+        //    boostFlag = false;
+        //}
     }
 
     private IEnumerator cooldown()

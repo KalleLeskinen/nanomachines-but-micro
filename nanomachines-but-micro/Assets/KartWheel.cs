@@ -7,6 +7,12 @@ public class KartWheel : MonoBehaviour
 
     private Rigidbody rig;
 
+    [Header("Engine")]
+    public float enginePower; // The power of the vehicle
+
+    [Header("Braking")]
+    public float brakingPower; // The power of the brakes ( should be around twice the power of the vehicle)
+
 
 
     [Header("Suspension")]
@@ -112,7 +118,58 @@ public class KartWheel : MonoBehaviour
             // Adding the throttle
 
             wheelVelocityL = transform.InverseTransformDirection(rig.GetPointVelocity(hit.point));
-            Fx = Input.GetAxis("Vertical") * springForce;
+
+            // Accelerating
+            if(Input.GetAxis("Vertical") > 0)
+            {
+                if(transform.InverseTransformDirection(rig.velocity).z < 20)
+                {
+                    //Debug.Log("Accelerating");
+                    Fx = (Input.GetAxis("Vertical") * enginePower) * springForce;
+                } else
+                {
+                    //Debug.Log("Going too fast!");
+                    Fx = springForce * (transform.InverseTransformDirection(rig.velocity).z * -0.01f);
+                }
+                
+            }
+
+            // Engine friction
+            if(Input.GetAxis("Vertical") == 0)
+            {
+
+                if(transform.InverseTransformDirection(rig.velocity).z > 0.3f || transform.InverseTransformDirection(rig.velocity).z < -0.3f) {
+                    
+                    Fx = springForce * (transform.InverseTransformDirection(rig.velocity).z * -0.05f);
+                
+                } else
+                {
+                    Fx = springForce * -0.075f;
+                }
+
+                
+            }
+            
+            // Braking
+            if(Input.GetAxis("Vertical") < 0)
+            {
+                if (transform.InverseTransformDirection(rig.velocity).z > 0.5f)
+                {
+                    //Debug.Log("Braking!");
+                    Fx = (Input.GetAxis("Vertical") * (brakingPower)) * springForce;
+                }
+                else if (transform.InverseTransformDirection(rig.velocity).z < 0.5f && transform.InverseTransformDirection(rig.velocity).z > -3)
+                {
+                    //Debug.Log("Backing up slow");
+                    Fx = (Input.GetAxis("Vertical") * (enginePower * 0.4f)) * springForce;
+                } else
+                {
+                    //Debug.Log("Backing up too fast!");
+                    Fx = springForce * (transform.InverseTransformDirection(rig.velocity).z * -0.05f);
+                }
+                
+            }
+
             Fy = wheelVelocityL.x * springForce;
 
             rig.AddForceAtPosition(suspensionForce + (Fx * transform.forward) + (Fy * -transform.right), hit.point);

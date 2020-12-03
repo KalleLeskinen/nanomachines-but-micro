@@ -87,7 +87,7 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _IOR: -0.19
+    - _IOR: 1.3
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _QueueOffset: 0
