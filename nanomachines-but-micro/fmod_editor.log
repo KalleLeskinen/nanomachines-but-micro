@@ -9,7 +9,7 @@
 [LOG] DownMix::init                            : done.
 [LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x8000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x8000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 00000110CAD10E18 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 00000261B1BC3E08 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Affinity: 0x8000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
@@ -18,17 +18,42 @@
 [LOG] Manager::init                            : done.
 [LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
 [LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
-[LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
-[LOG] SoundI::release                          : Todd Helder - Deeper (00000110CB8431F8)
-[LOG] SoundI::release                          :     Todd Helder - Deeper (000001102080E6F8)
-[LOG] SoundI::release                          :     Todd Helder - Deeper (00000110CB8402B8)
-[LOG] SoundI::release                          : ABL_atmo_racetrack4 (00000110CB840978)
-[LOG] SoundI::release                          :     ABL_atmo_racetrack4 (000001102080D378)
-[LOG] SoundI::release                          :     ABL_atmo_racetrack4 (00000110CB842628)
-[LOG] SoundI::release                          :  (00000110186D1438)
-[LOG] SoundI::release                          :     ABL_imp_light1 (000001102080BFF8)
-[LOG] SoundI::release                          :  (00000110186D0B98)
-[LOG] SoundI::release                          :     ABL_imp_light2 (0000011020809DD8)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 375328
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 21472
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000E50E0BF1B8
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF86D567E30
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF86D567E00
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF86D567F00
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF86D567FC0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000026117DEF7A8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='ABL_imp_light1', format=5, channels=1, frequency=48000, lengthbytes=5376, lengthpcm=28288, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.540039.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 375328
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 21472
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000E50E0BF1B8
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF86D567E30
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF86D567E00
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF86D567F00
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF86D567FC0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000026117DEF7A8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='ABL_imp_light2', format=5, channels=1, frequency=48000, lengthbytes=3648, lengthpcm=21215, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.750000.
+[LOG] SoundI::release                          :  (0000026117465BD8)
+[LOG] SoundI::release                          :     ABL_imp_light1 (000002611699E2D8)
+[LOG] SoundI::release                          :  (0000026117466308)
+[LOG] SoundI::release                          :     ABL_imp_light2 (000002611699E7B8)
 [LOG] Thread::callback                         : FMOD Studio update thread finished.
 [LOG] Thread::callback                         : FMOD Studio bank load thread finished.
 [LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
@@ -46,5 +71,3 @@
 [LOG] Thread::callback                         : FMOD stream thread finished.
 [LOG] Thread::callback                         : FMOD mixer thread finished.
 [LOG] SystemI::close                           : Closed.
-[LOG] Thread::callback                         : FMOD nonblocking thread (0) finished.
-[LOG] Thread::callback                         : FMOD file thread finished.
