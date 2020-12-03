@@ -119,7 +119,7 @@ public class KartWheel : MonoBehaviour
             
             Debug.Log(transform.name + "_MIN_FORCE " + -1500 * (-springLength / maxLength) + " | " + (-springLength / maxLength));
 
-            springForce = Mathf.Clamp(springForce, -1500 * (-springLength / maxLength), 9000);
+            springForce = Mathf.Clamp(springForce, -1500 * (-springLength / maxLength), 15000);
 
             suspensionForce = (springForce + damperForce) * transform.up;
 
