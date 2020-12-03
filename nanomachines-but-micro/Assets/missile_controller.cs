@@ -16,7 +16,6 @@ public class missile_controller : Bolt.EntityBehaviour<IRocketState>
     private void HandleExplosion()
     {
         state.Exploded = true;
-        BoltNetwork.Destroy(this.gameObject);
     }
     // Update is called once per frame
     void FixedUpdate()
@@ -31,6 +30,9 @@ public class missile_controller : Bolt.EntityBehaviour<IRocketState>
             FMODUnity.RuntimeManager.PlayOneShot("event:/missileMiss", GetComponent<Transform>().position);
             state.Explosion();
         }
+        if (state.Exploded)
+            BoltNetwork.Destroy(this.gameObject);
+
     }
     private void OnTriggerEnter(Collider other)
     {

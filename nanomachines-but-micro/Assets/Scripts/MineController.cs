@@ -16,7 +16,6 @@ public class MineController : Bolt.EntityBehaviour<ILandMineState>
     void handlerExplosion()
     {
         state.Exploded = true;
-        BoltNetwork.Destroy(this.gameObject);
     }
     void FixedUpdate()
     {

@@ -49,7 +49,7 @@ public class CarEventSender : Bolt.EntityBehaviour<IVehicleState>
             int playersRdy = raceHandler.GetComponent<BoltEntity>().GetState<IStateOfRace>().PlayersReady;
             int nbOfPlayers = raceHandler.GetComponent<BoltEntity>().GetState<IStateOfRace>().NumberOfPlayers;
             bool isTheGameStarted = raceHandler.GetComponent<BoltEntity>().GetState<IStateOfRace>().RaceStarted;
-            if (isTheGameStarted && playersRdy == nbOfPlayers || Input.GetKeyDown(KeyCode.F))
+            if (isTheGameStarted && playersRdy == nbOfPlayers)
             {
                 //TODO: WAIT FOR 3,2,1,GO
                 startTheGameFlag = true;
