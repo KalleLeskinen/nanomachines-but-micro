@@ -8,7 +8,6 @@
         {
           "Name": "VehicleTransform",
           "Enabled": true,
-          "Expanded": true,
           "ReplicationMode": 1,
           "Priority": 1,
           "PropertyType": {
@@ -89,7 +88,6 @@
         {
           "Name": "VehicleColor",
           "Enabled": true,
-          "Expanded": true,
           "ReplicationMode": 1,
           "Priority": 1,
           "PropertyType": {
@@ -106,7 +104,6 @@
         {
           "Name": "AmmoCount",
           "Enabled": true,
-          "Expanded": true,
           "ReplicationMode": 2,
           "Priority": 1,
           "PropertyType": {
@@ -124,7 +121,6 @@
         {
           "Name": "DropMine",
           "Enabled": true,
-          "Expanded": true,
           "ReplicationMode": 2,
           "Priority": 1,
           "PropertyType": {
@@ -141,7 +137,6 @@
         {
           "Name": "ShootRocket",
           "Enabled": true,
-          "Expanded": true,
           "ReplicationMode": 2,
           "Priority": 1,
           "PropertyType": {
@@ -158,7 +153,6 @@
         {
           "Name": "Exploded",
           "Enabled": true,
-          "Expanded": true,
           "ReplicationMode": 2,
           "Priority": 1,
           "PropertyType": {
@@ -175,7 +169,6 @@
         {
           "Name": "SpawnPointID",
           "Enabled": true,
-          "Expanded": true,
           "ReplicationMode": 1,
           "Priority": 1,
           "PropertyType": {
@@ -193,7 +186,6 @@
         {
           "Name": "PlayerName",
           "Enabled": true,
-          "Expanded": true,
           "ReplicationMode": 1,
           "Priority": 1,
           "PropertyType": {
@@ -211,7 +203,6 @@
         {
           "Name": "Finished",
           "Enabled": true,
-          "Expanded": true,
           "ReplicationMode": 1,
           "Priority": 1,
           "PropertyType": {
@@ -228,7 +219,6 @@
         {
           "Name": "FastestLap",
           "Enabled": true,
-          "Expanded": true,
           "ReplicationMode": 1,
           "Priority": 1,
           "PropertyType": {

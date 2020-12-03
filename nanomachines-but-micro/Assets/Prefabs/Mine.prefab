@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7060202283363778337}
   - component: {fileID: 1959090777835923049}
   - component: {fileID: 2509307269815197403}
+  - component: {fileID: 2994251886707321008}
   m_Layer: 0
   m_Name: Mine
   m_TagString: mine
@@ -171,8 +172,31 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.30000004
-  m_Center: {x: 0, y: 0, z: 0.09662371}
+  m_Radius: 0.37938687
+  m_Center: {x: 0, y: 0.013388395, z: 0.19670433}
+--- !u!114 &2994251886707321008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2623461190214870793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/mineSet
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 7.6
+  OverrideMaxDistance: 75
 --- !u!1001 &6239446275764193711
 PrefabInstance:
   m_ObjectHideFlags: 0

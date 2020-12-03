@@ -50,13 +50,21 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
     {
         if (Time.frameCount % 30 == 0 && Time.timeSinceLevelLoad > 3 && state.Clock < 0 && state.Clock > -1 && !StartFlag)
         {
-            StartRace();
+            StartRace(); //state.clock alle 0
         }
 
     }
     private void FixedUpdate()
     {
-        if (state.Clock < 3.3f && !played)
+        if (state.Clock < 5)
+        {
+            if (state.NumberOfPlayers != state.PlayersReady)
+            {
+                if (BoltNetwork.IsServer)
+                    state.Clock += 15;
+            }
+        }
+        if (state.Clock < 3.2f && !played)
         {
             played = true;
             ui_3_2_1_go.SetActive(true);
@@ -177,11 +185,6 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
                 state.Third = playerData.name;
                 state.ThrBestLap = playerData.FindBestLap();
                 break;
-        }
-        int i = 0;
-        foreach (var laptime in playerData.lapTimes)
-        {
-            Debug.Log($"{++i} : {laptime}");
         }
         StartCoroutine(WaitFor30AndEnd());
     }

@@ -16,7 +16,6 @@ public class MineController : Bolt.EntityBehaviour<ILandMineState>
     void handlerExplosion()
     {
         state.Exploded = true;
-        BoltNetwork.Destroy(this.gameObject);
     }
     void FixedUpdate()
     {
@@ -31,6 +30,8 @@ public class MineController : Bolt.EntityBehaviour<ILandMineState>
             gameObject.GetComponentsInChildren<Renderer>()[1].material.EnableKeyword("_EMISSION");
         if (Time.frameCount % 25 == 0 && Time.frameCount % 50 != 0)
             gameObject.GetComponentsInChildren<Renderer>()[1].material.DisableKeyword("_EMISSION");
+        if (state.Exploded)
+            BoltNetwork.Destroy(this.gameObject);
     }
     void OnTriggerEnter(Collider other)
     {
@@ -38,7 +39,7 @@ public class MineController : Bolt.EntityBehaviour<ILandMineState>
         {
             Instantiate(explosion_effect, transform.position, transform.rotation);
             other.gameObject.GetComponent<OnHitController>().Explode();
-            FMODUnity.RuntimeManager.PlayOneShot("event:/Explosion", GetComponent<Transform>().position);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/mineHit", GetComponent<Transform>().position);
             state.Explosion();
         }
     }

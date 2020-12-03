@@ -24,7 +24,7 @@ public class LapTimeUpdate : MonoBehaviour
     private void Update()
     {
         if (clock > 0)
-            time = clock.ToString("#.#");
+            time = clock.ToString("#.###");
         clock += Time.deltaTime; // tämä pitää vaihtaa laskemaan vain silloin kun on saatu merkki pelin alkamisesta
                                  // nyt se on spawnaamisesta
     }
@@ -35,6 +35,10 @@ public class LapTimeUpdate : MonoBehaviour
     public string GetClockFormatted()
     {
         return Math.Floor(clock).ToString();
+    }
+    public string GetClockMilliseconds()
+    {
+        return clock.ToString("#.###");
     }
     public void CarIncrementLap()
     {

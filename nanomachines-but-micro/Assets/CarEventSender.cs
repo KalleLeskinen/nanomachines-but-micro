@@ -1,13 +1,16 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CarEventSender : Bolt.EntityBehaviour<IVehicleState>
 {
+    GameObject raceHandler;
     bool eventFlag = false;
     bool startTheGameFlag = false;
-    public GameObject raceHandler;
     bool started = false;
+    bool cooldown = false;
+    bool raceStarted = false;
 
     // Start is called before the first frame update
     private void Start()
@@ -20,6 +23,11 @@ public class CarEventSender : Bolt.EntityBehaviour<IVehicleState>
 
     private void FixedUpdate()
     {
+        if (!raceStarted && Time.frameCount % 30 == 0)
+        {       
+            raceStarted = raceHandler.GetComponent<BoltEntity>().GetState<IStateOfRace>().RaceStarted;
+        }
+
         if (eventFlag)
         {
             var SpawnEvent = RespawnCar.Create();
@@ -27,6 +35,8 @@ public class CarEventSender : Bolt.EntityBehaviour<IVehicleState>
             SpawnEvent.SpawnPosition = state.SpawnPointID;
             SpawnEvent.Send();
             eventFlag = false;
+            cooldown = true;
+            StartCoroutine(StartCooldown());
         }
         if (startTheGameFlag && !started)
         {
@@ -38,10 +48,18 @@ public class CarEventSender : Bolt.EntityBehaviour<IVehicleState>
         }
     }
 
+    private IEnumerator StartCooldown()
+    {
+        yield return new WaitForSeconds(2.33f);
+        cooldown = false;
+    }
+
+
+
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R) && Input.GetKeyDown(KeyCode.T))
+        if (Input.GetKeyDown(KeyCode.R) && !cooldown && raceStarted)
         {
             eventFlag = true;
         }
@@ -50,7 +68,7 @@ public class CarEventSender : Bolt.EntityBehaviour<IVehicleState>
             int playersRdy = raceHandler.GetComponent<BoltEntity>().GetState<IStateOfRace>().PlayersReady;
             int nbOfPlayers = raceHandler.GetComponent<BoltEntity>().GetState<IStateOfRace>().NumberOfPlayers;
             bool isTheGameStarted = raceHandler.GetComponent<BoltEntity>().GetState<IStateOfRace>().RaceStarted;
-            if (isTheGameStarted && playersRdy == nbOfPlayers || Input.GetKeyDown(KeyCode.F))
+            if (isTheGameStarted && playersRdy == nbOfPlayers)
             {
                 //TODO: WAIT FOR 3,2,1,GO
                 startTheGameFlag = true;

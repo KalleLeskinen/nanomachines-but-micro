@@ -29,7 +29,7 @@ public class player_laptime_ui_script : MonoBehaviour
                 }
             }
         }
-        if (Time.frameCount % 30 == 0)
+        if (Time.frameCount % 2 == 0)
         {
             UpdateUi();
         }
@@ -38,9 +38,8 @@ public class player_laptime_ui_script : MonoBehaviour
     {
         if (Time.timeSinceLevelLoad > 5)
         {
-            GetComponentsInChildren<Text>()[0].text = myCar.GetComponentInChildren<LapTimeUpdate>().GetClockFormatted();
+            GetComponentsInChildren<Text>()[0].text = $" {myCar.GetComponentInChildren<LapTimeUpdate>().GetClockMilliseconds()}";
             GetComponentsInChildren<Text>()[1].text = $"{myCar.GetComponentInChildren<LapTimeUpdate>().car_passed_laps+1} / {maxLaps}";
-
         }
     }
 }
