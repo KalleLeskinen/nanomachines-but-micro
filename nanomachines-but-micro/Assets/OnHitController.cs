@@ -3,19 +3,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OnHitController : MonoBehaviour
+public class OnHitController : Bolt.EntityBehaviour<IVehicleState>
 {
-    void OnCollisionEnter(Collision other)
+    public GameObject hit_smoke;
+
+    private void Start()
     {
-        if (other.gameObject.tag == "rocket" && other.gameObject.tag == "mine")
-        {
-            Debug.Log("ouch!!");
-            Destroy(other.gameObject);
-        }
+        state.OnExploded += explosionEffect;
+    }
+
+    private void explosionEffect()
+    {
+        GetComponent<KartController>().OnWeaponHit();
+        //GetComponent<Rigidbody>().AddExplosionForce(4000f, Vector3.down, 5f);
     }
 
     public void Explode()
     {
-        GetComponent<Rigidbody>().AddExplosionForce(100000f, gameObject.transform.position, 15f);
+        state.Exploded();
+        StartCoroutine(hit_smoke_timer());
+    }
+    IEnumerator hit_smoke_timer()
+    {
+        hit_smoke.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        hit_smoke.SetActive(false);
     }
 }

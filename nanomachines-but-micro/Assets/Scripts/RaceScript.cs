@@ -3,97 +3,197 @@ using System.Collections.Generic;
 using UnityEngine;
 using Bolt;
 using System;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
 {
     [SerializeField]
     List<GameObject> cars;
-
-    [SerializeField] string[] sceneguids;
+    private bool played = false;
+    //[SerializeField] string[] sceneguids;
     public GameObject[] checkpoints;
     public int numberOfcheckpoints;
     public int numberOfLaps;
-    private bool starting = false;
     [SerializeField]
     GameObject FinishLine;
-    float countdownSeconds;
+
+    public GameObject scoreboard_ui;
+    public GameObject player_laptime_ui;
+    public GameObject connected_players_ui;
+    public GameObject ui_3_2_1_go;
 
     public bool started = false;
     public bool finished = false;
-    BoltEntity winner;
 
     [SerializeField] public List<PlayerData> playerDataList;
 
-    int warmupTime = 5;
+    public bool StartFlag = false;
 
     public override void Attached()
     {
-        state.Finished = false;
-        state.RaceStarted = false;
-        state.NumberOfLaps = numberOfLaps;
-        state.NumberOfCheckpoints = numberOfcheckpoints;
-        state.Clock = 0;
-        SetUpTheRace();
-        countdownSeconds = warmupTime;
+        if (BoltNetwork.IsServer)
+        {
+            state.NumberOfPlayers = 1;
+            state.Finished = false;
+            state.RaceStarted = false;
+            state.NumberOfLaps = numberOfLaps;
+            state.NumberOfCheckpoints = numberOfcheckpoints;
+            state.Clock = 15;
+            state.Winner = "";
+            state.Second = "";
+            state.Third = "";
+        }
     }
 
+    private void Update()
+    {
+        if (Time.frameCount % 30 == 0 && Time.timeSinceLevelLoad > 3 && state.Clock < 0 && state.Clock > -1 && !StartFlag)
+        {
+            StartRace();
+        }
+
+    }
+    private void FixedUpdate()
+    {
+        if (state.Clock < 3.3f && !played)
+        {
+            played = true;
+            ui_3_2_1_go.SetActive(true);
+            ui_3_2_1_go.GetComponent<Animation>().Play();
+        }
+    }
 
     public override void SimulateOwner()
     {
-        if (Time.frameCount % 60 == 0 && state.RaceStarted && !state.Finished)
-        {
-            CheckForWinner();
-        }
-        countdownSeconds -= Time.deltaTime;
+        CountTime(); //servu laskee staten aikaa
     }
 
-    private void CheckForWinner()
+    private void StartRace() //tämä pitää alustaa jokaisen pelaajan itse
     {
-        for (int i = 0; i<playerDataList.Count; i++)
-        {
-            if (playerDataList[i].lapTimes.Count == state.NumberOfLaps)
-            {
-                state.Finished = true;
-                RaceWinner(playerDataList[i]);
-            }
-        }
-    }
-
-    private void RaceWinner(PlayerData playerData)
-    {
-        state.Winner = playerData.id;
-        
-        Debug.Log($"Winner: {playerData.id}");
-        int i = 0;
-        foreach (var laptime in playerData.lapTimes)
-        {
-            Debug.Log($"{++i} : {laptime}");
-        }
-    }
-
-    IEnumerator IntialiseTheGameIn(int warmupTime)
-    {
-        starting = true;
-        GameObject.FindGameObjectWithTag("FinishLine").GetComponent<BoxCollider>().isTrigger = false;
-        Debug.Log($"Starting the game in {warmupTime} seconds");
-        yield return new WaitForSeconds(warmupTime);
+        StartFlag = true;
         playerDataList = new List<PlayerData>();
         SetUpCheckPoints();
         GetAllCars();
-        GetSceneGuids();
+        //GetSceneGuids();
         foreach (var car in cars)
         {
             List<float> plr_laptimes = GetLapTimeList(car);
             List<int> plr_checkpoints = GetCheckpointList(car);
             Guid plr_id = GetGuid(car);
-            PlayerData plr = new PlayerData(plr_id,plr_checkpoints,plr_laptimes);
+            string plr_name = car.GetComponentInParent<BoltEntity>().GetState<IVehicleState>().PlayerName;
+            PlayerData plr = new PlayerData(plr_id, plr_checkpoints, plr_laptimes, plr_name);
             playerDataList.Add(plr);
-            Debug.Log($"added {plr_id.ToString().Split('-')[0]}... with {plr_laptimes.Count} laps and {plr_checkpoints.Count} checkpoints passed");
+            Debug.Log($"added {plr_name}... with {plr_laptimes.Count} laps and {plr_checkpoints.Count} checkpoints passed");
             car.GetComponent<LapTimeUpdate>().clock = 0;
         }
-        starting = false;
-        GameObject.FindGameObjectWithTag("FinishLine").GetComponent<BoxCollider>().isTrigger = true;
+        player_laptime_ui.SetActive(true);
+        connected_players_ui.SetActive(false);
+        ui_3_2_1_go.SetActive(false);
+        
+        if (BoltNetwork.IsServer)
+            state.RaceStarted = true;
+    }
 
+    public void UpdatePlayerBase()
+    {
+        foreach (var car in cars)
+        {
+            playerDataList = new List<PlayerData>();
+            List<float> plr_laptimes = GetLapTimeList(car);
+            List<int> plr_checkpoints = GetCheckpointList(car);
+            Guid plr_id = GetGuid(car);
+            string plr_name = car.GetComponentInParent<BoltEntity>().GetState<IVehicleState>().PlayerName;
+            PlayerData plr = new PlayerData(plr_id, plr_checkpoints, plr_laptimes, plr_name);
+            playerDataList.Add(plr);
+            Debug.Log($"added {plr_name}... with {plr_laptimes.Count} laps and {plr_checkpoints.Count} checkpoints passed");
+            car.GetComponent<LapTimeUpdate>().clock = 0;
+        }
+    }
+
+
+    private void CheckForWinner()
+    {
+        Debug.Log("cheking for winer #22");
+        for (int i = 0; i<playerDataList.Count; i++)
+        {
+            if (playerDataList[i].lapTimes.Count == state.NumberOfLaps)
+            {
+                if (state.Winner == "")
+                {
+                    if (BoltNetwork.IsServer)
+                    {
+                        RaceFinished(playerDataList[i], 1);
+                        StartCoroutine(WaitAndSendEvent());
+                    }
+                    playerDataList.Remove(playerDataList[i]); // voittajan kierroksia ei enää lasketa
+                    Debug.Log("#22 winner found");
+                }
+                else if (state.Second == "")
+                {
+                    if (BoltNetwork.IsServer)
+                    {
+                        RaceFinished(playerDataList[i], 2);
+                        StartCoroutine(WaitAndSendEvent());
+                        if (cars.Count == 2)
+                        {
+                            state.Finished = true;
+                        }
+                    }
+                    playerDataList.Remove(playerDataList[i]); // voittajan kierroksia ei enää lasketa
+                    Debug.Log("#22 second found");
+
+                }
+                else if (state.Third == "")
+                {
+                    if (BoltNetwork.IsServer)
+                    {
+                        RaceFinished(playerDataList[i], 3);
+                        StartCoroutine(WaitAndSendEvent());
+                    }
+                    playerDataList.Remove(playerDataList[i]); // voittajan kierroksia ei enää lasketa
+                    Debug.Log("#22 third found");
+                    state.Finished = true;
+                }
+                scoreboard_ui.SetActive(true);
+            }
+        }
+    }
+
+
+    private void RaceFinished(PlayerData playerData, int position)
+    {
+        switch (position)
+        {
+            case 1:
+                state.Winner = playerData.name;
+                state.WinBestLap = playerData.FindBestLap();
+                break;
+            case 2:
+                state.Second = playerData.name;
+                state.SecBestLap = playerData.FindBestLap();
+                break;
+            case 3:
+                state.Third = playerData.name;
+                state.ThrBestLap = playerData.FindBestLap();
+                break;
+        }
+        int i = 0;
+        foreach (var laptime in playerData.lapTimes)
+        {
+            Debug.Log($"{++i} : {laptime}");
+        }
+        StartCoroutine(WaitFor30AndEnd());
+    }
+
+    private IEnumerator WaitFor30AndEnd()
+    {
+        Debug.Log("Waiting for 30 second");
+        yield return new WaitForSeconds(25f);
+        //aloita animaatio fade in 5 sekunnisksi?
+        yield return new WaitForSeconds(5f);
+        BoltNetwork.LoadScene("MainMenu");
+        //joku muu keino kickaa pelaajat hellävarasesti main menuun
     }
 
     private void SetUpCheckPoints()
@@ -102,23 +202,16 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
         numberOfcheckpoints = checkpoints.Length;
     }
 
-    private void SetUpTheRace()
-    {
-        Debug.Log("SetUpTheRace");
-        StartCoroutine(IntialiseTheGameIn(warmupTime));
-        state.RaceStarted = true;
-    }
-
-    private void GetSceneGuids()
-    {
-        sceneguids = new string[cars.Count];
-        int i = 0;
-        Debug.Log("GetSceneGuids");
-        foreach (var player in cars)
-        {
-            sceneguids[i++] = player.GetComponent<LapTimeUpdate>().id.ToString();
-        }
-    }
+    //private void GetSceneGuids()
+    //{
+    //    sceneguids = new string[cars.Count];
+    //    int i = 0;
+    //    Debug.Log("GetSceneGuids");
+    //    foreach (var player in cars)
+    //    {
+    //        sceneguids[i++] = player.GetComponent<LapTimeUpdate>().id.ToString();
+    //    }
+    //}
 
     private void GetAllCars()
     {
@@ -145,7 +238,7 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
     {
         for (int i = 0; i < playerDataList.Count; i++)
         {
-            if (playerDataList[i].id == carId && !state.Finished)
+            if (playerDataList[i].id == carId /*&& !state.Finished*/)
             {
                 playerDataList[i].checkpointsPassed.Add(cp_number); // auto PlayerDatassa
                 Cp.GetComponent<CheckpointScript>()._material.color = Color.green;
@@ -172,25 +265,23 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
                 playerDataList[i].checkpointsPassed = GetCheckpointList(car);
             }
         }
+        CheckForWinner();
+    }
+
+    IEnumerator WaitAndSendEvent()
+    {
+        yield return new WaitForSeconds(1);
+        var FinishedEvnt = CarFinished.Create();
+        FinishedEvnt.Send();
     }
 
     private void CountTime()
     {
-        state.Clock += Time.deltaTime;
+        state.Clock -= Time.deltaTime;
     }
     private Guid GetGuid(GameObject car)
     {
         return car.GetComponent<LapTimeUpdate>().id;
-    }
-    private void OnGUI()
-    {
-        //if (state.Finished && state.RaceStarted)
-        //    GUI.Box(new Rect(100, 100, 200, 50), state.Winner.ToString());
-        if (starting == true)
-        {
-            string theString = $"Starting the race in {(int)countdownSeconds+1}";
-            GUI.Box(new Rect((Screen.width / 2) / 2, (Screen.height / 2)/2, Screen.width / 4, 30), theString);
-        }
     }
 }
 

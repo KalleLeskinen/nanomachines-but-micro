@@ -37,12 +37,12 @@ public class WeaponsController : Bolt.EntityBehaviour<IVehicleState>
 
     public void ProcessMoreInputs()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q) && entity.IsOwner)
         {
             mineFlag = true;
             Debug.Log(state.AmmoCount);
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && entity.IsOwner)
         {
             rocketFlag = true;
             Debug.Log(state.AmmoCount);
@@ -56,6 +56,7 @@ public class WeaponsController : Bolt.EntityBehaviour<IVehicleState>
         Quaternion newRot = Quaternion.Euler(RotVec3);
 
         Vector3 mineSpawnPos = GetComponentInChildren<minespawnpos>().minePos;
+
         if (state.AmmoCount>=2)
         {
             state.AmmoCount -= 2;
@@ -65,12 +66,26 @@ public class WeaponsController : Bolt.EntityBehaviour<IVehicleState>
     }
     private void ShootRocket()
     {
-        Quaternion rotation = GetComponent<Transform>().rotation;
+
+
         Vector3 rocketSpawnPos = GetComponentInChildren<rocketspawnpos>().rocketPos;
+        
+        Vector3 rocketDir = GetComponentInChildren<rocketdir>().rocketDir;
+
+        Vector3 fwdVector = new Vector3(rocketDir.x - rocketSpawnPos.x, 0, rocketDir.z - rocketSpawnPos.z);
+
         if (state.AmmoCount >= 1)
         {
             state.AmmoCount -= 1; //raketti
-            BoltNetwork.Instantiate(BoltPrefabs.missile, rocketSpawnPos, rotation);
+            BoltNetwork.Instantiate(BoltPrefabs.missile, rocketSpawnPos, Quaternion.LookRotation(fwdVector, Vector3.up));
+        }
+    }
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("AmmoBlock"))
+        {
+            state.AmmoCount += other.gameObject.GetComponent<AmmoBox>().ammoAmount;
+            Debug.Log("Ammo picked up. Current ammo:" + state.AmmoCount);
         }
     }
 

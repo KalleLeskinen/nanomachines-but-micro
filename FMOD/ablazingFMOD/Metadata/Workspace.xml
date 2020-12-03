@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.00.00">
-	<object class="Workspace" id="{9d61bfc1-52d3-4b76-a0d2-ca9be3b4922e}">
-		<property name="builtBanksOutputDirectory">
-			<value>../../Games/aBlazingRace/nanomachines-but-micro/nanomachines-but-micro/Assets/AudioAssets/FMODBANKS</value>
-		</property>
+<objects serializationModel="Studio.02.01.00">
+	<object class="Workspace" id="{067470b4-5713-4274-a0eb-c2331733d651}">
 		<relationship name="masterEventFolder">
 			<destination>{9d68eb1b-7e43-4283-b967-2088aa57cfe9}</destination>
 		</relationship>
@@ -19,11 +16,17 @@
 		<relationship name="masterBankFolder">
 			<destination>{fd43211d-c85b-4aa4-bf30-0afe29e77df8}</destination>
 		</relationship>
+		<relationship name="masterSandboxFolder">
+			<destination>{bdd4dad7-3ae6-455a-9616-76898de6ded0}</destination>
+		</relationship>
 		<relationship name="masterAssetFolder">
 			<destination>{5b86252c-405e-4d21-8464-065361e8dff6}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{6d6336fb-d4c7-497d-83d2-af04173bdd5c}</destination>
+		</relationship>
+		<relationship name="profilerSessionFolder">
+			<destination>{a4fea6ef-6efd-44eb-b927-87a16d3e483c}</destination>
 		</relationship>
 		<relationship name="platforms">
 			<destination>{ca0ee36a-a367-4187-81bc-fbac4acc4f27}</destination>

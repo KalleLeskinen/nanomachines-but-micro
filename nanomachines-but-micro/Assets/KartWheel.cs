@@ -16,12 +16,16 @@ public class KartWheel : MonoBehaviour
     public float springStiffness;
     public float damperStiffness;
 
-    private float minLength;
-    private float maxLength;
-    private float lastLength;
-    private float springLength;
-    private float springVelocity;
-    private float springForce;
+    public float
+        minLength,
+        maxLength,
+        lastLength;
+
+    public float
+        springLength,
+        springVelocity,
+        springForce;
+
     private float damperForce;
 
     private Vector3 suspensionForce;
@@ -65,8 +69,7 @@ public class KartWheel : MonoBehaviour
 
         // restLength must always be higher than spring travel ( if rest at a position lower than the suspension can extend, the suspension will spaz out
 
-        minLength = restLength - springTravel;
-        maxLength = restLength + springTravel;
+        
 
     }
 
@@ -74,6 +77,9 @@ public class KartWheel : MonoBehaviour
     {
         wheelAngle = Mathf.Lerp(wheelAngle, steerAngle, steeringTime * Time.deltaTime);
         transform.localRotation = Quaternion.Euler(Vector3.up * wheelAngle);
+
+        minLength = restLength - springTravel;
+        maxLength = restLength + springTravel;
     }
 
 
@@ -99,6 +105,8 @@ public class KartWheel : MonoBehaviour
             springForce = springStiffness * (restLength - springLength);
             damperForce = damperStiffness * springVelocity;
 
+            springForce = Mathf.Clamp(springForce, -1500, 9000);
+
             suspensionForce = (springForce + damperForce) * transform.up;
 
             // Adding the throttle
@@ -115,6 +123,8 @@ public class KartWheel : MonoBehaviour
 
             //Debug.Log("rpm: " + RPMCounter());
 
+            
+
 
         }
     }
@@ -124,7 +134,8 @@ public class KartWheel : MonoBehaviour
     {
         if (Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, maxLength + wheelRadius))
         {
-            rig.AddForceAtPosition(boostAmount * transform.forward, hit.point);
+            //rig.AddForceAtPosition(boostAmount * Vector3.forward, hit.point);
+            rig.velocity += transform.forward * boostAmount;
         }
     }
 
@@ -132,16 +143,37 @@ public class KartWheel : MonoBehaviour
     {
         if (Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, maxLength + wheelRadius))
         {
-            rig.AddForceAtPosition(slowAmount * transform.forward, hit.point);
+            //rig.AddForceAtPosition(slowAmount * Vector3.forward, hit.point);
+            rig.velocity -= transform.forward * slowAmount;
         }
     }
 
+    public void OnExplosion(float explosionAmount)
+    {
+        if (Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, maxLength + wheelRadius))
+        {
+            //rig.AddForceAtPosition(slowAmount * Vector3.forward, hit.point);
+            //rig.velocity -= transform.up * explosionAmount;
+            rig.velocity = Vector3.zero;
+            rig.AddExplosionForce(explosionAmount, transform.position, 1f, 5f, ForceMode.Impulse);
+            
+        }
+    }
 
 
     // Returns RPM of the vehicle
     public float RPMCounter()
     {
         // EVERYTHING IS BROKEN OH GOD
+
+
+
+
+
+
+
+
+
         return 0;
     }
 }

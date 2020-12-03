@@ -6,75 +6,47 @@ using UnityEngine;
 public class missile_controller : Bolt.EntityBehaviour<IRocketState>
 {
     public GameObject explosion_effect;
-    public SphereCollider explosion_collider;
-    public List<GameObject> affected;
+    private bool exploded;
     private void Start()
     {
         state.OnExplosion += HandleExplosion;
         state.DetonateTime = 5f;
+        state.Exploded = false;
     }
-
     private void HandleExplosion()
     {
-        // ota käyttöös uusi iso sphere collider
-        explosion_collider.enabled = true;
-        // tarkista mitkä autot on räjähdysalueen sisällä
-        foreach (var car in affected)   // räjäytä autot
-        {
-            car.GetComponent<OnHitController>().Explode(); //autolle kutsuttava räjähdys
-        }
-        // tuhoa missile kun kaikki autot on räjäytetty
-        StartCoroutine(FindAllCarsInExplosionRadius());
-
-        // tähän räjähdysanimaatio ja äänet!
-        Instantiate(explosion_effect, transform.position, transform.rotation);
-
-    }
-
-    IEnumerator FindAllCarsInExplosionRadius()
-    {
-        yield return new WaitForSeconds(0.05f);
+        state.Exploded = true;
         BoltNetwork.Destroy(this.gameObject);
     }
-
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        gameObject.transform.Translate(Vector3.forward * Time.deltaTime * 40f);
+
         state.DetonateTime -= Time.deltaTime;
-        gameObject.transform.Translate(Vector3.forward * Time.deltaTime * 15f);
+
         if (state.DetonateTime < 0)
         {
+            Instantiate(explosion_effect, transform.position, transform.rotation);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/missileMiss", GetComponent<Transform>().position);
             state.Explosion();
-        }   // räjähdys / ei räjähdystä vaan katoaminen? (lähellä ei autoja.......)
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag.Equals("generic_wall"))
+        if (other.gameObject.tag.Equals("generic_wall") && !exploded)
         {
+            Instantiate(explosion_effect, transform.position, transform.rotation);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Explosion", GetComponent<Transform>().position);
             state.Explosion();
         }
 
-        if (other.gameObject.tag.Equals("Player") && !affected.Contains(other.gameObject))
+        if (other.gameObject.tag.Equals("Player") && !state.Exploded && state.DetonateTime < 4.9f && state.DetonateTime != 0)
         {
-            affected.Add(other.gameObject);
-            Debug.Log($"ADDED {other.gameObject} to LIST OF AFFECTED PLAYERS ({affected.Count})");
+            Instantiate(explosion_effect, transform.position, transform.rotation);
+            other.gameObject.GetComponent<OnHitController>().Explode();
+            FMODUnity.RuntimeManager.PlayOneShot("event:/WeaponHit", GetComponent<Transform>().position);
             state.Explosion();
         }
     }
-    private void OnTriggerExit(Collider other)
-    {
-        if (affected.Contains(other.gameObject))
-        {
-            affected.Remove(other.gameObject);
-        }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag.Equals("generic_wall"))
-        {
-            state.Explosion();
-        }
-    }
-
 }

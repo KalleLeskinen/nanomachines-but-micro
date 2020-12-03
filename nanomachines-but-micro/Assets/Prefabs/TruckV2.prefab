@@ -225,7 +225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sceneGuid: 
   _serializerGuid: 3de9e892-f26c-4c0c-8e8a-1108c9280f81
-  _prefabId: 9
+  _prefabId: 11
   _updateRate: 1
   _autoFreezeProxyFrames: 0
   _clientPredicted: 1
@@ -256,6 +256,7 @@ MonoBehaviour:
   car_passed_cps: 
   clock: 0
   time: 
+  car_passed_laps: 0
 --- !u!114 &1140739985792972994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -351,6 +352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7571f3521cecfb84eb982aa8e1f128f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hit_smoke: {fileID: 0}
 --- !u!65 &2808738688497492451
 BoxCollider:
   m_ObjectHideFlags: 0
