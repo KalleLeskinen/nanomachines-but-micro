@@ -33,6 +33,7 @@ public class CarEventSender : Bolt.EntityBehaviour<IVehicleState>
             var startGame = StartTheGame.Create();
             startGame.Send();
             startTheGameFlag = false;
+            FMODUnity.RuntimeManager.PlayOneShot("event:/RespawnAudio", GetComponent<Transform>().position);
             started = true;
         }
     }

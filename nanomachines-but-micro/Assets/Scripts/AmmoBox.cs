@@ -17,6 +17,7 @@ public class AmmoBox : MonoBehaviour
     {
         if (col.gameObject.tag.Equals("Player"))
         {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Pickup", GetComponent<Transform>().position);
             StartCoroutine(Despawn());
         }
     }

@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ammoAmount: 15
+  boxDespawnAnimation: {fileID: 0}
 --- !u!65 &-9142447566831357867
 BoxCollider:
   m_ObjectHideFlags: 0
