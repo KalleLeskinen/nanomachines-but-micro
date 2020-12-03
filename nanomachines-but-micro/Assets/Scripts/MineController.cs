@@ -38,7 +38,7 @@ public class MineController : Bolt.EntityBehaviour<ILandMineState>
         {
             Instantiate(explosion_effect, transform.position, transform.rotation);
             other.gameObject.GetComponent<OnHitController>().Explode();
-            FMODUnity.RuntimeManager.PlayOneShot("event:/Explosion", GetComponent<Transform>().position);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/mineHit", GetComponent<Transform>().position);
             state.Explosion();
         }
     }
