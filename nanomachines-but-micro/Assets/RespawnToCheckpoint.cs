@@ -12,6 +12,7 @@ public class RespawnToCheckpoint : MonoBehaviour
             if (whichCP == 0)
             {
                 other.transform.position = GameObject.FindGameObjectWithTag("server_pos").transform.position;
+                other.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
             }
             GameObject[] spawnCPs = GameObject.FindGameObjectsWithTag("checkpoint");
             foreach (var cp in spawnCPs)
@@ -21,6 +22,7 @@ public class RespawnToCheckpoint : MonoBehaviour
                 {
                     other.transform.position = cp_pos + Vector3.up * 3;
                     other.transform.rotation = cp.transform.rotation;
+                    other.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
                 }
             }
         }

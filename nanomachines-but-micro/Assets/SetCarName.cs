@@ -24,7 +24,7 @@ public class SetCarName : MonoBehaviour
     }
     public void SetCarNameForMyEntity()
     {
-        if (BoltNetwork.IsClient)
+        if (BoltNetwork.IsClient && Time.timeSinceLevelLoad > 3.1f)
         {
             foreach (var obj in BoltNetwork.Entities)
             {
@@ -68,7 +68,7 @@ public class SetCarName : MonoBehaviour
 
     public void HostSetCarNameAndNumberOfLaps()
     {
-        if (BoltNetwork.IsServer)
+        if (BoltNetwork.IsServer && Time.timeSinceLevelLoad > 3.1f)
         {
             Debug.Log("HOST!");
             foreach (var obj in BoltNetwork.Entities)
