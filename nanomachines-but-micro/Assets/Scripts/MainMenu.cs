@@ -16,15 +16,6 @@ public class MainMenu : GlobalEventListener
 
     private List<Button> _joinServerButtons = new List<Button>();
 
-    public GameObject[] menuCars = new GameObject[4];
-
-    private void Start()
-    {
-        int random = Random.Range(0, 4);
-        Debug.Log(random);
-        Instantiate(menuCars[random], new Vector3(-35f, -10f, 50f), Quaternion.identity);
-    }
-
     public void ButtonStartServer()
     {
         SetRoomName();
