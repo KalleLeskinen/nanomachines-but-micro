@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MenuAudio : MonoBehaviour
 {
+    public static MenuAudio menuAudio;
     FMOD.Studio.EventInstance SoundTest;
 
 
@@ -20,6 +21,16 @@ public class MenuAudio : MonoBehaviour
 
     void Awake()
     {
+        if(menuAudio == null)
+        {
+            DontDestroyOnLoad(gameObject);
+            menuAudio = this;
+        }
+        else if(menuAudio != this)
+        {
+            Destroy(gameObject);
+        }
+
         MasterBus = FMODUnity.RuntimeManager.GetBus("bus:/Master");
         MusicBus = FMODUnity.RuntimeManager.GetBus("bus:/Master/Music");
         CarBus = FMODUnity.RuntimeManager.GetBus("bus:/Master/Car");
