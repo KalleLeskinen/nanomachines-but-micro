@@ -1,20 +1,53 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Bolt;
 using Bolt.Matchmaking;
 using UdpKit;
+using Unity.Collections;
 using UnityEngine.UI;
 public class MainMenu : GlobalEventListener
 {
-
     public Button joinGameButtonPrefab;
     public GameObject serverListPanel;
     public float buttonSpacing;
     private string roomName;
 
     private List<Button> _joinServerButtons = new List<Button>();
+
+    private GameObject[] modelPrefabs;
+    
+    private string SceneToLoad { get; set; }
+
+    private void Awake()
+    {
+        modelPrefabs = new GameObject[7];
+        modelPrefabs[0] = Resources.Load("Car1_Torino_Model") as GameObject;
+        modelPrefabs[1] = Resources.Load("Car2_Torino_Model") as GameObject;
+        modelPrefabs[2] = Resources.Load("Car3_Torino_Model") as GameObject;
+        modelPrefabs[3] = Resources.Load("Truck-1_Model") as GameObject;
+        modelPrefabs[4] = Resources.Load("Truck-2_Model") as GameObject;
+        modelPrefabs[5] = Resources.Load("TruckV1Model") as GameObject;
+        modelPrefabs[6] = Resources.Load("TruckV2Model") as GameObject;
+    }
+
+    private void Start()
+    {
+        if (!VehicleSelection.Instance)
+        {
+            GameObject defaultCar = Instantiate(modelPrefabs[0], new Vector3(-30f, -10f, 50f),
+                Quaternion.Euler(new Vector3(0, 180, 0)));
+            defaultCar.transform.localScale = new Vector3(14, 14, 14);
+        }
+        else if (SelectionContainer.Instance)
+        {
+            GameObject selectedCar = Instantiate(modelPrefabs[SelectionContainer.Instance.prefabIdInteger],
+                new Vector3(-30f, -10f, 50f), Quaternion.Euler(new Vector3(0, 180, 0)));
+                selectedCar.transform.localScale = new Vector3(14, 14, 14);
+        }
+    }
 
     public void ButtonStartServer()
     {
@@ -37,6 +70,18 @@ public class MainMenu : GlobalEventListener
         SceneManager.LoadScene("GarageScene");
     }
 
+    public void ButtonLevelOne()
+    {
+        SceneToLoad = "Level_1";
+    }
+
+    
+
+    public void ButtonLevelTwo()
+    {
+        SceneToLoad = "Level_2";
+    }
+
     public void SetRoomName()
     {
         roomName = GameObject.FindGameObjectWithTag("ServerName").GetComponent<Text>().text;
@@ -56,7 +101,7 @@ public class MainMenu : GlobalEventListener
             BoltMatchmaking.CreateSession(
                 
                 sessionID: matchName,
-                sceneToLoad: "Level_1" // <-  What scene to load.... muutettu level 1 koska garage scene bugaa atm... T:jonni
+                sceneToLoad: SceneToLoad // <-  What scene to load.... muutettu level 1 koska garage scene bugaa atm... T:jonni
             );
 
         }
