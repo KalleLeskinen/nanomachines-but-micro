@@ -172,20 +172,23 @@ public class NetworkCallbacks : GlobalEventListener
     }
     public override void OnEvent(RespawnCar evnt)
     {
-        GameObject[] spawnCPs = GameObject.FindGameObjectsWithTag("checkpoint");
-        Transform player = evnt.playerEntity.transform.GetChild(0);
-        int whichCP = player.GetComponent<LapTimeUpdate>().car_passed_cps.Count;
-        if (whichCP == 0)
+        if (evnt.playerEntity.IsOwner)
         {
-            player.transform.position = GameObject.FindGameObjectWithTag("server_pos").transform.position;
-            player.transform.rotation= GameObject.FindGameObjectWithTag("server_pos").transform.rotation;
-            player.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-        }
-        else
-        {
-            player.position = spawnCPs[whichCP - 1].transform.position;
-            player.rotation = spawnCPs[whichCP - 1].transform.rotation;
-            player.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+            GameObject[] spawnCPs = GameObject.FindGameObjectsWithTag("checkpoint");
+            Transform player = evnt.playerEntity.transform.GetChild(0);
+            int whichCP = player.GetComponent<LapTimeUpdate>().car_passed_cps.Count;
+            if (whichCP == 0)
+            {
+                player.transform.position = GameObject.FindGameObjectWithTag("server_pos").transform.position;
+                player.transform.rotation= GameObject.FindGameObjectWithTag("server_pos").transform.rotation;
+                player.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+            }
+            else
+            {
+                player.position = spawnCPs[whichCP - 1].transform.position;
+                player.rotation = spawnCPs[whichCP - 1].transform.rotation;
+                player.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+            }
         }
     }
 }
