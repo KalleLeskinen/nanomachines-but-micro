@@ -764,7 +764,7 @@ MonoBehaviour:
   wheelRadius: 0.2
   test: 0
   testoo: -0.2
-  wheel: 0
+  wheel: 2
 --- !u!1 &8055775396795840847
 GameObject:
   m_ObjectHideFlags: 0
@@ -988,7 +988,7 @@ MonoBehaviour:
   wheelRadius: 0.2
   test: 0
   testoo: -0.2
-  wheel: 0
+  wheel: 3
 --- !u!1 &8055775397491742013
 GameObject:
   m_ObjectHideFlags: 0
@@ -1131,7 +1131,7 @@ MonoBehaviour:
   wheelRadius: 0.2
   test: 0
   testoo: -0.2
-  wheel: 0
+  wheel: 1
 --- !u!1 &8959640572670538418
 GameObject:
   m_ObjectHideFlags: 0
