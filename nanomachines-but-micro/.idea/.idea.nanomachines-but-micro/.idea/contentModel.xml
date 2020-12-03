@@ -4,13 +4,13 @@
     <e p="C:\Users\SONNI\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
     <e p="C:\Users\SONNI\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_nanomachines-but-micro.56070732.00" t="ExcludeRecursive" />
     <e p="D:\ABlazingRace\nanomachines-but-micro\nanomachines-but-micro" t="IncludeRecursive">
-      <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
-      <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="BoltServerIncrementer.cs" t="Include" />
         <e p="CarEventSender.cs" t="Include" />
+        <e p="connected_player_ui_script.cs" t="Include" />
         <e p="KartWheel.cs" t="Include" />
+        <e p="lap_slider_handle_text.cs" t="Include" />
         <e p="missile_controller.cs" t="Include" />
         <e p="name_above_car.cs" t="Include" />
         <e p="OnHitController.cs" t="Include" />
@@ -104,16 +104,57 @@
             </e>
           </e>
         </e>
+        <e p="player_laptime_ui_script.cs" t="Include" />
         <e p="Plugins" t="Include">
           <e p="FMOD" t="Include">
             <e p="addons" t="Include">
               <e p="ResonanceAudio" t="Include">
                 <e p="editor" t="Include">
                   <e p="FmodResonanceAudioRoomEditor.cs" t="Include" />
+                  <e p="FMODUnityResonanceEditor.asmdef" t="Include" />
                 </e>
                 <e p="scripts" t="Include">
                   <e p="FmodResonanceAudio.cs" t="Include" />
                   <e p="FmodResonanceAudioRoom.cs" t="Include" />
+                  <e p="FMODUnityResonance.asmdef" t="Include" />
+                </e>
+              </e>
+            </e>
+            <e p="FMODUnity.asmdef" t="Include" />
+            <e p="platforms" t="Include">
+              <e p="android" t="Include">
+                <e p="src" t="Include">
+                  <e p="PlatformAndroid.cs" t="Include" />
+                </e>
+              </e>
+              <e p="html5" t="Include">
+                <e p="src" t="Include">
+                  <e p="PlatformWebGL.cs" t="Include" />
+                </e>
+              </e>
+              <e p="ios" t="Include">
+                <e p="src" t="Include">
+                  <e p="PlatformIOS.cs" t="Include" />
+                </e>
+              </e>
+              <e p="linux" t="Include">
+                <e p="src" t="Include">
+                  <e p="PlatformLinux.cs" t="Include" />
+                </e>
+              </e>
+              <e p="mac" t="Include">
+                <e p="src" t="Include">
+                  <e p="PlatformMac.cs" t="Include" />
+                </e>
+              </e>
+              <e p="tvos" t="Include">
+                <e p="src" t="Include">
+                  <e p="PlatformAppleTV.cs" t="Include" />
+                </e>
+              </e>
+              <e p="win" t="Include">
+                <e p="src" t="Include">
+                  <e p="PlatformWindows.cs" t="Include" />
                 </e>
               </e>
             </e>
@@ -130,6 +171,7 @@
                 <e p="EventManager.cs" t="Include" />
                 <e p="EventRefDrawer.cs" t="Include" />
                 <e p="FindAndReplace.cs" t="Include" />
+                <e p="FMODUnityEditor.asmdef" t="Include" />
                 <e p="LogViewer.cs" t="Include" />
                 <e p="ParamRefDrawer.cs" t="Include" />
                 <e p="SettingsEditor.cs" t="Include" />
@@ -145,11 +187,18 @@
               </e>
               <e p="Runtime" t="Include">
                 <e p="BankRefAttribute.cs" t="Include" />
+                <e p="CodeGeneration.cs" t="Include" />
                 <e p="EventHandler.cs" t="Include" />
                 <e p="EventRefAttribute.cs" t="Include" />
                 <e p="FMODRuntimeManagerOnGUIHelper.cs" t="Include" />
                 <e p="ParamRef.cs" t="Include" />
                 <e p="ParamRefAttribute.cs" t="Include" />
+                <e p="Platform.cs" t="Include" />
+                <e p="PlatformDefault.cs" t="Include" />
+                <e p="PlatformGroup.cs" t="Include" />
+                <e p="PlatformMobileHigh.cs" t="Include" />
+                <e p="PlatformMobileLow.cs" t="Include" />
+                <e p="PlatformPlayInEditor.cs" t="Include" />
                 <e p="RuntimeManager.cs" t="Include" />
                 <e p="RuntimeUtils.cs" t="Include" />
                 <e p="Settings.cs" t="Include" />
@@ -164,16 +213,12 @@
                 </e>
                 <e p="wrapper" t="Include">
                   <e p="fmod.cs" t="Include" />
-                  <e p="fmod_android.cs" t="Include" />
                   <e p="fmod_dsp.cs" t="Include" />
                   <e p="fmod_errors.cs" t="Include" />
                   <e p="fmod_studio.cs" t="Include" />
                 </e>
               </e>
             </e>
-          </e>
-          <e p="JsonDotNet" t="Include">
-            <e p="link.xml" t="Include" />
           </e>
         </e>
         <e p="prevent_roll_over.cs" t="Include" />
@@ -237,6 +282,7 @@
             <e p="SurfaceShader_VC.shader" t="Include" />
           </e>
         </e>
+        <e p="spin_the_lift.cs" t="Include" />
         <e p="TextMesh Pro" t="Include">
           <e p="Fonts" t="Include">
             <e p="LiberationSans - OFL.txt" t="Include" />
@@ -269,7 +315,12 @@
           </e>
         </e>
         <e p="ui_countdown_ui_script.cs" t="Include" />
+        <e p="weapons_ui_ammo_script.cs" t="Include" />
       </e>
+      <e p="FMODUnity.csproj" t="IncludeRecursive" />
+      <e p="FMODUnityEditor.csproj" t="IncludeRecursive" />
+      <e p="FMODUnityResonance.csproj" t="IncludeRecursive" />
+      <e p="FMODUnityResonanceEditor.csproj" t="IncludeRecursive" />
       <e p="nanomachines-but-micro.sln" t="IncludeFlat" />
       <e p="obj" t="ExcludeRecursive" />
       <e p="Packages" t="ExcludeRecursive" />

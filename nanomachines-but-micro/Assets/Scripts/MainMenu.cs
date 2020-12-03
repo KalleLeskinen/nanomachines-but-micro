@@ -1,10 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Bolt;
 using Bolt.Matchmaking;
 using UdpKit;
+using Unity.Collections;
 using UnityEngine.UI;
 public class MainMenu : GlobalEventListener
 {
@@ -15,10 +17,32 @@ public class MainMenu : GlobalEventListener
 
     private List<Button> _joinServerButtons = new List<Button>();
 
+    private GameObject[] modelPrefabs;
+
+    private void Awake()
+    {
+        modelPrefabs = new GameObject[7];
+        modelPrefabs[0] = Resources.Load("Car1_Torino_Model") as GameObject;
+        modelPrefabs[1] = Resources.Load("Car2_Torino_Model") as GameObject;
+        modelPrefabs[2] = Resources.Load("Car3_Torino_Model") as GameObject;
+        modelPrefabs[3] = Resources.Load("Truck-1_Model") as GameObject;
+        modelPrefabs[4] = Resources.Load("Truck-2_Model") as GameObject;
+        modelPrefabs[5] = Resources.Load("TruckV1Model") as GameObject;
+        modelPrefabs[6] = Resources.Load("TruckV2Model") as GameObject;
+    }
+
     private void Start()
     {
-        Debug.Log(VehicleSelection.Instance);
-        //Instantiate(menuCars[random], new Vector3(-30f, -10f, 50f), Quaternion.Euler(new Vector3(0, 180, 0)));
+        if (!VehicleSelection.Instance)
+        {
+            Instantiate(modelPrefabs[0], new Vector3(-30f, -10f, 50f),
+                Quaternion.Euler(new Vector3(0, 180, 0)));
+        }
+        else if (SelectionContainer.Instance)
+        {
+            Instantiate(modelPrefabs[SelectionContainer.Instance.prefabIdInteger],
+                new Vector3(-30f, -10f, 50f), Quaternion.Euler(new Vector3(0, 180, 0)));
+        }
     }
 
     public void ButtonStartServer()
