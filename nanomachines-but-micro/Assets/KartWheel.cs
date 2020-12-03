@@ -21,6 +21,7 @@ public class KartWheel : MonoBehaviour
 
     public float springStiffness;
     public float damperStiffness;
+    
 
     public float
         minLength,
@@ -41,12 +42,16 @@ public class KartWheel : MonoBehaviour
     public float steeringTime;
     private float wheelAngle;
 
+    
 
 
     [Header("Wheel")]
     public float wheelRadius; // The radius of the wheel (in meters)
 
     private Vector3 wheelVelocityL; // The wheel velocity in local space
+
+    public float test;
+    public float testoo;
 
     private float // The forces affecting the wheel in X and Y directions
         Fx,
@@ -84,8 +89,8 @@ public class KartWheel : MonoBehaviour
         wheelAngle = Mathf.Lerp(wheelAngle, steerAngle, steeringTime * Time.deltaTime);
         transform.localRotation = Quaternion.Euler(Vector3.up * wheelAngle);
 
-        minLength = restLength - springTravel;
-        maxLength = restLength + springTravel;
+        minLength = restLength - springTravel + test;
+        maxLength = restLength + springTravel + testoo;
     }
 
 
@@ -105,13 +110,16 @@ public class KartWheel : MonoBehaviour
             // Calculating the suspension
 
             lastLength = springLength;
+
             springLength = hit.distance - wheelRadius;
             springLength = Mathf.Clamp(springLength, minLength, maxLength);
             springVelocity = (lastLength - springLength) / Time.fixedDeltaTime;
             springForce = springStiffness * (restLength - springLength);
             damperForce = damperStiffness * springVelocity;
+            
+            Debug.Log(transform.name + "_MIN_FORCE " + -1500 * (-springLength / maxLength) + " | " + (-springLength / maxLength));
 
-            springForce = Mathf.Clamp(springForce, -1500, 9000);
+            springForce = Mathf.Clamp(springForce, -1500 * (-springLength / maxLength), 9000);
 
             suspensionForce = (springForce + damperForce) * transform.up;
 
@@ -217,20 +225,4 @@ public class KartWheel : MonoBehaviour
         }
     }
 
-
-    // Returns RPM of the vehicle
-    public float RPMCounter()
-    {
-        // EVERYTHING IS BROKEN OH GOD
-
-
-
-
-
-
-
-
-
-        return 0;
-    }
 }

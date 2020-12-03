@@ -147,9 +147,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f12f5877367d1429981270cbcef74e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enginePower: 1
+  brakingPower: 2
   restLength: 0.25
-  springTravel: 0.4
-  springStiffness: 30000
+  springTravel: 0.35
+  springStiffness: 40000
   damperStiffness: 4000
   minLength: 0
   maxLength: 0
@@ -158,7 +160,7 @@ MonoBehaviour:
   springVelocity: 0
   springForce: 0
   steerAngle: 0
-  steeringTime: 7
+  steeringTime: 8
   wheelRadius: 0.15
   wheel: 3
 --- !u!1 &1477675610879161117
@@ -367,9 +369,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f12f5877367d1429981270cbcef74e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enginePower: 1
+  brakingPower: 2
   restLength: 0.25
-  springTravel: 0.4
-  springStiffness: 30000
+  springTravel: 0.35
+  springStiffness: 40000
   damperStiffness: 4000
   minLength: 0
   maxLength: 0
@@ -378,7 +382,7 @@ MonoBehaviour:
   springVelocity: 0
   springForce: 0
   steerAngle: 0
-  steeringTime: 7
+  steeringTime: 8
   wheelRadius: 0.15
   wheel: 1
 --- !u!1 &1477675611380172997
@@ -506,9 +510,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f12f5877367d1429981270cbcef74e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enginePower: 1
+  brakingPower: 2
   restLength: 0.25
-  springTravel: 0.4
-  springStiffness: 30000
+  springTravel: 0.35
+  springStiffness: 40000
   damperStiffness: 4000
   minLength: 0
   maxLength: 0
@@ -517,7 +523,7 @@ MonoBehaviour:
   springVelocity: 0
   springForce: 0
   steerAngle: 0
-  steeringTime: 7
+  steeringTime: 8
   wheelRadius: 0.15
   wheel: 2
 --- !u!1 &1477675611898796737
@@ -564,9 +570,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f12f5877367d1429981270cbcef74e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enginePower: 1
+  brakingPower: 2
   restLength: 0.25
-  springTravel: 0.4
-  springStiffness: 30000
+  springTravel: 0.35
+  springStiffness: 40000
   damperStiffness: 4000
   minLength: 0
   maxLength: 0
@@ -575,7 +583,7 @@ MonoBehaviour:
   springVelocity: 0
   springForce: 0
   steerAngle: 0
-  steeringTime: 7
+  steeringTime: 8
   wheelRadius: 0.15
   wheel: 0
 --- !u!1 &2336094537752984284
@@ -1176,7 +1184,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 072f45eafba7f634489450d04de93d58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raceHandler: {fileID: 0}
 --- !u!114 &7622843391742752181
 MonoBehaviour:
   m_ObjectHideFlags: 0
