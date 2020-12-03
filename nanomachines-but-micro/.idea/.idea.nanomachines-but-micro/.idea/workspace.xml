@@ -20,8 +20,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54e1185e-b36a-48be-80e4-7b3ad73de5e3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.nanomachines-but-micro/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.nanomachines-but-micro/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MainMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MainMenu.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonBolt/packages/bolt_samples.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonLibs/Metro/Photon3Unity3D.dll.mdb.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonLibs/Metro/Photon3Unity3D.pdb.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonLibs/Photon3Unity3D.dll.mdb.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonLibs/Photon3Unity3D.pdb.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonLibs/netstandard2.0/Photon3Unity3D.dll.mdb.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonLibs/netstandard2.0/Photon3Unity3D.pdb.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/Cache/Editor/FMODStudioCache.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/Cache/Editor/FMODStudioCache.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GarageScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GarageScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SelectionMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SelectionMenu.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/VehicleSelection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/VehicleSelection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fmod_editor.log" beforeDir="false" afterPath="$PROJECT_DIR$/fmod_editor.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -55,11 +65,11 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Networking/PlayerObjectRegistry.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/VehicleSelectionCallbacks.cs" />
         <option value="$PROJECT_DIR$/Assets/VehicleSelection.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/VehicleSelection.cs" />
         <option value="$PROJECT_DIR$/Assets/SelectionContainer.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SelectionMenu.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Networking/NetworkCallbacks.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MainMenu.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SelectionMenu.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/VehicleSelection.cs" />
       </list>
     </option>
   </component>
