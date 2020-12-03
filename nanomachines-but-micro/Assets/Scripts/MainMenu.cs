@@ -8,13 +8,18 @@ using UdpKit;
 using UnityEngine.UI;
 public class MainMenu : GlobalEventListener
 {
-
     public Button joinGameButtonPrefab;
     public GameObject serverListPanel;
     public float buttonSpacing;
     private string roomName;
 
     private List<Button> _joinServerButtons = new List<Button>();
+
+    private void Start()
+    {
+        Debug.Log(VehicleSelection.Instance);
+        //Instantiate(menuCars[random], new Vector3(-30f, -10f, 50f), Quaternion.Euler(new Vector3(0, 180, 0)));
+    }
 
     public void ButtonStartServer()
     {
