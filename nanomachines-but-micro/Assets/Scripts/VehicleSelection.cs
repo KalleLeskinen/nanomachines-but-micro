@@ -13,7 +13,7 @@ public class VehicleSelection : MonoBehaviour
     [SerializeField] private GameObject dataContainer;
 
     private GameObject[] modelPrefabs;
-    
+
     private GameObject displayedModel;
 
     public int i;
@@ -25,7 +25,9 @@ public class VehicleSelection : MonoBehaviour
     {
         if (Instance != null) Destroy(gameObject);
         Instance = this;
-        
+        SelectionMenu.ForwardToggle += OnForwardToggle;
+        SelectionMenu.BackwardToggle += OnBackwardToggle;
+
         i = 0;
         modelCount = 7;
         displayedModel = new GameObject();
@@ -43,10 +45,17 @@ public class VehicleSelection : MonoBehaviour
         displayedModel.transform.parent = rotatingDisplay.transform;
         //DisplayModel(displayedModel);
     }
-    
-    private void Update()
-    { 
-        ProcessInput();
+
+    private void OnBackwardToggle()
+    {
+        i--;
+        ChangeRemainder();
+    }
+
+    private void OnForwardToggle()
+    {
+        i++;
+        ChangeRemainder();
     }
 
     private void ChangeRemainder()
@@ -60,20 +69,4 @@ public class VehicleSelection : MonoBehaviour
         displayedModel = Instantiate(model, rotatingDisplay.transform.position, rotatingDisplay.transform.rotation);
         displayedModel.transform.parent = rotatingDisplay.transform;
     }
-    
-    private void ProcessInput()
-    {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            i--;
-            ChangeRemainder();
-        }
-
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            i++;
-            ChangeRemainder();
-        }
-    }
-
 }
