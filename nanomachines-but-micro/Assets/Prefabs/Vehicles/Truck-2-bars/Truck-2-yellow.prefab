@@ -685,9 +685,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f12f5877367d1429981270cbcef74e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enginePower: 1
+  brakingPower: 2
   restLength: 0.25
-  springTravel: 0.4
-  springStiffness: 30000
+  springTravel: 0.35
+  springStiffness: 80000
   damperStiffness: 4000
   minLength: 0
   maxLength: 0
@@ -696,8 +698,10 @@ MonoBehaviour:
   springVelocity: 0
   springForce: 0
   steerAngle: 0
-  steeringTime: 7
-  wheelRadius: 0.15
+  steeringTime: 8
+  wheelRadius: 0.2
+  test: 0
+  testoo: -0.2
   wheel: 0
 --- !u!1 &8055775396020016929
 GameObject:
@@ -743,9 +747,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f12f5877367d1429981270cbcef74e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enginePower: 1
+  brakingPower: 2
   restLength: 0.25
-  springTravel: 0.4
-  springStiffness: 30000
+  springTravel: 0.35
+  springStiffness: 80000
   damperStiffness: 4000
   minLength: 0
   maxLength: 0
@@ -754,8 +760,10 @@ MonoBehaviour:
   springVelocity: 0
   springForce: 0
   steerAngle: 0
-  steeringTime: 7
-  wheelRadius: 0.15
+  steeringTime: 8
+  wheelRadius: 0.2
+  test: 0
+  testoo: -0.2
   wheel: 2
 --- !u!1 &8055775396795840847
 GameObject:
@@ -963,9 +971,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f12f5877367d1429981270cbcef74e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enginePower: 1
+  brakingPower: 2
   restLength: 0.25
-  springTravel: 0.4
-  springStiffness: 30000
+  springTravel: 0.35
+  springStiffness: 80000
   damperStiffness: 4000
   minLength: 0
   maxLength: 0
@@ -974,8 +984,10 @@ MonoBehaviour:
   springVelocity: 0
   springForce: 0
   steerAngle: 0
-  steeringTime: 7
-  wheelRadius: 0.15
+  steeringTime: 8
+  wheelRadius: 0.2
+  test: 0
+  testoo: -0.2
   wheel: 3
 --- !u!1 &8055775397491742013
 GameObject:
@@ -1102,9 +1114,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f12f5877367d1429981270cbcef74e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enginePower: 1
+  brakingPower: 2
   restLength: 0.25
-  springTravel: 0.4
-  springStiffness: 30000
+  springTravel: 0.35
+  springStiffness: 80000
   damperStiffness: 4000
   minLength: 0
   maxLength: 0
@@ -1113,8 +1127,10 @@ MonoBehaviour:
   springVelocity: 0
   springForce: 0
   steerAngle: 0
-  steeringTime: 7
-  wheelRadius: 0.15
+  steeringTime: 8
+  wheelRadius: 0.2
+  test: 0
+  testoo: -0.2
   wheel: 1
 --- !u!1 &8959640572670538418
 GameObject:
