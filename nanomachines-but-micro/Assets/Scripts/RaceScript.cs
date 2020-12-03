@@ -50,7 +50,14 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
     {
         if (Time.frameCount % 30 == 0 && Time.timeSinceLevelLoad > 3 && state.Clock < 0 && state.Clock > -1 && !StartFlag)
         {
-            StartRace();
+            if (state.NumberOfPlayers != state.PlayersReady)
+            {
+                if (BoltNetwork.IsServer)
+                    state.Clock += 15;
+            } else
+            {
+                StartRace();
+            }
         }
 
     }
