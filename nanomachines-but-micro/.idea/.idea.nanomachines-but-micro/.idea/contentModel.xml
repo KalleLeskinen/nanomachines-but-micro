@@ -238,6 +238,7 @@
           <e p="MainCameraController.cs" t="Include" />
           <e p="MainMenu.cs" t="Include" />
           <e p="menu_old.cs" t="Include" />
+          <e p="MenuTextHover.cs" t="Include" />
           <e p="MineController.cs" t="Include" />
           <e p="minespawnpos.cs" t="Include" />
           <e p="Networking" t="Include">

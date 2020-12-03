@@ -18,6 +18,8 @@ public class MainMenu : GlobalEventListener
     private List<Button> _joinServerButtons = new List<Button>();
 
     private GameObject[] modelPrefabs;
+    
+    private string SceneToLoad { get; set; }
 
     private void Awake()
     {
@@ -66,6 +68,18 @@ public class MainMenu : GlobalEventListener
         SceneManager.LoadScene("GarageScene");
     }
 
+    public void ButtonLevelOne()
+    {
+        SceneToLoad = "Level_1";
+    }
+
+    
+
+    public void ButtonLevelTwo()
+    {
+        SceneToLoad = "Level_2";
+    }
+
     public void SetRoomName()
     {
         roomName = GameObject.FindGameObjectWithTag("ServerName").GetComponent<Text>().text;
@@ -85,7 +99,7 @@ public class MainMenu : GlobalEventListener
             BoltMatchmaking.CreateSession(
                 
                 sessionID: matchName,
-                sceneToLoad: "Level_1" // <-  What scene to load.... muutettu level 1 koska garage scene bugaa atm... T:jonni
+                sceneToLoad: SceneToLoad // <-  What scene to load.... muutettu level 1 koska garage scene bugaa atm... T:jonni
             );
 
         }
