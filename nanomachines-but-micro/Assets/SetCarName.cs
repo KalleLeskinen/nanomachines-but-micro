@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = System.Random;
 
 public class SetCarName : MonoBehaviour
 {
@@ -52,9 +54,16 @@ public class SetCarName : MonoBehaviour
 
     private string GenerateRandom()
     {
-        string name1 = "Drunken";
-        string name2 = "Driver";
-        return $"{name1} {name2}";
+        return $"{ReadRandomName("Assets/Resources/TextFiles/hundred_adjectives.txt")} " +
+               $"{ReadRandomName("Assets/Resources/TextFiles/hundred_nouns.txt")}";
+    }
+
+    private string ReadRandomName(string path)
+    {
+        var reader = File.ReadAllLines(path);
+        var random = new Random();
+        var randomLineNumber = random.Next(0, reader.Length - 1);
+        return reader[randomLineNumber];
     }
 
     public void HostSetCarNameAndNumberOfLaps()
