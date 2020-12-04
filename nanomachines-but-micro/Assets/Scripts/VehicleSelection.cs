@@ -76,4 +76,18 @@ public class VehicleSelection : MonoBehaviour
         }
     }
 
+    public void toimiiplus()
+    {
+        i++;
+        ChangeRemainder();
+    }
+
+    public void toimiiminus()
+    {
+        i--;
+        ChangeRemainder();
+    }
+
+
+
 }
