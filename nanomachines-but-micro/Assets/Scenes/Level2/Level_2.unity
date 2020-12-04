@@ -6368,6 +6368,10 @@ PrefabInstance:
       propertyPath: _sceneGuid
       value: 4b4f4ac0-4f88-47d2-97f7-bd945876d590
       objectReference: {fileID: 0}
+    - target: {fileID: 4106203892158778000, guid: ebd762b1d00a788409d3cd32643b4d29, type: 3}
+      propertyPath: _alwaysProxy
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4106203892158778001, guid: ebd762b1d00a788409d3cd32643b4d29, type: 3}
       propertyPath: m_LocalPosition.x
       value: 23.322905
@@ -6432,6 +6436,10 @@ PrefabInstance:
       propertyPath: ui_3_2_1_go
       value: 
       objectReference: {fileID: 53732587411334318}
+    - target: {fileID: 4106203892158778030, guid: ebd762b1d00a788409d3cd32643b4d29, type: 3}
+      propertyPath: numberOfLaps
+      value: 999
+      objectReference: {fileID: 0}
     - target: {fileID: 4106203892158778031, guid: ebd762b1d00a788409d3cd32643b4d29, type: 3}
       propertyPath: m_Name
       value: Race_Handler_real
