@@ -98,7 +98,7 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
         player_laptime_ui.SetActive(true);
         connected_players_ui.SetActive(false);
         ui_3_2_1_go.SetActive(false);
-        
+
         if (BoltNetwork.IsServer)
             state.RaceStarted = true;
     }
@@ -136,6 +136,7 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
                     }
                     playerDataList.Remove(playerDataList[i]); // voittajan kierroksia ei enää lasketa
                     Debug.Log("#22 winner found");
+                    StartCoroutine(WaitFor30AndEnd());
                 }
                 else if (state.Second == "")
                 {
@@ -186,17 +187,15 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
                 state.ThrBestLap = playerData.FindBestLap();
                 break;
         }
-        StartCoroutine(WaitFor30AndEnd());
     }
 
     private IEnumerator WaitFor30AndEnd()
     {
         Debug.Log("Waiting for 30 second");
-        yield return new WaitForSeconds(25f);
-        //aloita animaatio fade in 5 sekunnisksi?
-        yield return new WaitForSeconds(5f);
-        BoltNetwork.LoadScene("MainMenu");
-        //joku muu keino kickaa pelaajat hellävarasesti main menuun
+        yield return new WaitForSeconds(30f);
+        BoltLauncher.Shutdown();
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene("MainMenu");
     }
 
     private void SetUpCheckPoints()
@@ -287,4 +286,3 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
         return car.GetComponent<LapTimeUpdate>().id;
     }
 }
-

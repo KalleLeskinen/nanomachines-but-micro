@@ -412,15 +412,6 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
         foreach (KartWheel w in wheels)
         {
             w.OnExplosion(explosionPower);
-            //if (w.wheel == KartWheel.Wheels.Front_Left)
-            //{
-            //    w.OnExplosion(explosionPower);
-            //}
-
-            //if (w.wheel == KartWheel.Wheels.Front_Right)
-            //{
-            //    w.OnExplosion(explosionPower);
-            //}
         }
     }
 
