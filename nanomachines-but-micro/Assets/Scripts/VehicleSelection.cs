@@ -14,7 +14,7 @@ public class VehicleSelection : MonoBehaviour
 
     private GameObject[] modelPrefabs;
     
-    private GameObject displayedModel;
+    public GameObject displayedModel;
 
     public int i;
     public int modelCount;
@@ -66,6 +66,7 @@ public class VehicleSelection : MonoBehaviour
     private void DisplayModel(GameObject model)
     {
         Destroy(displayedModel);
+
         displayedModel = Instantiate(model, rotatingDisplay.transform.position, rotatingDisplay.transform.rotation);
         displayedModel.transform.parent = rotatingDisplay.transform;
     }
