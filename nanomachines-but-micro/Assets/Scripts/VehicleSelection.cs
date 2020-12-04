@@ -25,7 +25,7 @@ public class VehicleSelection : MonoBehaviour
     {
         if (Instance != null) Destroy(gameObject);
         Instance = this;
-        
+
         i = 0;
         modelCount = 7;
         displayedModel = new GameObject();
@@ -43,7 +43,7 @@ public class VehicleSelection : MonoBehaviour
         displayedModel.transform.parent = rotatingDisplay.transform;
         //DisplayModel(displayedModel);
     }
-    
+
     private void Update()
     { 
         ProcessInput();
@@ -75,5 +75,19 @@ public class VehicleSelection : MonoBehaviour
             ChangeRemainder();
         }
     }
+
+    public void toimiiplus()
+    {
+        i++;
+        ChangeRemainder();
+    }
+
+    public void toimiiminus()
+    {
+        i--;
+        ChangeRemainder();
+    }
+
+
 
 }
