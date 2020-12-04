@@ -41,6 +41,7 @@ TagManager:
   - selection_data_container
   - 3_2_1_go_ui
   - MineTrigger
+  - SelectionDataContainer
   layers:
   - Default
   - TransparentFX

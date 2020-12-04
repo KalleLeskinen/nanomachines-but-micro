@@ -339,7 +339,7 @@ GameObject:
   - component: {fileID: 317394666}
   m_Layer: 0
   m_Name: SelectionDataContainer
-  m_TagString: Untagged
+  m_TagString: SelectionDataContainer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2157,8 +2157,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbfe61edede93f344b6147e09ccf77af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotatingDisplay: {fileID: 1247577421}
-  dataContainer: {fileID: 317394664}
   i: 0
   modelCount: 0
 --- !u!4 &1614231171

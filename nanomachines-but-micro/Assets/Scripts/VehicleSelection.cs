@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+using UnityEngine.Rendering.UI;
 using UnityEngine.Serialization;
 
 public class VehicleSelection : MonoBehaviour
 {
-    [SerializeField] private GameObject rotatingDisplay;
+    private GameObject rotatingDisplay;
 
-    [SerializeField] private GameObject dataContainer;
+    private GameObject dataContainer;
 
     private GameObject[] modelPrefabs;
     
@@ -25,9 +26,11 @@ public class VehicleSelection : MonoBehaviour
     {
         if (Instance != null) Destroy(gameObject);
         Instance = this;
-
+        
         SelectionMenu.ForwardToggle += OnForwardToggle;
         SelectionMenu.BackwardToggle += OnBackwardToggle;
+        rotatingDisplay = GameObject.FindGameObjectWithTag("VehicleTray").gameObject;
+        dataContainer = GameObject.FindGameObjectWithTag("SelectionDataContainer");
         
         i = 0;
         modelCount = 7;
@@ -44,6 +47,7 @@ public class VehicleSelection : MonoBehaviour
 
         displayedModel = Instantiate(modelPrefabs[0], rotatingDisplay.transform.position, rotatingDisplay.transform.rotation);
         displayedModel.transform.parent = rotatingDisplay.transform;
+        Debug.Log(displayedModel);
     }
 
     private void OnBackwardToggle()
@@ -65,7 +69,10 @@ public class VehicleSelection : MonoBehaviour
 
     private void DisplayModel(GameObject model)
     {
-        Destroy(displayedModel);
+        if (displayedModel == null)
+            displayedModel = new GameObject();
+        else Destroy(displayedModel);
+        
         displayedModel = Instantiate(model, rotatingDisplay.transform.position, rotatingDisplay.transform.rotation);
         displayedModel.transform.parent = rotatingDisplay.transform;
     }

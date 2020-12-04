@@ -35,13 +35,13 @@ public class MainMenu : GlobalEventListener
 
     private void Start()
     {
-        if (!VehicleSelection.Instance)
+        if (SelectionContainer.Instance == null)
         {
             GameObject defaultCar = Instantiate(modelPrefabs[0], new Vector3(-30f, -10f, 50f),
                 Quaternion.Euler(new Vector3(0, 180, 0)));
             defaultCar.transform.localScale = new Vector3(14, 14, 14);
         }
-        else if (SelectionContainer.Instance)
+        else if (SelectionContainer.Instance != null)
         {
             GameObject selectedCar = Instantiate(modelPrefabs[SelectionContainer.Instance.prefabIdInteger],
                 new Vector3(-30f, -10f, 50f), Quaternion.Euler(new Vector3(0, 180, 0)));

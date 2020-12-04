@@ -13,7 +13,6 @@ public class SelectionContainer : MonoBehaviour
 
     private void Awake()
     {
-        gameObject.tag = "selection_data_container";
         if (Instance != null) Destroy(gameObject);
         Instance = this;
         DontDestroyOnLoad(gameObject);
