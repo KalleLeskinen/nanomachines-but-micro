@@ -122,7 +122,7 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
     void FixedUpdate()
     {
         
-       if (entity.IsOwner)
+       //if (entity.IsOwner)
             SetSteeringAngle();
 
 

@@ -272,7 +272,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.74, y: 0.48771614, z: 2.46}
-  m_Center: {x: 0.00005310774, y: -0.09038004, z: 0}
+  m_Center: {x: 0.00005310774, y: -0.09038004, z: -0.3}
 --- !u!114 &3609921253992856800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -549,7 +549,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6566642652886755108}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 2d1b92c8292f3234baa92e29f307a81d, type: 2}
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
@@ -563,7 +563,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6566642652886755108}
   serializedVersion: 2
-  m_Mass: 100
+  m_Mass: 200
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 1
@@ -688,7 +688,7 @@ MonoBehaviour:
   enginePower: 1
   brakingPower: 2
   restLength: 0.25
-  springTravel: 0.35
+  springTravel: 0.3
   springStiffness: 80000
   damperStiffness: 4000
   minLength: 0
@@ -750,7 +750,7 @@ MonoBehaviour:
   enginePower: 1
   brakingPower: 2
   restLength: 0.25
-  springTravel: 0.35
+  springTravel: 0.3
   springStiffness: 80000
   damperStiffness: 4000
   minLength: 0
@@ -974,7 +974,7 @@ MonoBehaviour:
   enginePower: 1
   brakingPower: 2
   restLength: 0.25
-  springTravel: 0.35
+  springTravel: 0.3
   springStiffness: 80000
   damperStiffness: 4000
   minLength: 0
@@ -1117,7 +1117,7 @@ MonoBehaviour:
   enginePower: 1
   brakingPower: 2
   restLength: 0.25
-  springTravel: 0.35
+  springTravel: 0.3
   springStiffness: 80000
   damperStiffness: 4000
   minLength: 0
