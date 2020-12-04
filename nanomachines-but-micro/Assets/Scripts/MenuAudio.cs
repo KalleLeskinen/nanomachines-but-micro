@@ -5,13 +5,13 @@ using UnityEngine;
 public class MenuAudio : MonoBehaviour
 {
     public static MenuAudio menuAudio;
-    FMOD.Studio.EventInstance SoundTest;
+    public FMOD.Studio.EventInstance SoundTest;
 
 
-    FMOD.Studio.Bus MasterBus;
-    FMOD.Studio.Bus MusicBus;
-    FMOD.Studio.Bus CarBus;
-    FMOD.Studio.Bus SFXBus;
+    public FMOD.Studio.Bus MasterBus;
+    public FMOD.Studio.Bus MusicBus;
+    public FMOD.Studio.Bus CarBus;
+    public FMOD.Studio.Bus SFXBus;
 
     float MasterVol = 0.8f;
     float MusicVol = 0.8f;
@@ -21,6 +21,7 @@ public class MenuAudio : MonoBehaviour
 
     void Awake()
     {
+
         if(menuAudio == null)
         {
             DontDestroyOnLoad(gameObject);
@@ -30,11 +31,13 @@ public class MenuAudio : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
+        SoundTest = FMODUnity.RuntimeManager.CreateInstance("event:/ImpactHard");
         MasterBus = FMODUnity.RuntimeManager.GetBus("bus:/Master");
         MusicBus = FMODUnity.RuntimeManager.GetBus("bus:/Master/Music");
         CarBus = FMODUnity.RuntimeManager.GetBus("bus:/Master/Car");
         SFXBus = FMODUnity.RuntimeManager.GetBus("bus:/Master/SFX");
+
+        
     }
 
 
@@ -46,22 +49,22 @@ public class MenuAudio : MonoBehaviour
         SFXBus.setVolume(SFXVol);
     }
 
-    public void MasterLevel(float level)
+    public void MasterLevel(float maslevel)
     {
-        MasterVol = level;
+        MasterVol = maslevel;
     }
 
-    public void MusicLevel(float level)
+    public void MusicLevel(float muslevel)
     {
-        MusicVol = level;
+        MusicVol = muslevel;
     }
-    public void CarLevel(float level)
+    public void CarLevel(float carlevel)
     {
-        CarVol = level;
+        CarVol = carlevel;
     }
-    public void SFXLevel(float level)
+    public void SFXLevel(float sfxlevel)
     {
-        SFXVol = level;
+        SFXVol = sfxlevel;
 
         FMOD.Studio.PLAYBACK_STATE pLAYBACK;
         SoundTest.getPlaybackState(out pLAYBACK);
