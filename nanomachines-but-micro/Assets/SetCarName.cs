@@ -8,7 +8,14 @@ using Random = System.Random;
 
 public class SetCarName : MonoBehaviour
 {
-
+    private string[] adj = {
+        "Adamant","Adroit","Amatory","Animistic","Antic","Arcadian","Baleful","Bellicose","Bilious","Boorish","Calamitous","Caustic","Cerulean","Comely","Concomitant","Contumacious","Corpulent","Crapulous","Defamatory","Didactic","Dilatory","Dowdy","Efficacious","Effulgent","Egregious","Endemic","Equanimous","Execrable","Fastidious","Feckless","Fecund","Friable","Fulsome","Garrulous","Guileless","Gustatory","Heuristic","Histrionic","Hubristic","Incendiary","Insidious","Insolent","Intransigent","Inveterate","Invidious","Irksome","Jejune","Jocular","Judicious","Lachrymose","Limpid","Loquacious","Luminous","Mannered","Mendacious","Meretricious","Minatory","Mordant","Munificent","Nefarious","Noxious","Obtuse","Parsimonius","Pendulous","Pernicious","Pervasive","Petulant","Platitudinou","Precipitate","Propitious","Puckish","Querulous","Quiescent","Rebarbative","Recalcitrant","Redolent","Rhadamanthine","Risible","Ruminative","Sagacious","Salubrious","Sartorial","Sclerotic","Serpentine","Spasmodic","Strident","Taciturn","Tenacious","Tremulous","Trenchant","Turbulent","Turgid","Ubiquitous","Uxorious","Verdant","Voluble","Voracious","Wheedling","Withering","Zealous"
+    };
+    private string[] subst =
+    {
+        "Lawyer","Chef","SOFTWARE ENGINEER FYEAH","Plumber","Painter","Musician","Architect","Farmhand","Prostitute","Doctor","Nurse","Stenographer","Artist","Soldier","Truck Driver","Drunk Driver","Mason","Freemason","Carrot","Cabbage","Tomato","Potato","Onion","Garlic","Cucumber","Pumpkin","Lettuce","Celery","Eggplant","Ginger","Capsicum","Kale","Chili","Elephant","Hound","Kangaroo","Crocodile","Lynx","Platypus","Goat","Wolfie","Rabbit","Bear","Hamster","Chihuahua","Rock Hyrax","Frog","Toad","Merge Conflict","Dragon","Orc","Unicorn","Goblin"
+    };
+    
     private void Start()
     {
         GameObject.FindGameObjectWithTag("score_panel").SetActive(false);
@@ -54,16 +61,10 @@ public class SetCarName : MonoBehaviour
 
     private string GenerateRandom()
     {
-        return $"{ReadRandomName("Assets/Resources/TextFiles/hundred_adjectives.txt")} " +
-               $"{ReadRandomName("Assets/Resources/TextFiles/hundred_nouns.txt")}";
-    }
-
-    private string ReadRandomName(string path)
-    {
-        var reader = File.ReadAllLines(path);
         var random = new Random();
-        var randomLineNumber = random.Next(0, reader.Length - 1);
-        return reader[randomLineNumber];
+        string name1 = adj[random.Next(0, adj.Length)];
+        string name2 = subst[random.Next(0, subst.Length)];
+        return $"{name1} {name2}";
     }
 
     public void HostSetCarNameAndNumberOfLaps()
