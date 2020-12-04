@@ -13,10 +13,10 @@ public class MenuAudio : MonoBehaviour
     public FMOD.Studio.Bus CarBus;
     public FMOD.Studio.Bus SFXBus;
 
-    float MasterVol = 0.8f;
-    float MusicVol = 0.8f;
-    float CarVol = 0.8f;
-    float SFXVol = 0.8f;
+    float MasterVol = 0.5f;
+    float MusicVol = 0.5f;
+    float CarVol = 0.5f;
+    float SFXVol = 0.5f;
 
 
     void Awake()
