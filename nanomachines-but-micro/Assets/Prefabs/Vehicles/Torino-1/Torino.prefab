@@ -1089,13 +1089,13 @@ MonoBehaviour:
   slowPower: 10
   explosionPower: 3850
   boostTime: 3
-  boostTimeLow: 2.5
-  boostTimeHigh: 7.5
+  boostTimeLow: 3.5
+  boostTimeHigh: 6.5
   cooldownTime: 5
   cooldownDefault: 5
   boostFill: 0
-  boostFillLow: 2.5
-  boostFillHigh: 7.5
+  boostFillLow: 3.5
+  boostFillHigh: 6.5
   boostWindowMax: 10
   boostMeterSpeed: 1
   boostMeterTime: 10
