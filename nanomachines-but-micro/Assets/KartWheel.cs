@@ -21,7 +21,7 @@ public class KartWheel : MonoBehaviour
 
     public float springStiffness;
     public float damperStiffness;
-    
+
 
     public float
         minLength,
@@ -42,7 +42,7 @@ public class KartWheel : MonoBehaviour
     public float steeringTime;
     private float wheelAngle;
 
-    
+
 
 
     [Header("Wheel")]
@@ -57,8 +57,10 @@ public class KartWheel : MonoBehaviour
         Fx,
         Fy;
 
-
+    private GameObject wheelPos;
     private GameObject wheelModel;
+
+    private float WheelBoundsSizeY;
 
     public enum Wheels
     {
@@ -77,12 +79,29 @@ public class KartWheel : MonoBehaviour
         rig = transform.parent.GetComponent<Rigidbody>();
         wheelModel = transform.GetChild(0).gameObject; // The wheelModel must be the only model under the tyre
 
+        CreateWheelPos();
+
 
         // restLength must always be higher than spring travel ( if rest at a position lower than the suspension can extend, the suspension will spaz out
 
-        
+
 
     }
+
+    private void CreateWheelPos()
+    {
+        wheelPos = new GameObject();
+
+        wheelPos.name = "WheelPos_" + transform.name;
+        wheelPos.transform.position = wheelModel.transform.position;
+        wheelPos.transform.parent = transform;
+
+        wheelModel.transform.parent = wheelPos.transform;
+        WheelBoundsSizeY = wheelModel.GetComponent<MeshRenderer>().bounds.size.y;
+    }
+
+
+    float xd = 0;
 
     void Update()
     {
@@ -91,6 +110,11 @@ public class KartWheel : MonoBehaviour
 
         minLength = restLength - springTravel + test;
         maxLength = restLength + springTravel + testoo;
+
+        xd++;
+
+
+
     }
 
 
@@ -99,6 +123,7 @@ public class KartWheel : MonoBehaviour
     {
         SuspensionDynamics();
     }
+
 
 
     // Handles the suspension
@@ -116,8 +141,8 @@ public class KartWheel : MonoBehaviour
             springVelocity = (lastLength - springLength) / Time.fixedDeltaTime;
             springForce = springStiffness * (restLength - springLength);
             damperForce = damperStiffness * springVelocity;
-            
-            Debug.Log(transform.name + "_MIN_FORCE " + -1500 * (-springLength / maxLength) + " | " + (-springLength / maxLength));
+
+            //Debug.Log(transform.name + "_MIN_FORCE " + -1500 * (-springLength / maxLength) + " | " + (-springLength / maxLength));
 
             springForce = Mathf.Clamp(springForce, -1500 * (-springLength / maxLength), 15000);
 
@@ -128,38 +153,41 @@ public class KartWheel : MonoBehaviour
             wheelVelocityL = transform.InverseTransformDirection(rig.GetPointVelocity(hit.point));
 
             // Accelerating
-            if(Input.GetAxis("Vertical") > 0)
+            if (Input.GetAxis("Vertical") > 0)
             {
-                if(transform.InverseTransformDirection(rig.velocity).z < 20)
+                if (transform.InverseTransformDirection(rig.velocity).z < 20)
                 {
                     //Debug.Log("Accelerating");
                     Fx = (Input.GetAxis("Vertical") * enginePower) * springForce;
-                } else
+                }
+                else
                 {
                     //Debug.Log("Going too fast!");
                     Fx = springForce * (transform.InverseTransformDirection(rig.velocity).z * -0.01f);
                 }
-                
+
             }
 
             // Engine friction
-            if(Input.GetAxis("Vertical") == 0)
+            if (Input.GetAxis("Vertical") == 0)
             {
 
-                if(transform.InverseTransformDirection(rig.velocity).z > 0.3f || transform.InverseTransformDirection(rig.velocity).z < -0.3f) {
-                    
+                if (transform.InverseTransformDirection(rig.velocity).z > 0.3f || transform.InverseTransformDirection(rig.velocity).z < -0.3f)
+                {
+
                     Fx = springForce * (transform.InverseTransformDirection(rig.velocity).z * -0.05f);
-                
-                } else
+
+                }
+                else
                 {
                     Fx = springForce * -0.075f;
                 }
 
-                
+
             }
-            
+
             // Braking
-            if(Input.GetAxis("Vertical") < 0)
+            if (Input.GetAxis("Vertical") < 0)
             {
                 if (transform.InverseTransformDirection(rig.velocity).z > 0.5f)
                 {
@@ -170,28 +198,39 @@ public class KartWheel : MonoBehaviour
                 {
                     //Debug.Log("Backing up slow");
                     Fx = (Input.GetAxis("Vertical") * (enginePower * 0.4f)) * springForce;
-                } else
+                }
+                else
                 {
                     //Debug.Log("Backing up too fast!");
                     Fx = springForce * (transform.InverseTransformDirection(rig.velocity).z * -0.05f);
                 }
-                
+
             }
 
             Fy = wheelVelocityL.x * springForce;
 
             rig.AddForceAtPosition(suspensionForce + (Fx * transform.forward) + (Fy * -transform.right), hit.point);
 
-            // Setting the wheel at ground level
-            wheelModel.transform.position = hit.point + new Vector3(0, (wheelModel.GetComponent<MeshRenderer>().bounds.size.y / 2), 0);
-
-
-            //Debug.Log("rpm: " + RPMCounter());
-
+            wheelPos.transform.position = hit.point + new Vector3(0, (WheelBoundsSizeY / 2), 0);
             
+            //ADD RPM TO WHEELS
+
+
 
 
         }
+    }
+
+    public float RPM()
+    {
+        var c = Mathf.PI * WheelBoundsSizeY;
+
+        Debug.Log(wheelModel.transform.parent.name + " | " + rig.velocity.magnitude);
+
+        var rpm = transform.InverseTransformDirection(rig.velocity).z / c;
+        rpm = rpm;
+        return rpm;
+
     }
 
 
@@ -221,7 +260,7 @@ public class KartWheel : MonoBehaviour
             //rig.velocity -= transform.up * explosionAmount;
             rig.velocity = Vector3.zero;
             rig.AddExplosionForce(explosionAmount, transform.position, 1f, 5f, ForceMode.Impulse);
-            
+
         }
     }
 
