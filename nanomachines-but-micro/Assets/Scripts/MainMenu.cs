@@ -19,10 +19,11 @@ public class MainMenu : GlobalEventListener
 
     private GameObject[] modelPrefabs;
     
-    private string SceneToLoad { get; set; }
+    public string SceneToLoad { get; set; }
 
     private void Awake()
     {
+        SceneToLoad = "Level_1";
         modelPrefabs = new GameObject[7];
         modelPrefabs[0] = Resources.Load("Car1_Torino_Model") as GameObject;
         modelPrefabs[1] = Resources.Load("Car2_Torino_Model") as GameObject;
@@ -118,8 +119,9 @@ public class MainMenu : GlobalEventListener
             UdpSession photonSession = session.Value as UdpSession;
             Debug.Log("Session found " + photonSession.HostName);
             Button joinGameButtonClone = Instantiate(joinGameButtonPrefab);
-            joinGameButtonClone.transform.parent = serverListPanel.transform;
-            joinGameButtonClone.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 100 + buttonSpacing * _joinServerButtons.Count, 0);
+            joinGameButtonClone.transform.SetParent(serverListPanel.transform);
+            joinGameButtonClone.GetComponent<RectTransform>().anchoredPosition3D = new Vector3(0, 100 + buttonSpacing * _joinServerButtons.Count, 0);
+            joinGameButtonClone.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
             joinGameButtonClone.GetComponentInChildren<Text>().text = photonSession.HostName;
             joinGameButtonClone.gameObject.SetActive(true);
 
@@ -136,6 +138,11 @@ public class MainMenu : GlobalEventListener
     private void JoinGame(UdpSession photonSession)
     {
         BoltMatchmaking.JoinSession(photonSession);
+    }
+
+    public void BoltShutDown()
+    {
+       BoltLauncher.Shutdown();
     }
 
     //Refresh sessions

@@ -13,6 +13,7 @@
 
 **Car selection:**
 - The user can choose an alternative car from the menu by clicking the button "Select Car".
+- The cars can be toggled with the keys {A} and {D}.
 
 **Options menu:**
 - The options menu includes volume mixers for all audio.
