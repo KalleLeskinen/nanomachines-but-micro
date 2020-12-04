@@ -2024,8 +2024,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   joinGameButtonPrefab: {fileID: 109302265}
-  serverListPanel: {fileID: 117101385}
-  buttonSpacing: 0
+  serverListPanel: {fileID: 686517848}
+  buttonSpacing: 30
 --- !u!222 &357454503
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5718,6 +5718,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
+        - m_Target: {fileID: 357454502}
+          m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+          m_MethodName: BoltShutDown
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
   - eventID: 1
     callback:
       m_PersistentCalls:
@@ -6202,6 +6214,18 @@ MonoBehaviour:
       - m_Target: {fileID: 269544764}
         m_TargetAssemblyTypeName: MenuAudio, Assembly-CSharp
         m_MethodName: BackSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 357454502}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: BoltShutDown
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
