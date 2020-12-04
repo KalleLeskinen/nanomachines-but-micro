@@ -55,7 +55,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2981167435952280742}
   - component: {fileID: 975477685791987061}
-  - component: {fileID: 2915289166646721353}
   m_Layer: 0
   m_Name: minespawnpos
   m_TagString: MineTrigger
@@ -90,19 +89,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minePos: {x: 0, y: 0, z: 0}
---- !u!65 &2915289166646721353
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1188908364535972824}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.2, y: 1.18, z: 3.02}
-  m_Center: {x: 0, y: 0.37, z: 1.39}
 --- !u!1 &1477675610622865906
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,9 +133,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f12f5877367d1429981270cbcef74e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enginePower: 1
+  brakingPower: 2
   restLength: 0.25
-  springTravel: 0.4
-  springStiffness: 30000
+  springTravel: 0.3
+  springStiffness: 80000
   damperStiffness: 4000
   minLength: 0
   maxLength: 0
@@ -158,8 +146,10 @@ MonoBehaviour:
   springVelocity: 0
   springForce: 0
   steerAngle: 0
-  steeringTime: 7
-  wheelRadius: 0.15
+  steeringTime: 8
+  wheelRadius: 0.2
+  test: 0
+  testoo: -0.2
   wheel: 3
 --- !u!1 &1477675610879161117
 GameObject:
@@ -367,9 +357,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f12f5877367d1429981270cbcef74e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enginePower: 1
+  brakingPower: 2
   restLength: 0.25
-  springTravel: 0.4
-  springStiffness: 30000
+  springTravel: 0.3
+  springStiffness: 80000
   damperStiffness: 4000
   minLength: 0
   maxLength: 0
@@ -378,8 +370,10 @@ MonoBehaviour:
   springVelocity: 0
   springForce: 0
   steerAngle: 0
-  steeringTime: 7
-  wheelRadius: 0.15
+  steeringTime: 8
+  wheelRadius: 0.2
+  test: 0
+  testoo: -0.2
   wheel: 1
 --- !u!1 &1477675611380172997
 GameObject:
@@ -506,9 +500,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f12f5877367d1429981270cbcef74e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enginePower: 1
+  brakingPower: 2
   restLength: 0.25
-  springTravel: 0.4
-  springStiffness: 30000
+  springTravel: 0.3
+  springStiffness: 80000
   damperStiffness: 4000
   minLength: 0
   maxLength: 0
@@ -517,8 +513,10 @@ MonoBehaviour:
   springVelocity: 0
   springForce: 0
   steerAngle: 0
-  steeringTime: 7
-  wheelRadius: 0.15
+  steeringTime: 8
+  wheelRadius: 0.2
+  test: 0
+  testoo: -0.2
   wheel: 2
 --- !u!1 &1477675611898796737
 GameObject:
@@ -564,9 +562,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f12f5877367d1429981270cbcef74e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enginePower: 1
+  brakingPower: 2
   restLength: 0.25
-  springTravel: 0.4
-  springStiffness: 30000
+  springTravel: 0.3
+  springStiffness: 80000
   damperStiffness: 4000
   minLength: 0
   maxLength: 0
@@ -575,8 +575,10 @@ MonoBehaviour:
   springVelocity: 0
   springForce: 0
   steerAngle: 0
-  steeringTime: 7
-  wheelRadius: 0.15
+  steeringTime: 8
+  wheelRadius: 0.2
+  test: 0
+  testoo: -0.2
   wheel: 0
 --- !u!1 &2336094537752984284
 GameObject:
@@ -684,7 +686,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2336094537752984284}
   serializedVersion: 2
-  m_Mass: 100
+  m_Mass: 200
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 1
@@ -1087,13 +1089,13 @@ MonoBehaviour:
   slowPower: 10
   explosionPower: 3850
   boostTime: 3
-  boostTimeLow: 2.5
-  boostTimeHigh: 7.5
+  boostTimeLow: 3.5
+  boostTimeHigh: 6.5
   cooldownTime: 5
   cooldownDefault: 5
   boostFill: 0
-  boostFillLow: 2.5
-  boostFillHigh: 7.5
+  boostFillLow: 3.5
+  boostFillHigh: 6.5
   boostWindowMax: 10
   boostMeterSpeed: 1
   boostMeterTime: 10
@@ -1176,7 +1178,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 072f45eafba7f634489450d04de93d58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raceHandler: {fileID: 0}
 --- !u!114 &7622843391742752181
 MonoBehaviour:
   m_ObjectHideFlags: 0

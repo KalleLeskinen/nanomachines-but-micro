@@ -1,0 +1,39 @@
+# File produced by Open Asset Import Library (http://www.assimp.sf.net)
+# (assimp v3.1.243586452)
+
+newmtl PowerSupplyBase
+kd 0.220258 0.220258 0.220258
+illum 1
+
+newmtl PowerSupplyFront
+kd 0.8 0.8 0.8
+illum 1
+
+newmtl PowerSupplyScreen
+kd 0 0 0
+illum 1
+
+newmtl PowerSupplyScreenSurroundings
+kd 0.0634303 0.0799984 0.0591172
+illum 1
+
+newmtl PowerSupplyKnob1
+kd 0 0 0
+illum 1
+
+newmtl PowerSupplyKnob2
+kd 0.0114765 0.814042 0
+illum 1
+
+newmtl PowerSupplyKnob3
+kd 0.8 0.0069996 0
+illum 1
+
+newmtl PowerSupplyFeet
+kd 0 0 0
+illum 1
+
+newmtl PowerSupplyKnob4
+kd 0.8 0.8 0.8
+illum 1
+

@@ -1,0 +1,35 @@
+# File produced by Open Asset Import Library (http://www.assimp.sf.net)
+# (assimp v3.1.243586452)
+
+newmtl ComputerBase
+kd 0.8 0.8 0.8
+illum 1
+
+newmtl ComputerFrontpanel
+kd 0.00807586 0.00807586 0.00807586
+illum 1
+
+newmtl StartButton
+kd 0.8 0.8 0.8
+illum 1
+
+newmtl StartButtonLED
+kd 0.109449 0.8 0.164913
+illum 1
+
+newmtl StartButtonInner
+kd 0.8 0.8 0.8
+illum 1
+
+newmtl KBM Logo Stripes
+kd 0.8 0.8 0.8
+illum 1
+
+newmtl KBM Logo BottomText
+kd 0.0492842 0.238846 0.8
+illum 1
+
+newmtl KBM Logo
+kd 0 0 0
+illum 1
+

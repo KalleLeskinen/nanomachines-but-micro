@@ -106,7 +106,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 846628158}
   serializedVersion: 2
-  m_Mass: 100
+  m_Mass: 200
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 1
@@ -273,9 +273,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f12f5877367d1429981270cbcef74e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enginePower: 1
+  brakingPower: 2
   restLength: 0.25
-  springTravel: 0.4
-  springStiffness: 30000
+  springTravel: 0.3
+  springStiffness: 80000
   damperStiffness: 4000
   minLength: 0
   maxLength: 0
@@ -284,8 +286,10 @@ MonoBehaviour:
   springVelocity: 0
   springForce: 0
   steerAngle: 0
-  steeringTime: 7
-  wheelRadius: 0.15
+  steeringTime: 9
+  wheelRadius: 0.2
+  test: 0
+  testoo: -0.2
   wheel: 2
 --- !u!1 &3813066438746694947
 GameObject:
@@ -331,9 +335,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f12f5877367d1429981270cbcef74e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enginePower: 1
+  brakingPower: 2
   restLength: 0.25
-  springTravel: 0.4
-  springStiffness: 30000
+  springTravel: 0.3
+  springStiffness: 80000
   damperStiffness: 4000
   minLength: 0
   maxLength: 0
@@ -342,8 +348,10 @@ MonoBehaviour:
   springVelocity: 0
   springForce: 0
   steerAngle: 0
-  steeringTime: 7
-  wheelRadius: 0.15
+  steeringTime: 9
+  wheelRadius: 0.2
+  test: 0
+  testoo: -0.2
   wheel: 0
 --- !u!1 &3813066438873061751
 GameObject:
@@ -389,9 +397,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f12f5877367d1429981270cbcef74e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enginePower: 1
+  brakingPower: 2
   restLength: 0.25
-  springTravel: 0.4
-  springStiffness: 30000
+  springTravel: 0.3
+  springStiffness: 80000
   damperStiffness: 4000
   minLength: 0
   maxLength: 0
@@ -400,8 +410,10 @@ MonoBehaviour:
   springVelocity: 0
   springForce: 0
   steerAngle: 0
-  steeringTime: 7
-  wheelRadius: 0.15
+  steeringTime: 9
+  wheelRadius: 0.2
+  test: 0
+  testoo: -0.2
   wheel: 1
 --- !u!1 &3813066439302805287
 GameObject:
@@ -528,9 +540,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f12f5877367d1429981270cbcef74e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enginePower: 1
+  brakingPower: 2
   restLength: 0.25
-  springTravel: 0.4
-  springStiffness: 30000
+  springTravel: 0.3
+  springStiffness: 80000
   damperStiffness: 4000
   minLength: 0
   maxLength: 0
@@ -539,8 +553,10 @@ MonoBehaviour:
   springVelocity: 0
   springForce: 0
   steerAngle: 0
-  steeringTime: 7
-  wheelRadius: 0.15
+  steeringTime: 9
+  wheelRadius: 0.2
+  test: 0
+  testoo: -0.2
   wheel: 3
 --- !u!1 &3813066439679548245
 GameObject:
@@ -848,13 +864,13 @@ MonoBehaviour:
   slowPower: 10
   explosionPower: 3850
   boostTime: 3
-  boostTimeLow: 2.5
-  boostTimeHigh: 7.5
+  boostTimeLow: 3.5
+  boostTimeHigh: 6.5
   cooldownTime: 5
   cooldownDefault: 5
   boostFill: 0
-  boostFillLow: 2.5
-  boostFillHigh: 7.5
+  boostFillLow: 3.5
+  boostFillHigh: 6.5
   boostWindowMax: 10
   boostMeterSpeed: 1
   boostMeterTime: 10
@@ -909,7 +925,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5390181267357601582}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 2d1b92c8292f3234baa92e29f307a81d, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -950,7 +966,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 072f45eafba7f634489450d04de93d58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raceHandler: {fileID: 0}
 --- !u!114 &5306012457402829399
 MonoBehaviour:
   m_ObjectHideFlags: 0

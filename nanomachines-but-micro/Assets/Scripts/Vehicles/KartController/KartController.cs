@@ -121,9 +121,10 @@ public class KartController : Bolt.EntityBehaviour<IVehicleState>
 
     void FixedUpdate()
     {
-        if (entity.IsOwner)
-            SetSteeringAngle();
         
+       //if (entity.IsOwner)
+            SetSteeringAngle();
+
 
         if(boostFlag && !cooldownFlag && entity.IsOwner)
         {

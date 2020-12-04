@@ -56,7 +56,7 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
     }
     private void FixedUpdate()
     {
-        if (state.Clock < 5 && Time.timeSinceLevelLoad>4)
+        if (Time.timeSinceLevelLoad > 4 && state.Clock < 5)
         {
             if (state.NumberOfPlayers != state.PlayersReady)
             {
@@ -192,10 +192,13 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
     private IEnumerator WaitFor30AndEnd()
     {
         Debug.Log("Waiting for 30 second");
-        yield return new WaitForSeconds(30f);
+        yield return new WaitForSeconds(25f);
+        //aloita animaatio fade in 5 sekunnisksi?
+        yield return new WaitForSeconds(5f);
         BoltLauncher.Shutdown();
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(5f);
         SceneManager.LoadScene("MainMenu");
+        //joku muu keino kickaa pelaajat hellävarasesti main menuun
     }
 
     private void SetUpCheckPoints()

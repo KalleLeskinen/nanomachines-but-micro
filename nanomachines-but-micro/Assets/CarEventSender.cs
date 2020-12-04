@@ -18,7 +18,7 @@ public class CarEventSender : Bolt.EntityBehaviour<IVehicleState>
         {
             if (!raceHandler)
                 raceHandler = GameObject.FindGameObjectWithTag("RaceHandler");
-            raceStarted = raceHandler.GetComponent<BoltEntity>().GetState<IStateOfRace>().RaceStarted;
+                raceStarted = raceHandler.GetComponent<BoltEntity>().GetState<IStateOfRace>().RaceStarted;
         }
 
         if (eventFlag)

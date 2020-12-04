@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AmmoBox : MonoBehaviour
 {
-    public int ammoAmount = 15;
+    public int ammoAmount = 3;
     public GameObject boxDespawnAnimation;
 
     // Start is called before the first frame update
@@ -26,9 +26,11 @@ public class AmmoBox : MonoBehaviour
     {
         Debug.Log("Despawn cube");
         this.gameObject.GetComponent<Renderer>().enabled = false;
+        this.gameObject.GetComponent<BoxCollider>().enabled = false;
         Instantiate(boxDespawnAnimation, transform.position, transform.rotation);
         yield return new WaitForSeconds(10);
         this.gameObject.GetComponent<Renderer>().enabled = true;
+        this.gameObject.GetComponent<BoxCollider>().enabled = true;
         Debug.Log("Respawn cube");
     }
 

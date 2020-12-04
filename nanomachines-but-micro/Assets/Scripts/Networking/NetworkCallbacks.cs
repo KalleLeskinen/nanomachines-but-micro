@@ -51,6 +51,20 @@ public class NetworkCallbacks : GlobalEventListener
             }
             
         }
+        else if (scene == "Level_2")
+        {
+            
+            if (BoltNetwork.IsServer)
+            {
+                BoltEntity serverCar = BoltNetwork.Instantiate(cars[car_to_spawn], serverPos.transform.position, serverPos.transform.rotation);
+                serverCar.GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+            }
+            else
+            {
+                StartCoroutine(WaitAndSpawn(2f));
+            }
+            
+        }
 
 
     }
@@ -91,6 +105,11 @@ public class NetworkCallbacks : GlobalEventListener
                 bE.gameObject.GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.None;
                 bE.gameObject.transform.parent = null;
             }
+        }
+
+        foreach(BoltEntity be in BoltNetwork.Entities)
+        {
+            Debug.Log(be.name);
         }
     }
 
