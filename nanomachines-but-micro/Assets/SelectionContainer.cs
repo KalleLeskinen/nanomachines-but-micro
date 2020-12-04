@@ -15,7 +15,7 @@ public class SelectionContainer : MonoBehaviour
     {
         gameObject.tag = "selection_data_container";
         if (Instance != null) Destroy(gameObject);
-        Instance = this;
+        else Instance = this;
         DontDestroyOnLoad(gameObject);
         if (!set)
             prefabIdInteger = 0;
