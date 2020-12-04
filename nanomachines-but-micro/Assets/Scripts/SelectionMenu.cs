@@ -16,6 +16,7 @@ public class SelectionMenu : GlobalEventListener
 
     public void ButtonBack()
     {
+        SelectionContainer.Instance.ConfirmSelection();
         SceneManager.LoadScene("MainMenu");
     }
 
