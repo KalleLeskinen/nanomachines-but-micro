@@ -814,6 +814,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: mappi (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5419325477619486185, guid: 305fe983952d8864e9e02afbb6adeea0, type: 3}
+      propertyPath: m_TagString
+      value: generic_wall
+      objectReference: {fileID: 0}
     - target: {fileID: 8362966742631615542, guid: 305fe983952d8864e9e02afbb6adeea0, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.01
@@ -1416,6 +1420,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: flask3 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 52b87a0fe690e8945a8e84180bb74b4d, type: 3}
+      propertyPath: m_TagString
+      value: generic_wall
+      objectReference: {fileID: 0}
     - target: {fileID: 1860641818344424419, guid: 52b87a0fe690e8945a8e84180bb74b4d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -1654,6 +1662,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: cf96f4132f84fd54d9fff5cf2df6ab22, type: 3}
       propertyPath: m_Name
       value: paperpad
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cf96f4132f84fd54d9fff5cf2df6ab22, type: 3}
+      propertyPath: m_TagString
+      value: generic_wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf96f4132f84fd54d9fff5cf2df6ab22, type: 3}
@@ -2728,6 +2740,10 @@ PrefabInstance:
     - target: {fileID: 1385046717937906905, guid: 869681cd2101757469c6bdf3faf94dcd, type: 3}
       propertyPath: m_Name
       value: flask3Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385046717937906905, guid: 869681cd2101757469c6bdf3faf94dcd, type: 3}
+      propertyPath: m_TagString
+      value: generic_wall
       objectReference: {fileID: 0}
     - target: {fileID: 1761888262943813219, guid: 869681cd2101757469c6bdf3faf94dcd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4008,6 +4024,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: mappi (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5419325477619486185, guid: 305fe983952d8864e9e02afbb6adeea0, type: 3}
+      propertyPath: m_TagString
+      value: generic_wall
+      objectReference: {fileID: 0}
     - target: {fileID: 8362966742631615542, guid: 305fe983952d8864e9e02afbb6adeea0, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.01
@@ -4120,6 +4140,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 01c6cb899c6c9904f8b6a625db9b6c40, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 01c6cb899c6c9904f8b6a625db9b6c40, type: 3}
+      propertyPath: m_TagString
+      value: generic_wall
       objectReference: {fileID: 0}
     - target: {fileID: 3455292422214010178, guid: 01c6cb899c6c9904f8b6a625db9b6c40, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -4626,6 +4650,10 @@ PrefabInstance:
     - target: {fileID: 5419325477619486185, guid: 305fe983952d8864e9e02afbb6adeea0, type: 3}
       propertyPath: m_Name
       value: mappi (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5419325477619486185, guid: 305fe983952d8864e9e02afbb6adeea0, type: 3}
+      propertyPath: m_TagString
+      value: generic_wall
       objectReference: {fileID: 0}
     - target: {fileID: 8362966742631615542, guid: 305fe983952d8864e9e02afbb6adeea0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6421,7 +6449,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh115442
+  m_Name: pb_Mesh36142
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6594,7 +6622,7 @@ GameObject:
   - component: {fileID: 688346395}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: generic_wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6828,9 +6856,37 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2.0215514
       objectReference: {fileID: 0}
+    - target: {fileID: -8391222552659086748, guid: ff6ce8cda4bdd63438333bcc8a4ed4cc, type: 3}
+      propertyPath: m_TagString
+      value: generic_wall
+      objectReference: {fileID: 0}
+    - target: {fileID: -8391222552659086748, guid: ff6ce8cda4bdd63438333bcc8a4ed4cc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -516098083770646512, guid: ff6ce8cda4bdd63438333bcc8a4ed4cc, type: 3}
+      propertyPath: m_TagString
+      value: generic_wall
+      objectReference: {fileID: 0}
+    - target: {fileID: -516098083770646512, guid: ff6ce8cda4bdd63438333bcc8a4ed4cc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ff6ce8cda4bdd63438333bcc8a4ed4cc, type: 3}
       propertyPath: m_Name
       value: paperpadvariant2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ff6ce8cda4bdd63438333bcc8a4ed4cc, type: 3}
+      propertyPath: m_TagString
+      value: generic_wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416272007918961125, guid: ff6ce8cda4bdd63438333bcc8a4ed4cc, type: 3}
+      propertyPath: m_TagString
+      value: generic_wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416272007918961125, guid: ff6ce8cda4bdd63438333bcc8a4ed4cc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff6ce8cda4bdd63438333bcc8a4ed4cc, type: 3}
@@ -8793,6 +8849,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flask1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1282013251365886086, guid: 18785bfb74d834d408f6a47f1daa7da0, type: 3}
+      propertyPath: m_TagString
+      value: generic_wall
+      objectReference: {fileID: 0}
     - target: {fileID: 1909931888373498428, guid: 18785bfb74d834d408f6a47f1daa7da0, type: 3}
       propertyPath: m_LocalPosition.x
       value: -42.12062
@@ -9164,6 +9224,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: flask3WithLegs
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b9022bca1cbe40544a5266cdfc6efe83, type: 3}
+      propertyPath: m_TagString
+      value: generic_wall
+      objectReference: {fileID: 0}
     - target: {fileID: 1129496810705857465, guid: b9022bca1cbe40544a5266cdfc6efe83, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -9443,6 +9507,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flask1Red (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1282013251365886086, guid: 18785bfb74d834d408f6a47f1daa7da0, type: 3}
+      propertyPath: m_TagString
+      value: generic_wall
+      objectReference: {fileID: 0}
     - target: {fileID: 1909931888373498428, guid: 18785bfb74d834d408f6a47f1daa7da0, type: 3}
       propertyPath: m_LocalPosition.x
       value: -43.39
@@ -9595,6 +9663,10 @@ PrefabInstance:
     - target: {fileID: 5359296666191664815, guid: 1e6df397d8f6dea42abdc117c0acd664, type: 3}
       propertyPath: m_Name
       value: Flask1Blue
+      objectReference: {fileID: 0}
+    - target: {fileID: 5359296666191664815, guid: 1e6df397d8f6dea42abdc117c0acd664, type: 3}
+      propertyPath: m_TagString
+      value: generic_wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e6df397d8f6dea42abdc117c0acd664, type: 3}
@@ -11315,6 +11387,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 85123ec20b2165c49a66e825ded17306, type: 3}
       propertyPath: m_Name
       value: medicalcart (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 85123ec20b2165c49a66e825ded17306, type: 3}
+      propertyPath: m_TagString
+      value: generic_wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85123ec20b2165c49a66e825ded17306, type: 3}
@@ -13178,6 +13254,81 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2949053622709053665, guid: 16ace70501aab484fa880b058b3fba2d, type: 3}
   m_PrefabInstance: {fileID: 1322096211}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1337980914
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1337980915}
+  - component: {fileID: 1337980917}
+  - component: {fileID: 1337980916}
+  m_Layer: 5
+  m_Name: ammo_count_image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1337980915
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1337980914}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 53732586492939307}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 50, y: 0}
+  m_SizeDelta: {x: 40, y: 20}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1337980916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1337980914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 6e497aa1d2d58744086a3e1bf736d6eb, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1337980917
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1337980914}
+  m_CullTransparentMesh: 0
 --- !u!1001 &1346372532
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14191,6 +14342,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flask1Red (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8637495528325004744, guid: edf9eff147bdbc14991d382f1a27fd38, type: 3}
+      propertyPath: m_TagString
+      value: generic_wall
+      objectReference: {fileID: 0}
     - target: {fileID: 8977183446034442098, guid: edf9eff147bdbc14991d382f1a27fd38, type: 3}
       propertyPath: m_LocalPosition.x
       value: -74.06
@@ -14351,6 +14506,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: b9022bca1cbe40544a5266cdfc6efe83, type: 3}
       propertyPath: m_Name
       value: flask3WithLegs (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b9022bca1cbe40544a5266cdfc6efe83, type: 3}
+      propertyPath: m_TagString
+      value: generic_wall
       objectReference: {fileID: 0}
     - target: {fileID: 1129496810705857465, guid: b9022bca1cbe40544a5266cdfc6efe83, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -14809,7 +14968,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh154264
+  m_Name: pb_Mesh43660
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -15920,6 +16079,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: flask3Variant (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: eff8b220dae3d7042a03dac37b6cd9ee, type: 3}
+      propertyPath: m_TagString
+      value: generic_wall
+      objectReference: {fileID: 0}
     - target: {fileID: 1860641818344424419, guid: eff8b220dae3d7042a03dac37b6cd9ee, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -16926,6 +17089,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b93fd83283c7b1042a51327cfa4b2a2f, type: 3}
+      propertyPath: m_TagString
+      value: generic_wall
+      objectReference: {fileID: 0}
     - target: {fileID: 1442450553484104045, guid: b93fd83283c7b1042a51327cfa4b2a2f, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -17363,6 +17530,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e0170b77ba656084a9eb3b297e4664c6, type: 3}
+      propertyPath: m_TagString
+      value: generic_wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0170b77ba656084a9eb3b297e4664c6, type: 3}
 --- !u!4 &1655222561 stripped
@@ -17611,7 +17782,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh138404
+  m_Name: pb_Mesh35658
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -17924,6 +18095,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e0170b77ba656084a9eb3b297e4664c6, type: 3}
+      propertyPath: m_TagString
+      value: generic_wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0170b77ba656084a9eb3b297e4664c6, type: 3}
 --- !u!1 &1689837784 stripped
@@ -18020,6 +18195,10 @@ PrefabInstance:
     - target: {fileID: 1090087875576996455, guid: 54e0b2361da849441b58aac11aae4f90, type: 3}
       propertyPath: m_Name
       value: SodaCan
+      objectReference: {fileID: 0}
+    - target: {fileID: 1090087875576996455, guid: 54e0b2361da849441b58aac11aae4f90, type: 3}
+      propertyPath: m_TagString
+      value: generic_wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54e0b2361da849441b58aac11aae4f90, type: 3}
@@ -18506,6 +18685,10 @@ PrefabInstance:
     - target: {fileID: 6641980457082275016, guid: 31ba573697f211a46944c22118049ae1, type: 3}
       propertyPath: m_Name
       value: Flask1Orange (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6641980457082275016, guid: 31ba573697f211a46944c22118049ae1, type: 3}
+      propertyPath: m_TagString
+      value: generic_wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31ba573697f211a46944c22118049ae1, type: 3}
@@ -19377,6 +19560,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flask1 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1282013251365886086, guid: 18785bfb74d834d408f6a47f1daa7da0, type: 3}
+      propertyPath: m_TagString
+      value: generic_wall
+      objectReference: {fileID: 0}
     - target: {fileID: 1909931888373498428, guid: 18785bfb74d834d408f6a47f1daa7da0, type: 3}
       propertyPath: m_LocalPosition.x
       value: -75.70699
@@ -19802,7 +19989,7 @@ GameObject:
   - component: {fileID: 1862861002}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: generic_wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20123,6 +20310,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 85123ec20b2165c49a66e825ded17306, type: 3}
       propertyPath: m_Name
       value: medicalcart
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 85123ec20b2165c49a66e825ded17306, type: 3}
+      propertyPath: m_TagString
+      value: generic_wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85123ec20b2165c49a66e825ded17306, type: 3}
@@ -20469,6 +20660,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flask1Red
       objectReference: {fileID: 0}
+    - target: {fileID: 8637495528325004744, guid: edf9eff147bdbc14991d382f1a27fd38, type: 3}
+      propertyPath: m_TagString
+      value: generic_wall
+      objectReference: {fileID: 0}
     - target: {fileID: 8977183446034442098, guid: edf9eff147bdbc14991d382f1a27fd38, type: 3}
       propertyPath: m_LocalPosition.x
       value: -93.614
@@ -20648,6 +20843,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 511bcd9a7e03f78459fecebc108d0e52, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 511bcd9a7e03f78459fecebc108d0e52, type: 3}
+      propertyPath: m_TagString
+      value: generic_wall
       objectReference: {fileID: 0}
     - target: {fileID: 1129496810705857465, guid: 511bcd9a7e03f78459fecebc108d0e52, type: 3}
       propertyPath: m_ScaleInLightmap
@@ -20862,6 +21061,10 @@ PrefabInstance:
     - target: {fileID: 1853127067501695473, guid: a6272fda3a4f82842b1177169c8fc99c, type: 3}
       propertyPath: m_Name
       value: LabComputer
+      objectReference: {fileID: 0}
+    - target: {fileID: 1853127067501695473, guid: a6272fda3a4f82842b1177169c8fc99c, type: 3}
+      propertyPath: m_TagString
+      value: generic_wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6272fda3a4f82842b1177169c8fc99c, type: 3}
@@ -22327,7 +22530,7 @@ GameObject:
   - component: {fileID: 2101483670}
   m_Layer: 0
   m_Name: Walls
-  m_TagString: Untagged
+  m_TagString: generic_wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -25952,6 +26155,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flask1Blue (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5359296666191664815, guid: 1e6df397d8f6dea42abdc117c0acd664, type: 3}
+      propertyPath: m_TagString
+      value: generic_wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e6df397d8f6dea42abdc117c0acd664, type: 3}
 --- !u!4 &2143226177 stripped
@@ -27405,7 +27612,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &53732586112756309
 RectTransform:
   m_ObjectHideFlags: 0
@@ -28183,6 +28390,7 @@ RectTransform:
   - {fileID: 53732586518313339}
   - {fileID: 53732586112756309}
   - {fileID: 53732586658186734}
+  - {fileID: 1337980915}
   m_Father: {fileID: 1952475914}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -28212,13 +28420,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 0
+    m_Font: {fileID: 12800000, guid: d6ed5ebaa1e8687469dee3d0fca56acd, type: 3}
+    m_FontSize: 20
+    m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 2
     m_MaxSize: 40
-    m_Alignment: 5
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -28268,8 +28476,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 60, y: 20}
+  m_AnchoredPosition: {x: 20.3, y: 2.6}
+  m_SizeDelta: {x: 32, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &53732586518313342
 MonoBehaviour:
@@ -31540,7 +31748,7 @@ GameObject:
   - component: {fileID: 650711897775479574}
   m_Layer: 0
   m_Name: LampTower
-  m_TagString: Untagged
+  m_TagString: generic_wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31621,6 +31829,10 @@ PrefabInstance:
     - target: {fileID: 258403792328719808, guid: f033c3246640a6f4cb45739a3b925274, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 258403792328719808, guid: f033c3246640a6f4cb45739a3b925274, type: 3}
+      propertyPath: m_TagString
+      value: generic_wall
       objectReference: {fileID: 0}
     - target: {fileID: 638904550885795706, guid: f033c3246640a6f4cb45739a3b925274, type: 3}
       propertyPath: m_LocalPosition.x
@@ -31789,6 +32001,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flask1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 935514305041277244, guid: fb27469dd4018ae458d01068411f1f94, type: 3}
+      propertyPath: m_TagString
+      value: generic_wall
+      objectReference: {fileID: 0}
     - target: {fileID: 8057200692450243340, guid: fb27469dd4018ae458d01068411f1f94, type: 3}
       propertyPath: m_Shadows.m_Type
       value: 0
@@ -31852,6 +32068,10 @@ PrefabInstance:
     - target: {fileID: 1385046717937906905, guid: 869681cd2101757469c6bdf3faf94dcd, type: 3}
       propertyPath: m_Name
       value: flask3Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385046717937906905, guid: 869681cd2101757469c6bdf3faf94dcd, type: 3}
+      propertyPath: m_TagString
+      value: generic_wall
       objectReference: {fileID: 0}
     - target: {fileID: 1761888262943813219, guid: 869681cd2101757469c6bdf3faf94dcd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -31932,6 +32152,10 @@ PrefabInstance:
     - target: {fileID: 8637495528325004744, guid: edf9eff147bdbc14991d382f1a27fd38, type: 3}
       propertyPath: m_Name
       value: Flask1Red
+      objectReference: {fileID: 0}
+    - target: {fileID: 8637495528325004744, guid: edf9eff147bdbc14991d382f1a27fd38, type: 3}
+      propertyPath: m_TagString
+      value: generic_wall
       objectReference: {fileID: 0}
     - target: {fileID: 8977183446034442098, guid: edf9eff147bdbc14991d382f1a27fd38, type: 3}
       propertyPath: m_LocalPosition.x
@@ -32229,6 +32453,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 1853127067501695473, guid: a6272fda3a4f82842b1177169c8fc99c, type: 3}
+      propertyPath: m_TagString
+      value: generic_wall
+      objectReference: {fileID: 0}
     - target: {fileID: 6059780511488040576, guid: a6272fda3a4f82842b1177169c8fc99c, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
@@ -32464,6 +32692,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 3719285491986701419, guid: b374584bd3aa23b4bb90a41b0f003ecb, type: 3}
+      propertyPath: m_TagString
+      value: generic_wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4095565225469789905, guid: b374584bd3aa23b4bb90a41b0f003ecb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -43.931416
@@ -32603,6 +32835,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flask1
       objectReference: {fileID: 0}
+    - target: {fileID: 1282013251365886086, guid: 18785bfb74d834d408f6a47f1daa7da0, type: 3}
+      propertyPath: m_TagString
+      value: generic_wall
+      objectReference: {fileID: 0}
     - target: {fileID: 1909931888373498428, guid: 18785bfb74d834d408f6a47f1daa7da0, type: 3}
       propertyPath: m_LocalPosition.x
       value: -86.264
@@ -32740,6 +32976,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: mappi
       objectReference: {fileID: 0}
+    - target: {fileID: 5419325477619486185, guid: 305fe983952d8864e9e02afbb6adeea0, type: 3}
+      propertyPath: m_TagString
+      value: generic_wall
+      objectReference: {fileID: 0}
     - target: {fileID: 8362966742631615542, guid: 305fe983952d8864e9e02afbb6adeea0, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.01
@@ -32805,6 +33045,10 @@ PrefabInstance:
     - target: {fileID: 5163698918071811586, guid: 3d6373b5618596a42a53e2bbd1e55965, type: 3}
       propertyPath: m_Name
       value: flask3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5163698918071811586, guid: 3d6373b5618596a42a53e2bbd1e55965, type: 3}
+      propertyPath: m_TagString
+      value: generic_wall
       objectReference: {fileID: 0}
     - target: {fileID: 5433677746203611490, guid: 3d6373b5618596a42a53e2bbd1e55965, type: 3}
       propertyPath: m_Range
@@ -33154,6 +33398,10 @@ PrefabInstance:
     - target: {fileID: 5359296666191664815, guid: 1e6df397d8f6dea42abdc117c0acd664, type: 3}
       propertyPath: m_Name
       value: Flask1Blue
+      objectReference: {fileID: 0}
+    - target: {fileID: 5359296666191664815, guid: 1e6df397d8f6dea42abdc117c0acd664, type: 3}
+      propertyPath: m_TagString
+      value: generic_wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e6df397d8f6dea42abdc117c0acd664, type: 3}
@@ -33518,6 +33766,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 8981813196864870380, guid: 09fd7b697b52f204d88450bf1f21b542, type: 3}
+      propertyPath: m_TagString
+      value: generic_wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09fd7b697b52f204d88450bf1f21b542, type: 3}
 --- !u!4 &7754138767114619215 stripped
@@ -33651,6 +33903,10 @@ PrefabInstance:
     - target: {fileID: 6641980457082275016, guid: 31ba573697f211a46944c22118049ae1, type: 3}
       propertyPath: m_Name
       value: Flask1Orange
+      objectReference: {fileID: 0}
+    - target: {fileID: 6641980457082275016, guid: 31ba573697f211a46944c22118049ae1, type: 3}
+      propertyPath: m_TagString
+      value: generic_wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31ba573697f211a46944c22118049ae1, type: 3}
