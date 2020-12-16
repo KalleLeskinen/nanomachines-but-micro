@@ -195,10 +195,7 @@ public class RaceScript : Bolt.EntityBehaviour<IStateOfRace>
         yield return new WaitForSeconds(25f);
         //aloita animaatio fade in 5 sekunnisksi?
         yield return new WaitForSeconds(5f);
-        BoltLauncher.Shutdown();
-        yield return new WaitForSeconds(5f);
-        SceneManager.LoadScene("MainMenu");
-        //joku muu keino kickaa pelaajat hellävarasesti main menuun
+        BoltNetwork.LoadScene("MainMenu");
     }
 
     private void SetUpCheckPoints()
