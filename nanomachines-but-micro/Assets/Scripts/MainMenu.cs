@@ -23,6 +23,7 @@ public class MainMenu : GlobalEventListener
 
     private void Awake()
     {
+        if (BoltNetwork.IsRunning) { BoltNetwork.Shutdown(); }
         SceneToLoad = "Level_1";
         modelPrefabs = new GameObject[7];
         modelPrefabs[0] = Resources.Load("Car1_Torino_Model") as GameObject;
