@@ -18,6 +18,8 @@ public class KartCameraController : MonoBehaviour
     private GameObject cam;
     private GameObject camPos;
 
+    public GameObject escMenu;
+
 
     private void Start()
     {
@@ -52,6 +54,11 @@ public class KartCameraController : MonoBehaviour
     private void FixedUpdate()
     {
         UpdateCamera();
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            escMenu.SetActive(true);
+        }
     }
 
 
@@ -84,4 +91,11 @@ public class KartCameraController : MonoBehaviour
 
         }
     }
+
+    public void ExitGame()
+    {
+        Debug.Log("Exiting game...");
+        Application.Quit();
+    }
+
 }
