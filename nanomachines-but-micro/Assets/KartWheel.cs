@@ -5,7 +5,7 @@ using UnityEngine;
 public class KartWheel : MonoBehaviour
 {
 
-    private Rigidbody rig;
+    public Rigidbody rig;
 
     [Header("Engine")]
     public float enginePower; // The power of the vehicle
@@ -158,7 +158,7 @@ public class KartWheel : MonoBehaviour
                 if (transform.InverseTransformDirection(rig.velocity).z < 20)
                 {
                     //Debug.Log("Accelerating");
-                    Fx = (Input.GetAxis("Vertical") * enginePower) * springForce;
+                    Fx = springForce * (Input.GetAxis("Vertical") * enginePower);
                 }
                 else
                 {
@@ -168,8 +168,8 @@ public class KartWheel : MonoBehaviour
 
             }
 
-            // Engine friction
-            if (Input.GetAxis("Vertical") == 0)
+                // Engine friction  
+                if (Input.GetAxis("Vertical") == 0)
             {
 
                 if (transform.InverseTransformDirection(rig.velocity).z > 0.3f || transform.InverseTransformDirection(rig.velocity).z < -0.3f)
@@ -209,11 +209,12 @@ public class KartWheel : MonoBehaviour
 
             Fy = wheelVelocityL.x * springForce;
 
+
             rig.AddForceAtPosition(suspensionForce + (Fx * transform.forward) + (Fy * -transform.right), hit.point);
+
 
             wheelPos.transform.position = hit.point + new Vector3(0, (WheelBoundsSizeY / 2), 0);
             
-            //ADD RPM TO WHEELS
 
 
 
@@ -264,4 +265,38 @@ public class KartWheel : MonoBehaviour
         }
     }
 
+    //Is the wheel in contact with ground
+    public bool isGrounded()
+    {
+        if (Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, maxLength + wheelRadius))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    public float getTravel()
+    {
+        if (Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, maxLength + wheelRadius))
+        {
+
+            Debug.DrawRay(transform.position, -transform.up * hit.distance, Color.blue, 2f);
+
+            return (-transform.InverseTransformDirection(hit.point).y - wheelRadius) / (springLength - minLength);
+        }
+
+        
+        return 1;
+    }
+
+    public Vector3 getHitPoint()
+    {
+        if (Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, maxLength + wheelRadius))
+        {
+            return hit.point;
+        }
+
+        return new Vector3();
+    }
 }
