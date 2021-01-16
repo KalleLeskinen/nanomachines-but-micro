@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class KartCameraController : MonoBehaviour
 {
@@ -94,8 +95,8 @@ public class KartCameraController : MonoBehaviour
 
     public void ExitGame()
     {
-        Debug.Log("Exiting game...");
-        Application.Quit();
+        Debug.Log("Exiting to main menu...");
+        SceneManager.LoadScene(0);
     }
 
 }
