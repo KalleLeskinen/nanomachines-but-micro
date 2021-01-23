@@ -47,7 +47,7 @@ MonoBehaviour:
   debugClientCount: 363
   debugStartPort: 50538
   debugBuildMode: 1
-  debugStartMapName: Level_1
+  debugStartMapName: MainMenu
   debugPlayAsServer: 1
   showDebugInfo: 0
   overrideTimeScale: 1
